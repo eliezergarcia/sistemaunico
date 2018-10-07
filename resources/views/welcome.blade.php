@@ -73,14 +73,22 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button> -->
+                @guest
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary" href="{{ route('login') }}"><i class="mdi mdi-account mr-1"></i>Iniciar sesión</a>
+                    </li>
+                @else  
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary" href="{{ route('calendar.index') }}"><i class="mdi mdi-window-open mr-1"></i>Acceder al sistema</a>
+                    </li>                      
+                @endguest
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -131,7 +139,7 @@
                     Unico Logistics
                 </div>
 
-                <div class="links">
+                <div class="links col-sm-12">
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>

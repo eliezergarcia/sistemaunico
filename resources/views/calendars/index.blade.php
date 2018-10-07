@@ -28,11 +28,12 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-10">
+                        <div class="col-sm-12 col-md-10">
                             <div id="calendar"></div>
                         </div> <!-- end col -->
-
-                        <div class="col-lg-2">
+                        
+                        <div class="col-sm-12 col-md-2">
+                            <br>
                             <a href="#" data-toggle="modal" data-target="#add-category" class="btn btn-lg font-16 btn-primary btn-block  ">
                                 <i class="mdi mdi-plus-circle-outline"></i> Crear nuevo evento
                             </a>

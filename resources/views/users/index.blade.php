@@ -40,7 +40,7 @@
                         </div> -->
                     </div>
 
-                    <div class="table-responsive">
+                    <div class="table-responsive-sm">
                         <table id="users-datatable" class="table table-centered table-hover w-100 dt-responsive nowrap">
                             <thead class="thead-light">
                                 <tr>

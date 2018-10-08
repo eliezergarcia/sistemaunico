@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
             'phone' => '(52) 8129368475'
         ]);
 
-        factory(App\User::class, 25)->create();
+        factory(App\User::class, 10)->create();
 
         // Schema::table('assigned_roles', function ($table) {
         //     $table->create([

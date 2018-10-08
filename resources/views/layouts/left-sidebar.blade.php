@@ -1,4 +1,4 @@
-<!-- ========== Left Sidebar Start ========== -->
+<!-- Left Sidebar Start -->
 <div class="left-side-menu left-side-menu-light">
 
     <div class="slimscroll-menu">
@@ -18,15 +18,15 @@
 
             <li class="side-nav-title side-nav-item">MENU</li>
 
-            <li class="side-nav-item">
+            <!-- <li class="side-nav-item">
                 <a href="{{ route('calendar.index') }}" class="side-nav-link">
                     <i class="dripicons-calendar"></i>
                     <span class="badge badge-success float-right">7</span>
                     <span> Calendario </span>
                 </a>
-            </li>
+            </li> -->
 
-            <li class="side-nav-item">
+            <!-- <li class="side-nav-item">
                 <a href="javascript: void(0);" class="side-nav-link">
                     <i class="dripicons-view-apps"></i>
                     <span> Apps </span>
@@ -84,7 +84,7 @@
                         </ul>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             <li class="side-nav-item">
                 <a href="javascript: void(0);" class="side-nav-link">
@@ -108,4 +108,4 @@
     <!-- Sidebar -left -->
 
 </div>
-<!-- Left Sidebar End -->
+<!-- Left Sidebar End

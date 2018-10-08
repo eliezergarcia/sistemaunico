@@ -44,28 +44,28 @@
                         <table id="users-datatable" class="table table-centered table-hover w-100 dt-responsive nowrap">
                             <thead class="thead-light">
                                 <tr>
-                                    <th style="width: 20px;">
+                                    <!-- <th style="width: 20px;">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck1">
                                             <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                                         </div>
-                                    </th>
-                                    <th>Nombre</th>
+                                    </th> -->
+                                    <th>Nombre completo</th>
                                     <th>Usuario</th>
                                     <th>Correo electrónico</th>
                                     <th>Rol</th>
-                                    <th style="width: 100px;">Action</th>
+                                    <th style="width: 50px;">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                             	@foreach($users as $user)
                                 <tr>
-                                    <td>
+                                    <!-- <td>
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck2">
                                             <label class="custom-control-label" for="customCheck2">&nbsp;</label>
                                         </div>
-                                    </td>
+                                    </td> -->
                                     <td class="table-user">
                                         <img src="{{ Storage::url($user->url) }}" alt="table-user" class="mr-2 rounded-circle">
                                         <a href="javascript:void(0);" class="text-body font-weight-semibold">{{ $user->name }}</a>
@@ -80,8 +80,8 @@
                                         {{ $user->present()->roles() }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('usuarios.edit', $user->id )}}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Editar usuario"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                        <form name="frmDeleteUser{{$user->id}}" style="display: inline;" action="{{ route('usuarios.destroy', $user->id) }}" method="POST">
+                                        <a href="{{ route('usuarios.edit', $user->id )}}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver información"> <i class="mdi mdi-eye-settings"></i></a>
+                                        <!-- <form name="frmDeleteUser{{$user->id}}" style="display: inline;" action="{{ route('usuarios.destroy', $user->id) }}" method="POST">
                                             {!! csrf_field() !!}
                                             {!! method_field('DELETE') !!}
                                             <button class="action-icon btn btn-link" type="submit" 
@@ -89,7 +89,7 @@
                                                 title data-original-title="Eliminar usuario">
                                                 <i class="mdi mdi-delete"></i>
                                             </button>
-                                        </form>
+                                        </form> -->
                                     </td>
                                 </tr>
                                 @endforeach
@@ -121,7 +121,7 @@
                     <form method="POST" action="{{ route('usuarios.store') }}" enctype="multipart/form-data" class="pl-3 pr-3">
                         {!! csrf_field() !!}
                         <div class="form-group">
-                            <label>Nombre y apellido</label>
+                            <label>Nombre completo</label>
                             <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" name="name" value="{{ old('name') }}">
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
@@ -151,7 +151,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Rol</label>
+                            <label>Rol <span class="mb-0 font-13">(Departamento)</span></label>
                             <div class="form-inline">
                                 @foreach($roles as $role)
                                 <div class="custom-control custom-checkbox mb-2">

@@ -52,18 +52,14 @@
                         <div class="col-sm-2">
                             <div class="text-center mt-sm-0 mt-3 text-sm-right">
                                 <button type="submit" class="btn btn-light btn-block" data-toggle="modal" data-target="#information-user-modal">
-                                    <i class="mdi mdi-account-settings-variant mr-1"></i> Editar información
+                                    <i class="mdi mdi-account-edit mr-1"></i> Editar información
                                 </button>
                             </div>
                             <br>
                             <div class="text-center mt-sm-0 mt-3 text-sm-right">
-                                <form style="display: inline;" action="{{ route('usuarios.destroy', $user->id) }}" method="POST">
-                                    {!! csrf_field() !!}
-                                    {!! method_field('DELETE') !!}
-                                    <button type="submit" class="btn btn-danger btn-block">
-                                        <i class="mdi mdi-account-settings-variant mr-1"></i> Eliminar usuario
-                                    </button>
-                                </form>
+                                <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#delete-user-modal">
+                                    <i class="mdi mdi-delete mr-1"></i> Eliminar usuario
+                                </button>
                             </div>
                         </div> <!-- end col-->
                     </div> <!-- end row -->
@@ -153,7 +149,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Rol <span class="mb-0 font-13">(Departamentos)</span></label>
+                            <label>Rol <span class="mb-0 font-13">(Departamento)</span></label>
                             <div class="form-inline">
                                 @foreach($roles as $role)
                                 <div class="custom-control custom-checkbox mb-2">
@@ -197,6 +193,26 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+
+    <div id="delete-user-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body p-4">
+                    <div class="text-center">
+                        <i class="dripicons-warning h1 text-danger"></i>
+                        <h4 class="mt-2">Precaución!</h4>
+                        <p class="mt-3">¿Está seguro(a) de eliminar al usuario <b>{{ $user->name }}</b>?</p>
+                        <button type="button" class="btn btn-light my-2" data-dismiss="modal">Cancelar</button>
+                        <form style="display: inline;" action="{{ route('usuarios.destroy', $user->id) }}" method="POST">
+                            {!! csrf_field() !!}
+                            {!! method_field('DELETE') !!}
+                            <button type="sumbit" class="btn btn-danger my-2">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 <!-- End Modals -->
 @endsection
 @section('scripts')

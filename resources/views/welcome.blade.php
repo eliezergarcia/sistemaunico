@@ -77,11 +77,11 @@
                     <span class="navbar-toggler-icon"></span>
                 </button> -->
                 @guest
-                    <li class="nav-item">
+                    <li class="nav-item navbar-toggler">
                         <a class="btn btn-outline-primary" href="{{ route('login') }}"><i class="mdi mdi-account mr-1"></i>Iniciar sesión</a>
                     </li>
                 @else  
-                    <li class="nav-item">
+                    <li class="nav-item navbar-toggler">
                         <a class="btn btn-outline-primary" href="{{ route('calendar.index') }}"><i class="mdi mdi-window-open mr-1"></i>Acceder al sistema</a>
                     </li>                      
                 @endguest

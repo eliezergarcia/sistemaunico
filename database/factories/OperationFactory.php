@@ -1,0 +1,46 @@
+<?php
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Operation::class, function (Faker $faker) {
+    return [
+        'user_id' => $faker->numberBetween($min = 1, $max = 10),
+        'shipper' => $faker->company,
+        'master_consigner' => $faker->word,
+        'house_consigner' => $faker->word,
+        'etd' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'eta' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'impo_expo' => $faker->randomElement($array = array ('IMPO','EXPO')),
+        'pol' => $faker->word,
+        'pod' => $faker->word,
+        'destino' => $faker->word,
+        'incoterm' => $faker->word,
+        'booking' => $faker->swiftBicNumber,
+        'custom_cutoff' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'vessel' => $faker->word,
+        'o_f' => $faker->word,
+        'c_invoice' => $faker->swiftBicNumber,
+        'm_bl' => $faker->swiftBicNumber,
+        'h_bl' => $faker->swiftBicNumber,
+        'cntr' => $faker->swiftBicNumber,
+        'type' => $faker->word,
+        'size' => $faker->word,
+        'qty' => $faker->word,
+        'weight_measures' => $faker->word,
+        'modalidad' => $faker->word,
+        'aa' => $faker->word,
+        'recibir' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'revision' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'mandar' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'revalidacion' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'toca_piso' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'proforma' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'pago_proforma' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'solicitud_transporte' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'despachado_puerto' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'port_etd' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'dlv_day' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'factura_unmx' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'fecha_factura' => $faker->date($format = 'Y-m-d', $max = 'now'),
+    ];
+});

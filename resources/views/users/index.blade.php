@@ -30,7 +30,7 @@
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            <button id="btnModal" class="btn btn-primary mb-2" data-toggle="modal" data-target="#register-user-modal"><i class="mdi mdi-plus-circle mr-2"></i> Agregar usuario</button>
+                            <button id="btnModal" class="btn btn-primary mb-2" data-toggle="modal" data-target="#register-user-modal"><i class="mdi mdi-plus-circle mr-2"></i> <b>Registrar usuario</b></button>
                         </div>
                         <!-- <div class="col-sm-8">
                             <div class="text-sm-right">
@@ -41,8 +41,8 @@
                     </div>
 
                     <div class="table-responsive-sm">
-                        <table id="users-datatable" class="table table-centered table-hover w-100 dt-responsive nowrap">
-                            <thead class="thead-light">
+                        <table id="users-datatable" class="table table-centered table-striped table-hover dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                            <thead>
                                 <tr>
                                     <!-- <th style="width: 20px;">
                                         <div class="custom-control custom-checkbox">
@@ -50,7 +50,7 @@
                                             <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                                         </div>
                                     </th> -->
-                                    <th>Nombre completo</th>
+                                    <th>Nombre</th>
                                     <th>Usuario</th>
                                     <th>Correo electrónico</th>
                                     <th>Rol</th>
@@ -74,13 +74,13 @@
                                         {{ $user->user_name }}
                                     </td>
                                     <td>
-                                        <span class="font-weight-semibold">{{ $user->email }}</span>
+                                        <span class="font-weight-semibold">{{ $user->email_office }}</span>
                                     </td>
                                     <td>
                                         {{ $user->present()->roles() }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('usuarios.edit', $user->id )}}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver información"> <i class="mdi mdi-eye-settings"></i></a>
+                                        <a href="{{ route('usuarios.show', $user->id )}}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver información"> <i class="mdi mdi-eye"></i></a>
                                         <!-- <form name="frmDeleteUser{{$user->id}}" style="display: inline;" action="{{ route('usuarios.destroy', $user->id) }}" method="POST">
                                             {!! csrf_field() !!}
                                             {!! method_field('DELETE') !!}
@@ -108,20 +108,19 @@
     <div id="register-user-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header modal-colored-header bg-primary">
+                <div class="modal-header pr-4 pl-4">
                     <h4 class="modal-title" id="primary-header-modalLabel">Registro de usuario</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-
-                    <div class="text-center mt-2 mb-4">
+                    <!-- <div class="text-center">
                         <p>Ingresa la siguiente información para registrar al usuario.</p>
-                    </div>
+                    </div> -->
                     
                     <form method="POST" action="{{ route('usuarios.store') }}" enctype="multipart/form-data" class="pl-3 pr-3">
                         {!! csrf_field() !!}
                         <div class="form-group">
-                            <label>Nombre completo</label>
+                            <label>Nombre: <span class="text-danger">*</span></label>
                             <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" name="name" value="{{ old('name') }}">
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
@@ -131,7 +130,7 @@
                         </div>
                     
                         <div class="form-group">
-                            <label>Nombre de usuario</label>
+                            <label>Nombre de usuario: <span class="text-danger">*</span></label>
                             <input class="form-control{{ $errors->has('user_name') ? ' is-invalid' : '' }}" type="text" name="user_name" value="{{ old('user_name') }}">
                             @if ($errors->has('user_name'))
                                 <span class="invalid-feedback" role="alert">
@@ -141,17 +140,17 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Correo electrónico</label>
-                            <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" type="text" name="email" value="{{ old('email') }}">
-                            @if ($errors->has('email'))
+                            <label>Correo electrónico: <span class="text-danger">*</span></label>
+                            <input class="form-control{{ $errors->has('email_office') ? ' is-invalid' : '' }}" type="text" name="email_office" value="{{ old('email') }}">
+                            @if ($errors->has('email_office'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                    <strong>{{ $errors->first('email_office') }}</strong>
                                 </span>
                             @endif
                         </div>
 
-                        <div class="form-group">
-                            <label>Rol <span class="mb-0 font-13">(Departamento)</span></label>
+                        <div class="">
+                            <label>Rol: <span class="mb-0 font-13">(Departamento)</span> <span class="text-danger">*</span></label>
                             <div class="form-inline">
                                 @foreach($roles as $role)
                                 <div class="custom-control custom-checkbox mb-2">
@@ -168,7 +167,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Contraseña</label>
+                            <label>Contraseña: <span class="text-danger">*</span></label>
                             <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
                             @if ($errors->has('password'))
                                 <span class="invalid-feedback" role="alert">
@@ -178,20 +177,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Confirmar contraseña</label>
+                            <label>Confirmar contraseña: <span class="text-danger">*</span></label>
                             <input class="form-control" type="password" name="password_confirmation">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Avatar</label>
-                            <input class="form-control" type="file" name="avatar">
-                        </div>
-                                        
+                        </div>                                      
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Registrar usuario</button>
+                    <button type="submit" class="btn btn-primary"><b>Registrar</b></button>
                 </div>
                 </form>
             </div>
@@ -233,6 +226,7 @@
                 }             
             },
             pageLength: 5,
+            order: [],
             drawCallback: function() {
                 $(".dataTables_paginate > .pagination").addClass("pagination-rounded"), $(".spark-chart").each(function(t) {
                     var o = $(this).data().dataset;

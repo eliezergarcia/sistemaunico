@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'user_name', 'email', 'password', 'phone'
+        'name', 'user_name', 'email', 'password', 'phone', 'address', 'email_office', 'password_email_office'
     ];
 
     /**
@@ -34,10 +34,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    // public function setPasswordAttribute($password)
-    // {
-    //   $this->attributes['password'] = bcrypt($password);
-    // }
+    public function setPasswordAttribute($password)
+    {
+      $this->attributes['password'] = bcrypt($password);
+    }
 
     public function getUrlAttribute()
     {
@@ -64,15 +64,32 @@ class User extends Authenticatable
 
     public function hasRoles(array $roles)
     {
-        foreach($roles as $role)
-        {
-            if ($this->role->name === $role) 
-            {
-                return true;    
-            }
-        }
+        return $this->roles->pluck('name')->intersect($roles)->count();
+    }
 
-        return false;
+    public function isAdmin()
+    {
+      return $this->hasRoles(['admin']);
+    }
+
+    public function isOper()
+    {
+      return $this->hasRoles(['oper']);
+    }
+
+    public function isFac()
+    {
+      return $this->hasRoles(['fac']);
+    }
+
+    public function isPag()
+    {
+      return $this->hasRoles(['pag']);
+    }
+
+    public function operations()
+    {
+      return $this->hasMany(Operation::class);
     }
 
     public function present()

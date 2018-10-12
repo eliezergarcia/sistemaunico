@@ -26,8 +26,10 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => 'required',
             'user_name' => 'required',
-            'email' => 'email|required',
-            'avatar' => 'image'
+            'email' => 'email',
+            'avatar' => 'image',
+            'email_office' => 'email|required',
+            'avatar' => 'image',
         ];
     }
 }

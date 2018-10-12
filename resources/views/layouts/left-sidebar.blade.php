@@ -4,7 +4,7 @@
     <div class="slimscroll-menu">
 
         <!-- LOGO -->
-        <a href="{{ route('calendar.index') }}" class="logo text-center">
+        <a href="{{ route('calendarios.index') }}" class="logo text-center">
             <span class="logo-lg">
                 <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="16">
             </span>
@@ -19,7 +19,7 @@
             <li class="side-nav-title side-nav-item">MENU</li>
 
             <!-- <li class="side-nav-item">
-                <a href="{{ route('calendar.index') }}" class="side-nav-link">
+                <a href="{{ route('calendarios.index') }}" class="side-nav-link">
                     <i class="dripicons-calendar"></i>
                     <span class="badge badge-success float-right">7</span>
                     <span> Calendario </span>
@@ -85,20 +85,36 @@
                     </li>
                 </ul>
             </li> -->
-
+            @if(Auth::user()->roles->pluck('id')->contains(2) || Auth::user()->roles->pluck('id')->contains(1))
             <li class="side-nav-item">
                 <a href="javascript: void(0);" class="side-nav-link">
-                    <i class="dripicons-lock"></i>
-                    <span> Administración </span>
+                    <i class="dripicons-stack"></i>
+                    <span> Operaciones </span>
                     <span class="menu-arrow"></span>
                 </a>
                 <ul class="side-nav-second-level" aria-expanded="false">
                     <li>
-                        <a href="{{ route('usuarios.index') }}" aria-expanded="false">Usuarios
+                        <a href="{{ route('operaciones.index') }}" aria-expanded="false">Control de operaciones
                         </a>
                     </li>
                 </ul>
             </li>
+            @endif
+            @if(Auth::user()->roles->pluck('id')->contains(1))
+                <li class="side-nav-item">
+                    <a href="javascript: void(0);" class="side-nav-link">
+                        <i class="dripicons-lock"></i>
+                        <span> Administración </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="side-nav-second-level" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('usuarios.index') }}" aria-expanded="false">Usuarios
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
             
         </ul>
 

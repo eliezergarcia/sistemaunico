@@ -9,6 +9,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+        
 
         <!-- third party css -->
         <link href="{{ asset('assets/css/vendor/fullcalendar.min.css') }}" rel="stylesheet" type="text/css" />
@@ -58,6 +59,8 @@
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
         <!-- third party js -->
+        <script src="{{ asset('assets/js/vendor/dropzone.min.js') }}"></script>
+        <script src="{{ asset('assets/js/ui/component.fileupload.js') }}"></script>
         <script src="{{ asset('assets/js/vendor/jquery-ui.min.js') }}"></script>
         <script src="{{ asset('assets/js/vendor/fullcalendar.min.js') }}"></script>
         <script src="{{ asset('assets/js/vendor/jquery.dataTables.js') }}"></script>

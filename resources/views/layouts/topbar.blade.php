@@ -106,7 +106,10 @@
                 <div class=" dropdown-header noti-title">
                     <h6 class="text-overflow m-0">Bienvenido !</h6>
                 </div>
-
+                <a class="dropdown-item notify-item" href="{{ route('usuarios.show', Auth::user()->id) }}">
+                    <i class="mdi mdi-account-circle"></i>
+                    <span>Mi cuenta</span>
+                </a>
                 <!-- item-->
                 <a class="dropdown-item notify-item" +
                     href="{{ route('logout') }}"

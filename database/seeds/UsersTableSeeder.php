@@ -16,13 +16,16 @@ class UsersTableSeeder extends Seeder
         User::create([
         	'name' => 'Eliezer Hernández',
             'user_name' => 'eliezerhdz',
-            'email' => 'eliezer@email.com',            
-            'password' => bcrypt('123412'),
+            'email' => '2dcc.eh@gmail.com',            
+            'password' => '123412',
             'avatar' => 'public/eliezeradmin.jpg',
-            'phone' => '(52) 8129368475'
+            'phone' => '(52) 8129368475',
+            'address' => 'Juárez, Nuevo León',
+            'email_office' => 'eliezer@email.com',
+            'password_email_office' => '1234'
         ]);
 
-        factory(App\User::class, 10)->create();
+        factory(App\User::class, 9)->create();
 
         // Schema::table('assigned_roles', function ($table) {
         //     $table->create([

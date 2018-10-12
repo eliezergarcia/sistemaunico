@@ -2,7 +2,7 @@
 
 @section('title', 'Sistema | Calendario')
 
-@section('contents')
+@section('content')
 <!-- Start Content-->
 <div class="container-fluid">
     

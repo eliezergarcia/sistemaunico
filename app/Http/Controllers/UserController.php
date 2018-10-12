@@ -65,7 +65,7 @@ class UserController extends Controller
 
         $user->roles()->attach($request->roles);
 
-        return redirect()->route('usuarios.index');
+        return redirect()->route('usuarios.index')->with('info', 'El usuario se ha registrado correctamente.');
     }
 
     /**
@@ -76,7 +76,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        $user = User::findOrFail($id);
 
+        $roles = Role::all();
+
+        return view('users.show', compact('user', 'roles'));
     }
 
     /**
@@ -87,11 +91,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-
-        $roles = Role::all();
-
-        return view('users.edit', compact('user', 'roles'));
+    
     }
 
     /**

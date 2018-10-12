@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login2');
 });
 
 // Authentication Routes...
@@ -32,9 +32,11 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/calendar', 'CalendarController@index')->name('calendar.index');
+Route::resource('calendarios', 'CalendarController');
 
 Route::resource('usuarios', 'UserController');
+
+Route::resource('operaciones', 'OperationController');
 
 Route::get('/api/users', function(){
 	return datatables()->eloquent(App\User::query())->toJson();

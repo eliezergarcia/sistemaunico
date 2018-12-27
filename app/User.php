@@ -94,9 +94,9 @@ class User extends Authenticatable
 
             foreach ($operations as $operation) {
                 if ($operation->pod == "LZC") {
-                    $diasalmacenaje = 10;
+                    $diasalmacenaje = 8;
                 }else{
-                    $diasalmacenaje = 7;
+                    $diasalmacenaje = 5;
                 }
 
                 $date = Carbon::now();

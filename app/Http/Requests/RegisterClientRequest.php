@@ -28,12 +28,10 @@ class RegisterClientRequest extends FormRequest
             'razon_social' => 'required',
             'rfc' => 'required',
             'calle' => 'required',
-            'colonia' => 'required',
             'codigo_postal' => 'required',
             'pais' => 'required',
             'estado' => 'required',
             'ciudad' => 'required',
-            'municipio' => 'required',
         ];
     }
 }

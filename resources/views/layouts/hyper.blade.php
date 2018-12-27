@@ -9,7 +9,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
-        
+
 
         <!-- third party css -->
         <link href="{{ asset('assets/css/vendor/fullcalendar.min.css') }}" rel="stylesheet" type="text/css" />
@@ -23,7 +23,8 @@
 
     </head>
 
-    <body class="enlarged" data-keep-enlarged="true">
+    <body>
+    {{-- <body class="enlarged" data-keep-enlarged="true"> --}}
 
         <!-- Begin page -->
         <div class="wrapper">
@@ -55,26 +56,33 @@
 
 
         <!-- App js -->
-        <!-- <script src="{{ asset('js/app.js') }}"></script> -->
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
-
-        <!-- third party js -->
-        <script src="{{ asset('assets/js/vendor/dropzone.min.js') }}"></script>
-        <script src="{{ asset('assets/js/ui/component.fileupload.js') }}"></script>
+        <script src="{{ asset('assets/js/axios.min.js') }}"></script>
         <script src="{{ asset('assets/js/vendor/jquery-ui.min.js') }}"></script>
+        {{-- <script src="{{ asset('assets/js/vendor/dropzone.min.js') }}"></script>
+        <script src="{{ asset('assets/js/ui/component.fileupload.js') }}"></script>
         <script src="{{ asset('assets/js/vendor/fullcalendar.min.js') }}"></script>
-        <script src="{{ asset('assets/js/vendor/jquery.dataTables.js') }}"></script>
-        <script src="{{ asset('assets/js/vendor/dataTables.bootstrap4.js') }}"></script>
-        <script src="{{ asset('assets/js/vendor/dataTables.responsive.min.js') }}"></script>
-        <script src="{{ asset('assets/js/vendor/responsive.bootstrap4.min.js') }}"></script>
         <script src="{{ asset('assets/js/vendor/apexcharts.min.js') }}"></script>
         <script src="{{ asset('assets/js/vendor/dataTables.checkboxes.min.js') }}"></script>
-        <!-- third party js ends -->
+        <script src="{{ asset('assets/js/vendor/dragula.min.js') }}"></script>
+        <script src="{{ asset('assets/js/ui/component.dragula.js') }}"></script> --}}
 
-        <!-- demo app -->
-        <script src="{{ asset('assets/js/pages/demo.calendar.js') }}"></script>
+        {{-- <script src="{{ asset('assets/js/pages/demo.calendar.js') }}"></script> --}}
         <!-- <script src="{{ asset('assets/js/pages/demo.sellers.js') }}"></script> -->
-        <!-- end demo js-->
         @yield('scripts')
+        <script>
+            @if(session()->has('success'))
+                $.NotificationApp.send("Bien hecho!", "{{ session('success') }}", 'top-right', 'rgba(0,0,0,0.2)', 'success');
+            @endif
+            @if(session()->has('error'))
+                $.NotificationApp.send("Error!", "{{ session('error') }}", 'top-right', 'rgba(0,0,0,0.2)', 'error');
+            @endif
+            @if(session()->has('warning'))
+                $.NotificationApp.send("Advertencia!", "{{ session('warning') }}", 'top-right', 'rgba(0,0,0,0.2)', 'warning');
+            @endif
+            @if(session()->has('info'))
+                $.NotificationApp.send("Información!", "{{ session('info') }}", 'top-right', 'rgba(0,0,0,0.2)', 'info');
+            @endif
+        </script>
     </body>
 </html>

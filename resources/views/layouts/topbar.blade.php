@@ -1,11 +1,15 @@
 <!-- Topbar Start  -->
+{{ Auth::user()->notificationsStorage() }}
+{{ Auth::user()->notificationsDelay() }}
 <div class="navbar-custom">
     <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
-       {{--  <li class="dropdown notification-list">
+        <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <i class="dripicons-bell noti-icon"></i>
-                <span class="noti-icon-badge"></span>
+                @if(Auth::user()->unreadNotifications->isNotEmpty())
+                    <span class="noti-icon-badge badge badge-primary">{{ Auth::user()->unreadNotifications->count() }}</span>
+                @endif
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
 
@@ -14,87 +18,101 @@
                     <h5 class="m-0">
                         <span class="float-right">
                             <a href="javascript: void(0);" class="text-dark">
-                                <small>Clear All</small>
+                                {{-- <small>Clear All</small> --}}
                             </a>
-                        </span>Notification
+                        </span>Notificaciones
                     </h5>
                 </div>
 
                 <div class="slimscroll" style="max-height: 230px;">
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <div class="notify-icon bg-primary">
-                            <i class="mdi mdi-comment-account-outline"></i>
-                        </div>
-                        <p class="notify-details">Caleb Flakelar commented on Admin
-                            <small class="text-muted">1 min ago</small>
-                        </p>
-                    </a>
+                    @foreach(Auth::user()->unreadNotifications as $notification)
+                        <a href="{{ $notification->data['link'] }}" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-primary">
+                                <i class="dripicons-stack"></i>
+                            </div>
+                            <?php
+                                $fechaEmision = \Carbon\Carbon::parse($notification->created_at);
+                                $fechaExpiracion = \Carbon\Carbon::now();
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <div class="notify-icon bg-info">
-                            <i class="mdi mdi-account-plus"></i>
-                        </div>
-                        <p class="notify-details">New user registered.
-                            <small class="text-muted">5 hours ago</small>
-                        </p>
-                    </a>
+                                $minDiferencia = $fechaExpiracion->diffInMinutes($fechaEmision);
+                                $hoursDiferencia = $fechaExpiracion->diffInHours($fechaEmision);
+                                $daysDiferencia = $fechaExpiracion->diffInDays($fechaEmision);
+                            ?>
+                            <p class="notify-details">{{ $notification->data['message'] }}
+                                @if($minDiferencia <= 60)
+                                    <small class="text-muted">Hace {{ $minDiferencia }} minutos - {{ Auth::user()->present()->createdUserNotification($notification)->name }}
+                                        @if($notification->data['priority'] == 1)
+                                            <span class="badge badge-danger">Prioridad - Alta</span>
+                                        @elseif($notification->data['priority'] == 2)
+                                            <span class="badge badge-warning">Prioridad - Media</span>
+                                        @elseif($notification->data['priority'] == 3)
+                                            <span class="badge badge-success">Prioridad - Baja</span>
+                                        @else
+                                            <span class="badge badge-secondary">Prioridad - Sin prioridad</span>
+                                        @endif
+                                    </small>
+                                @elseif($minDiferencia > 60 && $hoursDiferencia <= 24 )
+                                    <?php
+                                        $horas = floor($minDiferencia / 60);
+                                        $minutos = $minDiferencia - (60 * $horas);
+                                    ?>
+                                    <small class="text-muted">Hace {{ $horas }} hora(s), {{ $minutos }} minutos - {{ Auth::user()->present()->createdUserNotification($notification)->name }}
+                                        @if($notification->data['priority'] == 1)
+                                            <span class="badge badge-danger">Prioridad - Alta</span>
+                                        @elseif($notification->data['priority'] == 2)
+                                            <span class="badge badge-warning">Prioridad - Media</span>
+                                        @elseif($notification->data['priority'] == 3)
+                                            <span class="badge badge-success">Prioridad - Baja</span>
+                                        @else
+                                            <span class="badge badge-secondary">Prioridad - Sin prioridad</span>
+                                        @endif
+                                    </small>
+                                @elseif($hoursDiferencia > 24)
+                                    <?php
+                                        $dias = floor($hoursDiferencia / 24);
+                                        $horas = $hoursDiferencia - (24 * $dias);
+                                        $minutos = $minDiferencia - (60 * $hoursDiferencia);
+                                    ?>
+                                    <small class="text-muted">Hace {{ $dias }} dia(s) ,{{ $horas }} hora(s), {{ $minutos }} minutos - {{ Auth::user()->present()->createdUserNotification($notification)->name }}
+                                        @if($notification->data['priority'] == 1)
+                                            <span class="badge badge-danger">Prioridad - Alta</span>
+                                        @elseif($notification->data['priority'] == 2)
+                                            <span class="badge badge-warning">Prioridad - Media</span>
+                                        @elseif($notification->data['priority'] == 3)
+                                            <span class="badge badge-success">Prioridad - Baja</span>
+                                        @else
+                                            <span class="badge badge-secondary">Prioridad - Sin prioridad</span>
+                                        @endif
+                                    </small>
+                                @endif
+                                {{-- @if($notification->data['priority'] == 1)
+                                    <span class="badge badge-danger">Alta</span>
+                                @elseif($notification->data['priority'] == 2)
+                                    <span class="badge badge-warning">Media</span>
+                                @elseif($notification->data['priority'] == 3)
+                                    <span class="badge badge-success">Baja</span>
+                                @else
+                                    <span class="badge badge-secondary">Sin prioridad</span>
+                                @endif --}}
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <div class="notify-icon">
-                            <img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                        <p class="notify-details">Cristina Pride</p>
-                        <p class="text-muted mb-0 user-msg">
-                            <small>Hi, How are you? What about our next meeting</small>
-                        </p>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <div class="notify-icon bg-primary">
-                            <i class="mdi mdi-comment-account-outline"></i>
-                        </div>
-                        <p class="notify-details">Caleb Flakelar commented on Admin
-                            <small class="text-muted">4 days ago</small>
-                        </p>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <div class="notify-icon">
-                            <img src="assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                        <p class="notify-details">Karen Robinson</p>
-                        <p class="text-muted mb-0 user-msg">
-                            <small>Wow ! this admin looks good and awesome design</small>
-                        </p>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <div class="notify-icon bg-info">
-                            <i class="mdi mdi-heart"></i>
-                        </div>
-                        <p class="notify-details">Carlos Crouch liked
-                            <b>Admin</b>
-                            <small class="text-muted">13 days ago</small>
-                        </p>
-                    </a>
+                            </p>
+                        </a>
+                    @endforeach
                 </div>
 
                 <!-- All-->
-                <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                    View All
+                <a href="{{ route('notificaciones.show', Auth::user()->id) }}" class="dropdown-item text-center text-primary notify-item notify-all">
+                    Ver todo
                 </a>
 
             </div>
-        </li> --}}
+        </li>
 
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                 aria-expanded="false">
-                <span class="account-user-avatar"> 
+                <span class="account-user-avatar">
                     <img src="{{ Storage::url(Auth::user()->url) }}" alt="user-image" class="rounded-circle">
                 </span>
                 <span>
@@ -104,11 +122,15 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
                 <div class=" dropdown-header noti-title">
-                    <h6 class="text-overflow m-0">Bienvenido !</h6>
+                    <h6 class="text-overflow m-0">Menú</h6>
                 </div>
                 <a class="dropdown-item notify-item" href="{{ route('usuarios.show', Auth::user()->id) }}">
                     <i class="mdi mdi-account-circle"></i>
                     <span>Mi cuenta</span>
+                </a>
+                <a class="dropdown-item notify-item" href="{{ route('notificaciones.show', Auth::user()->id) }}">
+                    <i class="mdi mdi-message-text"></i>
+                    <span>Notificaciones</span>
                 </a>
                 <!-- item-->
                 <a class="dropdown-item notify-item" +

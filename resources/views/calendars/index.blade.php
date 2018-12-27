@@ -5,7 +5,7 @@
 @section('content')
 <!-- Start Content-->
 <div class="container-fluid">
-    
+
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -19,8 +19,8 @@
                 <h4 class="page-title">Calendario</h4>
             </div>
         </div>
-    </div>     
-    <!-- end page title --> 
+    </div>
+    <!-- end page title -->
 
     <div class="row">
         <div class="col-12">
@@ -31,7 +31,7 @@
                         <div class="col-sm-12 col-md-10">
                             <div id="calendar"></div>
                         </div> <!-- end col -->
-                        
+
                         <div class="col-sm-12 col-md-2">
                             <br>
                             <a href="#" data-toggle="modal" data-target="#add-category" class="btn btn-lg font-16 btn-primary btn-block  ">
@@ -78,7 +78,7 @@
                         </div> <!-- end col-->
                     </div>  <!-- end row -->
                 </div> <!-- end card body-->
-            </div> <!-- end card -->
+            </div>
 
             <!-- Add New Event MODAL -->
             <div class="modal fade" id="event-modal" tabindex="-1">
@@ -141,6 +141,11 @@
         </div>
         <!-- end col-12 -->
     </div> <!-- end row -->
-    
+
 </div> <!-- container -->
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('assets/js/vendor/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/demo.calendar.js') }}"></script>
 @endsection

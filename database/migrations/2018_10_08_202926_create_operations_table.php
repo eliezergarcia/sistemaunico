@@ -15,46 +15,45 @@ class CreateOperationsTable extends Migration
     {
         Schema::create('operations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->string('shipper')->nullable();
-            $table->string('master_consigner')->nullable();
-            $table->string('house_consigner')->nullable();
-            $table->date('etd')->nullable();
-            $table->date('eta')->nullable();
-            $table->string('impo_expo')->nullable();
-            $table->string('pol')->nullable();
-            $table->string('pod')->nullable();
-            $table->string('destino')->nullable();
-            $table->string('incoterm')->nullable();
+            $table->integer('user_id')->unsigned();
+            $table->integer('shipper')->unsigned();
+            $table->integer('master_consignee')->unsigned();
+            $table->integer('house_consignee')->unsigned();
+            $table->date('etd');
+            $table->date('eta');
+            $table->string('impo_expo');
+            $table->string('pol');
+            $table->string('pod');
+            $table->string('destino');
+            $table->string('incoterm');
             $table->string('booking')->nullable();
             $table->date('custom_cutoff')->nullable();
-            $table->string('vessel')->nullable();
+            $table->string('vessel');
             $table->string('o_f')->nullable();
-            $table->string('c_invoice')->nullable();
-            $table->string('m_bl')->nullable();
-            $table->string('h_bl')->nullable();
-            $table->string('cntr')->nullable();
-            $table->string('type')->nullable();
-            $table->string('size')->nullable();
-            $table->string('qty')->nullable();
-            $table->string('weight_measures')->nullable();
-            $table->string('modalidad')->nullable();
-            $table->string('aa')->nullable();
+            $table->string('aa');
+            $table->string('m_bl');
+            $table->string('h_bl');
+            $table->string('c_invoice');
             $table->date('recibir')->nullable();
             $table->date('revision')->nullable();
             $table->date('mandar')->nullable();
             $table->date('revalidacion')->nullable();
             $table->date('toca_piso')->nullable();
-            $table->date('proforma')->nullable();
-            $table->date('pago_proforma')->nullable();
-            $table->date('solicitud_transporte')->nullable();
-            $table->date('despachado_puerto')->nullable();
-            $table->date('port_etd')->nullable();
-            $table->date('dlv_day')->nullable();
-            $table->date('factura_unmx')->nullable();
-            $table->date('fecha_factura')->nullable();
+
+            $table->date('booking_expo')->nullable();
+            $table->date('conf_booking')->nullable();
+            $table->date('prog_recoleccion')->nullable();
+            $table->date('recoleccion')->nullable();
+            $table->date('llegada_puerto')->nullable();
+            $table->date('cierre_documental')->nullable();
+            $table->date('pesaje')->nullable();
+            $table->date('ingreso')->nullable();
+            $table->date('despacho')->nullable();
+            $table->date('zarpe')->nullable();
+            $table->date('envio_papelera')->nullable();
+
             $table->timestamps();
-            $table->softDeletes();
+            $table->timestamp('canceled_at')->nullable();
         });
     }
 

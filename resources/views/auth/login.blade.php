@@ -11,12 +11,12 @@
                         <!-- Logo -->
                         <div class="card-header pt-4 pb-4 text-center bg-primary">
                             <a href="index.html">
-                                <span><img src="assets/images/logo.png" alt="" height="18"></span>
+                                <img src="{{ asset('assets/images/logos/unico imagen.jpg') }}" alt="" height="45">
                             </a>
                         </div>
 
                         <div class="card-body p-4">
-                            
+
                             <div class="text-center w-75 m-auto">
                                 <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Inicio de sesión</h4>
                                 <p class="text-muted mb-4">Ingresa tu usuario y contraseña para acceder al panel de administración.</p>

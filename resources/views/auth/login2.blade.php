@@ -33,7 +33,8 @@
                     <!-- Logo -->
                     <div class="auth-brand text-center text-lg-left">
                         <a href="javascript: void(0);">
-                            <span><img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="18"></span>
+                            <img src="{{ asset('assets/images/logos/ULHQ_LOGO-2.jpg') }}" alt="" height="45">
+                            {{-- <img src="{{ asset('assets/images/logos/unico.jpg') }}" alt="" height="75"> --}}
                         </a>
                     </div>
 
@@ -85,11 +86,11 @@
         <!-- Auth fluid right content -->
         <div class="auth-fluid-right text-center">
             <div class="auth-user-testimonial">
-                <h2 class="mb-3">I love the color!</h2>
+                {{-- <h2 class="mb-3">I love the color!</h2> --}}
                 <p class="lead"><i class="mdi mdi-format-quote-open"></i> Lo suficientemente pequeño para cuidar, lo suficientemente grande para entregar. <i class="mdi mdi-format-quote-close"></i>
                 </p>
                 <p>
-                    - Hyper Admin User
+                    {{-- - Hyper Admin User --}}
                 </p>
             </div> <!-- end auth-user-testimonial-->
         </div>

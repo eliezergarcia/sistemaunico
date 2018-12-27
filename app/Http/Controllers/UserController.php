@@ -4,57 +4,36 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Role;
+use App\Client;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Http\Requests\RegisterUserRequest;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\RegisterUserRequest;
 
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    *   Mostrar el listado de usuarios.
+    *   Se envia el listado de roles.
+    */
     public function index()
     {
-        $users = User::all();
+        $users = User::with(['roles'])->get();
 
         $roles = Role::all();
 
         return view('users.index')->with(compact('users', 'roles'));
-
-        // return view('users.index')->with([
-        //     'paginate' => [
-        //         'total' => $users->total(),
-        //         'current_page' => $users->currentPage(),
-        //         'per_page' => $users->perPage(),
-        //         'last_page' => $users->lastPage(),
-        //         'from' => $users->firstItem(),
-        //         'to' => $users->lastPage(),
-        //     ],
-        //     'users' => $users
-
-        // ]);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    *   Crea un nuevo usuario.
+    *   Se asignan roles al usuario creado.
+    */
     public function store(RegisterUserRequest $request)
     {
+        DB::beginTransaction();
+
         $user = (new User)->fill($request->all());
 
         if ($request->hasFile('avatar')) {
@@ -65,45 +44,40 @@ class UserController extends Controller
 
         $user->roles()->attach($request->roles);
 
-        return redirect()->route('usuarios.index')->with('info', 'El usuario se ha registrado correctamente.');
+        if($user){
+            DB::commit();
+            return back()->with('success', 'El usuario se ha registrado correctamente.');
+        }else{
+            DB::rollBack();
+            return back()->with('error', 'Ocurrió un problema al registrar el usuario.');
+        }
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    *   Muestra la información del usuario.
+    *   Se envía un lista de roles.
+    *   Se enviía un listado de clientes.
+    */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::with(['roles', 'clients'])->findOrFail($id);
 
         $roles = Role::all();
 
-        return view('users.show', compact('user', 'roles'));
+        $clients = Client::where('inactive_at', null)->get();
+
+        return view('users.show', compact('user', 'roles', 'clients'));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-    
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    *   Se actualiza la información del usaurio.
+    *   Se actualizan los roles del usuario.
+    */
     public function update(UpdateUserRequest $request, $id)
     {
-        $user = User::findOrFail($id);        
+        DB::beginTransaction();
+
+        $user = User::findOrFail($id);
 
         if ($request->hasFile('avatar')) {
           $user->avatar = $request->file('avatar')->store('public');
@@ -113,19 +87,90 @@ class UserController extends Controller
 
         $user->roles()->sync($request->roles);
 
-        return back()->with('info', 'La información se ha guardado correctamente.');
+        if($user){
+            DB::commit();
+            return back()->with('success', 'La información del usuario se ha guardado correctamente.');
+        }else{
+            DB::rollBack();
+            return back()->with('error', 'Ocurrió un problema al guardar la información del usuario.');
+        }
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    *   Se desactiva el usuario.
+    */
+    public function deactivate($id)
     {
-        User::findOrFail($id)->delete();
+        DB::beginTransaction();
 
-        return redirect()->route('usuarios.index')->with('info', 'El usuario ha sido eliminado correctamente.');
+        $user = User::findOrFail($id);
+        $user->deactivate();
+
+        if($user){
+            DB::commit();
+            return redirect()->route('usuarios.index')->with('success', 'El usuario ha sido desactivado correctamente.');
+        }else{
+            DB::rollBack();
+            return back()->with('error', 'Ocurrió un problema al desactivar el usuario.');
+        }
+    }
+
+    /**
+    *   Se activar el usuario.
+    */
+    public function activate($id)
+    {
+        DB::beginTransaction();
+
+        $user = User::findOrFail($id);
+        $user->activate();
+
+        if($user){
+            DB::commit();
+            return redirect()->route('usuarios.index')->with('success', 'El usuario ha sido activado correctamente.');
+        }else{
+            DB::rollBack();
+            return back()->with('error', 'Ocurrió un problema al activar el usuario.');
+        }
+    }
+
+    /**
+    *   Se asignan clientes al usuario.
+    */
+    public function assignmentclient(Request $request)
+    {
+        DB::beginTransaction();
+
+        $user = User::findOrFail($request->user_id);
+
+        $user->clients()->attach($request->client_id);
+
+        if($user){
+            DB::commit();
+            return back()->with('success', 'El cliente se asignó al usuario correctamente.');
+        }else{
+            DB::rollback();
+            return back()->with('error', 'Ocurrió un problema al asignar el cliente al usuario.');
+        }
+    }
+
+    /**
+    *   Se desasignan clientes al usuario.
+    */
+    public function disassociateclient(Request $request)
+    {
+        DB::beginTransaction();
+
+        $user = User::findOrFail($request->user_id);
+
+        $user->clients()->detach($request->client_id);
+
+        if ($user) {
+            DB::commit();
+            return back()->with('success', 'El cliente se desasignó del usuario correctamente.');
+        } else {
+            DB::rollBack();
+            return back()->with('error', 'Ocurrió un problema al desasignar al cliente del usuario.');
+        }
     }
 }

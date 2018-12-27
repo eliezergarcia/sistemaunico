@@ -14,24 +14,50 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         Role::create([
-        	'name' => 'admin',
-            'display_name' => 'Administrador',
-            'description' => 'Administrador del sistema'
+        	'name' => 'administrador',
+            'display_name' => 'Administración',
+            'description' => 'Control de administración'
         ]);
         Role::create([
-        	'name' => 'oper',
+        	'name' => 'operador',
             'display_name' => 'Operaciones',
             'description' => 'Control de operaciones'
         ]);
         Role::create([
-        	'name' => 'fact',
+        	'name' => 'facturador',
             'display_name' => 'Facturación',
             'description' => 'Control de facturación'
         ]);
         Role::create([
-        	'name' => 'pag',
-            'display_name' => 'Pagos',
-            'description' => 'Control de pagos'
+        	'name' => 'finanzas',
+            'display_name' => 'Finanzas',
+            'description' => 'Control de finanzas'
+        ]);
+        Role::create([
+            'name' => 'administradorgeneral',
+            'display_name' => 'Administración General',
+            'description' => 'Administrador del sistema'
+        ]);
+
+        DB::table('assigned_roles')->insert([
+            ['user_id' => 1, 'role_id' => 1],
+            ['user_id' => 1, 'role_id' => 5],
+            ['user_id' => 2, 'role_id' => 1],
+            ['user_id' => 2, 'role_id' => 5],
+            ['user_id' => 3, 'role_id' => 2],
+            ['user_id' => 3, 'role_id' => 3],
+            ['user_id' => 4, 'role_id' => 1],
+            ['user_id' => 4, 'role_id' => 2],
+            ['user_id' => 5, 'role_id' => 1],
+            ['user_id' => 5, 'role_id' => 2],
+            ['user_id' => 6, 'role_id' => 1],
+            ['user_id' => 6, 'role_id' => 2],
+            ['user_id' => 7, 'role_id' => 2],
+            ['user_id' => 8, 'role_id' => 2],
+            ['user_id' => 9, 'role_id' => 2],
+            ['user_id' => 10, 'role_id' => 2],
+            ['user_id' => 11, 'role_id' => 2],
+            ['user_id' => 12, 'role_id' => 2],
         ]);
     }
 }

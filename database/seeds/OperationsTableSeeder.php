@@ -1,6 +1,5 @@
 <?php
 
-// use App\Operation;
 use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +12,6 @@ class OperationsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Operation::class, 50)->create();
+        // factory(App\Operation::class, 50)->create();
     }
 }

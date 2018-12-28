@@ -122,7 +122,7 @@
                                 <h5 style="margin: 5px;">MEASUREMENT</h5>
                             </div>
                             <div class="col-7">
-                                <h5 style="margin: 5px;">: {{ number_format($debitnote->operation->containers->pluck('measures')->sum(), 2, ".", ",") }} CBM</h5>>
+                                <h5 style="margin: 5px;">: {{ number_format($debitnote->operation->containers->pluck('measures')->sum(), 2, ".", ",") }} CBM</h5>
                             </div>
                         </div>
                         <div class="col-6 row">

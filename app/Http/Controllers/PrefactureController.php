@@ -115,6 +115,7 @@ class PrefactureController extends Controller
 
         $prefacture = Prefacture::findOrFail($request->prefactura_id);
         $prefacture->canceled();
+        $prefacture->markAsReadNotificationSOLFAC();
 
         if($prefacture){
             DB::commit();

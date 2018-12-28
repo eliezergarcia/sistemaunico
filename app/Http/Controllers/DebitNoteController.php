@@ -113,6 +113,7 @@ class DebitNoteController extends Controller
 
         $debitnote = DebitNote::findOrFail($request->debitnote_id);
         $debitnote->canceled();
+        $debitnote->markAsReadNotificationSOLFAC();
 
         if($debitnote){
             DB::commit();

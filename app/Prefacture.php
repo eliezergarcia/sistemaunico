@@ -3,6 +3,7 @@
 namespace App;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Presenters\PrefacturePresenter;
 use Illuminate\Database\Eloquent\Model;
 use App\Notifications\CreatedPrefacture;
@@ -98,5 +99,10 @@ class Prefacture extends Model
                 $user->notify(new CreatedPrefacture($this));
             }
         }
+    }
+
+    public function markAsReadNotificationSOLFAC()
+    {
+        DB::table('notifications')->where('data', 'like', '%'.'SOLFAC'.$this->controlcode.'%')->update(array('read_at' => Carbon::now()));
     }
 }

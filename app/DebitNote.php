@@ -3,6 +3,7 @@
 namespace App;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Presenters\DebitNotePresenter;
 use App\Notifications\CreatedDebitNote;
 use Illuminate\Database\Eloquent\Model;
@@ -103,5 +104,10 @@ class DebitNote extends Model
                 $user->notify(new CreatedDebitNote($this));
             }
         }
+    }
+
+    public function markAsReadNotificationSOLFAC()
+    {
+        DB::table('notifications')->where('data', 'like', '%'.'SOLFAC'.$this->controlcode.'%')->update(array('read_at' => Carbon::now()));
     }
 }

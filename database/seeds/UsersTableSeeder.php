@@ -17,19 +17,17 @@ class UsersTableSeeder extends Seeder
         	'name' => 'Eliezer Hernández',
             'user_name' => 'eliezerhdz',
             'email' => '2dcc.eh@gmail.com',
-            'password' => '123412',
+            'password' => 'Eligar07',
             'avatar' => 'public/eliezeradmin.jpg',
             'phone' => '(52) 8129368475',
-            'address' => 'Juárez, Nuevo León',
-            'email_office' => 'eliezer@email.com',
-            'password_email_office' => '1234'
+            'address' => 'Juárez, Nuevo León'
         ]);
 
         User::create([
             'name' => 'Young Rak Kim',
             'user_name' => 'youngkim',
             'email' => 'young.kim@email.com',
-            'password' => '123412'
+            'password' => 'ulmx150902'
         ]);
 
         User::create([

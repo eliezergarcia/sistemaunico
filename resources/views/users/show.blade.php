@@ -98,16 +98,12 @@
                         <div class="col-7"><p><b>{{ $user->user_name }} </b></p></div>
                         <div class="col-5"><p>Nombre: </p></div>
                         <div class="col-7"><p><b>{{ $user->name }} </b></p></div>
-                        <div class="col-5"><p>Correo sistema: </p></div>
+                        <div class="col-5"><p>Correo electrónico: </p></div>
                         <div class="col-7"><p><b>{{ $user->email }} </b></p></div>
                         <div class="col-5"><p>Teléfono: </p></div>
                         <div class="col-7"><p><b>{{ $user->phone }} </b></p></div>
                         <div class="col-5"><p>Dirección: </p></div>
                         <div class="col-7"><p><b>{{ $user->address }} </b></p></div>
-                        <div class="col-5"><p>Correo oficina: </p></div>
-                        <div class="col-7"><p><b>{{ $user->email_office }} </b></p></div>
-                        <div class="col-5"><p>Contraseña: </p></div>
-                        <div class="col-7"><p><b>{{ $user->password_email_office }} </b></p></div>
                         <div class="col-5"><p>Redes sociales: </p></div>
                         <div class="col-7"><a class="d-inline-block text-muted" title="" data-placement="top" data-toggle="tooltip" href="" data-original-title="Facebook"><i class="mdi mdi-facebook"></i></a>
                             <a class="d-inline-block ml-2 text-muted" title="" data-placement="top" data-toggle="tooltip" href="" data-original-title="Twitter"><i class="mdi mdi-twitter"></i></a>
@@ -219,6 +215,16 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Contraseña: </label>
+                            <input class="form-control form-control-light{{ $errors->has('password') ? ' is-invalid' : '' }}" type="text" name="password" value="{{ $user->pass }}">
+                            @if ($errors->has('password'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
                             <label>Nombre: </label>
                             <input class="form-control form-control-light{{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" name="name" value="{{ $user->name }}">
                             @if ($errors->has('name'))
@@ -229,7 +235,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Correo sistema: </label>
+                            <label>Correo electrónico: </label>
                             <input class="form-control form-control-light{{ $errors->has('email') ? ' is-invalid' : '' }}" type="text" name="email" value="{{ $user->email }}">
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
@@ -254,27 +260,6 @@
                             @if ($errors->has('address'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('address') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-
-
-                        <div class="form-group">
-                            <label>Correo oficina: </label>
-                            <input class="form-control form-control-light{{ $errors->has('email_office') ? ' is-invalid' : '' }}" type="text" name="email_office" value="{{ $user->email_office }}">
-                            @if ($errors->has('email_office'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('email_office') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-
-                        <div class="form-group">
-                            <label>Contraseña correo: </label>
-                            <input class="form-control form-control-light{{ $errors->has('email_office') ? ' is-invalid' : '' }}" type="text" name="password_email_office" value="{{ $user->password_email_office }}">
-                            @if ($errors->has('email_office'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('email_office') }}</strong>
                                 </span>
                             @endif
                         </div>

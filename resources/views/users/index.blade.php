@@ -108,10 +108,10 @@
 
                         <div class="form-group">
                             <label>Correo electrónico: <span class="text-danger">*</span></label>
-                            <input class="form-control form-control-light{{ $errors->has('email_office') ? ' is-invalid' : '' }}" type="text" name="email_office" value="{{ old('email') }}">
-                            @if ($errors->has('email_office'))
+                            <input class="form-control form-control-light{{ $errors->has('email') ? ' is-invalid' : '' }}" type="text" name="email" value="{{ old('email') }}">
+                            @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('email_office') }}</strong>
+                                    <strong>{{ $errors->first('email') }}</strong>
                                 </span>
                             @endif
                         </div>

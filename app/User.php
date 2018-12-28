@@ -74,7 +74,7 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($password)
     {
-      $this->attributes['password'] = bcrypt($password);
+      $this->attributes['password'] = Crypt::encryptString($password);
     }
 
     public function getUrlAttribute()
@@ -84,6 +84,11 @@ class User extends Authenticatable
       }
 
       return $this->avatar;
+    }
+
+    public function getPassAttribute()
+    {
+        return Crypt::decryptString($this->password);
     }
 
     public function notificationsStorage()

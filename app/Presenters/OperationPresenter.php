@@ -177,12 +177,16 @@ class OperationPresenter extends Presenter
         if($this->model->debitnotes->isNotEmpty()){
             echo "<span class='dropdown-item'>Debit Notes</span>";
             foreach($this->model->debitnotes as $key => $debitnote){
-                if($debitnote->invoices->contains(!null)){
-                    echo "<a href='".route('operations.debitnote', $debitnote->id)."' class='dropdown-item text-success'> {$debitnote->numberFormat}</a>";
-                }elseif($debitnote->invoices->pluck('canceled_at')->contains(!null)){
-                    echo "<a class='dropdown-item text-danger' href='".route('operations.debitnote', $debitnote->id)."'>{$debitnote->numberFormat}</a>";
+                if(!$debitnote->canceled_at){
+                    if($debitnote->invoices->contains(!null)){
+                        echo "<a href='".route('operations.debitnote', $debitnote->id)."' class='dropdown-item text-success'> {$debitnote->numberFormat}</a>";
+                    }elseif($debitnote->invoices->pluck('canceled_at')->contains(!null)){
+                        echo "<a class='dropdown-item text-danger' href='".route('operations.debitnote', $debitnote->id)."'>{$debitnote->numberFormat}</a>";
+                    }else{
+                        echo "<a class='dropdown-item' href='".route('operations.debitnote', $debitnote->id)."'>{$debitnote->numberFormat }</a>";
+                    }
                 }else{
-                    echo "<a class='dropdown-item' href='".route('operations.debitnote', $debitnote->id)."'>{$debitnote->numberFormat }</a>";
+                    echo "<a class='dropdown-item text-danger' href='".route('operations.debitnote', $debitnote->id)."'>{$debitnote->numberFormat }</a>";
                 }
             }
             echo "<div class='dropdown-divider'></div>";
@@ -194,12 +198,16 @@ class OperationPresenter extends Presenter
         if($this->model->prefactures->isNotEmpty()){
             echo "<span class='dropdown-item'>Prefacturas</span>";
             foreach($this->model->prefactures as $key => $prefacture){
-                if($prefacture->invoices->contains(!null)){
-                    echo "<a href='".route('operations.prefacture', $prefacture->id)."' class='dropdown-item text-success'> {$prefacture->numberFormat}</a>";
-                }elseif($prefacture->invoices->pluck('canceled_at')->contains(!null)){
-                    echo "<a class='dropdown-item text-danger' href='".route('operations.prefacture', $prefacture->id)."'>{$prefacture->numberFormat}</a>";
+                if(!$prefacture->canceled_at){
+                    if($prefacture->invoices->contains(!null)){
+                        echo "<a href='".route('operations.prefacture', $prefacture->id)."' class='dropdown-item text-success'> {$prefacture->numberFormat}</a>";
+                    }elseif($prefacture->invoices->pluck('canceled_at')->contains(!null)){
+                        echo "<a class='dropdown-item text-danger' href='".route('operations.prefacture', $prefacture->id)."'>{$prefacture->numberFormat}</a>";
+                    }else{
+                        echo "<a class='dropdown-item' href='".route('operations.prefacture', $prefacture->id)."'>{$prefacture->numberFormat }</a>";
+                    }
                 }else{
-                    echo "<a class='dropdown-item' href='".route('operations.prefacture', $prefacture->id)."'>{$prefacture->numberFormat }</a>";
+                    echo "<a class='dropdown-item text-danger' href='".route('operations.prefacture', $prefacture->id)."'>{$prefacture->numberFormat }</a>";
                 }
             }
             echo "<div class='dropdown-divider'></div>";

@@ -1792,6 +1792,103 @@
         </div>
     </div>
 
+    <div id="create-prefactura-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header pr-4 pl-4">
+                    <h4 class="modal-title" id="primary-header-modalLabel">Creación de prefactura</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <form id="createPrefacturaForm" method="POST" action="{{ route('prefacturas.store') }}" enctype="multipart/form-data" class="pl-2 pr-2">
+                        {!! csrf_field() !!}
+                        <input type="hidden" name="operation_id" value="{{ $operation->id }}">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="form-group">
+                                    <label>Cliente <span class="text-danger">*</span></label>
+                                    <select class="form-control form-control-light" type="text" name="client_id" value="{{ $operation->client_id }}" required>
+                                        <option value="">Selecciona...</option>
+                                        @foreach($clients as $client)
+                                            <option value="{{ $client->id }}">{{ $client->razon_social }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <br>
+                                <label>Conceptos</label>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th width="40%">Description</th>
+                                            <th width="15%">Curr</th>
+                                            <th>Rate</th>
+                                            <th width="5%">Iva</th>
+                                            <th width="11%">Qty</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($concepts as $concept)
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="checkconcept2{{ $concept->id }}" value="{{ $concept->id }}" name="concepts[]">
+                                                        <label class="custom-control-label" for="checkconcept2{{ $concept->id }}">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td>{{ $concept->description }}</td>
+                                                <td>
+                                                    <select name="curr[]" class="form-control">
+                                                        <option value="MXN" {{ $concept->curr == "MXN" ? 'selected' : ''}}>MXN</option>
+                                                        <option value="USD" {{ $concept->curr == "USD" ? 'selected' : ''}}>USD</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
+                                                </td>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" name="ivaConcept[]" class="custom-control-input" id="checkiva2{{ $concept->id }}" value="{{ $concept->id }}">
+                                                        <label class="custom-control-label" for="checkiva2{{ $concept->id }}">&nbsp;</label>
+                                                    </div>
+                                                    {{-- <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"> --}}
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1">
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-8">
+
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Prioridad</label>
+                                    <select class="form-control form-control-light" type="text" name="priority">
+                                        <option value="3">Baja</option>
+                                        <option value="2">Media</option>
+                                        <option value="1">Alta</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="text-right pb-4 pr-4">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary"><b>Crear</b></button>
+                </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
     <div id="create-debitnote-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -1864,103 +1961,6 @@
                                 </table>
                             </div>
                             <hr>
-                            <div class="col-8">
-
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <label>Prioridad</label>
-                                    <select class="form-control form-control-light" type="text" name="priority">
-                                        <option value="3">Baja</option>
-                                        <option value="2">Media</option>
-                                        <option value="1">Alta</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                <div class="text-right pb-4 pr-4">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary"><b>Crear</b></button>
-                </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-
-    <div id="create-prefactura-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header pr-4 pl-4">
-                    <h4 class="modal-title" id="primary-header-modalLabel">Creación de prefactura</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <form id="createPrefacturaForm" method="POST" action="{{ route('prefacturas.store') }}" enctype="multipart/form-data" class="pl-2 pr-2">
-                        {!! csrf_field() !!}
-                        <input type="hidden" name="operation_id" value="{{ $operation->id }}">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="form-group">
-                                    <label>Cliente <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light" type="text" name="client_id" value="{{ $operation->client_id }}" required>
-                                        <option value="">Selecciona...</option>
-                                        @foreach($clients as $client)
-                                            <option value="{{ $client->id }}">{{ $client->razon_social }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <br>
-                                <label>Conceptos</label>
-                                <table class="table table-sm">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th width="40%">Description</th>
-                                            <th width="15%">Curr</th>
-                                            <th>Rate</th>
-                                            <th width="5%">Iva</th>
-                                            <th width="11%">Qty</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($concepts as $concept)
-                                            <tr>
-                                                <td>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="checkconcept2{{ $concept->id }}" value="{{ $concept->id }}" name="concepts[]">
-                                                        <label class="custom-control-label" for="checkconcept2{{ $concept->id }}">&nbsp;</label>
-                                                    </div>
-                                                </td>
-                                                <td>{{ $concept->description }}</td>
-                                                <td>
-                                                    <select name="curr[]" class="form-control">
-                                                        <option value="MXN" {{ $concept->curr == "MXN" ? 'selected' : ''}}>MXN</option>
-                                                        <option value="USD" {{ $concept->curr == "USD" ? 'selected' : ''}}>USD</option>
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
-                                                </td>
-                                                <td>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" name="ivaConcept[]" class="custom-control-input" id="checkiva2{{ $concept->id }}" value="{{ $concept->id }}">
-                                                        <label class="custom-control-label" for="checkiva2{{ $concept->id }}">&nbsp;</label>
-                                                    </div>
-                                                    {{-- <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"> --}}
-                                                </td>
-                                                <td>
-                                                    <input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1">
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
                             <div class="col-8">
 
                             </div>

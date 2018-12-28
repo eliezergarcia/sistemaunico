@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'user_name', 'email', 'password', 'phone', 'address', 'email_office', 'password_email_office', 'inactive_at'
+        'name', 'user_name', 'email', 'password', 'password_encrypted', 'phone', 'address', 'inactive_at'
     ];
 
     /**
@@ -74,7 +74,7 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($password)
     {
-      $this->attributes['password'] = Crypt::encryptString($password);
+      $this->attributes['password'] = Hash::make($password);
     }
 
     public function getUrlAttribute()
@@ -84,11 +84,6 @@ class User extends Authenticatable
       }
 
       return $this->avatar;
-    }
-
-    public function getPassAttribute()
-    {
-        return Crypt::decryptString($this->password);
     }
 
     public function notificationsStorage()

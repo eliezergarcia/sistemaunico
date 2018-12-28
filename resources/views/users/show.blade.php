@@ -216,10 +216,10 @@
 
                         <div class="form-group">
                             <label>Contraseña: </label>
-                            <input class="form-control form-control-light{{ $errors->has('password') ? ' is-invalid' : '' }}" type="text" name="password" value="{{ $user->pass }}">
-                            @if ($errors->has('password'))
+                            <input class="form-control form-control-light{{ $errors->has('password_encrypted') ? ' is-invalid' : '' }}" type="text" name="password_encrypted" value="{{ $user->password_encrypted }}">
+                            @if ($errors->has('password_encrypted'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('password') }}</strong>
+                                    <strong>{{ $errors->first('password_encrypted') }}</strong>
                                 </span>
                             @endif
                         </div>

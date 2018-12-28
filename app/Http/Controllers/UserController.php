@@ -8,6 +8,7 @@ use App\Client;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\RegisterUserRequest;
 
@@ -84,6 +85,7 @@ class UserController extends Controller
         }
 
         $user->update($request->all());
+        $user->password_encrypted = Hash::make($request->password_encrypted);
 
         $user->roles()->sync($request->roles);
 

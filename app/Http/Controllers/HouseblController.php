@@ -78,4 +78,21 @@ class HouseblController extends Controller
 
         return view('operations.pdf.housebl', compact('housebl'));
     }
+
+    public function cancel(Request $request)
+    {
+        // dd($request->all());
+        DB::beginTransaction();
+
+        $housebl = Housebl::findOrFail($request->housebl_id);
+        $housebl->canceled();
+
+        if($housebl){
+            DB::commit();
+            return back()->with('success', 'El house bl se canceló correctamente.');
+        }else{
+            DB::rollBack();
+            return back()->with('error', 'Ocurrió un problema al cancelar el House bl.');
+        }
+    }
 }

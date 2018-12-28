@@ -104,10 +104,14 @@ Route::post('/contenedores/modificar', 'ContainerController@modificar')->name('c
 Route::resource('contenedores', 'ContainerController');
 
 Route::get('/debitnotes/buscar/{id}', 'DebitNoteController@findById')->name('debitnote.findById');
+Route::delete('/debitnotes/cancelar', 'DebitNoteController@cancel')->name('debitnote.cancel');
 Route::resource('debitnotes', 'DebitNoteController');
 
 Route::get('/prefacturas/buscar/{id}', 'PrefactureController@findById')->name('prefacture.findById');
+Route::delete('/prefacturas/cancelar', 'PrefactureController@cancel')->name('prefacture.cancel');
 Route::resource('prefacturas', 'PrefactureController');
+
+Route::delete('/housebls/cancelar', 'HouseblController@cancel')->name('housebl.cancel');
 Route::resource('housebls', 'HouseblController');
 
 Route::get('/facturas/buscar/{id}', 'InvoiceController@findById')->name('facturas.findById');

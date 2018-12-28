@@ -31,18 +31,21 @@
                     <div class="d-print-none">
                         <div class="row justify-content-around">
                             <div class="col">
-                                @if(Auth::user()->present()->isFac() || Auth::user()->present()->isAdminGeneral())
-                                    @if($debitnote->invoices->isEmpty())
-                                        <div class="text-left">
+                                @if(!$debitnote->canceled_at)
+                                    @if(Auth::user()->present()->isFac() || Auth::user()->present()->isAdminGeneral())
+                                        @if($debitnote->invoices->isEmpty())
                                             <button class="btn btn-light" data-toggle="modal" data-target="#register-invoice-modal"><i class="mdi mdi-square-edit-outline"></i> Ingresar información de factura</button>
-                                        </div>
-                                    @else
-                                        @if($debitnote->invoices->pluck('canceled_at')->contains(null))
-                                            <h5><a class="btn btn-info" href="{{ route('facturas.show', $debitnote->invoices->first()->factura )}}" data-toggle="tooltip" data-placemente="top" data-original-title="Ver información de factura">Ver factura {{ $debitnote->invoices->first()->factura }}</a></h5>
                                         @else
-                                            <h5><a class="btn btn-danger" href="{{ route('facturas.show', $debitnote->invoices->first()->factura )}}" data-toggle="tooltip" data-placemente="top" data-original-title="Ver información de factura">Factura {{ $debitnote->invoices->first()->factura }} Cancelada</a></h5>
+                                            @if($debitnote->invoices->pluck('canceled_at')->contains(null))
+                                                <h5><a class="btn btn-info" href="{{ route('facturas.show', $debitnote->invoices->first()->factura )}}" data-toggle="tooltip" data-placemente="top" data-original-title="Ver información de factura">Ver factura {{ $debitnote->invoices->first()->factura }}</a></h5>
+                                            @else
+                                                <h5><a class="btn btn-danger" href="{{ route('facturas.show', $debitnote->invoices->first()->factura )}}" data-toggle="tooltip" data-placemente="top" data-original-title="Ver información de factura">Factura {{ $debitnote->invoices->first()->factura }} Cancelada</a></h5>
+                                            @endif
                                         @endif
                                     @endif
+                                    <button class="btn btn-danger" data-toggle="modal" data-target="#cancel-debitnote-modal"><i class="mdi mdi-close-box-outline"></i> Cancelar</button>
+                                @else
+                                    <h5><a class="btn btn-danger" href="javascript:void(0)">Cancelado</a></h5>
                                 @endif
                             </div>
                             <div class="col">
@@ -368,6 +371,27 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
+
+        <div id="cancel-debitnote-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body p-4">
+                        <div class="text-center">
+                            <i class="dripicons-warning h1 text-danger"></i>
+                            <h4 class="mt-2">Precaución!</h4>
+                            <p class="mt-3">¿Está seguro(a) de cancelar el debit note?</p>
+                            <button type="button" class="btn btn-light my-2" data-dismiss="modal">Cancelar</button>
+                            <form id="cancel_debitnote_form" style="display: inline;" action="{{ route('debitnote.cancel') }}" method="POST">
+                                {!! csrf_field() !!}
+                                {!! method_field('DELETE') !!}
+                                <input type="hidden" name="debitnote_id" value="{{ $debitnote->id }}">
+                                <button type="sumbit" class="btn btn-danger my-2"><b>Aplicar</b></button>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     <!-- End modals -->
 
 </div> <!-- container -->

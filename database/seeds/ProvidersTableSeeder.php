@@ -13,9 +13,5 @@ class ProvidersTableSeeder extends Seeder
      */
     public function run()
     {
-        Provider::create([
-        	'codigo_proveedor' => 'SIN PROVEEDOR',
-            'razon_social' => 'SIN PROVEEDOR'
-        ]);
     }
 }

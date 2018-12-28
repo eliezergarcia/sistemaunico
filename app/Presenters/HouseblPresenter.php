@@ -9,14 +9,19 @@ class houseblPresenter extends Presenter
 {
     public function statusBadge()
     {
-        if($this->model->invoices->isEmpty()){
-            return new HtmlString('<span class="badge badge-warning-lighten">Pendiente facturar</span>');
+        if ($this->model->canceled_at) {
+            return new HtmlString('<span class="badge badge-danger-lighten">Cancelado</span>');
+        } else {
+            // if($this->model->invoices->isEmpty()){
+            //     return new HtmlString('<span class="badge badge-warning-lighten">Pendiente facturar</span>');
+            // }
+            // elseif($this->model->invoices->pluck('fecha_pago')->contains(null)){
+            //     return new HtmlString('<span class="badge badge-warning-lighten">Pendiente pago</span>');
+            // }else{
+                return new HtmlString('<span class="badge badge-success-lighten">Finalizado</span>');
+            // }
         }
-        elseif($this->model->invoices->pluck('fecha_pago')->contains(null)){
-            return new HtmlString('<span class="badge badge-warning-lighten">Pendiente pago</span>');
-        }else{
-            return new HtmlString('<span class="badge badge-success-lighten">Finalizado</span>');
-        }
+
     }
 
     public function noPackagesOrUnits()

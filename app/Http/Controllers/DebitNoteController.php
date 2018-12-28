@@ -17,7 +17,7 @@ class DebitNoteController extends Controller
     */
     public function index()
     {
-        $debitnotes = DebitNote::orderBy('id', 'desc')->get();
+        $debitnotes = DebitNote::all();
 
         return view('debitnotes.index', compact('debitnotes'));
     }
@@ -104,5 +104,22 @@ class DebitNoteController extends Controller
         }
 
         return $data;
+    }
+
+    public function cancel(Request $request)
+    {
+        // dd($request->all());
+        DB::beginTransaction();
+
+        $debitnote = DebitNote::findOrFail($request->debitnote_id);
+        $debitnote->canceled();
+
+        if($debitnote){
+            DB::commit();
+            return back()->with('success', 'El debit note se canceló correctamente.');
+        }else{
+            DB::rollBack();
+            return back()->with('error', 'Ocurrió un problema al cancelar el Debi Note.');
+        }
     }
 }

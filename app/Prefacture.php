@@ -9,6 +9,8 @@ use App\Notifications\CreatedPrefacture;
 
 class Prefacture extends Model
 {
+    use GeneralFunctions;
+
 	protected $fillable = [
         'operation_id', 'client_id', 'priority'
     ];

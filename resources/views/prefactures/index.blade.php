@@ -68,8 +68,13 @@
                                             <td>{{ $prefactura->present()->statusBadge() }}</td>
 	                                        <td>
 	                                            <a href="{{ route('operations.prefacture', $prefactura->id )}}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver información"> <i class="mdi mdi-eye"></i></a>
-                                                @if($prefactura->invoices->isEmpty())
-                                                    <a href="#" onclick="register_invoice_modal({{ $prefactura->id }})" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ingresar información de factura"> <i class="mdi mdi-file-plus"></i></a>
+                                                @if(!$prefactura->canceled_at)
+                                                    @if($prefactura->invoices->isEmpty())
+                                                        <a href="#" onclick="register_invoice_modal({{ $prefactura->id }})" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ingresar información de factura"> <i class="mdi mdi-file-plus"></i></a>
+                                                    @endif
+                                                    <a href="javascript:void(0)" class="action-icon btn btn-link"
+                                                    data-toggle="tooltip" data-placemente="top" data-original-title="Cancelar prefactura"
+                                                    onclick="cancel_prefactura({{ $prefactura->id }});"><i class="mdi mdi-close-box-outline"></i></a>
                                                 @endif
 	                                        </td>
 	                                    </tr>
@@ -179,6 +184,27 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+
+    <div id="cancel-prefactura-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body p-4">
+                        <div class="text-center">
+                            <i class="dripicons-warning h1 text-danger"></i>
+                            <h4 class="mt-2">Precaución!</h4>
+                            <p class="mt-3">¿Está seguro(a) de cancelar la prefactura?</p>
+                            <button type="button" class="btn btn-light my-2" data-dismiss="modal">Cancelar</button>
+                            <form id="cancel_prefactura_form" style="display: inline;" action="{{ route('prefacture.cancel') }}" method="POST">
+                                {!! csrf_field() !!}
+                                {!! method_field('DELETE') !!}
+                                <input type="hidden" name="prefactura_id">
+                                <button type="sumbit" class="btn btn-danger my-2"><b>Aplicar</b></button>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     <!-- End modals -->
 
 </div> <!-- container -->
@@ -244,6 +270,12 @@
             var iva = $('#register-invoice-form input[name=iva]').val();
             var total = (parseFloat(neto) + parseFloat(iva));
             $('#register-invoice-form #total').val(parseFloat(total).toFixed(2));
+        }
+
+        function cancel_prefactura($id)
+        {
+            $('#cancel_prefactura_form input[name=prefactura_id]').val($id);
+            $('#cancel-prefactura-modal').modal('show');
         }
     </script>
     <script>

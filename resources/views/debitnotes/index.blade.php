@@ -67,8 +67,13 @@
                                             <td>{{ $debitnote->present()->statusBadge() }}</td>
 	                                        <td>
 	                                            <a href="{{ route('operations.debitnote', $debitnote->id )}}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver información"> <i class="mdi mdi-eye"></i></a>
-                                                @if($debitnote->invoices->isEmpty())
-                                                    <a href="#" onclick="register_invoice_modal({{ $debitnote->id }})" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ingresar información de factura"> <i class="mdi mdi-file-plus"></i></a>
+                                                @if(!$debitnote->canceled_at)
+                                                    @if($debitnote->invoices->isEmpty())
+                                                        <a href="#" onclick="register_invoice_modal({{ $debitnote->id }})" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ingresar información de factura"> <i class="mdi mdi-file-plus"></i></a>
+                                                    @endif
+                                                    <a href="javascript:void(0)" class="action-icon btn btn-link"
+                                                    data-toggle="tooltip" data-placemente="top" data-original-title="Cancelar debit note"
+                                                    onclick="cancel_debitnote({{ $debitnote->id }});"><i class="mdi mdi-close-box-outline"></i></a>
                                                 @endif
 	                                        </td>
 	                                    </tr>
@@ -178,6 +183,27 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
+
+        <div id="cancel-debitnote-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body p-4">
+                        <div class="text-center">
+                            <i class="dripicons-warning h1 text-danger"></i>
+                            <h4 class="mt-2">Precaución!</h4>
+                            <p class="mt-3">¿Está seguro(a) de cancelar el debit note?</p>
+                            <button type="button" class="btn btn-light my-2" data-dismiss="modal">Cancelar</button>
+                            <form id="cancel_debitnote_form" style="display: inline;" action="{{ route('debitnote.cancel') }}" method="POST">
+                                {!! csrf_field() !!}
+                                {!! method_field('DELETE') !!}
+                                <input type="hidden" name="debitnote_id">
+                                <button type="sumbit" class="btn btn-danger my-2"><b>Aplicar</b></button>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     <!-- End modals -->
 
 </div> <!-- container -->
@@ -245,6 +271,12 @@
             var iva = $('#register-invoice-form input[name=iva]').val();
             var total = (parseFloat(neto) + parseFloat(iva));
             $('#register-invoice-form #total').val(parseFloat(total).toFixed(2));
+        }
+
+        function cancel_debitnote($id)
+        {
+            $('#cancel_debitnote_form input[name=debitnote_id]').val($id);
+            $('#cancel-debitnote-modal').modal('show');
         }
     </script>
     <script>

@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class DebitNote extends Model
 {
+    use GeneralFunctions;
+
  	protected $fillable = [
         'operation_id', 'client_id', 'priority'
     ];

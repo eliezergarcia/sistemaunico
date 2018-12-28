@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Housebl extends Model
 {
+    use GeneralFunctions;
+
 	protected $fillable = [
         'operation_id', 'shipper', 'house_consignee', 'notify_party', 'no_pkgs', 'description', 'bl_type', 'cargo_type', 'service_term1', 'service_term2', 'description_header1', 'description_header2', 'freight_term'
     ];

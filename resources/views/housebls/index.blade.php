@@ -61,6 +61,11 @@
                                             <td>{{ $housebl->present()->statusBadge() }}</td>
 	                                        <td>
 	                                            <a href="{{ route('housebls.show', $housebl->id )}}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver información"> <i class="mdi mdi-eye"></i></a>
+                                                @if(!$housebl->canceled_at)
+                                                    <a href="javascript:void(0)" class="action-icon btn btn-link"
+                                                    data-toggle="tooltip" data-placemente="top" data-original-title="Cancelar house bl"
+                                                    onclick="cancel_housebl({{ $housebl->id }});"><i class="mdi mdi-close-box-outline"></i></a>
+                                                @endif
                                                 @if($housebl->invoices->isEmpty())
                                                 {{-- <a href="#" onclick="register_invoice_modal({{ $housebl->id }})" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ingresar información de factura"> <i class="mdi mdi-file-plus"></i></a> --}}
                                                 @endif
@@ -160,6 +165,27 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+
+    <div id="cancel-housebl-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body p-4">
+                        <div class="text-center">
+                            <i class="dripicons-warning h1 text-danger"></i>
+                            <h4 class="mt-2">Precaución!</h4>
+                            <p class="mt-3">¿Está seguro(a) de cancelar el house bl?</p>
+                            <button type="button" class="btn btn-light my-2" data-dismiss="modal">Cancelar</button>
+                            <form id="cancel_housebl_form" style="display: inline;" action="{{ route('housebl.cancel') }}" method="POST">
+                                {!! csrf_field() !!}
+                                {!! method_field('DELETE') !!}
+                                <input type="hidden" name="housebl_id">
+                                <button type="sumbit" class="btn btn-danger my-2"><b>Aplicar</b></button>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     <!-- End modals -->
 
 </div> <!-- container -->
@@ -193,6 +219,13 @@
             console.log($id);
             $('#register-invoice-form input[name=housebl_id]').val($id);
             $('#register-invoice-modal').modal('show');
+        }
+
+
+        function cancel_housebl($id)
+        {
+            $('#cancel_housebl_form input[name=housebl_id]').val($id);
+            $('#cancel-housebl-modal').modal('show');
         }
     </script>
 @endsection

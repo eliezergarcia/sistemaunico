@@ -29,6 +29,7 @@ class CreateHouseblsTable extends Migration
             $table->text('description_header1');
             $table->text('description_header2');
             $table->timestamps();
+            $table->timestamp('canceled_at')->nullable();
         });
     }
 

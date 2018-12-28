@@ -108,4 +108,20 @@ class PrefactureController extends Controller
 
         return $data;
     }
+
+    public function cancel(Request $request)
+    {
+        DB::beginTransaction();
+
+        $prefacture = Prefacture::findOrFail($request->prefactura_id);
+        $prefacture->canceled();
+
+        if($prefacture){
+            DB::commit();
+            return back()->with('success', 'La prefacura se canceló correctamente.');
+        }else{
+            DB::rollBack();
+            return back()->with('error', 'Ocurrió un problema al cancelar la prefactura.');
+        }
+    }
 }

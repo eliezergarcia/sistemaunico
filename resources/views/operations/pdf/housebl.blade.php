@@ -102,7 +102,10 @@
                             </div>
                             <div class="col-6">
                                 <div class="row justify-content-end">
-                                    <div class="col-2">
+                                    <div class="{{ !$housebl->canceled_at ? 'col-4' : 'col-2' }}">
+                                        @if(!$housebl->canceled_at)
+                                            <button class="btn btn-danger" data-toggle="modal" data-target="#cancel-housebl-modal"><i class="mdi mdi-close-box-outline"></i> Cancelar</button>
+                                        @endif
                                         <a href="javascript:window.print()" class="btn btn-primary"><i class="mdi mdi-printer"></i> Imprimir</a>
                                     </div>
                                 </div>
@@ -436,6 +439,27 @@
         </div>
     </div>
 </div>
+
+    <div id="cancel-housebl-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body p-4">
+                    <div class="text-center">
+                        <i class="dripicons-warning h1 text-danger"></i>
+                        <h4 class="mt-2">Precaución!</h4>
+                        <p class="mt-3">¿Está seguro(a) de cancelar el house bl?</p>
+                        <button type="button" class="btn btn-light my-2" data-dismiss="modal">Cancelar</button>
+                        <form id="cancel_housebl_form" style="display: inline;" action="{{ route('housebl.cancel') }}" method="POST">
+                            {!! csrf_field() !!}
+                            {!! method_field('DELETE') !!}
+                            <input type="hidden" name="housebl_id" value="{{ $housebl->id }}">
+                            <button type="sumbit" class="btn btn-danger my-2"><b>Aplicar</b></button>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 @endsection
 @section('scripts')

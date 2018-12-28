@@ -20,6 +20,7 @@ class CreatePrefacturesTable extends Migration
             $table->integer('client_id')->unsigned();
             $table->integer('priority')->unsigned()->nullable();
             $table->timestamps();
+            $table->timestamp('canceled_at')->nullable();
         });
     }
 

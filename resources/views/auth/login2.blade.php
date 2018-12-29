@@ -99,5 +99,9 @@
     <!-- end auth-fluid-->
 
     <!-- App js -->
-
+    <script>
+        @if(session()->has('info'))
+            $.NotificationApp.send("Información!", "{{ session('info') }}", 'top-right', 'rgba(0,0,0,0.2)', 'info');
+        @endif
+    </script>
 </body>

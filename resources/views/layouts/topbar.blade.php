@@ -2,8 +2,10 @@
 {{ Auth::user()->notificationsStorage() }}
 {{ Auth::user()->notificationsDelay() }}
 <div class="navbar-custom">
+    <div class="topbar-left-menu float-left mb-0 mt-1">
+        <img src="{{ asset('assets/images/logos/unico imagen.jpg') }}" alt="" height="55">
+    </div>
     <ul class="list-unstyled topbar-right-menu float-right mb-0">
-
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <i class="dripicons-bell noti-icon"></i>

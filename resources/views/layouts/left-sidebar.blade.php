@@ -4,17 +4,18 @@
     <div class="slimscroll-menu">
 
         <!-- LOGO -->
-        <a href="{{ route('calendarios.index') }}" class="logo text-center">
+        {{-- <a href="{{ route('calendarios.index') }}" class="logo text-center">
             <span class="logo-lg">
                 <img src="{{ asset('assets/images/logos/unico.jpg') }}" alt="" height="45">
             </span>
             <span class="logo-sm">
-                <img src="{{ asset('assets/images/logo_sm.png') }}" alt="" height="16">
+                <img src="{{ asset('assets/images/logos/unico.jpg') }}" alt="" height="16">
             </span>
-        </a>
+        </a> --}}
 
         <!--- Sidemenu -->
-        <ul class="metismenu side-nav side-nav-light">
+        <br><br>
+        <ul class="metismenu side-nav side-nav-light mt-3">
 
             <li class="side-nav-title side-nav-item">MENU</li>
 

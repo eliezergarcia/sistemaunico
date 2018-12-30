@@ -33,7 +33,7 @@ class CreateExpenseStatementsTable extends Migration
             $table->string('additional_notes')->nullable();
             $table->string('expense_description')->nullable();
             $table->boolean('template')->nullable();
-            $table->string('name_template')->nullable();
+            $table->string('template_name')->nullable();
             $table->timestamps();
         });
     }

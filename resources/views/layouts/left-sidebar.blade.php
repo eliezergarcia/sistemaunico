@@ -85,11 +85,29 @@
                     </li>
                 </ul>
             </li> -->
+            <li class="side-nav-item">
+                <a href="{{ route('calendarios.index') }}" class="side-nav-link">
+                    <i class="mdi mdi-calendar-text"></i>Calendario
+                </a>
+            </li>
+            {{-- <li class="side-nav-item">
+                <a href="javascript: void(0);" class="side-nav-link">
+                    <i class="dripicons-stack"></i>
+                    <span> Ctl. de operaciones </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="side-nav-second-level" aria-expanded="false">
+                    <li>
+                        <a href="{{ route('calendarios.index') }}" aria-expanded="false">Calendario
+                        </a>
+                    </li>
+                </ul>
+            </li> --}}
             @if(Auth::user()->present()->isOper() || Auth::user()->present()->isAdminGeneral())
                 <li class="side-nav-item">
                     <a href="javascript: void(0);" class="side-nav-link">
                         <i class="dripicons-stack"></i>
-                        <span> Ctl. de operaciones </span>
+                        <span> Control de &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;operaciones </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="side-nav-second-level" aria-expanded="false">
@@ -246,7 +264,7 @@
             @if(Auth::user()->present()->isAdmin() || Auth::user()->present()->isAdminGeneral())
                 <li class="side-nav-item">
                     <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="dripicons-lock"></i>
+                        <i class="mdi mdi-home-lock"></i>
                         <span> Administración </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -287,7 +305,6 @@
                     </ul>
                 </li>
             @endif
-
         </ul>
 
         <div class="clearfix"></div>

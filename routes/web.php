@@ -45,6 +45,10 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/calendarios/buscar', 'CalendarController@findEvents')->name('calendarios.findEvents');
+Route::get('/calendarios/buscarevento/{id}', 'CalendarController@findEvent')->name('calendarios.findEvent');
+Route::post('/calendarios/modificar', 'CalendarController@modificar')->name('calendarios.modificar');
+Route::post('/calendarios/eliminar', 'CalendarController@delete')->name('calendarios.delete');
 Route::resource('calendarios', 'CalendarController');
 
 Route::delete('/usuarios/desactivar/{id}', 'UserController@deactivate')->name('usuarios.deactivate');

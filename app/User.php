@@ -42,6 +42,11 @@ class User extends Authenticatable
       return $this->belongsToMany(Role::class, 'assigned_roles')->orderBy('id', 'asc');
     }
 
+    public function eventsUser()
+    {
+        return $this->belongsToMany(Calendar::class, 'assigned_events_users')->orderBy('id', 'asc');
+    }
+
     public function clients()
     {
       return $this->belongsToMany(Client::class, 'assigned_clients');

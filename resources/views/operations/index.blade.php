@@ -33,7 +33,7 @@
                             <button id="btnModal" class="btn btn-primary mb-2" data-toggle="modal" data-target="#register-operation-modal"><i class="mdi mdi-plus-circle mr-2"></i> <b>Registrar operación</b></button>
                         </div>
                         <div class="col-sm-2 form-group form-inline">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <label for="">Mostrar &nbsp;</label>
                             <select name="filtro-datatables" id="filtro-datatables" class="form-control">
                                 <option value="IMPO">Impo</option>
@@ -116,11 +116,10 @@
         </div> <!-- end col -->
     </div>
     <!-- end row -->
-
 </div> <!-- container -->
 
 <!-- Start Modals -->
-    <div id="register-operation-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="register-operation-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -134,7 +133,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Shipper <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light" name="shipper">
+                                    <select name="shipper" id="shipper" class="form-control select2" data-toggle="select2">
                                         @foreach($clients as $client)
                                             <option value="{{ $client->id }}">{{ $client->codigo_cliente }}</option>
                                         @endforeach
@@ -149,7 +148,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Master consignee <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light" name="master_consignee">
+                                    <select class="form-control select2" name="master_consignee" id="master_consignee" data-toggle="select2">
                                         @foreach($clients as $client)
                                             <option value="{{ $client->id }}">{{ $client->codigo_cliente }}</option>
                                         @endforeach
@@ -164,7 +163,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>House consignee <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light" name="house_consignee">
+                                    <select class="form-control select2" name="house_consignee" id="house_consignee" data-toggle="select2">
                                         @foreach($clients as $client)
                                             <option value="{{ $client->id }}">{{ $client->codigo_cliente }}</option>
                                         @endforeach
@@ -179,8 +178,8 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>ETD <span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control form-control-light{{ $errors->has('etd') ? ' is-invalid' : '' }}" type="date" name="etd" value="{{ old('etd') }}"> --}}
-                                    <input type="text" name="etd" class="form-control date form-control-light{{ $errors->has('etd') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ old('etd') }}">
+                                    {{-- <input class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" type="date" name="etd" value="{{ old('etd') }}"> --}}
+                                    <input type="text" name="etd" class="form-control date {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ old('etd') }}">
                                     @if ($errors->has('etd'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('etd') }}</strong>
@@ -191,8 +190,8 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>ETA <span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control form-control-light{{ $errors->has('eta') ? ' is-invalid' : '' }}" type="date" name="eta" value="{{ old('eta') }}"> --}}
-                                    <input type="text" name="eta" class="form-control date form-control-light{{ $errors->has('eta') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ old('eta') }}">
+                                    {{-- <input class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" type="date" name="eta" value="{{ old('eta') }}"> --}}
+                                    <input type="text" name="eta" class="form-control date {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ old('eta') }}">
                                     @if ($errors->has('eta'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('eta') }}</strong>
@@ -203,7 +202,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>IMPO/EXPO <span class="text-danger">*</span></label>
-                                    <select type="text" class="form-control form-control-light{{ $errors->has('impo_expo') ? ' is-invalid' : '' }}" value="{{ old('impo_expo') }}"  name="impo_expo">
+                                    <select type="text" class="form-control {{ $errors->has('impo_expo') ? ' is-invalid' : '' }}" value="{{ old('impo_expo') }}"  name="impo_expo">
                                         <option value="IMPO">IMPO</option>
                                         <option value="EXPO">EXPO</option>
                                     </select>
@@ -217,7 +216,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>POL <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('pol') ? ' is-invalid' : '' }}" value="{{ old('pol') }}"  name="pol">
+                                    <input type="text" class="form-control {{ $errors->has('pol') ? ' is-invalid' : '' }}" value="{{ old('pol') }}"  name="pol">
                                     @if ($errors->has('pol'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('pol') }}</strong>
@@ -228,7 +227,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>POD <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('pod') ? ' is-invalid' : '' }}" value="{{ old('pod') }}"  name="pod">
+                                    <input type="text" class="form-control {{ $errors->has('pod') ? ' is-invalid' : '' }}" value="{{ old('pod') }}"  name="pod">
                                     @if ($errors->has('pod'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('pod') }}</strong>
@@ -239,7 +238,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Destino <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('destino') ? ' is-invalid' : '' }}" value="{{ old('destino') }}"  name="destino">
+                                    <input type="text" class="form-control {{ $errors->has('destino') ? ' is-invalid' : '' }}" value="{{ old('destino') }}"  name="destino">
                                     @if ($errors->has('destino'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('destino') }}</strong>
@@ -250,7 +249,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Incoterm <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('incoterm') ? ' is-invalid' : '' }}" value="{{ old('incoterm') }}"  name="incoterm">
+                                    <input type="text" class="form-control {{ $errors->has('incoterm') ? ' is-invalid' : '' }}" value="{{ old('incoterm') }}"  name="incoterm">
                                     @if ($errors->has('incoterm'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('incoterm') }}</strong>
@@ -261,7 +260,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Booking #</label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('booking') ? ' is-invalid' : '' }}" value="{{ old('booking') }}"  name="booking">
+                                    <input type="text" class="form-control {{ $errors->has('booking') ? ' is-invalid' : '' }}" value="{{ old('booking') }}"  name="booking">
                                     @if ($errors->has('booking'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('booking') }}</strong>
@@ -272,8 +271,8 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Custom cutoff</label>
-                                    <input type="date" class="form-control form-control-light{{ $errors->has('custom_cutoff') ? ' is-invalid' : '' }}" value="{{ old('custom_cutoff') }}" name="custom_cutoff">
-                                    {{-- <input type="text" name="custom_cutoff" class="form-control date form-control-light{{ $errors->has('custom_cutoff') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ old('custom_cutoff') }}"> --}}
+                                    <input type="date" class="form-control {{ $errors->has('custom_cutoff') ? ' is-invalid' : '' }}" value="{{ old('custom_cutoff') }}" name="custom_cutoff">
+                                    {{-- <input type="text" name="custom_cutoff" class="form-control date {{ $errors->has('custom_cutoff') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ old('custom_cutoff') }}"> --}}
                                     @if ($errors->has('custom_cutoff'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('custom_cutoff') }}</strong>
@@ -284,7 +283,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Vessel <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('vessel') ? ' is-invalid' : '' }}" value="{{ old('vessel') }}"  name="vessel">
+                                    <input type="text" class="form-control {{ $errors->has('vessel') ? ' is-invalid' : '' }}" value="{{ old('vessel') }}"  name="vessel">
                                     @if ($errors->has('vessel'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('vessel') }}</strong>
@@ -295,7 +294,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>O/F</label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('o_f') ? ' is-invalid' : '' }}" value="{{ old('o_f') }}"  name="o_f">
+                                    <input type="text" class="form-control {{ $errors->has('o_f') ? ' is-invalid' : '' }}" value="{{ old('o_f') }}"  name="o_f">
                                     @if ($errors->has('o_f'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('o_f') }}</strong>
@@ -306,7 +305,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>AA <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('aa') ? ' is-invalid' : '' }}" value="{{ old('aa') }}"  name="aa">
+                                    <input type="text" class="form-control {{ $errors->has('aa') ? ' is-invalid' : '' }}" value="{{ old('aa') }}"  name="aa">
                                     @if ($errors->has('aa'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('aa') }}</strong>
@@ -317,7 +316,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>M B/L <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('m_bl') ? ' is-invalid' : '' }}" value="{{ old('m_bl') }}"  name="m_bl">
+                                    <input type="text" class="form-control {{ $errors->has('m_bl') ? ' is-invalid' : '' }}" value="{{ old('m_bl') }}"  name="m_bl">
                                     @if ($errors->has('m_bl'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('m_bl') }}</strong>
@@ -333,7 +332,7 @@
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label>C. Invoice <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control form-control-light{{ $errors->has('c_invoice') ? ' is-invalid' : '' }}" name="c_invoice[]" required>
+                                            <input type="text" class="form-control {{ $errors->has('c_invoice') ? ' is-invalid' : '' }}" name="c_invoice[]" required>
                                             @if ($errors->has('c_invoice'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('c_invoice') }}</strong>
@@ -344,7 +343,7 @@
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label>H B/L <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control form-control-light{{ $errors->has('h_bl') ? ' is-invalid' : '' }}" name="h_bl[]" required>
+                                            <input type="text" class="form-control {{ $errors->has('h_bl') ? ' is-invalid' : '' }}" name="h_bl[]" required>
                                             @if ($errors->has('h_bl'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('h_bl') }}</strong>
@@ -432,7 +431,7 @@
         });
 
         $("#add-inputs").on("click", function(){
-            $("#container-nodes").append('<div id="inputs2" class="col-12"><div class="row"><div class="col-4"><div class="form-group"><label>C. Invoice</label><input type="text" class="form-control form-control-light{{ $errors->has('c_invoice') ? ' is-invalid' : '' }}" value="" name="c_invoice[]">@if ($errors->has('c_invoice'))<span class="invalid-feedback" role="alert"><strong>{{ $errors->first('c_invoice') }}</strong></span>@endif</div></div><div class="col-4"><div class="form-group"><label>H B/L</label><input type="text" class="form-control form-control-light{{ $errors->has('h_bl') ? ' is-invalid' : '' }}" value=""  name="h_bl[]">@if ($errors->has('h_bl'))<span class="invalid-feedback" role="alert"><strong>{{ $errors->first('h_bl') }}</strong></span>@endif</div></div><div class="col-4"><div class="form-group"><label>&nbsp;</label><button onclick="delete_inputs();" type="button" class="btn btn-icon btn-danger mt-3"><i class="mdi mdi-minus-circle"></i></button></div></div></div></div>');
+            $("#container-nodes").append('<div id="inputs2" class="col-12"><div class="row"><div class="col-4"><div class="form-group"><label>C. Invoice</label><input type="text" class="form-control {{ $errors->has('c_invoice') ? ' is-invalid' : '' }}" value="" name="c_invoice[]">@if ($errors->has('c_invoice'))<span class="invalid-feedback" role="alert"><strong>{{ $errors->first('c_invoice') }}</strong></span>@endif</div></div><div class="col-4"><div class="form-group"><label>H B/L</label><input type="text" class="form-control {{ $errors->has('h_bl') ? ' is-invalid' : '' }}" value=""  name="h_bl[]">@if ($errors->has('h_bl'))<span class="invalid-feedback" role="alert"><strong>{{ $errors->first('h_bl') }}</strong></span>@endif</div></div><div class="col-4"><div class="form-group"><label>&nbsp;</label><button onclick="delete_inputs();" type="button" class="btn btn-icon btn-danger mt-3"><i class="mdi mdi-minus-circle"></i></button></div></div></div></div>');
         })
 
         function delete_inputs(){

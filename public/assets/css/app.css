@@ -8858,7 +8858,8 @@ body.authentication-bg {
       -ms-flex-align: stretch;
           align-items: stretch;
   background: url("../images/logos/UNICO_SIENNA.jpg") center;
-  background-size: 100%; }
+  background-size: 100%;
+  }
   .auth-fluid .auth-fluid-form-box {
     max-width: 480px;
     border-radius: 0;

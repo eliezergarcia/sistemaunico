@@ -3,11 +3,11 @@ axios.get(url).then(function(response) {
 	console.log(response);
 	$('#calendar').fullCalendar({
 		eventLimit: true,
-		  views: {
-		    agenda: {
-		      eventLimit: 6
-		    }
-		  },
+		  	views: {
+		    	agenda: {
+		      		eventLimit: 6
+		    	}
+		},
 		lang: 'es',
 		aspectRatio: 1.7,
 	  	header: {
@@ -16,6 +16,12 @@ axios.get(url).then(function(response) {
 		    right: 'month,agendaWeek,agendaDay'
 		},
 		events: response.data,
+		dayClick: function(date, jsEvent, view) {
+		    $('#register-event-form input[name=startdate]').val(date.format('MM/DD/YYYY'));
+	        $('#register-event-form input[name=enddate]').val(date.format('MM/DD/YYYY'));
+			$('#register-event-modal').modal('show');
+		    $(this).css('background-color', '#7500F7');
+		},
 		eventRender: function(eventObj, $el) {
 		    $el.popover({
 		    	title: eventObj.title,

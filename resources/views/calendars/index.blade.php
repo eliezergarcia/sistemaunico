@@ -34,7 +34,7 @@
 
                         <div class="col-sm-12 col-md-2">
                             <br>
-                            <a href="#" data-toggle="modal" data-target="#register-event-modal" class="btn btn-lg font-16 btn-primary btn-block  ">
+                            <a href="#" data-toggle="modal" data-target="#register-event-modal" onclick="register_event_modal()" class="btn btn-lg font-16 btn-primary btn-block  ">
                                 <i class="mdi mdi-calendar-edit"></i> Crear nuevo evento
                             </a>
                            {{--  <div id="external-events" class="m-t-20">
@@ -65,7 +65,7 @@
 
                                 <ul class="pl-3">
                                     <li class="text-muted mb-3">
-                                        Para crear un evento solo hay que dar click al botón "Crear nuevo evento" y llenar la información que se pide.
+                                        Para crear un evento solo hay que dar click al botón "Crear nuevo evento" o dar click a un día dentro del calendario e ingresar la información que se pide.
                                     </li>
                                     <li class="text-muted mb-3">
                                         Los eventos se pueden modificar dando click al evento dentro del calendario y solo se pueden modificar los eventos creados por el mismo usuario.
@@ -74,7 +74,10 @@
                                         Al eliminar un evento que se encuentra compartido con usuarios o departamentos, este se elimina para todos los usuarios asignados.
                                     </li>
                                     <li class="text-muted mb-3">
-                                        Se puede navegar por las vistas de "Mes, Semana y Dia" para poder ver solo los eventos creados en la misma vista.
+                                        Se puede navegar por las vistas de "Mes, Semana y Día" para poder ver solo los eventos creados dentro del mes, semana o día.
+                                    </li>
+                                    <li class="text-muted mb-3">
+                                        Si se encuentra navegando por otro mes diferente al actual se puede dar click al botón "Hoy" para regresar al mes y día actual.
                                     </li>
                                 </ul>
                             </div>
@@ -151,7 +154,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="{{ route('calendarios.store') }}" enctype="multipart/form-data" class="pl-2 pr-2">
+                            <form id="register-event-form" method="POST" action="{{ route('calendarios.store') }}" enctype="multipart/form-data" class="pl-2 pr-2">
                                 {!! csrf_field() !!}
                                 <div class="form-group">
                                     <label>Titulo de evento: <span class="text-danger">*</span></label>
@@ -457,6 +460,13 @@
 
         function actualizarPagina(){
             location.reload(true);
+        }
+
+        function register_event_modal()
+        {
+            $('#register-event-form input[name=startdate]').val(moment().format('MM/DD/YYYY'));
+            $('#register-event-form input[name=enddate]').val(moment().format('MM/DD/YYYY'));
+            $('#register-event-modal').modal('show');
         }
     </script>
 @endsection

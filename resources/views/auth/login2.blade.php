@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <a href="pages-recoverpw-2.html" class="text-muted float-right"><small>Olvidaste tu contraseña?</small></a>
+                           {{--  <a href="pages-recoverpw-2.html" class="text-muted float-right"><small>Olvidaste tu contraseña?</small></a> --}}
                             <label for="password">Contraseña</label>
                             <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" placeholder="Ingresa tu contraseña" value="{{ old('password') }}">
                             @if ($errors->has('password'))

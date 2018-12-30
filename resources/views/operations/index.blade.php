@@ -179,7 +179,8 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>ETD <span class="text-danger">*</span></label>
-                                    <input class="form-control form-control-light{{ $errors->has('etd') ? ' is-invalid' : '' }}" type="date" name="etd" value="{{ old('etd') }}">
+                                    {{-- <input class="form-control form-control-light{{ $errors->has('etd') ? ' is-invalid' : '' }}" type="date" name="etd" value="{{ old('etd') }}"> --}}
+                                    <input type="text" name="etd" class="form-control date form-control-light{{ $errors->has('etd') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ old('etd') }}">
                                     @if ($errors->has('etd'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('etd') }}</strong>
@@ -190,7 +191,8 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>ETA <span class="text-danger">*</span></label>
-                                    <input class="form-control form-control-light{{ $errors->has('eta') ? ' is-invalid' : '' }}" type="date" name="eta" value="{{ old('eta') }}">
+                                    {{-- <input class="form-control form-control-light{{ $errors->has('eta') ? ' is-invalid' : '' }}" type="date" name="eta" value="{{ old('eta') }}"> --}}
+                                    <input type="text" name="eta" class="form-control date form-control-light{{ $errors->has('eta') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ old('eta') }}">
                                     @if ($errors->has('eta'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('eta') }}</strong>
@@ -270,7 +272,8 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Custom cutoff</label>
-                                    <input type="date" class="form-control form-control-light{{ $errors->has('custom_cutoff') ? ' is-invalid' : '' }}" value="{{ old('custom_cutoff') }}"  name="custom_cutoff">
+                                    <input type="date" class="form-control form-control-light{{ $errors->has('custom_cutoff') ? ' is-invalid' : '' }}" value="{{ old('custom_cutoff') }}" name="custom_cutoff">
+                                    {{-- <input type="text" name="custom_cutoff" class="form-control date form-control-light{{ $errors->has('custom_cutoff') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ old('custom_cutoff') }}"> --}}
                                     @if ($errors->has('custom_cutoff'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('custom_cutoff') }}</strong>

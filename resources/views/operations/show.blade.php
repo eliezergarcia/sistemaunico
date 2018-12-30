@@ -1356,10 +1356,12 @@
                                     @endif
                                 </div>
                             </div>
+
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>ETD <span class="text-danger">*</span></label>
-                                    <input class="form-control form-control-light{{ $errors->has('etd') ? ' is-invalid' : '' }}" type="date" name="etd" value="{{ $operation->etd }}">
+                                    {{-- <input class="form-control form-control-light{{ $errors->has('etd') ? ' is-invalid' : '' }}" type="date" name="etd" value="{{ $operation->etd }}"> --}}
+                                    <input type="text" name="etd" class="form-control date form-control-light{{ $errors->has('etd') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ Carbon::parse($operation->etd)->format('m/d/Y') }}">
                                     @if ($errors->has('etd'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('etd') }}</strong>
@@ -1370,7 +1372,8 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>ETA <span class="text-danger">*</span></label>
-                                    <input class="form-control form-control-light{{ $errors->has('eta') ? ' is-invalid' : '' }}" type="date" name="eta" value="{{ $operation->eta }}">
+                                    {{-- <input class="form-control form-control-light{{ $errors->has('eta') ? ' is-invalid' : '' }}" type="date" name="eta" value="{{ $operation->eta }}"> --}}
+                                    <input type="text" name="eta" class="form-control date form-control-light{{ $errors->has('eta') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ Carbon::parse($operation->eta)->format('m/d/Y') }}">
                                     @if ($errors->has('eta'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('eta') }}</strong>
@@ -1381,7 +1384,11 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>IMPO/EXPO <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('impo_expo') ? ' is-invalid' : '' }}" value="{{ $operation->impo_expo }}"  name="impo_expo">
+                                    {{-- <input type="text" class="form-control form-control-light{{ $errors->has('impo_expo') ? ' is-invalid' : '' }}" value="{{ $operation->impo_expo }}"  name="impo_expo"> --}}
+                                    <select type="text" class="form-control form-control-light{{ $errors->has('impo_expo') ? ' is-invalid' : '' }}" value="{{ old('impo_expo') }}"  name="impo_expo">
+                                        <option value="IMPO" {{ $operation->impo_expo == "IMPO" ? 'selected' : ''}}>IMPO</option>
+                                        <option value="EXPO" {{ $operation->impo_expo == "EXPO" ? 'selected' : ''}}>EXPO</option>
+                                    </select>
                                     @if ($errors->has('impo_expo'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('impo_expo') }}</strong>

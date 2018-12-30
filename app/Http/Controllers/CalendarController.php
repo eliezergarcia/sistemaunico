@@ -129,6 +129,7 @@ class CalendarController extends Controller
                 $data[] = array(
                     'id' => $event->id,
                     'title' => $event->title,
+                    'description' => $event->message,
                     'start' => $event->start_date,
                     'end' => $event->end_date,
                     'className' => $event->color

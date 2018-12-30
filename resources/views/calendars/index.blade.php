@@ -224,8 +224,13 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Mensaje:</label>
-                                    <textarea class="form-control" name="message" rows="5"></textarea>
+                                    <label class="control-label">Mensaje: <span class="text-danger">*</span></label>
+                                    <textarea class="form-control {{ $errors->has('message') ? ' is-invalid' : '' }}" name="message" rows="5">{{ old('message') }}</textarea>
+                                    @if ($errors->has('message'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('message') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
 
                         </div>
@@ -317,7 +322,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Mensaje:</label>
+                                    <label class="control-label">Mensaje: <span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="message" rows="5"></textarea>
                                 </div>
 
@@ -350,7 +355,7 @@
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="calendar_id">
                                 <div class="form-group">
-                                    <label>Titulo de evento: <span class="text-danger">*</span></label>
+                                    <label>Titulo de evento:</label>
                                     <input class="form-control" type="text" name="title" value="" disabled="">
                                 </div>
                                 <div class="form-group">
@@ -375,7 +380,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-6 form-group">
-                                        <label>Fecha inicio: <span class="text-danger">*</span></label>
+                                        <label>Fecha inicio:</label>
                                         <input type="text" name="startdate" class="form-control date" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" disabled="">
                                     </div>
                                     <div class="col-6 form-group">
@@ -390,7 +395,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-6 form-group">
-                                        <label>Fecha fin: <span class="text-danger">*</span></label>
+                                        <label>Fecha fin:</label>
                                         <input type="text" name="enddate" class="form-control date" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" disabled="">
                                     </div>
                                     <div class="col-6 form-group">

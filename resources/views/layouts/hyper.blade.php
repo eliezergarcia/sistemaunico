@@ -56,19 +56,9 @@
 
 
         <!-- App js -->
-        <script src="{{ asset('assets/js/app.min.js') }}"></script>
         <script src="{{ asset('assets/js/axios.min.js') }}"></script>
+        <script src="{{ asset('assets/js/app.min.js') }}"></script>
         <script src="{{ asset('assets/js/vendor/jquery-ui.min.js') }}"></script>
-        {{-- <script src="{{ asset('assets/js/vendor/dropzone.min.js') }}"></script>
-        <script src="{{ asset('assets/js/ui/component.fileupload.js') }}"></script>
-        <script src="{{ asset('assets/js/vendor/fullcalendar.min.js') }}"></script>
-        <script src="{{ asset('assets/js/vendor/apexcharts.min.js') }}"></script>
-        <script src="{{ asset('assets/js/vendor/dataTables.checkboxes.min.js') }}"></script>
-        <script src="{{ asset('assets/js/vendor/dragula.min.js') }}"></script>
-        <script src="{{ asset('assets/js/ui/component.dragula.js') }}"></script> --}}
-
-        {{-- <script src="{{ asset('assets/js/pages/demo.calendar.js') }}"></script> --}}
-        <!-- <script src="{{ asset('assets/js/pages/demo.sellers.js') }}"></script> -->
         @yield('scripts')
         <script>
             @if(session()->has('success'))

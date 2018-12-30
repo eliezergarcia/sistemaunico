@@ -99,22 +99,26 @@ class Operation extends Model
 
     public function getCustomCutoffFormatAttribute()
     {
-        return $this->custom_cutoff = Carbon::parse($this->custom_cutoff)->format('d-m-Y');
+        if ($this->custom_cutoff != null) {
+            return $this->custom_cutoff = Carbon::parse($this->custom_cutoff)->format('d-m-Y');
+        }
     }
 
-    function setEtdAttribute($etd)
+    public function setEtdAttribute($etd)
     {
         $this->attributes['etd'] = Carbon::parse($etd)->format('Y-m-d');
     }
 
-    function setEtaAttribute($eta)
+    public function setEtaAttribute($eta)
     {
         $this->attributes['eta'] = Carbon::parse($eta)->format('Y-m-d');
     }
 
-    function setCustomCutoffAttribute($custom_cutoff)
+    public function setCustomCutoffAttribute($custom_cutoff)
     {
-        $this->attributes['custom_cutoff'] = Carbon::parse($custom_cutoff)->format('Y-m-d');
+        if ($this->custom_cutoff != null) {
+            $this->attributes['custom_cutoff'] = Carbon::parse($custom_cutoff)->format('Y-m-d');
+        }
     }
 
     function createOperation($request)

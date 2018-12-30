@@ -50,6 +50,7 @@ axios.get(url).then(function(response) {
 				}else{
 					$('#info-event-form input[name=calendar_id]').val(calEvent.id);
 	                $('#info-event-form input[name=title]').val(response.data[0].title);
+	                $('#info-event-form input[name=created_by]').val(response.data[0].creadopor);
 					for(j=0;j<(response.data[0].share_users).length;j++){
 	                	console.log((response.data[0]).share_users[j].user_id);
 						$('#share_users_info option[value='+(response.data[0]).share_users[j].user_id+']').prop('selected', 'selected').change();

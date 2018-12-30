@@ -104,10 +104,10 @@
                         <div class="col-7"><p><b>{{ $user->phone }} </b></p></div>
                         <div class="col-5"><p>Dirección: </p></div>
                         <div class="col-7"><p><b>{{ $user->address }} </b></p></div>
-                        <div class="col-5"><p>Redes sociales: </p></div>
+                        {{-- <div class="col-5"><p>Redes sociales: </p></div>
                         <div class="col-7"><a class="d-inline-block text-muted" title="" data-placement="top" data-toggle="tooltip" href="" data-original-title="Facebook"><i class="mdi mdi-facebook"></i></a>
                             <a class="d-inline-block ml-2 text-muted" title="" data-placement="top" data-toggle="tooltip" href="" data-original-title="Twitter"><i class="mdi mdi-twitter"></i></a>
-                            <a class="d-inline-block ml-2 text-muted" title="" data-placement="top" data-toggle="tooltip" href="" data-original-title="Skype"><i class="mdi mdi-skype"></i></a></div>
+                            <a class="d-inline-block ml-2 text-muted" title="" data-placement="top" data-toggle="tooltip" href="" data-original-title="Skype"><i class="mdi mdi-skype"></i></a></div> --}}
                     </div>
                 </div>
             </div>
@@ -205,7 +205,7 @@
                         {!! method_field('PUT') !!}
 
                         <div class="form-group">
-                            <label>Usuario: </label>
+                            <label>Usuario: <span class="text-danger">*</span></label>
                             <input class="form-control form-control-light{{ $errors->has('user_name') ? ' is-invalid' : '' }}" type="text" name="user_name" value="{{ $user->user_name }}">
                             @if ($errors->has('user_name'))
                                 <span class="invalid-feedback" role="alert">
@@ -215,7 +215,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Contraseña: </label>
+                            <label>Contraseña: <span class="text-danger">*</span></label>
                             <input class="form-control form-control-light{{ $errors->has('password_encrypted') ? ' is-invalid' : '' }}" type="text" name="password_encrypted" value="{{ $user->password_encrypted }}">
                             @if ($errors->has('password_encrypted'))
                                 <span class="invalid-feedback" role="alert">
@@ -225,7 +225,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Nombre: </label>
+                            <label>Nombre: <span class="text-danger">*</span></label>
                             <input class="form-control form-control-light{{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" name="name" value="{{ $user->name }}">
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
@@ -235,7 +235,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Correo electrónico: </label>
+                            <label>Correo electrónico: <span class="text-danger">*</span></label>
                             <input class="form-control form-control-light{{ $errors->has('email') ? ' is-invalid' : '' }}" type="text" name="email" value="{{ $user->email }}">
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">

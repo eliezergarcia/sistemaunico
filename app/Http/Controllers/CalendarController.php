@@ -150,11 +150,14 @@ class CalendarController extends Controller
             $createdby = 0;
         }
 
+        $creadopor = User::find($event->created_by);
+
         $users = DB::table('assigned_events_users')->select('user_id')->where('calendar_id', $event->id)->get();
         $departments = DB::table('assigned_events_departments')->select('role_id')->where('calendar_id', $event->id)->get();
 
         $data[] = array(
             'created_by' => $createdby,
+            'creadopor' => $creadopor->name,
             'id' => $event->id,
             'title' => $event->title,
             'share_users' => $users,

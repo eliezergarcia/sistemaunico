@@ -359,6 +359,10 @@
                                     <input class="form-control" type="text" name="title" value="" disabled="">
                                 </div>
                                 <div class="form-group">
+                                    <label>Creado por:</label>
+                                    <input class="form-control" type="text" name="created_by" value="" disabled="">
+                                </div>
+                                <div class="form-group">
                                     <label for="">Compartido con usuario(s):</label>
                                         <select class="select2 form-control select2-multiple" name="share_users[]" id="share_users_info" data-toggle="select2" multiple="multiple" data-placeholder="Choose ..." disabled="">
                                             <optgroup>

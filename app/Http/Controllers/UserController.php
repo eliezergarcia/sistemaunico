@@ -87,7 +87,9 @@ class UserController extends Controller
         $user->update($request->all());
         $user->password_encrypted = Hash::make($request->password_encrypted);
 
-        $user->roles()->sync($request->roles);
+        if ($request->has('roles')) {
+            $user->roles()->sync($request->roles);
+        }
 
         if($user){
             DB::commit();

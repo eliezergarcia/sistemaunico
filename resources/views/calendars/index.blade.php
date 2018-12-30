@@ -439,7 +439,7 @@
                 id: id
               }).then(function (response) {
                 $.NotificationApp.send("Bien hecho!", response.data, 'top-right', 'rgba(0,0,0,0.2)', 'success');
-                setInterval("actualizarPagina()", 2000);
+                setInterval("actualizarPagina()", 3500);
               }).catch(function (error) {
                     console.log(response.error);
                     $.NotificationApp.send("Error!", "Ocurrió un problema al eliminar el evento.", 'top-right', 'rgba(0,0,0,0.2)', 'error');

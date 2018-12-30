@@ -171,9 +171,6 @@
 					console.log(response.error);
 			        $.NotificationApp.send("Error!", "Ocurrió un problema al buscar la información del evento.", 'top-right', 'rgba(0,0,0,0.2)', 'error');
 			    })
-			    // alert('Event: ' + calEvent.title);
-			    // alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-			    // alert('View: ' + view.name);
 			}
 		})
     }).catch(function(error) {

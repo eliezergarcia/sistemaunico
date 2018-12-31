@@ -29,8 +29,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive-sm">
-                        <table id="balances-datatable" class="table table-centered table-hover dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
-                            <thead class="thead-light">
+                        <table id="balances-datatable" class="table table-centered table-striped table-hover table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                            <thead>
                                 <tr>
                                     <th width="4%">#</th>
                                     <th>Fecha</th>

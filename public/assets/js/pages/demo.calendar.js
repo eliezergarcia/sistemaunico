@@ -18,7 +18,9 @@ axios.get(url).then(function(response) {
 		events: response.data,
 		dayClick: function(date, jsEvent, view) {
 		    $('#register-event-form input[name=startdate]').val(date.format('MM/DD/YYYY'));
+		    $('#register-event-form input[name=start_time]').val('9:00:00');
 	        $('#register-event-form input[name=enddate]').val(date.format('MM/DD/YYYY'));
+			$('#register-event-form input[name=end_time]').val('9:00:00');
 			$('#register-event-modal').modal('show');
 		    $(this).css('background-color', '#7500F7');
 		},

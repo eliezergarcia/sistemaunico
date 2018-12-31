@@ -129,8 +129,8 @@
                         </div>
                         <hr/>
                         <div class="table-responsive-sm">
-                            <table id="clients-user-datatable" class="table table-centered table-hover dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
-                                <thead class="thead-light">
+                            <table id="clients-user-datatable" class="table table-centered table-striped table-hover table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                                <thead>
                                     <tr>
                                         <th width="4%">#</th>
                                         <th>Cliente</th>

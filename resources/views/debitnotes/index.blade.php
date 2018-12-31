@@ -43,8 +43,8 @@
                         </div>
                     </div>
                     <div class="table-responsive-sm">
-                        <table id="debitnotes-datatable" class="table table-centered dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
-                            <thead class="thead-light">
+                        <table id="debitnotes-datatable" class="table table-centered table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                            <thead>
                                 <tr>
                                     <th width="4%">#</th>
                                     @if(Auth::user()->present()->isAdmin() || Auth::user()->present()->isFac())

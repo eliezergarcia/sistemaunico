@@ -42,8 +42,8 @@
                     <div class="row mb-2">
                         <div class="col">
                             <div class="table-responsive-sm">
-                                <table class="table table-centered table-hover dt-responsive dataTable no-footer dtr-inline">
-                                    <thead class="thead-light">
+                                <table class="table table-centered table-striped table-hover table-striped dt-responsive dataTable no-footer dtr-inline">
+                                    <thead>
                                         <tr>
                                             <th>Código</th>
                                             <th>Razón Social</th>
@@ -96,11 +96,12 @@
                         <div class="col-6">
                             <h5>Cuentas MXN</h5>
                             <div class="table-responsive-sm">
-                                <table class="table table-centered table-hover dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
-                                    <thead class="thead-light">
+                                <table class="table table-centered table-striped table-hover table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                                    <thead>
                                         <tr>
                                             <th width="4%">#</th>
                                             <th>Cuenta</th>
+                                            <th>Clabe</th>
                                             <th>Moneda</th>
                                             <th>Banco</th>
                                             <th width="7%">Status</th>
@@ -113,6 +114,7 @@
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
                                                     <td>{{ $account->account }}</td>
+                                                    <td>{{ $account->clabe }}</td>
                                                     <td>{{ $account->currency }}</td>
                                                     <td>{{ $account->name_bank }}</td>
                                                     <td>
@@ -146,11 +148,12 @@
                         <div class="col-6">
                             <h5>Cuentas USD</h5>
                             <div class="table-responsive-sm">
-                                <table class="table table-centered table-hover dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
-                                    <thead class="thead-light">
+                                <table class="table table-centered table-striped table-hover table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                                    <thead>
                                         <tr>
                                             <th width="4%">#</th>
                                             <th>Cuenta</th>
+                                            <th>Clabe</th>
                                             <th>Moneda</th>
                                             <th>Banco</th>
                                             <th width="7%">Status</th>
@@ -163,9 +166,8 @@
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
                                                     <td>{{ $account->account }}</td>
-                                                    <td>
-                                                        {{ $account->currency }}
-                                                    </td>
+                                                    <td>{{ $account->clabe }}</td>
+                                                    <td>{{ $account->currency }}</td>
                                                     <td>{{ $account->name_bank }}</td>
                                                     <td>
                                                         @if(!$account->inactive_at)

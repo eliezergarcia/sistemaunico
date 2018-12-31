@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Provider;
+use App\AccountProvider;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -15,7 +16,7 @@ class FirstSheetProvidersImport implements ToCollection
         foreach ($rows as $key => $row){
 
             if ($key != 0) {
-                Provider::create([
+                $provider = Provider::create([
                     'codigo_proveedor' => $row[0],
                     'razon_social' => $row[1],
                     'rfc' => $row[2],
@@ -33,6 +34,15 @@ class FirstSheetProvidersImport implements ToCollection
                     'credit_days' => $row[14],
                     'service' => $row[15],
                 ]);
+                if ($row[16] != "" || $row[17] != "" || $row[18] != "" || $row[19] != "") {
+                    AccountProvider::create([
+                        'provider_id' => $provider->id,
+                        'account' => $row[16],
+                        'clabe' => $row[17],
+                        'currency' => $row[18],
+                        'name_bank' => $row[19],
+                    ]);
+                }
             }
         }
     }

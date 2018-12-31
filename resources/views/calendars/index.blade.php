@@ -465,7 +465,9 @@
         function register_event_modal()
         {
             $('#register-event-form input[name=startdate]').val(moment().format('MM/DD/YYYY'));
+            $('#register-event-form input[name=start_time]').val('9:00:00');
             $('#register-event-form input[name=enddate]').val(moment().format('MM/DD/YYYY'));
+            $('#register-event-form input[name=end_time]').val('9:00:00');
             $('#register-event-modal').modal('show');
         }
     </script>

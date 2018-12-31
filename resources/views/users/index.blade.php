@@ -35,8 +35,8 @@
                     </div>
 
                     <div class="table-responsive-sm">
-                        <table id="users-datatable" class="table table-centered table-hover dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
-                            <thead class="thead-light">
+                        <table id="users-datatable" class="table table-centered table-striped table-hover table-striped table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                            <thead>
                                 <tr>
                                     <th width="4%">#</th>
                                     <th>Nombre</th>

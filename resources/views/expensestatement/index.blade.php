@@ -44,8 +44,8 @@
                     </div>
 
                     <div class="table-responsive-sm">
-                        <table id="expenses-datatable" class="table table-centered table-hover dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
-                            <thead class="thead-light">
+                        <table id="expenses-datatable" class="table table-centered table-striped table-hover table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                            <thead>
                                 <tr>
                                     <th>#</th>
                                     <th width="10%">Código de control</th>

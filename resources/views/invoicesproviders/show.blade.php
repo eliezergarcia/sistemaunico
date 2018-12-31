@@ -39,8 +39,8 @@
 	                    @endif
                 	</div>
                     <div class="table-responsive-sm">
-                        <table id="invoice-datatable" class="table table-centered dt-responsive dataTable no-footer dtr-inline">
-                            <thead class="thead-light">
+                        <table id="invoice-datatable" class="table table-centered table-striped dt-responsive dataTable no-footer dtr-inline">
+                            <thead>
                                 <tr>
                                     <th width="20%">Proveedor</th>
                                     <th width="8%">Código de control</th>
@@ -89,8 +89,8 @@
                         @endif
                     @endif
                     <div class="table-responsive-sm">
-                        <table id="payments-datatable" class="table table-centered dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
-                            <thead class="thead-light">
+                        <table id="payments-datatable" class="table table-centered table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                            <thead>
                                 <tr>
                                     <th width="4%">#</th>
                                     <th width="8%">Monto pago</th>
@@ -170,7 +170,7 @@
                         <div class="col">
                             <div class="table-responsive">
                                 <table class="table table-sm">
-                                    <thead class="thead-light">
+                                    <thead>
                                         <tr style="border-color: #545353;">
                                             <th>#</th>
                                             <th><b>Description</b></th>
@@ -218,8 +218,8 @@
              <div class="card">
                 <div class="card-body">
                     <div class="table-responsive-sm">
-                        <table id="containers-datatable" class="table table-centered table-hover dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
-                            <thead class="thead-light">
+                        <table id="containers-datatable" class="table table-centered table-striped table-hover table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                            <thead>
                                 <tr>
                                     <th>Folio</th>
                                     <th>Fecha</th>
@@ -444,8 +444,8 @@
              <div class="card">
                 <div class="card-body">
                     <div class="table-responsive-sm">
-                        <table id="containers-datatable" class="table table-centered table-hover dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
-                            <thead class="thead-light">
+                        <table id="containers-datatable" class="table table-centered table-striped table-hover table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                            <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Cntr #</th>

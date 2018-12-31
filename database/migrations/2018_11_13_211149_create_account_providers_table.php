@@ -17,6 +17,7 @@ class CreateAccountProvidersTable extends Migration
             $table->increments('id');
             $table->integer('provider_id')->unsigned()->nullable();
             $table->string('account')->nullable();
+            $table->string('clabe')->nullable();
             $table->string('currency')->nullable();
             $table->string('name_bank')->nullable();
             $table->timestamps();

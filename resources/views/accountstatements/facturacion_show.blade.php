@@ -50,8 +50,8 @@
                     </div>
                     <h5>Moneda: MXN</h5>
                     <div class="table-responsive-sm">
-                        <table class="table table-centered table-bordered">
-                            <thead class="thead-light">
+                        <table class="table table-centered table-striped table-bordered">
+                            <thead>
                                 <tr>
                                     <th width="12%">Factura</th>
                                     <th width="12%">Fecha factura</th>
@@ -147,8 +147,8 @@
                     <br>
                     <h5>Moneda: USD</h5>
                     <div class="table-responsive-sm">
-                        <table class="table table-centered table-bordered">
-                            <thead class="thead-light">
+                        <table class="table table-centered table-striped table-bordered">
+                            <thead>
                                 <tr>
                                     <th width="12%">Factura</th>
                                     <th width="12%">Fecha factura</th>

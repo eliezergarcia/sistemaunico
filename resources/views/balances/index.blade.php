@@ -82,26 +82,26 @@
                              <div class="col-3">
                                 <div class="form-group">
                                     <label>Fecha<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required name="created_at" disabled>
+                                    <input type="text" class="form-control " required name="created_at" disabled>
                                 </div>
                             </div>
                             <div class="col-9"></div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>MXN <span class="text-danger">*</span></label>
-                                    <input type="number" step="any" class="form-control form-control-light" name="mxn" value="0">
+                                    <input type="number" step="any" class="form-control " name="mxn" value="0">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>USD</label>
-                                    <input type="number" step="any" class="form-control form-control-light" name="usd" value="0">
+                                    <input type="number" step="any" class="form-control " name="usd" value="0">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>DEBIT</label>
-                                    <input type="number" step="any" class="form-control form-control-light" name="debit" value="0">
+                                    <input type="number" step="any" class="form-control " name="debit" value="0">
                                 </div>
                             </div>
                         </div>

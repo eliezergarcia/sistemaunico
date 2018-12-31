@@ -275,7 +275,7 @@
                         <div class="row">
                              <div class="col-12">
                                 <div class="form-group">
-                                    <textarea class="form-control form-control-light" rows="5" name="note">{{ $invoice->notes }}</textarea>
+                                    <textarea class="form-control " rows="5" name="note">{{ $invoice->notes }}</textarea>
                                 </div>
                             </div>
                         </div>

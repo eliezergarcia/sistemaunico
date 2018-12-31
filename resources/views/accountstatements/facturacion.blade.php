@@ -35,7 +35,7 @@
                             <div class="row">
                                 <div class="col-4 form-group">
                                     <label for="">Cliente:</label>
-                                    <select name="client_id" id="" class="form-control form-control-light" required>
+                                    <select name="client_id" id="" class="form-control " required>
                                         <option value="">Selecciona...</option>
                                         @foreach($clients as $client)
                                             <option value="{{ $client->id }}">{{ $client->codigo_cliente }} - {{ $client->razon_social }}</option>
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="col-2 form-group">
                                     <label for="">Tipo:</label>
-                                    <select name="tipo" id="" class="form-control form-control-light" required>
+                                    <select name="tipo" id="" class="form-control " required>
                                         <option value="pendiente">Pendiente</option>
                                         <option value="pagado">Pagado</option>
                                     </select>
@@ -54,11 +54,11 @@
                                 </div>
                                 <div class="col-2 form-group">
                                     <label for="">Fecha inicio:</label>
-                                    <input type="date" name="fecha_inicio" class="form-control form-control-light" required>
+                                    <input type="date" name="fecha_inicio" class="form-control " required>
                                 </div>
                                 <div class="col-2 form-group">
                                     <label for="">Fecha fin:</label>
-                                    <input type="date" name="fecha_fin" class="form-control form-control-light" required>
+                                    <input type="date" name="fecha_fin" class="form-control " required>
                                 </div>
                                 <div class="col-2 form-group">
                                     <label for=""></label>

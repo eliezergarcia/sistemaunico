@@ -113,7 +113,7 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Factura</label>
-                                        <select class="form-control form-control-light" type="text" name="invoice_id" onchange="information_invoice();" required>
+                                        <select class="form-control select2" data-toggle="select2" type="text" name="invoice_id" onchange="information_invoice();" required>
                                             <option value="" selected>Selecciona</option>
 											@foreach($invoices as $invoice)
                                                 <option value="{{ $invoice->id }}">{{ $invoice->factura == "" ? 'Sin factura' : $invoice->factura }}</option>
@@ -124,55 +124,55 @@
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Neto</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="neto" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="neto" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Vat</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="vat" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="vat" disabled value="">
                                     </div>
                                 </div>
 								<div class="col-2">
                                     <div class="form-group">
                                         <label>- Retention</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="retention" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="retention" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Others</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="others" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="others" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Total</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="total" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="total" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Pendiente</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="pendiente" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="pendiente" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Monto</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="monto" required>
+                                        <input class="form-control " type="number" step="any" name="monto" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Fecha de pago</label>
-                                        <input class="form-control form-control-light" type="date" name="fecha_pago" required>
+                                        <input class="form-control " type="date" name="fecha_pago" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Comentarios</label>
-                                        <textarea class="form-control form-control-light" type="date" name="comentarios"></textarea>
+                                        <textarea class="form-control " type="date" name="comentarios"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -204,20 +204,20 @@
                                     <br>
                                     <div class="form-group">
                                         <label>Monto</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="monto" required>
+                                        <input class="form-control " type="number" step="any" name="monto" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <br>
                                     <div class="form-group">
                                         <label>Fecha de pago</label>
-                                        <input class="form-control form-control-light" type="date" name="fecha_pago" required>
+                                        <input class="form-control " type="date" name="fecha_pago" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Comentarios</label>
-                                        <textarea class="form-control form-control-light" type="date" name="comentarios"></textarea>
+                                        <textarea class="form-control " type="date" name="comentarios"></textarea>
                                     </div>
                                 </div>
                             </div>

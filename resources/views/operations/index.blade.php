@@ -202,7 +202,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>IMPO/EXPO <span class="text-danger">*</span></label>
-                                    <select type="text" class="form-control {{ $errors->has('impo_expo') ? ' is-invalid' : '' }}" value="{{ old('impo_expo') }}"  name="impo_expo">
+                                    <select type="text" class="form-control select2s{{ $errors->has('impo_expo') ? ' is-invalid' : '' }}" value="{{ old('impo_expo') }}"  name="impo_expo" id="impo_expo" data-toggle="select2">
                                         <option value="IMPO">IMPO</option>
                                         <option value="EXPO">EXPO</option>
                                     </select>

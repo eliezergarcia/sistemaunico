@@ -88,7 +88,7 @@
                         {!! csrf_field() !!}
                         <div class="form-group">
                             <label>Nombre: <span class="text-danger">*</span></label>
-                            <input class="form-control form-control-light{{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" name="name" value="{{ old('name') }}">
+                            <input class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" name="name" value="{{ old('name') }}">
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('name') }}</strong>
@@ -98,7 +98,7 @@
 
                         <div class="form-group">
                             <label>Nombre de usuario: <span class="text-danger">*</span></label>
-                            <input class="form-control form-control-light{{ $errors->has('user_name') ? ' is-invalid' : '' }}" type="text" name="user_name" value="{{ old('user_name') }}">
+                            <input class="form-control {{ $errors->has('user_name') ? ' is-invalid' : '' }}" type="text" name="user_name" value="{{ old('user_name') }}">
                             @if ($errors->has('user_name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('user_name') }}</strong>
@@ -108,7 +108,7 @@
 
                         <div class="form-group">
                             <label>Correo electrónico: <span class="text-danger">*</span></label>
-                            <input class="form-control form-control-light{{ $errors->has('email') ? ' is-invalid' : '' }}" type="text" name="email" value="{{ old('email') }}">
+                            <input class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" type="text" name="email" value="{{ old('email') }}">
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('email') }}</strong>
@@ -116,15 +116,22 @@
                             @endif
                         </div>
 
-                        <div class="">
+                        <div class="form-group">
                             <label>Rol: <span class="mb-0 font-13">(Departamento)</span> <span class="text-danger">*</span></label>
                             <div class="form-inline">
-                                @foreach($roles as $role)
+                                {{-- @foreach($roles as $role)
                                 <div class="custom-control custom-checkbox mb-2">
                                     <input type="checkbox" class="custom-control-input{{ $errors->has('roles[]') ? ' is-invalid' : '' }}" id="{{ $role->name }}" value="{{ $role->id }}" name="roles[]">
                                     <label class="custom-control-label" for="{{ $role->name }}">{{ $role->display_name }}</label>
                                 </div>&nbsp;&nbsp;&nbsp;
-                                @endforeach
+                                @endforeach --}}
+                                <select class="select2 form-control select2-multiple mb-2{{ $errors->has('roles[]') ? ' is-invalid' : '' }}" name="roles[]" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                    <optgroup>
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role->id }}">{{ $role->display_name }}</option>
+                                        @endforeach
+                                    </optgroup>
+                                </select>
                             </div>
                             @if ($errors->has('roles[]'))
                                 <span class="invalid-feedback" role="alert">
@@ -135,7 +142,7 @@
 
                         <div class="form-group">
                             <label>Contraseña: <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control form-control-light{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
+                            <input type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
                             @if ($errors->has('password'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('password') }}</strong>
@@ -145,7 +152,7 @@
 
                         <div class="form-group">
                             <label>Confirmar contraseña: <span class="text-danger">*</span></label>
-                            <input class="form-control form-control-light" type="password" name="password_confirmation">
+                            <input class="form-control" type="password" name="password_confirmation">
                         </div>
                 </div>
                 <div class="text-right pb-4 pr-4">

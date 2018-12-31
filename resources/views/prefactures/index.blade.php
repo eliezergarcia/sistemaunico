@@ -28,14 +28,19 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="form-group form-inline">
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <label for="">Mostrar &nbsp;</label>
-                        <select name="filtro-datatables" id="filtro-datatables" class="form-control">
-                            <option value="Pendiente">Pendientes</option>
-                            <option value="Finalizado">Finalizados</option>
-                            <option value="Todo">Todos</option>
-                        </select>
+                    <div class="row mb-2 justify-content-between">
+                        <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-2 form-group form-inline">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <label for="">Mostrar &nbsp;</label>
+                            <select name="filtro-datatables" id="filtro-datatables" class="form-control">
+                                <option value="Pendiente">Pendientes</option>
+                                <option value="Finalizado">Finalizados</option>
+                                <option value="Cancelado">Cancelados</option>
+                                <option value="Todo">Todos</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="table-responsive-sm">
                         <table id="prefacturas-datatable" class="table table-centered dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
@@ -105,7 +110,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Factura <span class="text-danger">*</span></label>
-                                    <input class="form-control form-control-light{{ $errors->has('factura') ? ' is-invalid' : '' }}" type="text" name="factura" value="{{ old('factura') }}">
+                                    <input class="form-control {{ $errors->has('factura') ? ' is-invalid' : '' }}" type="text" name="factura" value="{{ old('factura') }}">
                                     @if ($errors->has('factura'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('factura') }}</strong>
@@ -116,7 +121,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Fecha factura <span class="text-danger">*</span></label>
-                                    <input class="form-control form-control-light{{ $errors->has('fecha_factura') ? ' is-invalid' : '' }}" type="date" name="fecha_factura" value="{{ old('fecha_factura') }}">
+                                    <input class="form-control {{ $errors->has('fecha_factura') ? ' is-invalid' : '' }}" type="date" name="fecha_factura" value="{{ old('fecha_factura') }}">
                                     @if ($errors->has('fecha_factura'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('fecha_factura') }}</strong>
@@ -127,7 +132,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Moneda <span class="text-danger">*</span></label>
-                                    <select type="text" class="form-control form-control-light{{ $errors->has('moneda') ? ' is-invalid' : '' }}" value="{{ old('moneda') }}"  name="moneda">
+                                    <select type="text" class="form-control {{ $errors->has('moneda') ? ' is-invalid' : '' }}" value="{{ old('moneda') }}"  name="moneda">
                                         <option value="MXN">MXN</option>
                                         <option value="USD">USD</option>
                                     </select>
@@ -141,7 +146,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Neto <span class="text-danger">*</span></label>
-                                    <input class="form-control form-control-light{{ $errors->has('neto') ? ' is-invalid' : '' }}" type="number" step="any" name="neto" value="{{ old('neto') }}" onchange="calcularTotal()">
+                                    <input class="form-control {{ $errors->has('neto') ? ' is-invalid' : '' }}" type="number" step="any" name="neto" value="{{ old('neto') }}" onchange="calcularTotal()">
                                     @if ($errors->has('neto'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('neto') }}</strong>
@@ -152,7 +157,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Iva <span class="text-danger">*</span></label>
-                                    <input class="form-control form-control-light{{ $errors->has('iva') ? ' is-invalid' : '' }}" type="number" step="any" name="iva" value="{{ old('iva') }}" onchange="calcularTotal()">
+                                    <input class="form-control {{ $errors->has('iva') ? ' is-invalid' : '' }}" type="number" step="any" name="iva" value="{{ old('iva') }}" onchange="calcularTotal()">
                                     @if ($errors->has('iva'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('iva') }}</strong>
@@ -163,13 +168,13 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Total</label>
-                                    <input class="form-control form-control-light" type="number" step="any" id="total">
+                                    <input class="form-control " type="number" step="any" id="total">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Comentarios</label>
-                                    <textarea class="form-control form-control-light" type="date" name="comentarios"></textarea>
+                                    <textarea class="form-control " type="date" name="comentarios"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -238,6 +243,8 @@
                 if(val == "Pendiente"){
                     table.search( val ).draw();
                 }else if(val == "Finalizado"){
+                    table.search( val ).draw();
+                }else if(val == "Cancelado"){
                     table.search( val ).draw();
                 }else if(val == "Todo"){
                     table.search( "" ).draw();

@@ -26,9 +26,8 @@ class RegisterUserRequest extends FormRequest
         return [
             'name' => 'required',
             'user_name' => 'required|unique:users,user_name',
-            'email_office' => 'email|required|unique:users,email',
-            'password' => 'required|confirmed',
-            'avatar' => 'image'
+            'email' => 'email|required|unique:users,email',
+            'password' => 'required|confirmed'
         ];
     }
 }

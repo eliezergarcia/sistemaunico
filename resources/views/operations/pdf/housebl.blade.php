@@ -86,7 +86,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-3">
                                         <label for="">B/L Type</label>
-                                        <select type="text" class="form-control" id="bl_type" onchange="bl_type_print();">
+                                        <select type="text" class="form-control select2" data-toggle="select2" id="bl_type" onchange="bl_type_print();">
                                             <option value="SURRENDERED">SURRENDERED</option>
                                             <option value="WAYBILL">WAYBILL</option>
                                             <option value="COPY">COPY</option>

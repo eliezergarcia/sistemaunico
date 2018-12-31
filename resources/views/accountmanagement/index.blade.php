@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="col-2 form-group">
                                     <label for="">Fecha inicial al dia de mañana:</label>
-                                    <input type="date" name="am_fecha_inicio" class="form-control form-control-light">
+                                    <input type="date" name="am_fecha_inicio" class="form-control ">
                                 </div>
                                 <div class="col-8"></div>
                                 <div class="col-2">
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col-2 form-group">
                                     <label for="">Fecha del balance:</label>
-                                    <input type="date" name="da_fecha_inicio" class="form-control form-control-light">
+                                    <input type="date" name="da_fecha_inicio" class="form-control ">
                                 </div>
                                 <div class="col-8"></div>
                                 <div class="col-2">
@@ -54,11 +54,11 @@
                                 </div>
                                 <div class="col-2 form-group">
                                     <label for="">Fecha de inicio:</label>
-                                    <input type="date" name="fp_fecha_inicio" class="form-control form-control-light">
+                                    <input type="date" name="fp_fecha_inicio" class="form-control ">
                                 </div>
                                 <div class="col-2 form-group">
                                     <label for="">Fecha de fin:</label>
-                                    <input type="date" name="fp_fecha_fin" class="form-control form-control-light">
+                                    <input type="date" name="fp_fecha_fin" class="form-control ">
                                 </div>
                                 <div class="col-6">
 

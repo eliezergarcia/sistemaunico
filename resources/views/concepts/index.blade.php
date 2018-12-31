@@ -82,7 +82,7 @@
 </div> <!-- container -->
 
 <!-- Start Modals -->
-    <div id="register-concept-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="register-concept-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -96,7 +96,7 @@
                              <div class="col-12">
                                 <div class="form-group">
                                     <label>Descripción<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">
+                                    <input type="text" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">
                                     @if ($errors->has('description'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('description') }}</strong>
@@ -107,7 +107,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Moneda <span class="text-danger">*</span></label>
-                                    <select type="text" class="form-control form-control-light{{ $errors->has('curr') ? ' is-invalid' : '' }}" name="curr">
+                                    <select type="text" class="form-control select2{{ $errors->has('curr') ? ' is-invalid' : '' }}" name="curr" data-toggle="select2">
                                         <option value="">Selecciona...</option>
                                         <option value="USD">USD</option>
                                         <option value="EUR">EUR</option>
@@ -123,7 +123,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Rate</label>
-                                    <input type="number" step="any" class="form-control form-control-light" name="rate" value="0">
+                                    <input type="number" step="any" class="form-control " name="rate" value="0">
                                 </div>
                             </div>
                         </div>
@@ -139,7 +139,7 @@
         <!-- /.modal-dialog -->
     </div>
 
-    <div id="information-concept-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="information-concept-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -154,13 +154,13 @@
                              <div class="col-12">
                                 <div class="form-group">
                                     <label>Descripción<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required name="description">
+                                    <input type="text" class="form-control " required name="description">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Moneda <span class="text-danger">*</span></label>
-                                    <select type="text" class="form-control form-control-light" required name="curr">
+                                    <select type="text" class="form-control select2" required name="curr" data-toggle="select2">
                                         <option value="USD">USD</option>
                                         <option value="EUR">EUR</option>
                                         <option value="MXN">MXN</option>
@@ -170,7 +170,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Rate</label>
-                                    <input type="number" step="any" class="form-control form-control-light" name="rate" value="0">
+                                    <input type="number" step="any" class="form-control " name="rate" value="0">
                                 </div>
                             </div>
                         </div>

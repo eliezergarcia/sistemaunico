@@ -182,7 +182,7 @@
                                  <div class="col-7">
                                     <div class="form-group">
                                         <label>Proveedor <span class="text-danger">*</span></label>
-                                        <select class="form-control form-control-light{{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id">
+                                        <select class="form-control {{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id">
                                             <option value="">Selecciona...</option>
                                             @foreach($providers as $provider)
                                                 <option value="{{ $provider->id }}">{{ $provider->razon_social }}</option>
@@ -198,7 +198,7 @@
                                  <div class="col-2">
                                     <div class="form-group">
                                         <label>Folio</label>
-                                        <input type="text" class="form-control form-control-light{{ $errors->has('factura') ? ' is-invalid' : '' }}" name="factura">
+                                        <input type="text" class="form-control {{ $errors->has('factura') ? ' is-invalid' : '' }}" name="factura">
                                         @if ($errors->has('factura'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('factura') }}</strong>
@@ -209,7 +209,7 @@
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label>Invoice date</label>
-                                        <input type="date" class="form-control form-control-light{{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
+                                        <input type="date" class="form-control {{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
                                         @if ($errors->has('invoice_date'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('invoice_date') }}</strong>
@@ -220,7 +220,7 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Expense type <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control form-control-light{{ $errors->has('expense_tipe') ? ' is-invalid' : '' }}" name="expense_tipe" value="Freight Expenses">
+                                        <input type="text" class="form-control {{ $errors->has('expense_tipe') ? ' is-invalid' : '' }}" name="expense_tipe" value="Freight Expenses">
                                         @if ($errors->has('expense_tipe'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('expense_tipe') }}</strong>
@@ -231,7 +231,7 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Expense description <span class="text-danger">*</span></label>
-                                        <select class="form-control form-control-light{{ $errors->has('expense_description') ? ' is-invalid' : '' }}" name="expense_description">
+                                        <select class="form-control {{ $errors->has('expense_description') ? ' is-invalid' : '' }}" name="expense_description">
                                             <option value="INVOICE" selected>INVOICE</option>
                                             <option value="INVOICE EXTRANJERO">INVOICE EXTRANJERO</option>
                                             <option value="DEBIT NOTE">DEBIT NOTE</option>
@@ -248,13 +248,13 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Neto <span class="text-danger">*</span></label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" required="" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" required="" onchange="calcularTotal()">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Vat</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('vat'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('vat') }}</strong>
@@ -265,7 +265,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Retention</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('retention'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('retention') }}</strong>
@@ -276,7 +276,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Others</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('others'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('others') }}</strong>
@@ -288,7 +288,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Total</label>
-                                    <input type="number" step="any" class="form-control form-control-light" name="total" value="0">
+                                    <input type="number" step="any" class="form-control " name="total" value="0">
                                 </div>
                             </div>
 
@@ -339,25 +339,25 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Monto</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="monto" required>
+                                        <input class="form-control " type="number" step="any" name="monto" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Fecha de devolución</label>
-                                        <input class="form-control form-control-light" type="date" name="fecha_pago" required>
+                                        <input class="form-control " type="date" name="fecha_pago" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Comisión</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="commission">
+                                        <input class="form-control " type="number" step="any" name="commission">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Comentarios</label>
-                                        <textarea class="form-control form-control-light" type="date" name="comentarios"></textarea>
+                                        <textarea class="form-control " type="date" name="comentarios"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -406,13 +406,13 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Comisión de banco</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="comision" required value="0">
+                                        <input class="form-control " type="number" step="any" name="comision" required value="0">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Aplicar a balance del dia</label>
-                                        <select class="form-control form-control-light" name="balance_day" required>
+                                        <select class="form-control " name="balance_day" required>
                                             <option value="1">Hoy</option>
                                             <option value="2" selected>Siguiente</option>
                                         </select>

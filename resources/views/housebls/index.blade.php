@@ -98,7 +98,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Factura</label>
-                                    <input class="form-control form-control-light{{ $errors->has('factura') ? ' is-invalid' : '' }}" type="text" name="factura" value="{{ old('factura') }}">
+                                    <input class="form-control {{ $errors->has('factura') ? ' is-invalid' : '' }}" type="text" name="factura" value="{{ old('factura') }}">
                                     @if ($errors->has('factura'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('factura') }}</strong>
@@ -109,7 +109,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Fecha factura</label>
-                                    <input class="form-control form-control-light{{ $errors->has('fecha_factura') ? ' is-invalid' : '' }}" type="date" name="fecha_factura" value="{{ old('fecha_factura') }}">
+                                    <input class="form-control {{ $errors->has('fecha_factura') ? ' is-invalid' : '' }}" type="date" name="fecha_factura" value="{{ old('fecha_factura') }}">
                                     @if ($errors->has('fecha_factura'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('fecha_factura') }}</strong>
@@ -120,7 +120,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Moneda</label>
-                                    <select type="text" class="form-control form-control-light{{ $errors->has('moneda') ? ' is-invalid' : '' }}" value="{{ old('moneda') }}"  name="moneda">
+                                    <select type="text" class="form-control {{ $errors->has('moneda') ? ' is-invalid' : '' }}" value="{{ old('moneda') }}"  name="moneda">
                                         <option value="MXN">MXN</option>
                                         <option value="USD">USD</option>
                                     </select>
@@ -134,7 +134,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Neto</label>
-                                    <input class="form-control form-control-light{{ $errors->has('neto') ? ' is-invalid' : '' }}" type="number" step="any" name="neto" value="{{ old('neto') }}">
+                                    <input class="form-control {{ $errors->has('neto') ? ' is-invalid' : '' }}" type="number" step="any" name="neto" value="{{ old('neto') }}">
                                     @if ($errors->has('neto'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('neto') }}</strong>
@@ -145,7 +145,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Fecha de pago</label>
-                                    <input class="form-control form-control-light{{ $errors->has('fecha_pago') ? ' is-invalid' : '' }}" type="date" name="fecha_pago" value="{{ old('fecha_pago') }}">
+                                    <input class="form-control {{ $errors->has('fecha_pago') ? ' is-invalid' : '' }}" type="date" name="fecha_pago" value="{{ old('fecha_pago') }}">
                                     @if ($errors->has('fecha_pago'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('fecha_pago') }}</strong>

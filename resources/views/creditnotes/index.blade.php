@@ -90,7 +90,7 @@
     <!-- end row -->
 
     <!-- Start modals -->
-        <div id="register-creditnote-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div id="register-creditnote-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header pr-4 pl-4">
@@ -104,7 +104,7 @@
                                 <div class="col-8">
                                     <div class="form-group">
                                         <label>Cliente <span class="text-danger">*</span></label>
-                                        <select class="form-control form-control-light" type="text" name="client_id" required>
+                                        <select class="form-control select2" data-toggle="select2" type="text" name="client_id" required>
                                             <option value="">Selecciona un cliente...</option>
                                             @foreach($clients as $client)
                                                 <option value="{{ $client->id }}">{{ $client->codigo_cliente }}</option>
@@ -115,19 +115,19 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Folio <span class="text-danger">*</span></label>
-                                        <input class="form-control form-control-light" type="text" name="folio" required>
+                                        <input class="form-control " type="text" name="folio" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Monto <span class="text-danger">*</span></label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="monto" required>
+                                        <input class="form-control " type="number" step="any" name="monto" required>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Moneda <span class="text-danger">*</span></label>
-                                        <select name="moneda" id="" class="form-control form-control-light">
+                                        <select name="moneda" id="" class="form-control select2" data-toggle="select2">
                                             <option value="MXN">MXN</option>
                                             <option value="USD">USD</option>
                                         </select>
@@ -136,13 +136,13 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Fecha de nota <span class="text-danger">*</span></label>
-                                        <input class="form-control form-control-light" type="date" name="fecha_pago" required>
+                                        <input class="form-control " type="date" name="fecha_pago" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Comentarios</label>
-                                        <textarea class="form-control form-control-light" type="date" name="comentarios"></textarea>
+                                        <textarea class="form-control " type="date" name="comentarios"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +173,7 @@
                                 <div class="col-8">
                                     <div class="form-group">
                                         <label>Cliente</label>
-                                        <select class="form-control form-control-light" type="text" name="client_id" required>
+                                        <select class="form-control " type="text" name="client_id" required>
                                             <option value="">Selecciona un cliente...</option>
                                             @foreach($clients as $client)
                                                 <option value="{{ $client->id }}">{{ $client->codigo_cliente }}</option>
@@ -184,19 +184,19 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Folio</label>
-                                        <input class="form-control form-control-light" type="text" name="folio" required>
+                                        <input class="form-control " type="text" name="folio" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Monto</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="monto" required>
+                                        <input class="form-control " type="number" step="any" name="monto" required>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Moneda</label>
-                                        <select name="moneda" id="" class="form-control form-control-light">
+                                        <select name="moneda" id="" class="form-control ">
                                             <option value="MXN">MXN</option>
                                             <option value="USD">USD</option>
                                         </select>
@@ -205,13 +205,13 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Fecha de nota</label>
-                                        <input class="form-control form-control-light" type="date" name="fecha_pago" required>
+                                        <input class="form-control " type="date" name="fecha_pago" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Comentarios</label>
-                                        <textarea class="form-control form-control-light" type="date" name="comentarios"></textarea>
+                                        <textarea class="form-control " type="date" name="comentarios"></textarea>
                                     </div>
                                 </div>
                             </div>

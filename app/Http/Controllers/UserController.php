@@ -41,6 +41,7 @@ class UserController extends Controller
           $user->avatar = $request->file('avatar')->store('public');
         }
 
+        $user->password_encrypted = $request->password;
         $user->save();
 
         $user->roles()->attach($request->roles);
@@ -76,6 +77,7 @@ class UserController extends Controller
     */
     public function update(UpdateUserRequest $request, $id)
     {
+        // dd($request->all());
         DB::beginTransaction();
 
         $user = User::findOrFail($id);
@@ -85,7 +87,6 @@ class UserController extends Controller
         }
 
         $user->update($request->all());
-        $user->password_encrypted = Hash::make($request->password_encrypted);
 
         if ($request->has('roles')) {
             $user->roles()->sync($request->roles);

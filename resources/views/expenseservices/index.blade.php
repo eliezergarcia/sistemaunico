@@ -96,19 +96,19 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Número de usuario</label>
-                                    <input type="text" class="form-control form-control-light" name="numero_usuario">
+                                    <input type="text" class="form-control " name="numero_usuario">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Servicio <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" name="servicio" required>
+                                    <input type="text" class="form-control " name="servicio" required>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Concepto de pago</label>
-                                    <input type="text" class="form-control form-control-light" name="concepto_pago">
+                                    <input type="text" class="form-control " name="concepto_pago">
                                 </div>
                             </div>
                         </div>
@@ -139,19 +139,19 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Número de usuario</label>
-                                    <input type="text" class="form-control form-control-light" name="numero_usuario">
+                                    <input type="text" class="form-control " name="numero_usuario">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Servicio <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" name="servicio" required>
+                                    <input type="text" class="form-control " name="servicio" required>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Concepto de pago</label>
-                                    <input type="text" class="form-control form-control-light" name="concepto_pago">
+                                    <input type="text" class="form-control " name="concepto_pago">
                                 </div>
                             </div>
                         </div>

@@ -35,7 +35,7 @@
                             <div class="row">
                                 <div class="col-4 form-group">
                                     <label for="">Cliente:</label>
-                                    <select name="client_id" id="" class="form-control form-control-light" required>
+                                    <select name="client_id" id="" class="form-control " required>
                                         <option value="">Selecciona...</option>
                                         @foreach($clients as $client)
                                             <option value="{{ $client->id }}">{{ $client->codigo_cliente }} - {{ $client->razon_social }}</option>

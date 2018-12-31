@@ -33,6 +33,7 @@
                             <button id="btnModal" class="btn btn-primary mb-2" data-toggle="modal" data-target="#register-payment-modal"><i class="mdi mdi-plus-circle mr-2"></i> <b>Registrar pago</b></button>
                         </div>
                         <div class="col-2 form-group form-inline">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
                             <label for="">Mostrar &nbsp;</label>
                             <select name="filtro-datatables" id="filtro-datatables" class="form-control">
                                 <option value="Abonado">Abonados</option>
@@ -87,7 +88,7 @@
 
     <!-- Start modals -->
 
-        <div id="register-payment-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div id="register-payment-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header pr-4 pl-4">
@@ -102,7 +103,7 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Factura <span class="text-danger">*</span></label>
-                                        <select class="form-control form-control-light" type="text" name="invoice_id" onchange="information_invoice();" required>
+                                        <select class="form-control select2" data-toggle="select2" type="text" name="invoice_id" onchange="information_invoice();" required>
                                             <option value="" selected>Selecciona</option>
                                             @foreach($invoices as $invoice)
                                                 @if($invoice->pagado != $invoice->total)
@@ -115,45 +116,45 @@
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Neto <span class="text-danger">*</span></label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="neto" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="neto" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>IVA <span class="text-danger">*</span></label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="iva" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="iva" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Total <span class="text-danger">*</span></label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="total" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="total" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Pendiente <span class="text-danger">*</span></label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="pendiente" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="pendiente" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <br>
                                     <div class="form-group">
                                         <label>Monto <span class="text-danger">*</span></label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="monto" required>
+                                        <input class="form-control " type="number" step="any" name="monto" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <br>
                                     <div class="form-group">
                                         <label>Fecha de pago <span class="text-danger">*</span></label>
-                                        <input class="form-control form-control-light" type="date" name="fecha_pago" required>
+                                        <input class="form-control " type="date" name="fecha_pago" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Comentarios</label>
-                                        <textarea class="form-control form-control-light" type="date" name="comentarios"></textarea>
+                                        <textarea class="form-control " type="date" name="comentarios"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -185,20 +186,20 @@
                                     <br>
                                     <div class="form-group">
                                         <label>Monto <span class="text-danger">*</span></label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="monto" required>
+                                        <input class="form-control " type="number" step="any" name="monto" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <br>
                                     <div class="form-group">
                                         <label>Fecha de pago <span class="text-danger">*</span></label>
-                                        <input class="form-control form-control-light" type="date" name="fecha_pago" required>
+                                        <input class="form-control " type="date" name="fecha_pago" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Comentarios</label>
-                                        <textarea class="form-control form-control-light" type="date" name="comentarios"></textarea>
+                                        <textarea class="form-control " type="date" name="comentarios"></textarea>
                                     </div>
                                 </div>
                             </div>

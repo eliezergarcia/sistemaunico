@@ -219,7 +219,7 @@
                         <div class="row">
                             <div class="form-group col-3">
                                 <label>Código de proveedor: <span class="text-danger">*</span></label>
-                                <input class="form-control form-control-light{{ $errors->has('codigo_proveedor') ? ' is-invalid' : '' }}" type="text" name="codigo_proveedor" value="{{ $provider->codigo_proveedor }}">
+                                <input class="form-control {{ $errors->has('codigo_proveedor') ? ' is-invalid' : '' }}" type="text" name="codigo_proveedor" value="{{ $provider->codigo_proveedor }}">
                                 @if ($errors->has('codigo_proveedor'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('codigo_proveedor') }}</strong>
@@ -229,7 +229,7 @@
 
                             <div class="form-group col-9">
                                 <label>Razón social: <span class="text-danger">*</span></label>
-                                <input class="form-control form-control-light{{ $errors->has('razon_social') ? ' is-invalid' : '' }}" type="text" name="razon_social" value="{{ $provider->razon_social }}">
+                                <input class="form-control {{ $errors->has('razon_social') ? ' is-invalid' : '' }}" type="text" name="razon_social" value="{{ $provider->razon_social }}">
                                 @if ($errors->has('razon_social'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('razon_social') }}</strong>
@@ -239,7 +239,7 @@
 
                             <div class="form-group col-6">
                                 <label>RFC: <span class="text-danger">*</span></label>
-                                <input class="form-control form-control-light{{ $errors->has('rfc') ? ' is-invalid' : '' }}" type="text" name="rfc" value="{{ $provider->rfc }}">
+                                <input class="form-control {{ $errors->has('rfc') ? ' is-invalid' : '' }}" type="text" name="rfc" value="{{ $provider->rfc }}">
                                 @if ($errors->has('rfc'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('rfc') }}</strong>
@@ -248,7 +248,7 @@
                             </div>
                             <div class="form-group col-3">
                                 <label>Número interior: </label>
-                                <input class="form-control form-control-light{{ $errors->has('numero_interior') ? ' is-invalid' : '' }}" type="text" name="numero_interior" value="{{ $provider->numero_interior }}">
+                                <input class="form-control {{ $errors->has('numero_interior') ? ' is-invalid' : '' }}" type="text" name="numero_interior" value="{{ $provider->numero_interior }}">
                                 @if ($errors->has('numero_interior'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('numero_interior') }}</strong>
@@ -257,7 +257,7 @@
                             </div>
                             <div class="form-group col-3">
                                 <label>Número exterior: </label>
-                                <input class="form-control form-control-light{{ $errors->has('numero_exterior') ? ' is-invalid' : '' }}" type="text" name="numero_exterior" value="{{ $provider->numero_exterior }}">
+                                <input class="form-control {{ $errors->has('numero_exterior') ? ' is-invalid' : '' }}" type="text" name="numero_exterior" value="{{ $provider->numero_exterior }}">
                                 @if ($errors->has('numero_exterior'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('numero_exterior') }}</strong>
@@ -266,7 +266,7 @@
                             </div>
                             <div class="form-group col-3">
                                 <label>Calle: <span class="text-danger">*</span></label>
-                                <input class="form-control form-control-light{{ $errors->has('calle') ? ' is-invalid' : '' }}" type="text" name="calle" value="{{ $provider->calle }}">
+                                <input class="form-control {{ $errors->has('calle') ? ' is-invalid' : '' }}" type="text" name="calle" value="{{ $provider->calle }}">
                                 @if ($errors->has('calle'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('calle') }}</strong>
@@ -275,7 +275,7 @@
                             </div>
                             <div class="form-group col-3">
                                 <label>Colonia: <span class="text-danger">*</span></label>
-                                <input class="form-control form-control-light{{ $errors->has('colonia') ? ' is-invalid' : '' }}" type="text" name="colonia" value="{{ $provider->colonia }}">
+                                <input class="form-control {{ $errors->has('colonia') ? ' is-invalid' : '' }}" type="text" name="colonia" value="{{ $provider->colonia }}">
                                 @if ($errors->has('colonia'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('colonia') }}</strong>
@@ -284,7 +284,7 @@
                             </div>
                             <div class="form-group col-3">
                                 <label>Código postal: <span class="text-danger">*</span></label>
-                                <input class="form-control form-control-light{{ $errors->has('codigo_postal') ? ' is-invalid' : '' }}" type="text" name="codigo_postal" value="{{ $provider->codigo_postal }}">
+                                <input class="form-control {{ $errors->has('codigo_postal') ? ' is-invalid' : '' }}" type="text" name="codigo_postal" value="{{ $provider->codigo_postal }}">
                                 @if ($errors->has('codigo_postal'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('codigo_postal') }}</strong>
@@ -293,7 +293,7 @@
                             </div>
                             <div class="form-group col-3">
                                 <label>País: <span class="text-danger">*</span></label>
-                                <input class="form-control form-control-light{{ $errors->has('pais') ? ' is-invalid' : '' }}" type="text" name="pais" value="{{ $provider->pais }}">
+                                <input class="form-control {{ $errors->has('pais') ? ' is-invalid' : '' }}" type="text" name="pais" value="{{ $provider->pais }}">
                                 @if ($errors->has('pais'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('pais') }}</strong>
@@ -302,7 +302,7 @@
                             </div>
                             <div class="form-group col-3">
                                 <label>Estado: <span class="text-danger">*</span></label>
-                                <input class="form-control form-control-light{{ $errors->has('estado') ? ' is-invalid' : '' }}" type="text" name="estado" value="{{ $provider->estado }}">
+                                <input class="form-control {{ $errors->has('estado') ? ' is-invalid' : '' }}" type="text" name="estado" value="{{ $provider->estado }}">
                                 @if ($errors->has('estado'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('estado') }}</strong>
@@ -311,7 +311,7 @@
                             </div>
                             <div class="form-group col-3">
                                 <label>Ciudad: <span class="text-danger">*</span></label>
-                                <input class="form-control form-control-light{{ $errors->has('ciudad') ? ' is-invalid' : '' }}" type="text" name="ciudad" value="{{ $provider->ciudad }}">
+                                <input class="form-control {{ $errors->has('ciudad') ? ' is-invalid' : '' }}" type="text" name="ciudad" value="{{ $provider->ciudad }}">
                                 @if ($errors->has('ciudad'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('ciudad') }}</strong>
@@ -320,7 +320,7 @@
                             </div>
                             <div class="form-group col-3">
                                 <label>Municipio: <span class="text-danger">*</span></label>
-                                <input class="form-control form-control-light{{ $errors->has('municipio') ? ' is-invalid' : '' }}" type="text" name="municipio" value="{{ $provider->municipio }}">
+                                <input class="form-control {{ $errors->has('municipio') ? ' is-invalid' : '' }}" type="text" name="municipio" value="{{ $provider->municipio }}">
                                 @if ($errors->has('municipio'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('municipio') }}</strong>
@@ -329,7 +329,7 @@
                             </div>
                             <div class="form-group col-3">
                                 <label>Teléfono #1: </label>
-                                <input class="form-control form-control-light{{ $errors->has('telefono1') ? ' is-invalid' : '' }}" type="text" name="telefono1" value="{{ $provider->telefono1 }}">
+                                <input class="form-control {{ $errors->has('telefono1') ? ' is-invalid' : '' }}" type="text" name="telefono1" value="{{ $provider->telefono1 }}">
                                 @if ($errors->has('telefono1'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('telefono1') }}</strong>
@@ -338,7 +338,7 @@
                             </div>
                             <div class="form-group col-3">
                                 <label>Teléfono #2: </label>
-                                <input class="form-control form-control-light{{ $errors->has('telefono2') ? ' is-invalid' : '' }}" type="text" name="telefono2" value="{{ $provider->telefono2 }}">
+                                <input class="form-control {{ $errors->has('telefono2') ? ' is-invalid' : '' }}" type="text" name="telefono2" value="{{ $provider->telefono2 }}">
                                 @if ($errors->has('telefono2'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('telefono2') }}</strong>
@@ -347,7 +347,7 @@
                             </div>
                             <div class="form-group col-3">
                                 <label>Service: <span class="text-danger">*</span></label>
-                                <select class="form-control form-control-light{{ $errors->has('service') ? ' is-invalid' : '' }}" type="text" name="service" value="{{ old('service') }}">
+                                <select class="form-control {{ $errors->has('service') ? ' is-invalid' : '' }}" type="text" name="service" value="{{ old('service') }}">
                                     <option value="Trucking">Trucking</option>
                                     <option value="Ocean">Ocean</option>
                                 </select>
@@ -359,7 +359,7 @@
                             </div>
                             <div class="form-group col-3">
                                 <label>Días de crédito: </label>
-                                <input class="form-control form-control-light{{ $errors->has('credit_days') ? ' is-invalid' : '' }}" type="number" name="credit_days" value="{{ $provider->credit_days }}">
+                                <input class="form-control {{ $errors->has('credit_days') ? ' is-invalid' : '' }}" type="number" name="credit_days" value="{{ $provider->credit_days }}">
                                 @if ($errors->has('credit_days'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('credit_days') }}</strong>
@@ -379,7 +379,7 @@
         <!-- /.modal-dialog -->
     </div>
 
-    <div id="register-account-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="register-account-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -393,12 +393,12 @@
                         <div class="row">
                             <div class="form-group col-6">
                                 <label>Cuenta: <span class="text-danger">*</span></label>
-                                <input class="form-control form-control-light" type="text" name="account" required>
+                                <input class="form-control " type="text" name="account" required>
                             </div>
 
                             <div class="form-group col-6">
                                 <label>Moneda: <span class="text-danger">*</span></label>
-                                <select class="form-control form-control-light" type="text" name="currency" required>
+                                <select class="form-control select2" data-toggle="select2" type="text" name="currency" required>
                                     <option value="MXN">MXN</option>
                                     <option value="USD">USD</option>
                                 </select>
@@ -406,7 +406,7 @@
 
                             <div class="form-group col-6">
                                 <label>Banco: <span class="text-danger">*</span></label>
-                                <input class="form-control form-control-light" type="text" name="name_bank" required>
+                                <input class="form-control " type="text" name="name_bank" required>
                             </div>
                         </div>
                 </div>
@@ -435,12 +435,12 @@
                         <div class="row">
                             <div class="form-group col-6">
                                 <label>Cuenta: <span class="text-danger">*</span></label>
-                                <input class="form-control form-control-light" type="text" name="account" required>
+                                <input class="form-control " type="text" name="account" required>
                             </div>
 
                             <div class="form-group col-6">
                                 <label>Moneda: <span class="text-danger">*</span></label>
-                                <select class="form-control form-control-light" type="text" name="currency" required>
+                                <select class="form-control select2" data-toggle="select2" type="text" name="currency" required>
                                     <option value="MXN">MXN</option>
                                     <option value="USD">USD</option>
                                 </select>
@@ -448,7 +448,7 @@
 
                             <div class="form-group col-6">
                                 <label>Banco: <span class="text-danger">*</span></label>
-                                <input class="form-control form-control-light" type="text" name="name_bank" required>
+                                <input class="form-control " type="text" name="name_bank" required>
                             </div>
                         </div>
                 </div>

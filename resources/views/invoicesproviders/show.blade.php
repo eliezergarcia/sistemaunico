@@ -493,7 +493,7 @@
                                  <div class="col-7">
                                     <div class="form-group">
                                         <label>Proveedor <span class="text-danger">*</span></label>
-                                        <select class="form-control form-control-light{{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id">
+                                        <select class="form-control {{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id">
                                             <option value="">Selecciona...</option>
                                             @foreach($providers as $provider)
                                                 @if($provider->id = $invoice->provider_id)
@@ -513,7 +513,7 @@
                                  <div class="col-2">
                                     <div class="form-group">
                                         <label>Folio <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control form-control-light{{ $errors->has('factura') ? ' is-invalid' : '' }}" name="factura" value="{{ $invoice->factura }}">
+                                        <input type="text" class="form-control {{ $errors->has('factura') ? ' is-invalid' : '' }}" name="factura" value="{{ $invoice->factura }}">
                                         @if ($errors->has('factura'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('factura') }}</strong>
@@ -524,7 +524,7 @@
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label>Invoice date <span class="text-danger">*</span></label>
-                                        <input type="date" class="form-control form-control-light{{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date" value="{{ $invoice->invoice_date }}">
+                                        <input type="date" class="form-control {{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date" value="{{ $invoice->invoice_date }}">
                                         @if ($errors->has('invoice_date'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('invoice_date') }}</strong>
@@ -535,7 +535,7 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Expense type <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control form-control-light{{ $errors->has('expense_tipe') ? ' is-invalid' : '' }}" name="expense_tipe" value="{{ $invoice->expense_tipe }}">
+                                        <input type="text" class="form-control {{ $errors->has('expense_tipe') ? ' is-invalid' : '' }}" name="expense_tipe" value="{{ $invoice->expense_tipe }}">
                                         @if ($errors->has('expense_tipe'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('expense_tipe') }}</strong>
@@ -546,7 +546,7 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Expense description <span class="text-danger">*</span></label>
-                                        <select class="form-control form-control-light{{ $errors->has('expense_description') ? ' is-invalid' : '' }}" name="expense_description">
+                                        <select class="form-control {{ $errors->has('expense_description') ? ' is-invalid' : '' }}" name="expense_description">
                                             <option value="INVOICE" {{ $invoice->expense_description == "INVOICE" ? 'selected' : ''}}>INVOICE</option>
                                             <option value="INVOICE EXTRANJERO" {{ $invoice->expense_description == "INVOICE EXTRANJERO" ? 'selected' : ''}}>INVOICE EXTRANJERO</option>
                                             <option value="DEBIT NOTE" {{ $invoice->expense_description == "DEBIT NOTE" ? 'selected' : ''}}>DEBIT NOTE</option>
@@ -562,7 +562,7 @@
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label>Neto <span class="text-danger">*</span></label>
-                                        <input type="number" step="any" class="form-control form-control-light{{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" value="{{ $invoice->neto }}">
+                                        <input type="number" step="any" class="form-control {{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" value="{{ $invoice->neto }}">
                                         @if ($errors->has('neto'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('neto') }}</strong>
@@ -573,7 +573,7 @@
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label>Vat <span class="text-danger">*</span></label>
-                                        <input type="number" step="any" class="form-control form-control-light{{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="{{ $invoice->vat }}">
+                                        <input type="number" step="any" class="form-control {{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="{{ $invoice->vat }}">
                                         @if ($errors->has('vat'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('vat') }}</strong>
@@ -584,7 +584,7 @@
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label>Retention <span class="text-danger">*</span></label>
-                                        <input type="number" step="any" class="form-control form-control-light{{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="{{ $invoice->retention }}">
+                                        <input type="number" step="any" class="form-control {{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="{{ $invoice->retention }}">
                                         @if ($errors->has('retention'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('retention') }}</strong>
@@ -595,7 +595,7 @@
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label>Others <span class="text-danger">*</span></label>
-                                        <input type="number" step="any" class="form-control form-control-light{{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="{{ $invoice->others }}">
+                                        <input type="number" step="any" class="form-control {{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="{{ $invoice->others }}">
                                         @if ($errors->has('others'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('others') }}</strong>
@@ -652,62 +652,62 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Factura</label>
-                                        <input class="form-control form-control-light" type="text" name="invoice_id" required value="{{ $invoice->id }}">
+                                        <input class="form-control " type="text" name="invoice_id" required value="{{ $invoice->id }}">
                                         </input>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Neto</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="neto" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="neto" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Vat</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="vat" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="vat" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>- Retention</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="retention" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="retention" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Others</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="others" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="others" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Total</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="total" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="total" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
                                         <label>Pendiente</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="pendiente" disabled value="">
+                                        <input class="form-control " type="number" step="any" name="pendiente" disabled value="">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Monto</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="monto" required>
+                                        <input class="form-control " type="number" step="any" name="monto" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Fecha de pago</label>
-                                        <input class="form-control form-control-light" type="date" name="fecha_pago" required>
+                                        <input class="form-control " type="date" name="fecha_pago" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Comentarios</label>
-                                        <textarea class="form-control form-control-light" type="date" name="comentarios"></textarea>
+                                        <textarea class="form-control " type="date" name="comentarios"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -739,20 +739,20 @@
                                     <br>
                                     <div class="form-group">
                                         <label>Monto</label>
-                                        <input class="form-control form-control-light" type="number" step="any" name="monto" required>
+                                        <input class="form-control " type="number" step="any" name="monto" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <br>
                                     <div class="form-group">
                                         <label>Fecha de pago</label>
-                                        <input class="form-control form-control-light" type="date" name="fecha_pago" required>
+                                        <input class="form-control " type="date" name="fecha_pago" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Comentarios</label>
-                                        <textarea class="form-control form-control-light" type="date" name="comentarios"></textarea>
+                                        <textarea class="form-control " type="date" name="comentarios"></textarea>
                                     </div>
                                 </div>
                             </div>

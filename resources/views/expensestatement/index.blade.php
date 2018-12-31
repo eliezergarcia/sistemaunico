@@ -99,7 +99,7 @@
 </div> <!-- container -->
 
 <!-- Start Modals -->
-    <div id="register-expense-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="register-expense-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -113,7 +113,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Plantilla</label>
-                                    <select type="text" class="form-control form-control-light" onchange="buscar_datos_plantilla(value);">
+                                    <select type="text" class="form-control select2" data-toggle="select2" onchange="buscar_datos_plantilla(value);">
                                         <option value="">Sin plantilla</option>
                                         @foreach($templates as $template)
                                             <option value="{{ $template->id }}">{{ $template->template_name }}</option>
@@ -125,7 +125,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Invoice</label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('invoice') ? ' is-invalid' : '' }}" name="invoice">
+                                    <input type="text" class="form-control {{ $errors->has('invoice') ? ' is-invalid' : '' }}" name="invoice">
                                     @if ($errors->has('invoice'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('invoice') }}</strong>
@@ -136,7 +136,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Invoice date</label>
-                                    <input type="date" class="form-control form-control-light{{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
+                                    <input type="date" class="form-control {{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
                                     @if ($errors->has('invoice_date'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('invoice_date') }}</strong>
@@ -147,7 +147,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Payment month</label>
-                                    <input type="date" class="form-control form-control-light{{ $errors->has('payment_month') ? ' is-invalid' : '' }}" name="payment_month">
+                                    <input type="date" class="form-control {{ $errors->has('payment_month') ? ' is-invalid' : '' }}" name="payment_month">
                                     @if ($errors->has('payment_month'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('payment_month') }}</strong>
@@ -158,7 +158,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Expense type <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('expense_type') ? ' is-invalid' : '' }}" name="expense_type">
+                                    <input type="text" class="form-control {{ $errors->has('expense_type') ? ' is-invalid' : '' }}" name="expense_type">
                                     @if ($errors->has('expense_type'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('expense_type') }}</strong>
@@ -169,7 +169,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Description <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">
+                                    <select class="form-control select2{{ $errors->has('description') ? ' is-invalid' : '' }}" data-toggle="select2" name="description">
                                         <option value="">Selecciona...</option>
                                         @foreach($services as $service)
                                             <option value="{{ $service->servicio }}">{{ $service->servicio }}</option>
@@ -185,13 +185,13 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Expense description <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" name="expense_description" value="INVOICE">
+                                    <input type="text" class="form-control " name="expense_description" value="INVOICE">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Payment source <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light" name="payment_source">
+                                    <select class="form-control select2" data-toggle="select2" name="payment_source">
                                         <option value="C.A.">C.A.</option>
                                         <option value="D.C.">D.C.</option>
                                         <option value="P.A.">P.A.</option>
@@ -206,13 +206,13 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Payment Status</label>
-                                    <input type="text" class="form-control form-control-light" name="payment_status">
+                                    <input type="text" class="form-control " name="payment_status">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Solicitado por</label>
-                                    <select name="solicited_by" class="form-control form-control-light">
+                                    <select name="solicited_by" class="form-control select2" data-toggle="select2">
                                         @foreach($users as $user)
                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                         @endforeach
@@ -222,7 +222,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Moneda</label>
-                                    <select name="currency" class="form-control form-control-light">
+                                    <select name="currency" class="form-control select2" data-toggle="select2">
                                         <option value="MXN">MXN</option>
                                         <option value="USD">USD</option>
                                     </select>
@@ -231,19 +231,19 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Notas</label>
-                                    <textarea class="form-control form-control-light" name="notes"></textarea>
+                                    <textarea class="form-control " name="notes"></textarea>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Neto <span class="text-danger">*</span></label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" onchange="calcularTotal()">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Vat</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('vat'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('vat') }}</strong>
@@ -254,7 +254,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Retention</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('retention'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('retention') }}</strong>
@@ -265,7 +265,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Others</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('others'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('others') }}</strong>
@@ -277,7 +277,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Total</label>
-                                    <input type="number" step="any" class="form-control form-control-light" name="total" value="0">
+                                    <input type="number" step="any" class="form-control " name="total" value="0">
                                 </div>
                             </div>
                             <hr>
@@ -294,7 +294,7 @@
         <!-- /.modal-dialog -->
     </div>
 
-    <div id="register-template-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="register-template-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -308,14 +308,14 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Nombre de plantilla <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" name="template_name" required>
+                                    <input type="text" class="form-control " name="template_name" required>
                                 </div>
                             </div>
                             <div class="col-6"></div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Invoice</label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('invoice') ? ' is-invalid' : '' }}" name="invoice">
+                                    <input type="text" class="form-control {{ $errors->has('invoice') ? ' is-invalid' : '' }}" name="invoice">
                                     @if ($errors->has('invoice'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('invoice') }}</strong>
@@ -326,7 +326,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Invoice date</label>
-                                    <input type="date" class="form-control form-control-light{{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
+                                    <input type="date" class="form-control {{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
                                     @if ($errors->has('invoice_date'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('invoice_date') }}</strong>
@@ -337,7 +337,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Payment month</label>
-                                    <input type="date" class="form-control form-control-light{{ $errors->has('payment_month') ? ' is-invalid' : '' }}" name="payment_month">
+                                    <input type="date" class="form-control {{ $errors->has('payment_month') ? ' is-invalid' : '' }}" name="payment_month">
                                     @if ($errors->has('payment_month'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('payment_month') }}</strong>
@@ -348,7 +348,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Expense type</label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('expense_type') ? ' is-invalid' : '' }}" name="expense_type">
+                                    <input type="text" class="form-control {{ $errors->has('expense_type') ? ' is-invalid' : '' }}" name="expense_type">
                                     @if ($errors->has('expense_type'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('expense_type') }}</strong>
@@ -359,7 +359,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <select class="form-control form-control-light{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">
+                                    <select class="form-control select2{{ $errors->has('description') ? ' is-invalid' : '' }}" data-toggle="select2" name="description">
                                         <option value="">Selecciona...</option>
                                         @foreach($services as $service)
                                             <option value="{{ $service->servicio }}">{{ $service->servicio }}</option>
@@ -375,13 +375,13 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Expense description</label>
-                                    <input type="text" class="form-control form-control-light" name="expense_description" value="INVOICE">
+                                    <input type="text" class="form-control " name="expense_description" value="INVOICE">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Payment source <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light" name="payment_source">
+                                    <select class="form-control select2" data-toggle="select2" name="payment_source">
                                         <option value="C.A.">C.A.</option>
                                         <option value="D.C.">D.C.</option>
                                         <option value="P.A.">P.A.</option>
@@ -396,13 +396,13 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Payment Status</label>
-                                    <input type="text" class="form-control form-control-light" name="payment_status">
+                                    <input type="text" class="form-control " name="payment_status">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Solicitado por</label>
-                                    <select name="solicited_by" class="form-control form-control-light">
+                                    <select name="solicited_by" class="form-control select2" data-toggle="select2">
                                         @foreach($users as $user)
                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                         @endforeach
@@ -412,7 +412,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Moneda</label>
-                                    <select name="currency" class="form-control form-control-light">
+                                    <select name="currency" class="form-control select2" data-toggle="select2">
                                         <option value="MXN">MXN</option>
                                         <option value="USD">USD</option>
                                     </select>
@@ -421,19 +421,19 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Notas</label>
-                                    <textarea class="form-control form-control-light" name="notes"></textarea>
+                                    <textarea class="form-control " name="notes"></textarea>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Neto</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" onchange="calcularTotal()">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Vat</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('vat'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('vat') }}</strong>
@@ -444,7 +444,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Retention</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('retention'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('retention') }}</strong>
@@ -455,7 +455,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Others</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('others'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('others') }}</strong>
@@ -467,7 +467,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Total</label>
-                                    <input type="number" step="any" class="form-control form-control-light" name="total" value="0">
+                                    <input type="number" step="any" class="form-control " name="total" value="0">
                                 </div>
                             </div>
                         </div>
@@ -483,7 +483,7 @@
         <!-- /.modal-dialog -->
     </div>
 
-    <div id="information-template-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="information-template-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -498,7 +498,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Plantilla</label>
-                                    <select type="text" class="form-control form-control-light" onchange="buscar_datos_plantilla(value);">
+                                    <select type="text" class="form-control select2" data-toggle="select2" onchange="buscar_datos_plantilla(value);">
                                         <option value="">Sin plantilla</option>
                                         @foreach($templates as $template)
                                             <option value="{{ $template->id }}">{{ $template->template_name }}</option>
@@ -510,7 +510,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Invoice</label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('invoice') ? ' is-invalid' : '' }}" name="invoice">
+                                    <input type="text" class="form-control {{ $errors->has('invoice') ? ' is-invalid' : '' }}" name="invoice">
                                     @if ($errors->has('invoice'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('invoice') }}</strong>
@@ -521,7 +521,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Invoice date</label>
-                                    <input type="date" class="form-control form-control-light{{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
+                                    <input type="date" class="form-control {{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
                                     @if ($errors->has('invoice_date'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('invoice_date') }}</strong>
@@ -532,7 +532,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Payment month</label>
-                                    <input type="date" class="form-control form-control-light{{ $errors->has('payment_month') ? ' is-invalid' : '' }}" name="payment_month">
+                                    <input type="date" class="form-control {{ $errors->has('payment_month') ? ' is-invalid' : '' }}" name="payment_month">
                                     @if ($errors->has('payment_month'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('payment_month') }}</strong>
@@ -543,7 +543,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Expense type <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('expense_type') ? ' is-invalid' : '' }}" name="expense_type">
+                                    <input type="text" class="form-control {{ $errors->has('expense_type') ? ' is-invalid' : '' }}" name="expense_type">
                                     @if ($errors->has('expense_type'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('expense_type') }}</strong>
@@ -554,7 +554,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Description <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">
+                                    <select class="form-control select2{{ $errors->has('description') ? ' is-invalid' : '' }}" data-toggle="select2" name="description">
                                         <option value="">Selecciona...</option>
                                         @foreach($services as $service)
                                             <option value="{{ $service->servicio }}">{{ $service->servicio }}</option>
@@ -570,13 +570,13 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Expense description <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" name="expense_description" value="INVOICE">
+                                    <input type="text" class="form-control " name="expense_description" value="INVOICE">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Payment source <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light" name="payment_source">
+                                    <select class="form-control select2" data-toggle="select2" name="payment_source">
                                         <option value="C.A.">C.A.</option>
                                         <option value="D.C.">D.C.</option>
                                         <option value="P.A.">P.A.</option>
@@ -591,13 +591,13 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Payment Status</label>
-                                    <input type="text" class="form-control form-control-light" name="payment_status">
+                                    <input type="text" class="form-control " name="payment_status">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Solicitado por</label>
-                                    <select name="solicited_by" class="form-control form-control-light">
+                                    <select name="solicited_by" class="form-control select2" data-toggle="select2">
                                         @foreach($users as $user)
                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                         @endforeach
@@ -607,7 +607,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Moneda</label>
-                                    <select name="currency" class="form-control form-control-light">
+                                    <select name="currency" class="form-control select2" data-toggle="select2">
                                         <option value="MXN">MXN</option>
                                         <option value="USD">USD</option>
                                     </select>
@@ -616,19 +616,19 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Notas</label>
-                                    <textarea class="form-control form-control-light" name="notes"></textarea>
+                                    <textarea class="form-control " name="notes"></textarea>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Neto <span class="text-danger">*</span></label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" onchange="calcularTotal()">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Vat</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('vat'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('vat') }}</strong>
@@ -639,7 +639,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Retention</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('retention'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('retention') }}</strong>
@@ -650,7 +650,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Others</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('others'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('others') }}</strong>
@@ -662,7 +662,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Total</label>
-                                    <input type="number" step="any" class="form-control form-control-light" name="total" value="0">
+                                    <input type="number" step="any" class="form-control " name="total" value="0">
                                 </div>
                             </div>
                             <hr>
@@ -679,7 +679,7 @@
         <!-- /.modal-dialog -->
     </div>
 
-    <div id="delete-template-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="delete-template-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-body p-4">
@@ -692,7 +692,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Plantilla</label>
-                                    <select type="text" class="form-control form-control-light" name="expense_id">
+                                    <select type="text" class="form-control " name="expense_id">
                                         <option value="">Sin plantilla</option>
                                         @foreach($templates as $template)
                                             <option value="{{ $template->id }}">{{ $template->template_name }}</option>
@@ -709,7 +709,7 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <div id="information-expense-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="information-expense-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -724,7 +724,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Invoice</label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('invoice') ? ' is-invalid' : '' }}" name="invoice">
+                                    <input type="text" class="form-control {{ $errors->has('invoice') ? ' is-invalid' : '' }}" name="invoice">
                                     @if ($errors->has('invoice'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('invoice') }}</strong>
@@ -735,7 +735,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Invoice date</label>
-                                    <input type="date" class="form-control form-control-light{{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
+                                    <input type="date" class="form-control {{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
                                     @if ($errors->has('invoice_date'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('invoice_date') }}</strong>
@@ -746,7 +746,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Payment month</label>
-                                    <input type="date" class="form-control form-control-light{{ $errors->has('payment_month') ? ' is-invalid' : '' }}" name="payment_month">
+                                    <input type="date" class="form-control {{ $errors->has('payment_month') ? ' is-invalid' : '' }}" name="payment_month">
                                     @if ($errors->has('payment_month'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('payment_month') }}</strong>
@@ -757,7 +757,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Expense type <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('expense_type') ? ' is-invalid' : '' }}" name="expense_type">
+                                    <input type="text" class="form-control {{ $errors->has('expense_type') ? ' is-invalid' : '' }}" name="expense_type">
                                     @if ($errors->has('expense_type'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('expense_type') }}</strong>
@@ -768,7 +768,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Description <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">
+                                    <select class="form-control select2{{ $errors->has('description') ? ' is-invalid' : '' }}" data-toggle="select2" name="description">
                                         <option value="">Selecciona...</option>
                                         @foreach($services as $service)
                                             <option value="{{ $service->servicio }}">{{ $service->servicio }}</option>
@@ -784,13 +784,13 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Expense description <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" name="expense_description" value="INVOICE">
+                                    <input type="text" class="form-control " name="expense_description" value="INVOICE">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Payment source <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light" name="payment_source">
+                                    <select class="form-control select2" data-toggle="select2" name="payment_source">
                                         <option value="C.A.">C.A.</option>
                                         <option value="D.C.">D.C.</option>
                                         <option value="P.A.">P.A.</option>
@@ -805,13 +805,13 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Payment Status</label>
-                                    <input type="text" class="form-control form-control-light" name="payment_status">
+                                    <input type="text" class="form-control " name="payment_status">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Solicitado por</label>
-                                    <select name="solicited_by" class="form-control form-control-light">
+                                    <select name="solicited_by" class="form-control select2" data-toggle="select2">
                                         @foreach($users as $user)
                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                         @endforeach
@@ -821,7 +821,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Moneda</label>
-                                    <select name="currency" class="form-control form-control-light">
+                                    <select name="currency" class="form-control select2" data-toggle="select2">
                                         <option value="MXN">MXN</option>
                                         <option value="USD">USD</option>
                                     </select>
@@ -830,19 +830,19 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Notas</label>
-                                    <textarea class="form-control form-control-light" name="notes"></textarea>
+                                    <textarea class="form-control " name="notes"></textarea>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Neto <span class="text-danger">*</span></label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" onchange="calcularTotalInformation()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" onchange="calcularTotalInformation()">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Vat</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotalInformation()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotalInformation()">
                                     @if ($errors->has('vat'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('vat') }}</strong>
@@ -853,7 +853,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Retention</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotalInformation()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotalInformation()">
                                     @if ($errors->has('retention'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('retention') }}</strong>
@@ -864,7 +864,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Others</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotalInformation()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotalInformation()">
                                     @if ($errors->has('others'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('others') }}</strong>
@@ -876,7 +876,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Total</label>
-                                    <input type="number" step="any" class="form-control form-control-light" name="total" value="0">
+                                    <input type="number" step="any" class="form-control " name="total" value="0">
                                 </div>
                             </div>
                             <hr>

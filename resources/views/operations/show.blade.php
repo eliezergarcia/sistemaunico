@@ -452,7 +452,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Recibir</label>
-                                    <input class="form-control form-control-light{{ $errors->has('recibir') ? ' is-invalid' : '' }}" type="date" name="recibir" value="{{ $operation->recibir }}">
+                                    <input class="form-control {{ $errors->has('recibir') ? ' is-invalid' : '' }}" type="date" name="recibir" value="{{ $operation->recibir }}">
                                     @if ($errors->has('recibir'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('recibir') }}</strong>
@@ -463,7 +463,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Revisión</label>
-                                    <input class="form-control form-control-light{{ $errors->has('revision') ? ' is-invalid' : '' }}" type="date" name="revision" value="{{ $operation->revision }}">
+                                    <input class="form-control {{ $errors->has('revision') ? ' is-invalid' : '' }}" type="date" name="revision" value="{{ $operation->revision }}">
                                     @if ($errors->has('revision'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('revision') }}</strong>
@@ -474,7 +474,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Mandar</label>
-                                    <input class="form-control form-control-light{{ $errors->has('mandar') ? ' is-invalid' : '' }}" type="date" name="mandar" value="{{ $operation->mandar }}">
+                                    <input class="form-control {{ $errors->has('mandar') ? ' is-invalid' : '' }}" type="date" name="mandar" value="{{ $operation->mandar }}">
                                     @if ($errors->has('mandar'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('mandar') }}</strong>
@@ -485,7 +485,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Revalidación</label>
-                                    <input class="form-control form-control-light{{ $errors->has('revalidacion') ? ' is-invalid' : '' }}" type="date" name="revalidacion" value="{{ $operation->revalidacion }}">
+                                    <input class="form-control {{ $errors->has('revalidacion') ? ' is-invalid' : '' }}" type="date" name="revalidacion" value="{{ $operation->revalidacion }}">
                                     @if ($errors->has('revalidacion'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('revalidacion') }}</strong>
@@ -496,7 +496,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Toca piso</label>
-                                    <input class="form-control form-control-light{{ $errors->has('toca_piso') ? ' is-invalid' : '' }}" type="date" name="toca_piso" value="{{ $operation->toca_piso }}">
+                                    <input class="form-control {{ $errors->has('toca_piso') ? ' is-invalid' : '' }}" type="date" name="toca_piso" value="{{ $operation->toca_piso }}">
                                     @if ($errors->has('toca_piso'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('toca_piso') }}</strong>
@@ -532,7 +532,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Booking</label>
-                                    <input class="form-control form-control-light{{ $errors->has('booking_expo') ? ' is-invalid' : '' }}" type="date" name="booking_expo" value="{{ $operation->booking_expo }}">
+                                    <input class="form-control {{ $errors->has('booking_expo') ? ' is-invalid' : '' }}" type="date" name="booking_expo" value="{{ $operation->booking_expo }}">
                                     @if ($errors->has('booking_expo'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('booking_expo') }}</strong>
@@ -543,7 +543,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Confirmación de booking</label>
-                                    <input class="form-control form-control-light{{ $errors->has('conf_booking') ? ' is-invalid' : '' }}" type="date" name="conf_booking" value="{{ $operation->conf_booking }}">
+                                    <input class="form-control {{ $errors->has('conf_booking') ? ' is-invalid' : '' }}" type="date" name="conf_booking" value="{{ $operation->conf_booking }}">
                                     @if ($errors->has('conf_booking'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('conf_booking') }}</strong>
@@ -554,7 +554,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Programación de recolección</label>
-                                    <input class="form-control form-control-light{{ $errors->has('prog_recoleccion') ? ' is-invalid' : '' }}" type="date" name="prog_recoleccion" value="{{ $operation->prog_recoleccion }}">
+                                    <input class="form-control {{ $errors->has('prog_recoleccion') ? ' is-invalid' : '' }}" type="date" name="prog_recoleccion" value="{{ $operation->prog_recoleccion }}">
                                     @if ($errors->has('prog_recoleccion'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('prog_recoleccion') }}</strong>
@@ -565,7 +565,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Recolección</label>
-                                    <input class="form-control form-control-light{{ $errors->has('recoleccion') ? ' is-invalid' : '' }}" type="date" name="recoleccion" value="{{ $operation->recoleccion }}">
+                                    <input class="form-control {{ $errors->has('recoleccion') ? ' is-invalid' : '' }}" type="date" name="recoleccion" value="{{ $operation->recoleccion }}">
                                     @if ($errors->has('recoleccion'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('recoleccion') }}</strong>
@@ -576,7 +576,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Llegada puerto</label>
-                                    <input class="form-control form-control-light{{ $errors->has('llegada_puerto') ? ' is-invalid' : '' }}" type="date" name="llegada_puerto" value="{{ $operation->llegada_puerto }}">
+                                    <input class="form-control {{ $errors->has('llegada_puerto') ? ' is-invalid' : '' }}" type="date" name="llegada_puerto" value="{{ $operation->llegada_puerto }}">
                                     @if ($errors->has('llegada_puerto'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('llegada_puerto') }}</strong>
@@ -587,7 +587,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Cierre documental</label>
-                                    <input class="form-control form-control-light{{ $errors->has('cierre_documental') ? ' is-invalid' : '' }}" type="date" name="cierre_documental" value="{{ $operation->cierre_documental }}">
+                                    <input class="form-control {{ $errors->has('cierre_documental') ? ' is-invalid' : '' }}" type="date" name="cierre_documental" value="{{ $operation->cierre_documental }}">
                                     @if ($errors->has('cierre_documental'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('cierre_documental') }}</strong>
@@ -598,7 +598,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Pesaje</label>
-                                    <input class="form-control form-control-light{{ $errors->has('pesaje') ? ' is-invalid' : '' }}" type="date" name="pesaje" value="{{ $operation->pesaje }}">
+                                    <input class="form-control {{ $errors->has('pesaje') ? ' is-invalid' : '' }}" type="date" name="pesaje" value="{{ $operation->pesaje }}">
                                     @if ($errors->has('pesaje'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('pesaje') }}</strong>
@@ -609,7 +609,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Ingreso</label>
-                                    <input class="form-control form-control-light{{ $errors->has('ingreso') ? ' is-invalid' : '' }}" type="date" name="ingreso" value="{{ $operation->ingreso }}">
+                                    <input class="form-control {{ $errors->has('ingreso') ? ' is-invalid' : '' }}" type="date" name="ingreso" value="{{ $operation->ingreso }}">
                                     @if ($errors->has('ingreso'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('ingreso') }}</strong>
@@ -620,7 +620,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Despacho</label>
-                                    <input class="form-control form-control-light{{ $errors->has('despacho') ? ' is-invalid' : '' }}" type="date" name="despacho" value="{{ $operation->despacho }}">
+                                    <input class="form-control {{ $errors->has('despacho') ? ' is-invalid' : '' }}" type="date" name="despacho" value="{{ $operation->despacho }}">
                                     @if ($errors->has('despacho'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('despacho') }}</strong>
@@ -631,7 +631,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Zarpe</label>
-                                    <input class="form-control form-control-light{{ $errors->has('zarpe') ? ' is-invalid' : '' }}" type="date" name="zarpe" value="{{ $operation->zarpe }}">
+                                    <input class="form-control {{ $errors->has('zarpe') ? ' is-invalid' : '' }}" type="date" name="zarpe" value="{{ $operation->zarpe }}">
                                     @if ($errors->has('zarpe'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('zarpe') }}</strong>
@@ -642,7 +642,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Envio prealerta</label>
-                                    <input class="form-control form-control-light{{ $errors->has('envio_papelera') ? ' is-invalid' : '' }}" type="date" name="envio_papelera" value="{{ $operation->envio_papelera }}">
+                                    <input class="form-control {{ $errors->has('envio_papelera') ? ' is-invalid' : '' }}" type="date" name="envio_papelera" value="{{ $operation->envio_papelera }}">
                                     @if ($errors->has('envio_papelera'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('envio_papelera') }}</strong>
@@ -663,7 +663,7 @@
         <!-- /.modal-dialog -->
     </div>
 
-     <div id="register-invoice-provider-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+     <div id="register-invoice-provider-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -681,7 +681,7 @@
                              <div class="col-7">
                                 <div class="form-group">
                                     <label>Proveedor <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" required="" onchange="search_accounts()">
+                                    <select class="form-control select2{{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" data-toggle="select2" required="" onchange="search_accounts()">
                                         <option value="">Selecciona...</option>
                                         @foreach($providers as $provider)
                                             <option value="{{ $provider->id }}">{{ $provider->razon_social }}</option>
@@ -692,25 +692,25 @@
                              <div class="col-2">
                                 <div class="form-group">
                                     <label>Folio <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('factura') ? ' is-invalid' : '' }}" name="factura" required="">
+                                    <input type="text" class="form-control {{ $errors->has('factura') ? ' is-invalid' : '' }}" name="factura" required="">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Invoice date <span class="text-danger">*</span></label>
-                                    <input type="date" class="form-control form-control-light{{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date" required="">
+                                    <input type="date" class="form-control {{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date" required="">
                                 </div>
                             </div>
                             <div class="col-5">
                                 <div class="form-group">
                                     <label>Expense type <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('expense_tipe') ? ' is-invalid' : '' }}" name="expense_tipe" value="Freight Expenses" required="">
+                                    <input type="text" class="form-control {{ $errors->has('expense_tipe') ? ' is-invalid' : '' }}" name="expense_tipe" value="Freight Expenses" required="">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Expense description <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('expense_description') ? ' is-invalid' : '' }}" name="expense_description" required="">
+                                    <select class="form-control select2{{ $errors->has('expense_description') ? ' is-invalid' : '' }}" name="expense_description" data-toggle="select2" required="">
                                         <option value="INVOICE" selected>INVOICE</option>
                                         <option value="INVOICE EXTRANJERO">INVOICE EXTRANJERO</option>
                                         <option value="DEBIT NOTE">DEBIT NOTE</option>
@@ -720,20 +720,20 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Cuenta <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('account_bank') ? ' is-invalid' : '' }}" name="account_provider_id" required="">
+                                    <select class="form-control select2{{ $errors->has('account_bank') ? ' is-invalid' : '' }}" name="account_provider_id" data-toggle="select2" required="">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Neto <span class="text-danger">*</span></label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" required="" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" required="" onchange="calcularTotal()">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Vat</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('vat'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('vat') }}</strong>
@@ -744,7 +744,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Retention</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('retention'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('retention') }}</strong>
@@ -755,7 +755,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Others</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('others'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('others') }}</strong>
@@ -767,7 +767,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Total</label>
-                                    <input type="number" step="any" class="form-control form-control-light" name="total" value="0">
+                                    <input type="number" step="any" class="form-control " name="total" value="0">
                                 </div>
                             </div>
                             <hr>
@@ -776,7 +776,7 @@
                                 <br>
                                 <div class="form-group">
                                     <label>M B/L <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required name="m_bl" value="{{ $operation->m_bl }}" required="">
+                                    <input type="text" class="form-control " required name="m_bl" value="{{ $operation->m_bl }}" required="">
                                 </div>
                             </div>
                             <div class="col-3">
@@ -784,7 +784,7 @@
                                 <br>
                                 <div class="form-group">
                                     <label>H B/L <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required name="h_bl" value="{{ $operation->h_bl }}" required="">
+                                    <input type="text" class="form-control " required name="h_bl" value="{{ $operation->h_bl }}" required="">
                                 </div>
                             </div>
                             <div class="col-3">
@@ -792,7 +792,7 @@
                                 <br>
                                 <div class="form-group">
                                     <label>ETA <span class="text-danger">*</span></label>
-                                    <input type="date" class="form-control form-control-light" required name="eta" value="{{ $operation->eta }}" required="">
+                                    <input type="date" class="form-control " required name="eta" value="{{ $operation->eta }}" required="">
                                 </div>
                             </div>
                             <div class="col-3">
@@ -807,9 +807,9 @@
                                     <tr>
                                         <th></th>
                                         <th width="40%">Description</th>
-                                        <th>Curr</th>
+                                        <th width="15%">Curr</th>
                                         <th>Rate</th>
-                                        <th width="11%">Iva</th>
+                                        <th width="5%">Iva</th>
                                         <th width="11%">Qty</th>
                                     </tr>
                                 </thead>
@@ -824,7 +824,10 @@
                                             </td>
                                             <td>{{ $conceptinvoices->description }}</td>
                                             <td>
-                                                {{ $conceptinvoices->curr }}
+                                                <select name="curr[]" class="form-control select2" data-toggle="select2">
+                                                    <option value="MXN" {{ $conceptinvoices->curr == "MXN" ? 'selected' : ''}}>MXN</option>
+                                                    <option value="USD" {{ $conceptinvoices->curr == "USD" ? 'selected' : ''}}>USD</option>
+                                                </select>
                                             </td>
                                             <td>
                                                 <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
@@ -851,7 +854,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Prioridad</label>
-                                    <select class="form-control form-control-light" type="text" name="priority">
+                                    <select class="form-control select2" data-toggle="select2" type="text" name="priority">
                                         <option value="3">Baja</option>
                                         <option value="2">Media</option>
                                         <option value="1">Alta</option>
@@ -871,7 +874,7 @@
         <!-- /.modal-dialog -->
     </div>
 
-    <div id="register-guaranteerequest-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="register-guaranteerequest-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -892,7 +895,7 @@
                              <div class="col-7">
                                 <div class="form-group">
                                     <label>Proveedor <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" required="" onchange="search_accounts()">
+                                    <select class="form-control select2{{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" data-toggle="select2" required="" onchange="search_accounts()">
                                         <option value="">Selecciona...</option>
                                         @foreach($providers as $provider)
                                             <option value="{{ $provider->id }}">{{ $provider->razon_social }}</option>
@@ -903,25 +906,25 @@
                              <div class="col-2">
                                 <div class="form-group">
                                     <label>Folio</label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('factura') ? ' is-invalid' : '' }}" name="factura">
+                                    <input type="text" class="form-control {{ $errors->has('factura') ? ' is-invalid' : '' }}" name="factura">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Invoice date</label>
-                                    <input type="date" class="form-control form-control-light{{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
+                                    <input type="date" class="form-control {{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
                                 </div>
                             </div>
                             <div class="col-5">
                                 <div class="form-group">
                                     <label>Expense type <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('expense_tipe') ? ' is-invalid' : '' }}" name="expense_tipe" value="Advanced Payment" required="">
+                                    <input type="text" class="form-control {{ $errors->has('expense_tipe') ? ' is-invalid' : '' }}" name="expense_tipe" value="Advanced Payment" required="">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Expense description <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('expense_description') ? ' is-invalid' : '' }}" name="expense_description" required="">
+                                    <select class="form-control select2{{ $errors->has('expense_description') ? ' is-invalid' : '' }}" name="expense_description" data-toggle="select2" required="">
                                         <option value="INVOICE" selected>INVOICE</option>
                                         <option value="INVOICE EXTRANJERO">INVOICE EXTRANJERO</option>
                                         <option value="DEBIT NOTE">DEBIT NOTE</option>
@@ -931,20 +934,20 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Cuenta <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('account_bank') ? ' is-invalid' : '' }}" name="account_provider_id" required="">
+                                    <select class="form-control select2{{ $errors->has('account_bank') ? ' is-invalid' : '' }}" name="account_provider_id" data-toggle="select2" required="">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Neto <span class="text-danger">*</span></label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" required="" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" required="" onchange="calcularTotal()">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Vat</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('vat'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('vat') }}</strong>
@@ -955,7 +958,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Retention</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('retention'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('retention') }}</strong>
@@ -966,7 +969,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Others</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('others'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('others') }}</strong>
@@ -978,7 +981,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Total</label>
-                                    <input type="number" step="any" class="form-control form-control-light" name="total" value="0">
+                                    <input type="number" step="any" class="form-control " name="total" value="0">
                                 </div>
                             </div>
                             <hr>
@@ -987,7 +990,7 @@
                                 <br>
                                 <div class="form-group">
                                     <label>M B/L <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required name="m_bl" value="{{ $operation->m_bl }}" required="">
+                                    <input type="text" class="form-control " required name="m_bl" value="{{ $operation->m_bl }}" required="">
                                 </div>
                             </div>
                             <div class="col-3">
@@ -995,7 +998,7 @@
                                 <br>
                                 <div class="form-group">
                                     <label>H B/L <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required name="h_bl" value="{{ $operation->h_bl }}" required="">
+                                    <input type="text" class="form-control " required name="h_bl" value="{{ $operation->h_bl }}" required="">
                                 </div>
                             </div>
                             <div class="col-3">
@@ -1003,7 +1006,7 @@
                                 <br>
                                 <div class="form-group">
                                     <label>ETA <span class="text-danger">*</span></label>
-                                    <input type="date" class="form-control form-control-light" required name="eta" value="{{ $operation->eta }}" required="">
+                                    <input type="date" class="form-control " required name="eta" value="{{ $operation->eta }}" required="">
                                 </div>
                             </div>
                             <div class="col-3">
@@ -1018,9 +1021,9 @@
                                     <tr>
                                         <th></th>
                                         <th width="40%">Description</th>
-                                        <th>Curr</th>
+                                        <th width="15%">Curr</th>
                                         <th>Rate</th>
-                                        <th width="11%">Iva</th>
+                                        <th width="5%">Iva</th>
                                         <th width="11%">Qty</th>
                                     </tr>
                                 </thead>
@@ -1035,7 +1038,10 @@
                                             </td>
                                             <td>{{ $conceptinvoices->description }}</td>
                                             <td>
-                                                {{ $conceptinvoices->curr }}
+                                                <select name="curr[]" class="form-control select2" data-toggle="select2">
+                                                    <option value="MXN" {{ $conceptinvoices->curr == "MXN" ? 'selected' : ''}}>MXN</option>
+                                                    <option value="USD" {{ $conceptinvoices->curr == "USD" ? 'selected' : ''}}>USD</option>
+                                                </select>
                                             </td>
                                             <td>
                                                 <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
@@ -1062,7 +1068,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Prioridad</label>
-                                    <select class="form-control form-control-light" type="text" name="priority">
+                                    <select class="form-control select2" data-toggle="select2" type="text" name="priority">
                                         <option value="3">Baja</option>
                                         <option value="2">Media</option>
                                         <option value="1">Alta</option>
@@ -1082,7 +1088,7 @@
         <!-- /.modal-dialog -->
     </div>
 
-    <div id="register-advancerequest-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="register-advancerequest-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -1100,7 +1106,7 @@
                              <div class="col-7">
                                 <div class="form-group">
                                     <label>Proveedor <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" required="" onchange="search_accounts()">
+                                    <select class="form-control select2{{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" data-toggle="select2" required="" onchange="search_accounts()">
                                         <option value="">Selecciona...</option>
                                         @foreach($providers as $provider)
                                             <option value="{{ $provider->id }}">{{ $provider->razon_social }}</option>
@@ -1111,25 +1117,25 @@
                              <div class="col-2">
                                 <div class="form-group">
                                     <label>Folio</label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('factura') ? ' is-invalid' : '' }}" name="factura">
+                                    <input type="text" class="form-control {{ $errors->has('factura') ? ' is-invalid' : '' }}" name="factura">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Invoice date</label>
-                                    <input type="date" class="form-control form-control-light{{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
+                                    <input type="date" class="form-control {{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
                                 </div>
                             </div>
                             <div class="col-5">
                                 <div class="form-group">
                                     <label>Expense type <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('expense_tipe') ? ' is-invalid' : '' }}" name="expense_tipe" value="Advanced Payment" required="">
+                                    <input type="text" class="form-control {{ $errors->has('expense_tipe') ? ' is-invalid' : '' }}" name="expense_tipe" value="Advanced Payment" required="">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Expense description <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('expense_description') ? ' is-invalid' : '' }}" name="expense_description" required="">
+                                    <select class="form-control select2{{ $errors->has('expense_description') ? ' is-invalid' : '' }}" name="expense_description" data-toggle="select2" required="">
                                         <option value="INVOICE" selected>INVOICE</option>
                                         <option value="INVOICE EXTRANJERO">INVOICE EXTRANJERO</option>
                                         <option value="DEBIT NOTE">DEBIT NOTE</option>
@@ -1139,20 +1145,20 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Cuenta <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('account_bank') ? ' is-invalid' : '' }}" name="account_provider_id" required="">
+                                    <select class="form-control select2{{ $errors->has('account_bank') ? ' is-invalid' : '' }}" name="account_provider_id" data-toggle="select2" required="">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Neto <span class="text-danger">*</span></label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" required="" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" required="" onchange="calcularTotal()">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Vat</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('vat'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('vat') }}</strong>
@@ -1163,7 +1169,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Retention</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('retention'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('retention') }}</strong>
@@ -1174,7 +1180,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Others</label>
-                                    <input type="number" step="any" class="form-control form-control-light{{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
+                                    <input type="number" step="any" class="form-control {{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
                                     @if ($errors->has('others'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('others') }}</strong>
@@ -1186,7 +1192,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Total</label>
-                                    <input type="number" step="any" class="form-control form-control-light" name="total" value="0">
+                                    <input type="number" step="any" class="form-control " name="total" value="0">
                                 </div>
                             </div>
                             <hr>
@@ -1195,7 +1201,7 @@
                                 <br>
                                 <div class="form-group">
                                     <label>M B/L <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required name="m_bl" value="{{ $operation->m_bl }}" required="">
+                                    <input type="text" class="form-control " required name="m_bl" value="{{ $operation->m_bl }}" required="">
                                 </div>
                             </div>
                             <div class="col-3">
@@ -1203,7 +1209,7 @@
                                 <br>
                                 <div class="form-group">
                                     <label>H B/L <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required name="h_bl" value="{{ $operation->h_bl }}" required="">
+                                    <input type="text" class="form-control " required name="h_bl" value="{{ $operation->h_bl }}" required="">
                                 </div>
                             </div>
                             <div class="col-3">
@@ -1211,7 +1217,7 @@
                                 <br>
                                 <div class="form-group">
                                     <label>ETA <span class="text-danger">*</span></label>
-                                    <input type="date" class="form-control form-control-light" required name="eta" value="{{ $operation->eta }}" required="">
+                                    <input type="date" class="form-control " required name="eta" value="{{ $operation->eta }}" required="">
                                 </div>
                             </div>
                             <div class="col-3">
@@ -1226,9 +1232,9 @@
                                     <tr>
                                         <th></th>
                                         <th width="40%">Description</th>
-                                        <th>Curr</th>
+                                        <th width="15%">Curr</th>
                                         <th>Rate</th>
-                                        <th width="11%">Iva</th>
+                                        <th width="5%">Iva</th>
                                         <th width="11%">Qty</th>
                                     </tr>
                                 </thead>
@@ -1243,7 +1249,10 @@
                                             </td>
                                             <td>{{ $conceptinvoices->description }}</td>
                                             <td>
-                                                {{ $conceptinvoices->curr }}
+                                                <select name="curr[]" class="form-control select2" data-toggle="select2">
+                                                    <option value="MXN" {{ $conceptinvoices->curr == "MXN" ? 'selected' : ''}}>MXN</option>
+                                                    <option value="USD" {{ $conceptinvoices->curr == "USD" ? 'selected' : ''}}>USD</option>
+                                                </select>
                                             </td>
                                             <td>
                                                 <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
@@ -1270,7 +1279,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Prioridad</label>
-                                    <select class="form-control form-control-light" type="text" name="priority">
+                                    <select class="form-control select2" data-toggle="select2" type="text" name="priority">
                                         <option value="3">Baja</option>
                                         <option value="2">Media</option>
                                         <option value="1">Alta</option>
@@ -1290,7 +1299,7 @@
         <!-- /.modal-dialog -->
     </div>
 
-    <div id="information-operation-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="information-operation-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -1305,7 +1314,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Shipper <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('shipper') ? ' is-invalid' : '' }}" type="text" name="shipper" value="{{ $operation->shipper }}">
+                                    <select class="form-control select2{{ $errors->has('shipper') ? ' is-invalid' : '' }}" type="text" name="shipper" id="shipper" value="{{ $operation->shipper }}" data-toggle="select2">
                                         @foreach($clients as $client)
                                             @if($client->id == $operation->shipper)
                                                 <option value="{{ $operation->shipper }}" selected>{{ $client->codigo_cliente }}</option>
@@ -1323,7 +1332,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Master consignee <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('master_consignee') ? ' is-invalid' : '' }}" type="text" name="master_consignee" value="{{ $operation->master_consignee }}">
+                                    <select class="form-control select2{{ $errors->has('master_consignee') ? ' is-invalid' : '' }}" type="text" name="master_consignee" id="master_consignee" value="{{ $operation->master_consignee }}" data-toggle="select2">
                                         @foreach($clients as $client)
                                             @if($client->id == $operation->master_consignee)
                                                 <option value="{{ $operation->master_consignee }}" selected>{{ $client->codigo_cliente }}</option>
@@ -1341,7 +1350,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>House consignee <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('house_consignee') ? ' is-invalid' : '' }}" type="text" name="house_consignee" value="{{ $operation->house_consignee }}">
+                                    <select class="form-control select2{{ $errors->has('house_consignee') ? ' is-invalid' : '' }}" type="text" name="house_consignee" id="house_consignee" value="{{ $operation->house_consignee }}" data-toggle="select2">
                                         @foreach($clients as $client)
                                             @if($client->id == $operation->house_consignee)
                                                 <option value="{{ $operation->house_consignee }}" selected>{{ $client->codigo_cliente }}</option>
@@ -1360,8 +1369,8 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>ETD <span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control form-control-light{{ $errors->has('etd') ? ' is-invalid' : '' }}" type="date" name="etd" value="{{ $operation->etd }}"> --}}
-                                    <input type="text" name="etd" class="form-control date form-control-light{{ $errors->has('etd') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ Carbon::parse($operation->etd)->format('m/d/Y') }}">
+                                    {{-- <input class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" type="date" name="etd" value="{{ $operation->etd }}"> --}}
+                                    <input type="text" name="etd" class="form-control date {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ Carbon::parse($operation->etd)->format('m/d/Y') }}">
                                     @if ($errors->has('etd'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('etd') }}</strong>
@@ -1372,8 +1381,8 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>ETA <span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control form-control-light{{ $errors->has('eta') ? ' is-invalid' : '' }}" type="date" name="eta" value="{{ $operation->eta }}"> --}}
-                                    <input type="text" name="eta" class="form-control date form-control-light{{ $errors->has('eta') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ Carbon::parse($operation->eta)->format('m/d/Y') }}">
+                                    {{-- <input class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" type="date" name="eta" value="{{ $operation->eta }}"> --}}
+                                    <input type="text" name="eta" class="form-control date {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" value="{{ Carbon::parse($operation->eta)->format('m/d/Y') }}">
                                     @if ($errors->has('eta'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('eta') }}</strong>
@@ -1384,8 +1393,8 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>IMPO/EXPO <span class="text-danger">*</span></label>
-                                    {{-- <input type="text" class="form-control form-control-light{{ $errors->has('impo_expo') ? ' is-invalid' : '' }}" value="{{ $operation->impo_expo }}"  name="impo_expo"> --}}
-                                    <select type="text" class="form-control form-control-light{{ $errors->has('impo_expo') ? ' is-invalid' : '' }}" value="{{ old('impo_expo') }}"  name="impo_expo">
+                                    {{-- <input type="text" class="form-control {{ $errors->has('impo_expo') ? ' is-invalid' : '' }}" value="{{ $operation->impo_expo }}"  name="impo_expo"> --}}
+                                    <select type="text" class="form-control select2{{ $errors->has('impo_expo') ? ' is-invalid' : '' }}" value="{{ old('impo_expo') }}"  name="impo_expo" id="impo_expo" data-toggle="select2">
                                         <option value="IMPO" {{ $operation->impo_expo == "IMPO" ? 'selected' : ''}}>IMPO</option>
                                         <option value="EXPO" {{ $operation->impo_expo == "EXPO" ? 'selected' : ''}}>EXPO</option>
                                     </select>
@@ -1399,7 +1408,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>POL <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('pol') ? ' is-invalid' : '' }}" value="{{ $operation->pol }}"  name="pol">
+                                    <input type="text" class="form-control {{ $errors->has('pol') ? ' is-invalid' : '' }}" value="{{ $operation->pol }}"  name="pol">
                                     @if ($errors->has('pol'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('pol') }}</strong>
@@ -1410,7 +1419,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>POD <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('pod') ? ' is-invalid' : '' }}" value="{{ $operation->pod }}"  name="pod">
+                                    <input type="text" class="form-control {{ $errors->has('pod') ? ' is-invalid' : '' }}" value="{{ $operation->pod }}"  name="pod">
                                     @if ($errors->has('pod'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('pod') }}</strong>
@@ -1421,7 +1430,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Destino <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('destino') ? ' is-invalid' : '' }}" value="{{ $operation->destino }}"  name="destino">
+                                    <input type="text" class="form-control {{ $errors->has('destino') ? ' is-invalid' : '' }}" value="{{ $operation->destino }}"  name="destino">
                                     @if ($errors->has('destino'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('destino') }}</strong>
@@ -1432,7 +1441,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Incoterm <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('incoterm') ? ' is-invalid' : '' }}" value="{{ $operation->incoterm }}"  name="incoterm">
+                                    <input type="text" class="form-control {{ $errors->has('incoterm') ? ' is-invalid' : '' }}" value="{{ $operation->incoterm }}"  name="incoterm">
                                     @if ($errors->has('incoterm'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('incoterm') }}</strong>
@@ -1443,7 +1452,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Booking #</label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('booking') ? ' is-invalid' : '' }}" value="{{ $operation->booking }}"  name="booking">
+                                    <input type="text" class="form-control {{ $errors->has('booking') ? ' is-invalid' : '' }}" value="{{ $operation->booking }}"  name="booking">
                                     @if ($errors->has('booking'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('booking') }}</strong>
@@ -1454,7 +1463,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Custom cutoff</label>
-                                    <input type="date" class="form-control form-control-light{{ $errors->has('custom_cutoff') ? ' is-invalid' : '' }}" value="{{ $operation->custom_cutoff }}"  name="custom_cutoff">
+                                    <input type="date" class="form-control {{ $errors->has('custom_cutoff') ? ' is-invalid' : '' }}" value="{{ $operation->custom_cutoff }}"  name="custom_cutoff">
                                     @if ($errors->has('custom_cutoff'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('custom_cutoff') }}</strong>
@@ -1465,7 +1474,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Vessel <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('vessel') ? ' is-invalid' : '' }}" value="{{ $operation->vessel }}"  name="vessel">
+                                    <input type="text" class="form-control {{ $errors->has('vessel') ? ' is-invalid' : '' }}" value="{{ $operation->vessel }}"  name="vessel">
                                     @if ($errors->has('vessel'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('vessel') }}</strong>
@@ -1476,7 +1485,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>O/F</label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('o_f') ? ' is-invalid' : '' }}" value="{{ $operation->o_f }}"  name="o_f">
+                                    <input type="text" class="form-control {{ $errors->has('o_f') ? ' is-invalid' : '' }}" value="{{ $operation->o_f }}"  name="o_f">
                                     @if ($errors->has('o_f'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('o_f') }}</strong>
@@ -1487,7 +1496,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>AA <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('aa') ? ' is-invalid' : '' }}" value="{{ $operation->aa }}"  name="aa">
+                                    <input type="text" class="form-control {{ $errors->has('aa') ? ' is-invalid' : '' }}" value="{{ $operation->aa }}"  name="aa">
                                     @if ($errors->has('aa'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('aa') }}</strong>
@@ -1498,7 +1507,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>M B/L <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('m_bl') ? ' is-invalid' : '' }}" value="{{ $operation->m_bl }}"  name="m_bl">
+                                    <input type="text" class="form-control {{ $errors->has('m_bl') ? ' is-invalid' : '' }}" value="{{ $operation->m_bl }}"  name="m_bl">
                                     @if ($errors->has('m_bl'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('m_bl') }}</strong>
@@ -1509,7 +1518,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>C. Invoice <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('c_invoice') ? ' is-invalid' : '' }}" value="{{ $operation->c_invoice }}"  name="c_invoice">
+                                    <input type="text" class="form-control {{ $errors->has('c_invoice') ? ' is-invalid' : '' }}" value="{{ $operation->c_invoice }}"  name="c_invoice">
                                     @if ($errors->has('c_invoice'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('c_invoice') }}</strong>
@@ -1520,7 +1529,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>H B/L <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light{{ $errors->has('h_bl') ? ' is-invalid' : '' }}" value="{{ $operation->h_bl }}"  name="h_bl">
+                                    <input type="text" class="form-control {{ $errors->has('h_bl') ? ' is-invalid' : '' }}" value="{{ $operation->h_bl }}"  name="h_bl">
                                     @if ($errors->has('h_bl'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('h_bl') }}</strong>
@@ -1541,7 +1550,7 @@
         <!-- /.modal-dialog -->
     </div>
 
-    <div id="register-container-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="register-container-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -1556,20 +1565,20 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>CNTR # <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required name="cntr">
+                                    <input type="text" class="form-control " required name="cntr">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Seal No. <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required name="seal_no">
+                                    <input type="text" class="form-control " required name="seal_no">
                                 </div>
                             </div>
 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Type <span class="text-danger">*</span></label>
-                                    <select type="text" class="form-control form-control-light" required name="type">
+                                    <select type="text" class="form-control select2" data-toggle="select2" required name="type">
                                         <option value="FCL">FCL</option>
                                         <option value="LCL">LCL</option>
                                     </select>
@@ -1578,7 +1587,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Size <span class="text-danger">*</span></label>
-                                    <select type="text" class="form-control form-control-light" required name="size">
+                                    <select type="text" class="form-control select2" data-toggle="select2" required name="size">
                                         <option value="20 DV">20 DV</option>
                                         <option value="20 FT">20 FT</option>
                                         <option value="40 DV">40 DV</option>
@@ -1594,13 +1603,13 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>QTY <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required name="qty">
+                                    <input type="text" class="form-control " required name="qty">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Modalidad <span class="text-danger">*</span></label>
-                                    <select type="text" class="form-control form-control-light" required name="modalidad">
+                                    <select type="text" class="form-control select2" data-toggle="select2" required name="modalidad">
                                         <option value="Rail & Truck">Rail & Truck</option>
                                         <option value="Truck">Truck</option>
                                         <option value="Dedicado">Dedicado</option>
@@ -1611,13 +1620,13 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Weight <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required name="weight">
+                                    <input type="text" class="form-control " required name="weight">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Measures <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required name="measures">
+                                    <input type="text" class="form-control " required name="measures">
                                 </div>
                             </div>
                         </div>
@@ -1633,7 +1642,7 @@
         <!-- /.modal-dialog -->
     </div>
 
-    <div id="information-container-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="information-container-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -1648,19 +1657,19 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>CNTR # <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required value=""  name="cntr">
+                                    <input type="text" class="form-control " required value=""  name="cntr">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Seal No. <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required value=""  name="seal_no">
+                                    <input type="text" class="form-control " required value=""  name="seal_no">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Type <span class="text-danger">*</span></label>
-                                    <select type="text" class="form-control form-control-light" required value=""  name="type">
+                                    <select type="text" class="form-control select2" data-toggle="select2" required value=""  name="type">
                                         <option value="FCL">FCL</option>
                                         <option value="LCL">LCL</option>
                                     </select>
@@ -1669,7 +1678,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Size <span class="text-danger">*</span></label>
-                                    <select type="text" class="form-control form-control-light" required value=""  name="size">
+                                    <select type="text" class="form-control select2" data-toggle="select2" required value=""  name="size">
                                         <option value="20 DV">20 DV</option>
                                         <option value="20 FT">20 FT</option>
                                         <option value="40 DV">40 DV</option>
@@ -1685,13 +1694,13 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>QTY <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required value=""  name="qty">
+                                    <input type="text" class="form-control " required value=""  name="qty">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Modalidad <span class="text-danger">*</span></label>
-                                    <select type="text" class="form-control form-control-light" required value=""  name="modalidad">
+                                    <select type="text" class="form-control select2" data-toggle="select2" required value=""  name="modalidad">
                                         <option value="Rail & Truck">Rail & Truck</option>
                                         <option value="Truck">Truck</option>
                                         <option value="Dedicado">Dedicado</option>
@@ -1702,13 +1711,13 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Weight <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required value=""  name="weight">
+                                    <input type="text" class="form-control " required value=""  name="weight">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Measures <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" required value=""  name="measures">
+                                    <input type="text" class="form-control " required value=""  name="measures">
                                 </div>
                             </div>
                             <div class="col-4"></div>
@@ -1718,51 +1727,51 @@
                                     <br>
                                     <div class="form-group">
                                         <label>Proforma</label>
-                                        <input type="date" class="form-control form-control-light"  name="proforma" value="">
+                                        <input type="date" class="form-control "  name="proforma" value="">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <br>
                                     <div class="form-group">
                                         <label>Pago proforma</label>
-                                        <input type="date" class="form-control form-control-light"  name="pago_proforma" value="">
+                                        <input type="date" class="form-control "  name="pago_proforma" value="">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <br>
                                     <div class="form-group">
                                         <label>Despachado puerto</label>
-                                        <input type="date" class="form-control form-control-light" value=""  name="despachado_puerto">
+                                        <input type="date" class="form-control " value=""  name="despachado_puerto">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Solicitud transporte</label>
-                                        <input type="date" class="form-control form-control-light" value=""  name="solicitud_transporte">
+                                        <input type="date" class="form-control " value=""  name="solicitud_transporte">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Port etd</label>
-                                        <input type="date" class="form-control form-control-light" value=""  name="port_etd">
+                                        <input type="date" class="form-control " value=""  name="port_etd">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Dlv day</label>
-                                        <input type="date" class="form-control form-control-light" value=""  name="dlv_day">
+                                        <input type="date" class="form-control " value=""  name="dlv_day">
                                     </div>
                                 </div>
                                 {{-- <div class="col-4">
                                     <div class="form-group">
                                         <label>Factura Unmx</label>
-                                        <input type="date" class="form-control form-control-light" value=""  name="factura_unmx">
+                                        <input type="date" class="form-control " value=""  name="factura_unmx">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Fecha factura</label>
-                                        <input type="date" class="form-control form-control-light" value=""  name="fecha_factura">
+                                        <input type="date" class="form-control " value=""  name="fecha_factura">
                                     </div>
                                 </div> --}}
                             @endif
@@ -1799,7 +1808,7 @@
         </div>
     </div>
 
-    <div id="create-prefactura-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="create-prefactura-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -1814,7 +1823,7 @@
                             <div class="col-8">
                                 <div class="form-group">
                                     <label>Cliente <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light" type="text" name="client_id" value="{{ $operation->client_id }}" required>
+                                    <select class="form-control select2" data-toggle="select2" type="text" name="client_id" value="{{ $operation->client_id }}" required>
                                         <option value="">Selecciona...</option>
                                         @foreach($clients as $client)
                                             <option value="{{ $client->id }}">{{ $client->razon_social }}</option>
@@ -1847,7 +1856,7 @@
                                                 </td>
                                                 <td>{{ $concept->description }}</td>
                                                 <td>
-                                                    <select name="curr[]" class="form-control">
+                                                    <select name="curr[]" class="form-control select2" data-toggle="select2">
                                                         <option value="MXN" {{ $concept->curr == "MXN" ? 'selected' : ''}}>MXN</option>
                                                         <option value="USD" {{ $concept->curr == "USD" ? 'selected' : ''}}>USD</option>
                                                     </select>
@@ -1876,7 +1885,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Prioridad</label>
-                                    <select class="form-control form-control-light" type="text" name="priority">
+                                    <select class="form-control select2" data-toggle="select2" type="text" name="priority">
                                         <option value="3">Baja</option>
                                         <option value="2">Media</option>
                                         <option value="1">Alta</option>
@@ -1896,7 +1905,7 @@
         <!-- /.modal-dialog -->
     </div>
 
-    <div id="create-debitnote-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="create-debitnote-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -1911,7 +1920,7 @@
                             <div class="col-8">
                                 <div class="form-group">
                                     <label>Cliente <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light" type="text" name="client_id" value="{{ $operation->client_id }}" required>
+                                    <select class="form-control select2" data-toggle="select2" type="text" name="client_id" value="{{ $operation->client_id }}" required>
                                         <option value="">Selecciona...</option>
                                         @foreach($clients as $client)
                                             <option value="{{ $client->id }}">{{ $client->razon_social }}</option>
@@ -1944,7 +1953,7 @@
                                                 </td>
                                                 <td>{{ $concept->description }}</td>
                                                 <td>
-                                                    <select name="curr[]" class="form-control">
+                                                    <select name="curr[]" class="form-control select2" data-toggle="select2">
                                                         <option value="MXN" {{ $concept->curr == "MXN" ? 'selected' : ''}}>MXN</option>
                                                         <option value="USD" {{ $concept->curr == "USD" ? 'selected' : ''}}>USD</option>
                                                     </select>
@@ -1974,7 +1983,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Prioridad</label>
-                                    <select class="form-control form-control-light" type="text" name="priority">
+                                    <select class="form-control select2" data-toggle="select2" type="text" name="priority">
                                         <option value="3">Baja</option>
                                         <option value="2">Media</option>
                                         <option value="1">Alta</option>
@@ -1994,7 +2003,7 @@
         <!-- /.modal-dialog -->
     </div>
 
-    <div id="create-hbl-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="create-hbl-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -2009,7 +2018,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Shipper <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('shipper') ? ' is-invalid' : '' }}" type="text" name="shipper">
+                                    <select class="form-control select2{{ $errors->has('shipper') ? ' is-invalid' : '' }}" data-toggle="select2" type="text" name="shipper">
                                         @foreach($clients as $client)
                                             @if($client->id == $operation->shipper)
                                                 <option value="{{ $operation->shipper }}" selected>{{ $client->codigo_cliente }}</option>
@@ -2022,7 +2031,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>House consignee <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('house_consignee') ? ' is-invalid' : '' }}" type="text" name="house_consignee">
+                                    <select class="form-control select2{{ $errors->has('house_consignee') ? ' is-invalid' : '' }}" type="text" name="house_consignee" data-toggle="select2">
                                         @foreach($clients as $client)
                                             @if($client->id == $operation->house_consignee)
                                                 <option value="{{ $operation->house_consignee }}" selected>{{ $client->codigo_cliente }}</option>
@@ -2035,19 +2044,19 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Notify Party <span class="text-danger">*</span></label>
-                                    <textarea class="form-control form-control-light" type="text" name="notify_party"></textarea>
+                                    <textarea class="form-control " type="text" name="notify_party"></textarea>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>No. Pkgs <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-light" type="text" name="no_pkgs">
+                                    <input type="text" class="form-control " type="text" name="no_pkgs">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Cargo Type <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light" type="text" name="cargo_type">
+                                    <select class="form-control select2" data-toggle="select2" type="text" name="cargo_type">
                                         <option value="EMPTY">EMPTY</option>
                                         <option value="FCL">FCL</option>
                                         <option value="LCL">LCL</option>
@@ -2058,7 +2067,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Freight Term <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light" type="text" name="freight_term">
+                                    <select class="form-control select2" data-toggle="select2" type="text" name="freight_term">
                                         <option value="PREPAID">PREPAID</option>
                                         <option value="COLLECT">COLLECT</option>
                                     </select>
@@ -2073,7 +2082,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-6">
-                                            <select class="form-control form-control-light" type="text" name="service_term1">
+                                            <select class="form-control select2" data-toggle="select2" type="text" name="service_term1">
                                                 <option value="BT">BT</option>
                                                 <option value="BULK">BULK</option>
                                                 <option value="FI">FI</option>
@@ -2088,7 +2097,7 @@
                                             </select>
                                         </div>
                                         <div class="col-6">
-                                            <select class="form-control form-control-light" type="text" name="service_term2">
+                                            <select class="form-control select2" data-toggle="select2" type="text" name="service_term2">
                                                 <option value="BT">BT</option>
                                                 <option value="BULK">BULK</option>
                                                 <option value="FI">FI</option>
@@ -2112,7 +2121,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Descripción de contenedor(es) <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light" type="text" name="description_header1">
+                                    <select class="form-control select2" data-toggle="select2" type="text" name="description_header1">
                                         <option value="SHIPPER'S SEALED/RISK ON DESK">SHIPPER'S SEALED/RISK ON DESK</option>
                                         <option value="SHIPPER'S LOAD & COUNT & SEALED">SHIPPER'S LOAD & COUNT & SEALED</option>
                                         <option value="SHIPPER'S LOAD, COUNT, STOW & SEAL">SHIPPER'S LOAD, COUNT, STOW & SEAL</option>
@@ -2123,7 +2132,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label><span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light" type="text" name="description_header2">
+                                    <select class="form-control select2" data-toggle="select2" type="text" name="description_header2">
                                         <option value="SAID TO CONTAIN SHIPPER'S WEIGHT AND MEASUREMENT :">SAID TO CONTAIN SHIPPER'S WEIGHT AND MEASUREMENT :</option>
                                         <option value="SAID TO BE :">SAID TO BE :</option>
                                         <option value="SAID TO CONTAIN :">SAID TO CONTAIN :</option>
@@ -2132,7 +2141,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea class="form-control form-control-light" type="text" name="description" rows="5"></textarea>
+                                    <textarea class="form-control " type="text" name="description" rows="5"></textarea>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -2281,7 +2290,7 @@
                 console.log(response.data.length);
                 $("select[name=account_bank]").append("<option value=''>Selecciona...</option>");
                 for(var i=0;i<=response.data.length;i++){
-                    $("select[name=account_provider_id]").append("<option value='"+ response.data[i].id + "'>" + response.data[i].account + "</option>");
+                    $("select[name=account_provider_id]").append("<option value='"+ response.data[i].id + "'>" + response.data[i].currency + " - " + response.data[i].account + "</option>");
                 }
             }).catch(function (error) {
                 console.log(error);

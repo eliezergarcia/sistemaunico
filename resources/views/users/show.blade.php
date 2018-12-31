@@ -192,7 +192,7 @@
 </div> <!-- container -->
 
 <!-- Start Modals    -->
-    <div id="information-user-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id="information-user-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header pr-4 pl-4">
@@ -203,10 +203,19 @@
                     <form method="POST" action="{{ route('usuarios.update', $user->id) }}" enctype="multipart/form-data" class="pl-2 pr-2">
                         {!! csrf_field() !!}
                         {!! method_field('PUT') !!}
+                        <div class="form-group">
+                            <label>Nombre: <span class="text-danger">*</span></label>
+                            <input class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" name="name" value="{{ $user->name }}">
+                            @if ($errors->has('name'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+                        </div>
 
                         <div class="form-group">
                             <label>Usuario: <span class="text-danger">*</span></label>
-                            <input class="form-control form-control-light{{ $errors->has('user_name') ? ' is-invalid' : '' }}" type="text" name="user_name" value="{{ $user->user_name }}">
+                            <input class="form-control {{ $errors->has('user_name') ? ' is-invalid' : '' }}" type="text" name="user_name" value="{{ $user->user_name }}">
                             @if ($errors->has('user_name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('user_name') }}</strong>
@@ -216,7 +225,7 @@
 
                         <div class="form-group">
                             <label>Contraseña: <span class="text-danger">*</span></label>
-                            <input class="form-control form-control-light{{ $errors->has('password_encrypted') ? ' is-invalid' : '' }}" type="text" name="password_encrypted" value="{{ $user->password_encrypted }}">
+                            <input class="form-control {{ $errors->has('password_encrypted') ? ' is-invalid' : '' }}" type="text" name="password_encrypted" value="{{ $user->password_encrypted }}">
                             @if ($errors->has('password_encrypted'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('password_encrypted') }}</strong>
@@ -225,18 +234,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Nombre: <span class="text-danger">*</span></label>
-                            <input class="form-control form-control-light{{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" name="name" value="{{ $user->name }}">
-                            @if ($errors->has('name'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('name') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-
-                        <div class="form-group">
                             <label>Correo electrónico: <span class="text-danger">*</span></label>
-                            <input class="form-control form-control-light{{ $errors->has('email') ? ' is-invalid' : '' }}" type="text" name="email" value="{{ $user->email }}">
+                            <input class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" type="text" name="email" value="{{ $user->email }}">
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('email') }}</strong>
@@ -244,9 +243,40 @@
                             @endif
                         </div>
 
+                        @if(Auth::user()->present()->isAdmin() || Auth::user()->present()->isAdminGeneral())
+                            <div class="form-group">
+                                <label>Rol: <span class="mb-0 font-13">(Departamento)</span></label>
+                                <div class="form-inline">
+                                <select class="select2 form-control select2-multiple mb-2{{ $errors->has('roles[]') ? ' is-invalid' : '' }}" name="roles[]" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                    <optgroup>
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role->id }}" {{ $user->roles->pluck('id')->contains($role->id) ? 'selected' : ''  }}>{{ $role->display_name }}</option>
+                                        @endforeach
+                                    </optgroup>
+                                </select>
+                                </div>
+                                @if ($errors->has('roles[]'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('roles[]') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        @endif
+
+                        <div class="form-group fallback">
+                            <label>Avatar: </label>
+                            {{-- <input class="form-control " type="file" name="avatar"> --}}
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" name="avatar" class="custom-file-input">
+                                    <label class="custom-file-label">Selecciona el archivo:</label>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label>Teléfono: </label>
-                            <input class="form-control form-control-light{{ $errors->has('phone') ? ' is-invalid' : '' }}" type="text" name="phone" value="{{ $user->phone }}">
+                            <input class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" type="text" name="phone" value="{{ $user->phone }}" data-toggle="input-mask" data-mask-format="(00) 0000-0000" placeholder="(xx) xxxxx-xxxx">
                             @if ($errors->has('phone'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('phone') }}</strong>
@@ -256,43 +286,13 @@
 
                         <div class="form-group">
                             <label>Dirección: </label>
-                            <input class="form-control form-control-light{{ $errors->has('phone') ? ' is-invalid' : '' }}" type="text" name="address" value="{{ $user->address }}">
+                            <input class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" type="text" name="address" value="{{ $user->address }}">
                             @if ($errors->has('address'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('address') }}</strong>
                                 </span>
                             @endif
                         </div>
-
-                        <div class="form-group fallback">
-                            <label>Avatar: </label>
-                            {{-- <input class="form-control form-control-light" type="file" name="avatar"> --}}
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input type="file" name="avatar" class="custom-file-input">
-                                    <label class="custom-file-label">Selecciona el archivo:</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        @if(Auth::user()->roles->pluck('id')->contains(1))
-                            <div class="">
-                                <label>Rol: <span class="mb-0 font-13">(Departamento)</span></label>
-                                <div class="form-inline">
-                                    @foreach($roles as $role)
-                                    <div class="custom-control custom-checkbox mb-2">
-                                        <input type="checkbox" class="custom-control-input{{ $errors->has('roles[]') ? ' is-invalid' : '' }}" id="{{ $role->name }}" value="{{ $role->id }}" name="roles[]"{{ $user->roles->pluck('id')->contains($role->id) ? 'checked' : ''  }}>
-                                        <label class="custom-control-label" for="{{ $role->name }}">{{ $role->display_name }}</label>
-                                    </div>&nbsp;&nbsp;&nbsp;
-                                    @endforeach
-                                </div>
-                                @if ($errors->has('roles[]'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('roles[]') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        @endif
                 </div>
                 <div class="text-right pb-4 pr-4">
                     <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
@@ -360,7 +360,7 @@
                              <div class="col-12">
                                 <div class="form-group">
                                     <label>Cliente <span class="text-danger">*</span></label>
-                                    <select class="form-control form-control-light{{ $errors->has('client_id') ? ' is-invalid' : '' }}" name="client_id" required>
+                                    <select class="form-control {{ $errors->has('client_id') ? ' is-invalid' : '' }}" name="client_id" required>
                                         <option value="">Selecciona...</option>
                                         @foreach($clients as $client)
                                             @if(!$user->clients->pluck('id')->contains($client->id))

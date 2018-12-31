@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'Edith Valdéz',
             'user_name' => 'edithvaldez',
-            'email' => 'edith.valdez@email.com',
+            'email' => 'edith@unicologx.com.mx',
             'password' => '123412',
             'password_encrypted' => '123412'
         ]);
@@ -43,7 +43,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'Placida Durán',
             'user_name' => 'placidaduran',
-            'email' => 'placida.duran@email.com',
+            'email' => 'placida@unicologx.com.mx',
             'password' => '123412',
             'password_encrypted' => '123412'
         ]);

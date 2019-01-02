@@ -238,13 +238,13 @@
                     </ul>
                     <ul class="side-nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="{{ route('balances.index') }}" aria-expanded="false">Balances
+                            <a href="{{ route('manejocuentas.index') }}" aria-expanded="false">Daily/Account
                             </a>
                         </li>
                     </ul>
                     <ul class="side-nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="{{ route('manejocuentas.index') }}" aria-expanded="false">Daily/Account
+                            <a href="{{ route('balances.index') }}" aria-expanded="false">Balances
                             </a>
                         </li>
                     </ul>

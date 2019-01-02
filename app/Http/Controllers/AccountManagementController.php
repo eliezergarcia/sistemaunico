@@ -50,7 +50,7 @@ class AccountManagementController extends Controller
     {
         // dd($request->all());
         if ($request->am_fecha_inicio != null) {
-            return Excel::download(new AccountManagementExport($request), 'account_management.xlsx');
+            return Excel::download(new AccountManagementExport($request), 'accountmanagement.xlsx');
         }
         if ($request->da_fecha_inicio != null) {
             return Excel::download(new DailyApprovalExport($request), 'daily_approval.xlsx');

@@ -80,7 +80,7 @@
                                 <div class="col-7">
                                     <h5 style="margin: 10px;">: Edith Valdez</h5>
                                     <h5 style="margin: 10px;">: Administración</h5>
-                                    <h5 style="margin: 10px;">: {{ $invoice->aut_fin }}</h5>
+                                    <h5 style="margin: 10px;">: {{ $invoice->regDate }}</h5>
                                     <h5 style="margin: 10px;">: {{ $invoice->expense_tipe }}</h5>
                                 </div>
                             </div>

@@ -71,10 +71,10 @@
                                     <td>{{ $expense->invoice }}</td>
                                     <td>{{ $expense->expense_type }}</td>
                                     <td>{{ $expense->description }}</td>
-                                    <td>{{ $expense->neto }}</td>
-                                    <td>{{ $expense->vat }}</td>
-                                    <td class="text-danger">- {{ $expense->retention }}</td>
-                                    <td>{{ $expense->others }}</td>
+                                    <td>{{ number_format($expense->neto, 2, '.', ',') }}</td>
+                                    <td>{{ number_format($expense->vat, 2, '.', ',') }}</td>
+                                    <td class="text-danger">- {{ number_format($expense->retention, 2, '.', ',') }}</td>
+                                    <td>{{ number_format($expense->others, 2, '.', ',') }}</td>
                                     <td>{{ $expense->total }}</td>
                                     <td>{{ $expense->notes }}</td>
                                     <td>

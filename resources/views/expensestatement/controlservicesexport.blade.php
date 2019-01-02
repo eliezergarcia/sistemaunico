@@ -26,7 +26,7 @@
         </tr>
         <?php $enerogasto = 0; $febrerogasto = 0; $marzogasto = 0; $abrilgasto = 0; $mayogasto = 0; $juniogasto = 0; $juliogasto = 0; $agostogasto = 0; $septiembregasto = 0; $octubregasto = 0; $noviembregasto = 0; $diciembregasto = 0; $totaltotal = 0; ?>
         @foreach($services as $service)
-            @if($service->id > 0 || $service->id < 13)
+            @if($service->id > 0 && $service->id < 14)
                 <tr>
                     <th>{{ $service->numero_usuario }}</th>
                     <th>{{ $service->servicio }}</th>

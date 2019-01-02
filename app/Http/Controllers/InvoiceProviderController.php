@@ -245,6 +245,7 @@ class InvoiceProviderController extends Controller
             $commission = CommissionBank::create($request->all());
             $commission->invoices()->attach($request->invoices);
         }
+        dd($commission);
 
         foreach ($request->invoices as $id) {
             $invoice = InvoiceProvider::findOrFail($id);
@@ -264,7 +265,7 @@ class InvoiceProviderController extends Controller
             $invoice->updateAccountManagementBalance($request, $option, $invoice->aut_fin);
         }
 
-        if ($commission) {
+        if ($invoice) {
             DB::commit();
             return 'La revisión de facturas se generó correctamente.';
         } else {

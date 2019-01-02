@@ -35,6 +35,7 @@ class InvoicesPerProviderSheet implements FromView, ShouldAutoSize, WithTitle
 
     public function title(): string
     {
-        return strtoupper($this->provider->codigo_proveedor);
+        return "";
+        // return strtoupper($this->provider->codigo_proveedor);
     }
 }

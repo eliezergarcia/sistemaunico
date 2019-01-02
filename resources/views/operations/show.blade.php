@@ -1564,21 +1564,21 @@
                         <div class="row">
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label>CNTR # <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control " required name="cntr">
+                                    <label id="cntr_container_label">CNTR # <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control " id="cntr_container" required name="cntr">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label>Seal No. <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control " required name="seal_no">
+                                    <label id="sealno_container_label">Seal No. <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control " id="sealno_container" required name="seal_no">
                                 </div>
                             </div>
 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Type <span class="text-danger">*</span></label>
-                                    <select type="text" class="form-control select2" data-toggle="select2" required name="type">
+                                    <select type="text" class="form-control select2" data-toggle="select2" id="type_container" onchange="container_required()" required name="type">
                                         <option value="FCL">FCL</option>
                                         <option value="LCL">LCL</option>
                                     </select>
@@ -1656,20 +1656,20 @@
                         <div class="row">
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label>CNTR # <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control " required value=""  name="cntr">
+                                    <label id="cntr_container_label2">CNTR # <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control " id="cntr_container2" required value=""  name="cntr">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label>Seal No. <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control " required value=""  name="seal_no">
+                                    <label id="sealno_container_label2">Seal No. <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control " id="sealno_container2" required value=""  name="seal_no">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Type <span class="text-danger">*</span></label>
-                                    <select type="text" class="form-control select2" data-toggle="select2" required value=""  name="type">
+                                    <select type="text" class="form-control select2" id="type_container2" data-toggle="select2" onchange="container_required2()" required value=""  name="type">
                                         <option value="FCL">FCL</option>
                                         <option value="LCL">LCL</option>
                                     </select>
@@ -2296,6 +2296,37 @@
                 console.log(error);
             });
         }
+
+        function container_required()
+        {
+            if ($('#type_container').val() == "LCL") {
+                $('#cntr_container').removeAttr("required");
+                $('#sealno_container').removeAttr("required");
+                document.getElementById('cntr_container_label').innerHTML= 'CNTR #';
+                document.getElementById('sealno_container_label').innerHTML= 'Seal no.';
+            }else{
+                $('#cntr_container').attr("required",true);
+                $('#sealno_container').attr("required",true);
+                document.getElementById('cntr_container_label').innerHTML= 'CNTR # <span class="text-danger">*</span>';
+                document.getElementById('sealno_container_label').innerHTML= 'Seal no. <span class="text-danger">*</span>';
+            }
+        }
+
+        function container_required2()
+        {
+            if ($('#type_container2').val() == "LCL") {
+                $('#cntr_container2').removeAttr("required");
+                $('#sealno_container2').removeAttr("required");
+                document.getElementById('cntr_container_label2').innerHTML= 'CNTR #';
+                document.getElementById('sealno_container_label2').innerHTML= 'Seal no.';
+            }else{
+                $('#cntr_container2').attr("required",true);
+                $('#sealno_container2').attr("required",true);
+                document.getElementById('cntr_container_label2').innerHTML= 'CNTR # <span class="text-danger">*</span>';
+                document.getElementById('sealno_container_label2').innerHTML= 'Seal no. <span class="text-danger">*</span>';
+            }
+        }
+
 
         @if($errors->any())
             $('#information-operation-modal').modal('show');

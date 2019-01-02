@@ -48,6 +48,7 @@ class AccountManagementController extends Controller
      */
     public function show(Request $request)
     {
+        dd($request->all());
         if ($request->am_fecha_inicio != null) {
             return Excel::download(new AccountManagementExport($request), 'account_management.xlsx');
         }

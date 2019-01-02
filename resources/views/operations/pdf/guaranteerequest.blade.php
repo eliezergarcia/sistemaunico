@@ -239,8 +239,13 @@
                     <div class="row" style="border-width: 1px; border-style: solid;">
                         <div class="col-6 pt-3 pb-3">
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-4">
                                     <h5 style="margin: 10px;">Info Bank </h5>
+                                </div>
+                                <div class="col-8">
+                                    <h4 style="margin: 10px;">
+                                        &nbsp;&nbsp;{{ $invoice->provider->codigo_proveedor }}
+                                    </h4>
                                 </div>
                             </div>
                             <div class="row">

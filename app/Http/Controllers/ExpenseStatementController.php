@@ -53,6 +53,7 @@ class ExpenseStatementController extends Controller
         DB::beginTransaction();
 
         $fecha = ExpenseStatement::whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))->orderBy('id', 'desc')->first();
+        // dd($fecha->last());
         $fecha2 = InvoiceProvider::whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))->orderBy('id', 'desc')->first();
         if($fecha || $fecha2)
         {

@@ -127,13 +127,13 @@
                                 {{-- <div class="col-12">
                                     <div class="row"> --}}
                                         <div class="col-4">
-                                            <h5 style="margin: 10px;">GENERAL INFORMATION</h5>
+                                            <h5 style="margin: 10px;">DESCRIPTION</h5>
                                             <br>
                                             <h5 style="margin: 10px;">SOLICITADO POR</h5>
                                         </div>
                                         <div class="col-7">
                                             <h5 style="margin: 10px;">
-                                                : {{ $expense->notes }}
+                                                : {{ $expense->description }}
                                             </h5>
                                             <br>
                                             <h5 style="margin: 10px;">
@@ -190,6 +190,17 @@
                             <div class="row">
                                 <div class="col-4">
                                     <h5 style="margin: 10px;">Notes </h5>
+                                </div>
+                                <div class="col-8">
+                                    <h5 style="margin: 10px;">
+                                        {{ $expense->notes }}
+                                    </h5>
+                                </div>
+                            </div>
+                            <br><br><br>
+                            <div class="row">
+                                <div class="col-4">
+                                    <h5 style="margin: 10px;">Finance comments </h5>
                                 </div>
                                 <div class="col-8">
                                     <h5 style="margin: 10px;">

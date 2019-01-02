@@ -231,10 +231,10 @@ class InvoiceProvider extends Model
 
     public function markAsReadNotification()
     {
-        if ($this->guarantee_request != null && $this->factura == null) {
+        if ($this->guarantee_request != null) {
             DB::table('notifications')->where('data', 'like', '%'.'AG'.$this->controlcode.'%')->update(array('read_at' => Carbon::now()));
         }
-        if ($this->advance_request != null && $this->factura == null) {
+        if ($this->advance_request != null) {
             DB::table('notifications')->where('data', 'like', '%'.'AA'.$this->controlcode.'%')->update(array('read_at' => Carbon::now()));
         }
         if ($this->factura != null) {

@@ -73,7 +73,7 @@ class InvoiceProviderController extends Controller
         // dd($request->all());
         DB::beginTransaction();
 
-        $fecha = InvoiceProvider::whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))->orderBy('id', 'desc')->first();
+        $fecha = ExpenseStatement::whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))->whereNull('template')->orderBy('id', 'desc')->limit(1)->first();
         $fecha2 = ExpenseStatement::whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))->orderBy('id', 'desc')->first();
 
         if($fecha || $fecha2)

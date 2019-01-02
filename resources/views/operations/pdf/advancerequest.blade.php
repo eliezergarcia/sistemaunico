@@ -199,7 +199,9 @@
                                 </div>
                                 <div class="col-8">
                                     <h5 style="margin: 10px;">
-                                        {{ $invoice->notes }}
+                                        @if($invoice->notes)
+                                            {{ $invoice->notes }}
+                                        @endif
                                     </h5>
                                 </div>
                             </div>

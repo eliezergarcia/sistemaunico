@@ -23,7 +23,7 @@ class DailyApprovalExport implements FromView, ShouldAutoSize, WithTitle
     public function view(): View
     {
         $dailyapprovalbalance = AccountManagementBalance::whereDate('created_at', '=', $this->request->da_fecha_inicio)->first();
-        // dd($dailyapprovalbalance->id);
+        dd($dailyapprovalbalance->id);
         return view('accountmanagement.export_dailyapproval', [
             'invoices' => InvoiceProvider::all(),
             'accountsunico' => AccountUnico::all(),

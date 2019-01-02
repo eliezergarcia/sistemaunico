@@ -141,7 +141,7 @@
                                             <a href="{{ route('facturasproveedor.show', $invoice->factura )}}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver información"> <i class="mdi mdi-eye"></i></a>
                                             @if(!$invoice->canceled_at)
                                                 @if((Auth::user()->present()->isAdmin() && Auth::user()->present()->isOper()) || Auth::user()->present()->isAdminGeneral())
-                                                    <a href="{{ route('operations.invoiceProvider', $invoice->id )}}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver pdf"> <i class="mdi mdi-file-pdf"></i></a>
+                                                    <a href="{{ route('operations.invoiceProvider', $invoice->id ) }}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver pdf"> <i class="mdi mdi-file-pdf"></i></a>
                                                     @if(!$invoice->aut_oper)
                                                         <a href="javascript:void(0)" class="action-icon btn btn-link"
                                                         data-toggle="tooltip" data-placemente="top" data-original-title="Autorizar factura"

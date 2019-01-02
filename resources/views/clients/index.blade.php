@@ -353,11 +353,11 @@
                             </div>
                             <div class="form-group col-3">
                                 <label>Colonia:</label>
-                                <input class="form-control " type="text" name="colonia" required>
+                                <input class="form-control " type="text" name="colonia">
                             </div>
                             <div class="form-group col-3">
                                 <label>Municipio:</label>
-                                <input class="form-control " type="text" name="municipio" required>
+                                <input class="form-control " type="text" name="municipio">
                             </div>
                             <div class="form-group col-3">
                                 <label>Ciudad: <span class="text-danger">*</span></label>

@@ -238,7 +238,7 @@ class InvoiceProviderController extends Controller
 
     public function revisionInvoice(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         DB::beginTransaction();
 
         if ($request->comision != 0) {

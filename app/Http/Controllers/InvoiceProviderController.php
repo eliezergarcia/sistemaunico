@@ -245,7 +245,7 @@ class InvoiceProviderController extends Controller
             $commission = CommissionBank::create($request->all());
             $commission->invoices()->attach($request->invoices);
         }
-        dd($commission);
+        // dd($commission);
 
         foreach ($request->invoices as $id) {
             $invoice = InvoiceProvider::findOrFail($id);

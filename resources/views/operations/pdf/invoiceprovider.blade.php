@@ -36,10 +36,12 @@
                                         <button class="btn btn-light" data-toggle="modal" data-target="#authorize-invoice-modal"><i class="mdi mdi-file-check"></i> Autorizar factura</button>
                                     </div>
                                 @else
-                                    @if(!$invoice->canceled_at)
-                                        <h5><a class="btn btn-info" href="{{ route('facturasproveedor.show', $invoice->factura )}}" data-toggle="tooltip" data-placemente="top" data-original-title="Ver información de factura">Ver factura {{ $invoice->factura }}</a></h5>
-                                    @else
-                                        <h5><a class="btn btn-danger" href="{{ route('facturasproveedor.show', $invoice->factura )}}" data-toggle="tooltip" data-placemente="top" data-original-title="Ver información de factura">Factura {{ $invoice->factura }} Cancelada</a></h5>
+                                    @if($invoice->factura)
+                                        @if(!$invoice->canceled_at)
+                                            <h5><a class="btn btn-info" href="{{ route('facturasproveedor.show', $invoice->factura )}}" data-toggle="tooltip" data-placemente="top" data-original-title="Ver información de factura">Ver factura {{ $invoice->factura }}</a></h5>
+                                        @else
+                                            <h5><a class="btn btn-danger" href="{{ route('facturasproveedor.show', $invoice->factura )}}" data-toggle="tooltip" data-placemente="top" data-original-title="Ver información de factura">Factura {{ $invoice->factura }} Cancelada</a></h5>
+                                        @endif
                                     @endif
                                 @endif
                             </div>

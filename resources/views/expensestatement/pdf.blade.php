@@ -220,7 +220,7 @@
                                             <h4 style="margin: 10px;">{{ number_format($expense->vat, 2, '.', ',') }}</h4>
                                             <h4 style="margin: 10px;">- {{ number_format($expense->retention, 2, '.', ',') }}</h4>
                                             <h4 style="margin: 10px;">{{ number_format($expense->others, 2, '.', ',') }}</h4>
-                                            <h3 style="margin: 10px;">{{ number_format($expense->total, 2, '.', ',') }} {{ $expense->currency }}</h3>
+                                            <h3 style="margin: 10px;">{{ $expense->total }} {{ $expense->currency }}</h3>
                                         </div>
                                     </div>
                                 </div>

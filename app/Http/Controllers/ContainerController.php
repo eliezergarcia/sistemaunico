@@ -118,10 +118,10 @@ class ContainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        // dd($id);
-        Container::findOrFail($id)->update(['canceled_at' => Carbon::now()]);
+        // dd($request->all());
+        Container::findOrFail($request->container_id)->update(['canceled_at' => Carbon::now()]);
 
         return back()->with('success', 'La información del contenedor se eliminó correctamente.');
     }

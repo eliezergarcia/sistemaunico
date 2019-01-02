@@ -415,12 +415,12 @@
                                                  <button type="button" class="btn btn-link action-icon"
                                                     data-toggle="tooltip" data-placemente="top" data-original-title="Editar información"
                                                     onclick="information_container_modal({{ $container->id }});"><i class="mdi mdi-square-edit-outline"></i></a>
-                                                <form id="delete-container" style="display: inline;" action="{{ route('contenedores.destroy', $container->id) }}" method="POST">
+                                                {{-- <form id="delete-container" style="display: inline;" action="{{ route('contenedores.destroy', $container->id) }}" method="POST">
                                                     {!! csrf_field() !!}
-                                                    {!! method_field('DELETE') !!}
-                                                    <button type="submit" class="btn btn-link action-icon" href="{{ route('contenedores.destroy', $container->id) }}"
+                                                    {!! method_field('DELETE') !!} --}}
+                                                    <button onclick="delete_container_modal({{ $container->id }})" type="submit" class="btn btn-link action-icon"
                                                         data-toggle="tooltip" data-placemente="top" data-original-title="Eliminar contenedor"><i class="mdi mdi-delete"></i></button>
-                                                </form>
+                                                {{-- </form> --}}
                                             @endif
                                         </td>
                                     </tr>
@@ -1797,9 +1797,10 @@
                         <h4 class="mt-2">Precaución!</h4>
                         <p class="mt-3">¿Está seguro(a) de eliminar la información del contenedor?</p>
                         <button type="button" class="btn btn-light my-2" data-dismiss="modal">Cancelar</button>
-                        <form style="display: inline;" action="{{ route('contenedores.destroy', $operation->id) }}" method="POST">
+                        <form id="delete_container_form" style="display: inline;" action="{{ route('contenedores.destroy', $operation->id) }}" method="POST">
                             {!! csrf_field() !!}
                             {!! method_field('DELETE') !!}
+                            <input type="hidden" name="container_id">
                             <button type="sumbit" class="btn btn-danger my-2">Eliminar</button>
                         </form>
                     </div>
@@ -2247,6 +2248,12 @@
             }).catch(function(error) {
                 console.log(response.error);
             })
+        }
+
+        function delete_container_modal($id)
+        {
+            $('#delete_container_form input[name=container_id]').val($id);
+            $('#delete-container-modal').modal('show');
         }
 
         function calcularTotal()

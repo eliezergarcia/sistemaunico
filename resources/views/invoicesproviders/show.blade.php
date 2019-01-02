@@ -30,7 +30,7 @@
             <div class="card">
                 <div class="card-body">
                 	<div class="float-right mb-2">
- 						@if($invoice->factura && !$invoice->canceled_at)
+ 						@if(!$invoice->canceled_at)
 	                        <button class="btn btn-light action-icon" data-toggle="modal" data-target="#information-invoice-modal"><i class="mdi mdi-square-edit-outline"></i> Editar información</button>
                             @if(Auth::user()->present()->isAdmin() || Auth::user()->present()->isFin())
 	                        <button class="btn btn-danger action-icon" data-toggle="modal" data-target="#deactivate-invoice-modal"><i class="mdi mdi-close-box-outline"></i> Cancelar factura</button>

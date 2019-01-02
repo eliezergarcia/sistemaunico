@@ -116,9 +116,7 @@ class Operation extends Model
 
     public function setCustomCutoffAttribute($custom_cutoff)
     {
-        if ($this->custom_cutoff != null) {
-            $this->attributes['custom_cutoff'] = Carbon::parse($custom_cutoff)->format('Y-m-d');
-        }
+        $this->attributes['custom_cutoff'] = Carbon::parse($custom_cutoff)->format('Y-m-d');
     }
 
     function createOperation($request)

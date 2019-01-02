@@ -176,6 +176,7 @@ Route::get('estadogastos/expensestatement', 'ExpenseStatementController@expenseS
 Route::post('/estadogastos/notas/{id}', 'ExpenseStatementController@notes')->name('estadogastos.notes');
 Route::resource('estadogastos', 'ExpenseStatementController');
 
+Route::post('/import-services', 'ExpenseServiceController@importServices')->name('serviciosgastos.importServices');
 Route::get('serviciosgastos', 'ExpenseServiceController@index')->name('serviciosgastos.index');
 Route::post('serviciosgastos', 'ExpenseServiceController@store')->name('serviciosgastos.store');
 Route::get('serviciosgastos/buscar/{id}', 'ExpenseServiceController@findById')->name('serviciosgastos.findById');

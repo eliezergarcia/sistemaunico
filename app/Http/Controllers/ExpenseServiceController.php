@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use App\ExpenseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ExpensesServicesImport;
 
 class ExpenseServiceController extends Controller
 {
@@ -98,6 +100,25 @@ class ExpenseServiceController extends Controller
         }else{
             DB::rollback();
             return back()->with('error', 'Ocurrió un problema al activar el servicio.');
+        }
+    }
+
+    /**
+    *   Importa servicios de gastos a la BD.
+    */
+    public function importServices(Request $request)
+    {
+        // dd($request->all());
+        DB::beginTransaction();
+
+        $import = Excel::import(new ExpensesServicesImport, request()->file('excel'), \Maatwebsite\Excel\Excel::XLSX);
+
+        if ($import) {
+            DB::commit();
+            return back()->with('success', 'Los servicios de gastos se cargaron correctamente en el sistema.');
+        }else{
+            DB::rollBack();
+            return back()->with('error', 'Ocurrió un problema al cargar los servicios de gastos en el sistema.');
         }
     }
 }

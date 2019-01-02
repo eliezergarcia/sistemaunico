@@ -87,6 +87,8 @@ class UserController extends Controller
         }
 
         $user->update($request->all());
+        $user->password = $request->password_encrypted;
+        $user->save();
 
         if ($request->has('roles')) {
             $user->roles()->sync($request->roles);

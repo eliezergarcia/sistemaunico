@@ -31,6 +31,7 @@
                     <div class="row mb-2">
                         <div class="col-sm-4">
                             <button id="btnModal" class="btn btn-primary mb-2" data-toggle="modal" data-target="#register-service-modal"><i class="mdi mdi-plus-circle mr-2"></i> <b>Registrar servicio</b></button>
+                            <button class="btn btn-info mb-2" data-toggle="modal" data-target="#import-services-modal"><i class="mdi mdi-file-import"></i> <b>Cargar servicios</b></button>
                         </div>
                     </div>
 
@@ -207,6 +208,47 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+    <div id="import-services-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header pr-4 pl-4">
+                    <h4 class="modal-title" id="primary-header-modalLabel">Carga de servicios</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        Para cargar correctamente los servicios de gastos en el sistema hay que seguir los siguientes pasos:
+                        <p><br><b>1.</b> El archivo a subir deberá ser de tipo Excel.</p>
+                        <p><b>2.</b> Las filas de datos deberán seguir el siguiente orden (primera fila de izquierda a derecha) y con encabezados:<br>
+                        </p>
+                        <div class="row justify-content-between">
+                            <div class="col">
+                                · Número de usuario<br>
+                                · Servicio<br>
+                                · Concepto de pago<br>
+                            </div>
+                        </div>
+                    </div>
+                    <form method="POST" action="{{ route('serviciosgastos.importServices') }}" enctype="multipart/form-data" class="pl-2 pr-2">
+                        {!! csrf_field() !!}
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" name="excel" class="custom-file-input">
+                                <label class="custom-file-label">Selecciona el archivo:</label>
+                            </div>
+                        </div>
+                </div>
+                <div class="text-right pb-4 pr-4">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary"><b>Cargar</b></button>
+                </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 <!-- /.modal -->
 
 <!-- End Modals -->

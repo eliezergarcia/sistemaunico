@@ -23,7 +23,7 @@ class AccountManagementExport implements WithMultipleSheets
 
         $sheets[] = new BalancesSheet($this->request);
 
-        $providers = Provider::where('inactive_at', null)->get();
+        $providers = Provider::where('inactive_at', null)->limit(5)->get();
 
         foreach ($providers as $provider) {
             $sheets[] = new InvoicesPerProviderSheet($this->request, $provider);

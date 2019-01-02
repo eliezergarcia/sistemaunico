@@ -51,9 +51,11 @@ class InvoiceProviderPresenter extends Presenter
         }else{
             if (!$this->model->aut_oper) {
                 echo new HtmlString('<span class="badge badge-info-lighten">Pendiente autorización</span><br>');
-            }elseif(!$this->model->aut_fin){
+            }
+            if(!$this->model->aut_fin){
                 echo new HtmlString('<span class="badge badge-info-lighten">Pendiente revisión</span><br>');
-            }elseif(!$this->model->factura){
+            }
+            if(!$this->model->factura){
                 echo new HtmlString('<span class="badge badge-info-lighten">Pendiente factura</span><br>');
             }
         }
@@ -66,9 +68,11 @@ class InvoiceProviderPresenter extends Presenter
         }else{
             if (!$this->model->aut_oper) {
                 echo new HtmlString('<span class="badge badge-info-lighten">Pendiente autorización</span><br>');
-            }elseif(!$this->model->aut_fin){
+            }
+            if(!$this->model->aut_fin){
                 echo new HtmlString('<span class="badge badge-info-lighten">Pendiente revisión</span><br>');
-            }elseif(!$this->model->factura){
+            }
+            if(!$this->model->factura){
                 echo new HtmlString('<span class="badge badge-info-lighten">Pendiente factura</span><br>');
             }
         }

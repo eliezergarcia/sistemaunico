@@ -244,7 +244,7 @@
                     </ul>
                     <ul class="side-nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="{{ route('manejocuentas.index') }}" aria-expanded="false">Manejo de cuentas
+                            <a href="{{ route('manejocuentas.index') }}" aria-expanded="false">Daily/Account
                             </a>
                         </li>
                     </ul>

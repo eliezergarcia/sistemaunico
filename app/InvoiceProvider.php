@@ -68,7 +68,7 @@ class InvoiceProvider extends Model
 
     public function getRegDateAttribute()
     {
-        return $this->created_at->format('d/m/y');
+        return $this->created_at->format('d-m-y');
     }
 
     public function getEtaFormatAttribute()

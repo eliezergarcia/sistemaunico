@@ -23,13 +23,13 @@ class DailyApprovalExport implements FromView, ShouldAutoSize, WithTitle
     public function view(): View
     {
         $dailyapprovalbalance = AccountManagementBalance::whereDate('created_at', '=', $this->request->da_fecha_inicio)->first();
-        // dd($dailyapprovalbalance->id + 1);
+        // dd($dailyapprovalbalance->id);
         return view('accountmanagement.export_dailyapproval', [
             'invoices' => InvoiceProvider::all(),
             'accountsunico' => AccountUnico::all(),
             'payments' => Payment::all(),
             'balance' => $dailyapprovalbalance,
-            'balanceinitial' => AccountManagementBalance::findOrFail($dailyapprovalbalance['id'] - 1),
+            'balanceinitial' => AccountManagementBalance::findOrFail($dailyapprovalbalance->id - 1),
             'balancepaymentplan' => AccountManagementBalance::findOrFail($dailyapprovalbalance->id + 1)
         ]);
     }

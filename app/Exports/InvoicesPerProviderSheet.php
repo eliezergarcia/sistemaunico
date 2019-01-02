@@ -25,17 +25,13 @@ class InvoicesPerProviderSheet implements FromView, ShouldAutoSize, WithTitle
                                    ->where('provider_id', $this->provider->id)
                                    ->get();
         return view('accountmanagement.providers_export', [
-            'invoices' => InvoiceProvider::whereDate('created_at', '>=', $this->request->fp_fecha_inicio)
-                                   ->whereDate('created_at', '<=', $this->request->fp_fecha_fin)
-                                   ->where('provider_id', '=', $this->provider->id)
-                                   ->get(),
+            'invoices' => $invoices,
             'provider' => $this->provider
         ]);
     }
 
     public function title(): string
     {
-        return "";
-        // return strtoupper($this->provider->codigo_proveedor);
+        return strtoupper($this->provider->codigo_proveedor);
     }
 }

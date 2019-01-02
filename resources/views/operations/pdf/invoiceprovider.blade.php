@@ -249,6 +249,44 @@
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <div class="row" style="border-width: 1px; border-style: solid;">
+                        <div class="col-6 pt-3 pb-3">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 style="margin: 10px;">Info Bank </h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                {{-- <div class="col-12">
+                                    <div class="row"> --}}
+                                        <div class="col-4">
+                                            <h5 style="margin: 10px;">Bank</h5>
+                                            <h5 style="margin: 10px;">Account</h5>
+                                            <h5 style="margin: 10px;">Clabe</h5>
+                                            <h5 style="margin: 10px;">Currency</h5>
+                                        </div>
+                                        <div class="col-7">
+                                            <h5 style="margin: 10px;">
+                                                : {{ $invoice->account()->name_bank }}
+                                            </h5>
+                                            <h5 style="margin: 10px;">
+                                                : {{ $invoice->account()->account }}
+                                            </h5>
+                                            <h5 style="margin: 10px;">
+                                                : {{ $invoice->account()->clabe }}
+                                            </h5>
+                                            <h5 style="margin: 10px;">
+                                                : {{ $invoice->account()->currency }}
+                                            </h5>
+                                        </div>
+                                    {{-- </div>
+                                </div> --}}
+                            </div>
+                        </div>
+                        <div class="col-6 pt-3 pb-3">
+                        </div>
+                    </div>
 
                 </div> <!-- end card-body-->
             </div> <!-- end card -->

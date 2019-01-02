@@ -20,7 +20,7 @@ class CalendarController extends Controller
     public function index()
     {
         $departments = Role::all();
-        $users = User::where('inactive_at', null)->get();
+        $users = User::where('inactive_at', null)->where('id', '!=', auth()->user()->id)->get();
         return view('calendars.index', compact('departments', 'users'));
     }
 

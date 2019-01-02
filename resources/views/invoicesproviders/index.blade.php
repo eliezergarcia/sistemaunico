@@ -125,10 +125,10 @@
                                         <td>{{ $invoice->controlcode }}</td>
                                         <td>{{ $invoice->factura }}</td>
                                         <td>{{ $invoice->invoice_date }}</td>
-                                        <td>$ {{ $invoice->neto }}</td>
-                                        <td>$ {{ $invoice->vat }}</td>
-                                        <td class="text-danger">$ - {{ $invoice->retention }}</td>
-                                        <td>$ {{ $invoice->others }}</td>
+                                        <td>$ {{ number_format($invoice->neto, 2, '.', ',') }}</td>
+                                        <td>$ {{ number_format($invoice->vat, 2, '.', ',') }}</td>
+                                        <td class="text-danger">$ - {{ number_format($invoice->retention, 2, '.', ',') }}</td>
+                                        <td>$ {{ number_format($invoice->others, 2, '.', ',') }}</td>
                                         <td>$ {{ $invoice->total }}</td>
                                         <td>
                                             @foreach($invoice->conceptsinvoice as $key => $concept)

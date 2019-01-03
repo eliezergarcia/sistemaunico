@@ -62,6 +62,8 @@
                                         	@foreach($payment->invoices as $invoice)
                                                 @if($invoice->factura)
 												    <a href="{{ route('facturasproveedor.show', $invoice->id) }}">{{ $invoice->factura }}</a><br>
+                                                @else
+                                                    {{ $invoice->controlcode }}
                                                 @endif
                                         	@endforeach
                                         </td>

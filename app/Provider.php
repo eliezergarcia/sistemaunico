@@ -159,7 +159,9 @@ class Provider extends Model
             // }
         }
 
-        return $clientes->implode(', ');
+        $clientes_unique = $clientes->unique();
+
+        return $clientes_unique->implode(', ');
     }
 
     public function unicoPic($balance)
@@ -171,7 +173,9 @@ class Provider extends Model
             $usuarios->push($invoice->operation->user->name);
         }
 
-        return $usuarios->implode(', ');
+        $usuarios_unique = $usuarios->unique();
+
+        return $usuarios_unique->implode(', ');
     }
 
     public function RemarksProviderMXN($balance)

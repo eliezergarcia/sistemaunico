@@ -174,7 +174,7 @@ class Provider extends Model
         return $usuarios->implode(', ');
     }
 
-    public function RemarksProviderMXN()
+    public function RemarksProviderMXN($balance)
     {
         $invoices = InvoiceProvider::where('provider_id', $this->id)->whereDate('aut_fin', '=', $balance->created_at)->get();
 

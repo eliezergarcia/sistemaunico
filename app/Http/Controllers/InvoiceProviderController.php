@@ -285,6 +285,8 @@ class InvoiceProviderController extends Controller
         $invoice = InvoiceProvider::findOrFail($request->invoice_id);
         $option = "sub";
         $invoice->updateAccountManagementBalance($request, $option, $invoice->aut_fin);
+        $invoice->commissions()->detach();
+
         if ($invoice) {
             $invoice->aut_fin = null;
             $invoice->save();

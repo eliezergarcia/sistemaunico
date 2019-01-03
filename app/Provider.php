@@ -35,7 +35,13 @@ class Provider extends Model
         $total = 0;
         foreach ($invoices as $invoice) {
             if ($invoice->account()->currency == "MXN") {
-                $total = $total + (($invoice->neto + $invoice->vat + $invoice->others) - $invoice->retention);
+                // if ($his->commissions->isNotEmpty()) {
+                //     $comision = $this->commissions->first()->commission;
+                // }else{
+                //     $comision = 0;
+                // }
+                // $total = $total + (($invoice->neto + $invoice->vat + $invoice->others + $comision) - $invoice->retention);
+                $total = $total + $invoice->sntotal;
             }
         }
 
@@ -53,7 +59,7 @@ class Provider extends Model
         $total = 0;
         foreach ($invoices as $invoice) {
             if ($invoice->account()->currency == "USD") {
-                $total = $total + (($invoice->neto + $invoice->vat + $invoice->others) - $invoice->retention);
+                $total = $total + $invoice->sntotal;
             }
         }
 
@@ -72,7 +78,7 @@ class Provider extends Model
         $total = 0;
         foreach ($invoices as $invoice) {
             if ($invoice->account()->currency == "MXN") {
-                $total = $total + (($invoice->neto + $invoice->vat + $invoice->others) - $invoice->retention);
+                $total = $total + $invoice->sntotal;
             }
         }
 
@@ -92,7 +98,7 @@ class Provider extends Model
         $total = 0;
         foreach ($invoices as $invoice) {
             if ($invoice->account()->currency == "MXN") {
-                $total = $total + (($invoice->neto + $invoice->vat + $invoice->others) - $invoice->retention);
+                $total = $total + $invoice->sntotal;
             }
         }
 
@@ -111,7 +117,7 @@ class Provider extends Model
         $total = 0;
         foreach ($invoices as $invoice) {
             if ($invoice->account()->currency == "USD") {
-                $total = $total + (($invoice->neto + $invoice->vat + $invoice->others) - $invoice->retention);
+                $total = $total + $invoice->sntotal;
             }
         }
 
@@ -131,7 +137,7 @@ class Provider extends Model
         $total = 0;
         foreach ($invoices as $invoice) {
             if ($invoice->account()->currency == "USD") {
-                $total = $total + (($invoice->neto + $invoice->vat + $invoice->others) - $invoice->retention);
+                $total = $total + $invoice->sntotal;
             }
         }
 

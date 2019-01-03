@@ -96,6 +96,18 @@ class InvoiceProvider extends Model
     	return number_format($total, 2, '.', ',');
     }
 
+    public function getsntotalAttribute()
+    {
+        $total = ($this->neto + $this->vat + $this->others) - $this->retention;
+
+        if ($this->commissions->isNotEmpty()) {
+            $total = $total + $this->commissions->first()->commission;
+        }
+
+        return $total;
+    }
+
+
     public function getPagadoAttribute()
     {
         if($this->payments->pluck('monto')->sum() >= $this->total){
@@ -261,6 +273,11 @@ class InvoiceProvider extends Model
 
     public function updateAccountManagementBalance($request, $option, $autFin)
     {
+        if ($this->commissions->isNotEmpty()) {
+            $comision = $this->commissions->first()->commission;
+        }else{
+            $comision = 0;
+        }
         if ($request->has('balanceday')) {
             if ($request->balanceday == 2) {
                 $date = Carbon::now();
@@ -302,24 +319,24 @@ class InvoiceProvider extends Model
                 if($this->account()->currency == "MXN"){
                     $balanceUpdate = AccountManagementBalance::find($balance->id);
                     $balanceUpdate->update([
-                        'mxn' => $balanceUpdate->mxn - (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention)
+                        'mxn' => $balanceUpdate->mxn - (($this->neto + $this->vat + $this->others + $comision) - $this->retention)
                     ]);
                 }else{
                     $balanceUpdate = AccountManagementBalance::find($balance->id);
                     $balanceUpdate->update([
-                        'usd' => $balanceUpdate->usd - (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention)
+                        'usd' => $balanceUpdate->usd - (($this->neto + $this->vat + $this->others + $comision) - $this->retention)
                     ]);
                 }
             }elseif($option == "sub"){
                 if($this->account()->currency == "MXN"){
                     $balanceUpdate = AccountManagementBalance::find($balance->id);
                     $balanceUpdate->update([
-                        'mxn' => $balanceUpdate->mxn + (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention)
+                        'mxn' => $balanceUpdate->mxn + (($this->neto + $this->vat + $this->others + $comision) - $this->retention)
                     ]);
                 }else{
                     $balanceUpdate = AccountManagementBalance::find($balance->id);
                     $balanceUpdate->update([
-                        'usd' => $balanceUpdate->usd + (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention)
+                        'usd' => $balanceUpdate->usd + (($this->neto + $this->vat + $this->others + $comision) - $this->retention)
                     ]);
                 }
             }

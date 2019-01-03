@@ -63,7 +63,8 @@
                         @foreach($invoice->conceptsinvoice as $concept)
                             {{ $concept->concept->description }} <br>
                         @endforeach
-                        <br>
+                        {{ $invoice->house->codigo_cliente }}
+                        {{ $invoice->eta }}
                         {{ $invoice->operation->user->name }}
                     </th>
                     <th>{{ $invoice->controlcode }}</th>

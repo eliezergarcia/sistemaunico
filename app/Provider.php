@@ -178,7 +178,7 @@ class Provider extends Model
     {
         $invoices = InvoiceProvider::where('provider_id', $this->id)->whereDate('aut_fin', '=', $balance->created_at)->get();
 
-        $remarks = array();
+        $remarks = collect([]);
         foreach ($invoices as $invoice) {
             $account = AccountProvider::find($invoice->account_provider_id);
             if ($account->currency == "MXN") {
@@ -192,10 +192,10 @@ class Provider extends Model
             }
         }
 
-        $remarks_unique = array_unique($remarks);
+        // $remarks_unique = array_unique($remarks);
         // var_dump($remarks_unique);
-        return $remarks_unique->implode(', ');
+        // return $remarks_unique->implode(', ');
 
-        // return $remarks->implode(', ');
+        return $remarks->implode(', ');
     }
 }

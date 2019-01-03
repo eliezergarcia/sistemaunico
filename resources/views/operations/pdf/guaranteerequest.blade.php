@@ -31,17 +31,17 @@
                     <div class="d-print-none">
                         <div class="row justify-content-around">
                             <div class="col">
-                                <div class="text-left">
                                     @if(!$invoice->canceled_at)
                                         @if(Auth::user()->present()->isAdmin())
+                                        <div class="text-left">
                                             @if(!$invoice->aut_oper)
                                                 <button class="btn btn-light" data-toggle="modal" data-target="#authorize-invoice-modal"><i class="mdi mdi-file-check"></i> Autorizar factura</button>
                                             @endif
                                             @if(!$invoice->aut_fin)
                                                 <button class="btn btn-danger" data-toggle="modal" data-target="#cancel-invoice-modal"><i class="mdi mdi-close-box-outline"></i> Cancelar</button>
                                             @endif
+                                        </div>
                                         @else
-                                </div>
                                             @if($invoice->factura)
                                                 @if(!$invoice->canceled_at)
                                                     <h5><a class="btn btn-info" href="{{ route('facturasproveedor.show', $invoice->factura )}}" data-toggle="tooltip" data-placemente="top" data-original-title="Ver información de factura">Ver factura {{ $invoice->factura }}</a></h5>

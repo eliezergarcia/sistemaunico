@@ -79,6 +79,7 @@
                                     <td>{{ $expense->total }}</td>
                                     <td>{{ $expense->notes }}</td>
                                     <td>{{ $expense->present()->statusBadge() }}</td>
+                                    <td>{{ $expense->expense_description }}</td>
                                     <td>
                                         <a href="{{ route('estadogastos.pdf', $expense->id )}}" class="action-icon" data-toggle="tooltip" data-placement="top" title data-original-title="Ver pdf"> <i class="mdi mdi-file-pdf"></i></a>
                                         @if(!$expense->canceled_at)
@@ -90,8 +91,6 @@
                                             onclick="cancel_expense({{ $expense->id }});"><i class="mdi mdi-close-box-outline"></i></a>
                                         @endif
                                     </td>
-                                    <td></td>
-                                    <td>{{ $expense->expense_description }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

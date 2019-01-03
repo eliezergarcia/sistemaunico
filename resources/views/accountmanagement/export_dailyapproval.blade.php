@@ -101,8 +101,8 @@
                         {{ $balance->paymentsClientUSD($balance, $client->client()->id)->pluck('factura')->implode(', ') }}
                     </th>
                     <th>USD</th>
-                    <th>{{ number_format($balance->ARBeginningBalanceClientUSD($balance, $client->client()->id), 2, '.', ',') }}</th>
-                    <th>{{ number_format($balance->CollectionClientTotalUSD($balance, $client->client()->id)->pluck('monto')->sum(), 2, '.', ',') }}</th>
+                    <th>$ {{ number_format($balance->ARBeginningBalanceClientUSD($balance, $client->client()->id), 2, '.', ',') }}</th>
+                    <th>$ {{ number_format($balance->CollectionClientTotalUSD($balance, $client->client()->id)->pluck('monto')->sum(), 2, '.', ',') }}</th>
                     <th>{{ number_format($balance->ARBeginningBalanceClientUSD($balance, $client->client()->id) - ($balance->CollectionClientTotalUSD($balance, $client->client()->id)->pluck('monto')->sum()), 2, '.', ',') }}</th>
                 </tr>
             @endif
@@ -190,9 +190,9 @@
                     <th></th>
                     <th>{{ strtoupper($invoice->provider->codigo_proveedor) }}</th>
                     <th>USD</th>
-                    <th>{{ number_format($invoice->provider->APBeginningBalanceProviderUSD($balancepaymentplan), 2, '.', ',') }}</th>
-                    <th>{{ number_format($invoice->provider->PaymentProviderUSD($balancepaymentplan), 2, '.', ',') }}</th>
-                    <th>{{ number_format($invoice->provider->APBeginningBalanceProviderUSD($balancepaymentplan) - $invoice->provider->PaymentProviderUSD($balancepaymentplan), 2, '.', ',') }}</th>
+                    <th>$ {{ number_format($invoice->provider->APBeginningBalanceProviderUSD($balancepaymentplan), 2, '.', ',') }}</th>
+                    <th>$ {{ number_format($invoice->provider->PaymentProviderUSD($balancepaymentplan), 2, '.', ',') }}</th>
+                    <th>$ {{ number_format($invoice->provider->APBeginningBalanceProviderUSD($balancepaymentplan) - $invoice->provider->PaymentProviderUSD($balancepaymentplan), 2, '.', ',') }}</th>
                     <th></th>
                     <th>{{ $invoice->provider->clients($balancepaymentplan) }}</th>
                     <th>{{ $invoice->provider->unicoPic($balancepaymentplan) }}</th>
@@ -220,9 +220,9 @@
             <th></th>
             <th style="background-color: #FCFFCD">Total AED</th>
             <th style="background-color: #FCFFCD">MXN</th>
-            <th style="background-color: #FCFFCD">$ {{ number_format($apbeginningmxn, 2, '.', ',') }}</th>
-            <th style="background-color: #FCFFCD">$ {{ number_format($paymentmxn, 2, '.', ',') }}</th>
-            <th style="background-color: #FCFFCD">$ {{ number_format($apbeginningmxn - $paymentmxn, 2, '.', ',') }}</th>
+            <th style="background-color: #FCFFCD">{{ number_format($apbeginningmxn, 2, '.', ',') }}</th>
+            <th style="background-color: #FCFFCD">{{ number_format($paymentmxn, 2, '.', ',') }}</th>
+            <th style="background-color: #FCFFCD">{{ number_format($apbeginningmxn - $paymentmxn, 2, '.', ',') }}</th>
         </tr>
         <tr>
             <th></th>

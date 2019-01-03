@@ -150,12 +150,13 @@ class Provider extends Model
 
         $clientes = collect([]);
         foreach ($invoices as $invoice) {
-            foreach ($invoice->operation->debitnotes as $debitnote) {
-                $clientes->push($debitnote->client->codigo_cliente);
-            }
-            foreach ($invoice->operation->prefactures as $prefacture) {
-                $clientes->push($prefacture->client->codigo_cliente);
-            }
+                $clientes->push($invoice->operation->house->codigo_cliente);
+            // foreach ($invoice->operation->debitnotes as $debitnote) {
+            //     $clientes->push($debitnote->client->codigo_cliente);
+            // }
+            // foreach ($invoice->operation->prefactures as $prefacture) {
+            //     $clientes->push($prefacture->client->codigo_cliente);
+            // }
         }
 
         return $clientes->implode(', ');

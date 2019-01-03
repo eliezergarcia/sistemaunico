@@ -69,7 +69,7 @@ class PaymentProvidersController extends Controller
 
         $payment->invoices()->attach($request->invoices);
 
-        if ($request->has('option') && $request->option == "guarantee") {
+        if (!$request->has('option') && $request->option != "guarantee") {
             // $date = Carbon::now();
             foreach ($request->invoices as $id) {
                 $invoice = InvoiceProvider::findOrFail($id);

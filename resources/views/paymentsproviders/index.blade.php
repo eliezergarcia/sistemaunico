@@ -61,7 +61,7 @@
                                         <td>
                                         	@foreach($payment->invoices as $invoice)
                                                 @if($invoice->factura)
-												    <a href="{{ route('facturasproveedor.show', $invoice->factura) }}">{{ $invoice->factura }}</a><br>
+												    <a href="{{ route('facturasproveedor.show', $invoice->id) }}">{{ $invoice->factura }}</a><br>
                                                 @endif
                                         	@endforeach
                                         </td>

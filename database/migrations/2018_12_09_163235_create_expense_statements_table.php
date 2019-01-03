@@ -34,7 +34,9 @@ class CreateExpenseStatementsTable extends Migration
             $table->string('expense_description')->nullable();
             $table->boolean('template')->nullable();
             $table->string('template_name')->nullable();
+            $table->timestamp('aut_fin')->nullable();
             $table->timestamps();
+            $table->timestamp('canceled_at')->nullable();
         });
     }
 

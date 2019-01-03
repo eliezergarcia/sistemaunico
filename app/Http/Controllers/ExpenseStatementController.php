@@ -212,4 +212,27 @@ class ExpenseStatementController extends Controller
             return back()->with('error', 'Ocurrió un problema al guardar la nota.');
         }
     }
+
+    /**
+    *   Cancela el gasto.
+    */
+    public function cancel(Request $request)
+    {
+        // dd($request->all());
+        DB::beginTransaction();
+
+        $expense = ExpenseStatement::findOrFail($request->expense_id);
+        $expense->canceled();
+        // $option = "sub";
+        // $expense->updateAccountManagementBalance($request, $option);
+
+        if ($expense) {
+            DB::commit();
+            return back()->with('success', 'El gasto se canceló correctamente.');
+        } else {
+            DB::rollBack();
+            return back()->with('error', 'Ocurrió un problema al cancelar el gasto.');
+        }
+
+    }
 }

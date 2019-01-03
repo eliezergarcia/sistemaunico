@@ -62,7 +62,7 @@ class OperationPresenter extends Presenter
 	        if($this->model->ingreso && !$this->model->despacho) return new HtmlString('<span class="badge badge-info-lighten">Ingreso</span>');
 	        if($this->model->despacho && !$this->model->zarpe) return new HtmlString('<span class="badge badge-info-lighten">Despacho</span>');
 	        if($this->model->zarpe && !$this->model->envio_papelera) return new HtmlString('<span class="badge badge-info-lighten">Zarpe</span>');
-	        if($this->model->envio_papelera && ($this->model->debitnotes->isEmpty() && $this->model->prefactures->isEmpty())) return new HtmlString('<span class="badge badge-info-lighten">Envio papelera</span>');
+	        if($this->model->envio_papelera && ($this->model->debitnotes->isEmpty() && $this->model->prefactures->isEmpty())) return new HtmlString('<span class="badge badge-info-lighten">Envio prealerta</span>');
             if($this->model->debitnotes->isNotEmpty() || $this->model->prefactures->isNotEmpty()){
                 $debitnotenofacturado = 0;
                 $prefacturanofacturado = 0;

@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Presenters\ExpenseStatementPresenter;
 
 class ExpenseStatement extends Model
 {
-	protected $guarded = ['expense_id', 'total', 'created_at', 'updated_at'];
+    use GeneralFunctions;
+
+	protected $guarded = ['expense_id', 'total', 'created_at', 'updated_at', 'canceled_at'];
 
     public function solicitadoPor()
     {
@@ -27,5 +30,10 @@ class ExpenseStatement extends Model
     public function getTotalAttribute()
     {
     	return number_format(($this->neto + $this->vat + $this->others) - $this->retention, 2, '.', ',');
+    }
+
+    public function present()
+    {
+      return new ExpenseStatementPresenter($this);
     }
 }

@@ -173,6 +173,7 @@ Route::get('estadogastos/plantilla/{id}', 'ExpenseStatementController@findTempla
 Route::post('estadogastos/plantilla', 'ExpenseStatementController@templateStore')->name('estadogastos.templateStore');
 Route::post('estadogastos/plantilla/modificar', 'ExpenseStatementController@templateUpdate')->name('estadogastos.templateUpdate');
 Route::delete('estadogastos/plantilla/eliminar', 'ExpenseStatementController@templateDelete')->name('estadogastos.templateDelete');
+Route::delete('estadogastos/cancelar', 'ExpenseStatementController@cancel')->name('estadogastos.cancel');
 Route::get('estadogastos/expensestatement', 'ExpenseStatementController@expenseStatement')->name('estadogastos.expenseStatement');
 Route::post('/estadogastos/notas/{id}', 'ExpenseStatementController@notes')->name('estadogastos.notes');
 Route::resource('estadogastos', 'ExpenseStatementController');

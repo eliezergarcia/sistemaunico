@@ -58,6 +58,7 @@
                                     <th width="10%">Otros</th>
                                     <th width="10%">Total</th>
                                     <th>Notas</th>
+                                    <th>Status</th>
                                     <th width="10%">Acciones</th>
                                     <th></th>
                                     <th>Descripción de gasto</th>
@@ -77,11 +78,17 @@
                                     <td>{{ number_format($expense->others, 2, '.', ',') }}</td>
                                     <td>{{ $expense->total }}</td>
                                     <td>{{ $expense->notes }}</td>
+                                    <td>{{ $expense->present()->statusBadge() }}</td>
                                     <td>
-                                        <a  href="javascript:void(0)" class="action-icon"
-                                            data-toggle="tooltip" data-placemente="top" data-original-title="Editar información"
-                                            onclick="information_expense_modal({{ $expense->id }});"><i class="mdi mdi-square-edit-outline"></i></a>
                                         <a href="{{ route('estadogastos.pdf', $expense->id )}}" class="action-icon" data-toggle="tooltip" data-placement="top" title data-original-title="Ver pdf"> <i class="mdi mdi-file-pdf"></i></a>
+                                        @if(!$expense->canceled_at)
+                                            <a  href="javascript:void(0)" class="action-icon"
+                                                data-toggle="tooltip" data-placemente="top" data-original-title="Editar información"
+                                                onclick="information_expense_modal({{ $expense->id }});"><i class="mdi mdi-square-edit-outline"></i></a>
+                                            <a  href="javascript:void(0)" class="action-icon"
+                                            data-toggle="tooltip" data-placemente="top" data-original-title="Cancelar gasto"
+                                            onclick="cancel_expense({{ $expense->id }});"><i class="mdi mdi-close-box-outline"></i></a>
+                                        @endif
                                     </td>
                                     <td></td>
                                     <td>{{ $expense->expense_description }}</td>
@@ -892,6 +899,27 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+
+    <div id="cancel-expense-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body p-4">
+                    <div class="text-center">
+                        <i class="dripicons-warning h1 text-danger"></i>
+                        <h4 class="mt-2">Precaución!</h4>
+                        <p class="mt-3">¿Está seguro(a) de cancelar el gasto?</p>
+                        <button type="button" class="btn btn-light my-2" data-dismiss="modal">Cancelar</button>
+                        <form id="cancel_expense_form" style="display: inline;" action="{{ route('estadogastos.cancel') }}" method="POST">
+                            {!! csrf_field() !!}
+                            {!! method_field('DELETE') !!}
+                            <input type="hidden" name="expense_id">
+                            <button type="sumbit" class="btn btn-danger my-2"><b>Aplicar</b></button>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 <!-- /.modal -->
 
 <!-- End Modals -->
@@ -1016,6 +1044,12 @@
             }).catch(function(error) {
                 console.log(response.error);
             })
+        }
+
+        function cancel_expense($id)
+        {
+            $('#cancel_expense_form input[name=expense_id]').val($id);
+            $('#cancel-expense-modal').modal('show');
         }
 
         @if($errors->any())

@@ -67,6 +67,18 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-sm-2 form-group form-inline">
+                                <label for="">Mostrar &nbsp;</label>
+                                <select name="filtro-datatables" id="filtro-datatables" class="form-control">
+                                    <option value="Pendiente autorización">Pdt. autorización</option>
+                                    <option value="Pendiente revisión" selected>Pdt. revisión</option>
+                                    <option value="Pendiente factura">Pdt. factura</option>
+                                    <option value="Finalizado">Finalizado</option>
+                                    <option value="Todo">Todos</option>
+                                </select>
+                            </div>
+                            <div class="col-10">
+                            </div>
                         </div>
                     @endif
                     <div class="table-responsive-sm">
@@ -87,9 +99,8 @@
                                             </div>
                                         </th>
                                     @endif
-                                    <th width="4%">#</th>
-                                    <th width="10%">Proveedor</th>
                                     <th>CÓDIGO</th>
+                                    <th width="10%">Proveedor</th>
                                     <th width="6%">Invoice</th>
                                     <th width="9%">Fecha invoice</th>
                                     <th width="9%">Neto</th>
@@ -128,9 +139,8 @@
                                                 </td>
                                             @endif
                                         @endif
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{ $invoice->provider->codigo_proveedor }}</td>
                                         <td>{{ $invoice->controlcode }}</td>
+                                        <td>{{ $invoice->provider->codigo_proveedor }}</td>
                                         <td>{{ $invoice->factura }}</td>
                                         <td>{{ $invoice->invoice_date }}</td>
                                         <td>$ {{ number_format($invoice->neto, 2, '.', ',') }}</td>
@@ -608,6 +618,18 @@
                     })
                 }
             })
+
+            $("#filtro-datatables").on("change", function(){
+                var val = $("#filtro-datatables").val();
+
+                if(val != "Todo"){
+                    table.search( val ).draw();
+                }else{
+                    table.search( "" ).draw();
+                }
+            })
+            var val = $("#filtro-datatables").val();
+            table.search( val ).draw();
         });
 
         function register_payment_modal()

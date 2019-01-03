@@ -154,7 +154,7 @@
                                 </div>
                                 <div class="col-8">
                                     <h3 style="margin: 10px;">
-                                        {{ strtoupper($expense->description) }}
+                                        {{ strtoupper($expense->purpose_provider) }}
                                     </h3>
                                 </div>
                                 <div class="col-4">

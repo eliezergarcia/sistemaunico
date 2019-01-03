@@ -29,6 +29,7 @@ class CreateExpenseStatementsTable extends Migration
             $table->string('payment_status')->nullable();
             $table->integer('solicited_by')->nullable();
             $table->string('currency')->nullable();
+            $table->string('purpose_provider')->nullable();
             $table->string('notes')->nullable();
             $table->string('additional_notes')->nullable();
             $table->string('expense_description')->nullable();

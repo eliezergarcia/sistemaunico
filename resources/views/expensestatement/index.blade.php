@@ -47,8 +47,7 @@
                         <table id="expenses-datatable" class="table table-centered table-striped table-hover table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th width="10%">Código de control</th>
+                                    <th width="10%">CÓDIGO</th>
                                     <th width="10%">Factura</th>
                                     <th width="10%">Tipo de gasto</th>
                                     <th width="10%">Descripción</th>
@@ -59,15 +58,13 @@
                                     <th width="10%">Total</th>
                                     <th>Notas</th>
                                     <th>Status</th>
-                                    <th width="10%">Acciones</th>
-                                    <th></th>
                                     <th>Descripción de gasto</th>
+                                    <th width="10%">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                             	@foreach($expenses as $key => $expense)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
                                     <td>{{ $expense->controlcode }}</td>
                                     <td>{{ $expense->invoice }}</td>
                                     <td>{{ $expense->expense_type }}</td>
@@ -232,6 +229,12 @@
                                         <option value="MXN">MXN</option>
                                         <option value="USD">USD</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Purpose - Provider</label>
+                                    <input type="text" class="form-control " name="purpose_provider">
                                 </div>
                             </div>
                             <div class="col-12">
@@ -422,6 +425,12 @@
                                         <option value="MXN">MXN</option>
                                         <option value="USD">USD</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Purpose - Provider</label>
+                                    <input type="text" class="form-control " name="purpose_provider">
                                 </div>
                             </div>
                             <div class="col-12">
@@ -617,6 +626,12 @@
                                         <option value="MXN">MXN</option>
                                         <option value="USD">USD</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Purpose - Provider</label>
+                                    <input type="text" class="form-control " name="purpose_provider">
                                 </div>
                             </div>
                             <div class="col-12">
@@ -833,6 +848,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Purpose - Provider</label>
+                                    <input type="text" class="form-control " name="purpose_provider">
+                                </div>
+                            </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Notas</label>
@@ -962,6 +983,7 @@
                 $('#information-expense-form input[name=payment_status]').val(response.data.payment_status);
                 $('#information-expense-form select[name=solicited_by]').val(response.data.solicited_by).change();
                 $('#information-expense-form select[name=currency]').val(response.data.currency).change();
+                $('#information-expense-form input[name=purpose_provider]').val(response.data.purpose_provider);
                 $('#information-expense-form textarea[name=notes]').val(response.data.notes);
                 $('#information-expense-form input[name=neto]').val(response.data.neto);
                 $('#information-expense-form input[name=vat]').val(response.data.vat);
@@ -1017,6 +1039,7 @@
                 $('#register-expense-form input[name=payment_status]').val(response.data.payment_status);
                 $('#register-expense-form select[name=solicited_by]').val(response.data.solicited_by).change();
                 $('#register-expense-form select[name=currency]').val(response.data.currency).change();
+                $('#register-expense-form input[name=purpose_provider]').val(response.data.purpose_provider);
                 $('#register-expense-form textarea[name=notes]').val(response.data.notes);
                 $('#register-expense-form input[name=neto]').val(response.data.neto);
                 $('#register-expense-form input[name=vat]').val(response.data.vat);
@@ -1034,6 +1057,7 @@
                 $('#information-template-form input[name=payment_status]').val(response.data.payment_status);
                 $('#information-template-form select[name=solicited_by]').val(response.data.solicited_by).change();
                 $('#information-template-form select[name=currency]').val(response.data.currency).change();
+                $('#information-template-form input[name=purpose_provider]').val(response.data.purpose_provider);
                 $('#information-template-form textarea[name=notes]').val(response.data.notes);
                 $('#information-template-form input[name=neto]').val(response.data.neto);
                 $('#information-template-form input[name=vat]').val(response.data.vat);

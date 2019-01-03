@@ -1,6 +1,6 @@
 @extends('layouts.hyper')
 
-@section('title', $invoice->controlcode)
+@section('title', 'Solicitud anticipo - '.$invoice->controlcode)
 
 @section('content')
 

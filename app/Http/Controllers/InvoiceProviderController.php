@@ -23,6 +23,7 @@ class InvoiceProviderController extends Controller
     public function index()
     {
         $invoices = InvoiceProvider::where('factura', '!=', null)
+                                   ->where('canceled_at', null)
                                    ->orderBy('id', 'desc')->get();
 
         $clients = Client::where('inactive_at', null)->get();
@@ -35,6 +36,7 @@ class InvoiceProviderController extends Controller
     {
         $invoices = InvoiceProvider::where('guarantee_request', '!=', null)
                                    ->where('factura', null)
+                                   ->where('canceled_at', null)
                                    ->orderBy('id', 'desc')->get();
 
         $clients = Client::where('inactive_at', null)->get();
@@ -47,6 +49,7 @@ class InvoiceProviderController extends Controller
     {
         $invoices = InvoiceProvider::where('advance_request', '!=', null)
                                    ->where('factura', null)
+                                   ->where('canceled_at', null)
                                    ->orderBy('id', 'desc')->get();
 
         $clients = Client::where('inactive_at', null)->get();

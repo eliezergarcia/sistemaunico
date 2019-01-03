@@ -22,7 +22,7 @@ class ExpenseStatementController extends Controller
      */
     public function index()
     {
-        $expenses = ExpenseStatement::where('template', null)->get();
+        $expenses = ExpenseStatement::where('template', null)->orderBy('id', 'desc')->get();
         $templates = ExpenseStatement::where('template', '!=', null)->get();
         $services = ExpenseService::where('inactive_at', null)->get();
         $users = User::where('inactive_at', null)->get();

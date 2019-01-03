@@ -194,6 +194,8 @@ class Provider extends Model
 
         $remarks_unique = array_unique($remarks);
 
-        return $remarks_unique->implode(', ');
+        var_dump($remarks_unique);
+
+        // return $remarks_unique->implode(', ');
     }
 }

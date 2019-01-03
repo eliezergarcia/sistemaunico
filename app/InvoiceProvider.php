@@ -89,6 +89,10 @@ class InvoiceProvider extends Model
     {
     	$total = ($this->neto + $this->vat + $this->others) - $this->retention;
 
+        if ($this->commissions->isNotEmpty()) {
+            $total = $total + $this->commissions->first()->commission;
+        }
+
     	return number_format($total, 2, '.', ',');
     }
 

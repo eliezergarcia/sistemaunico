@@ -64,7 +64,7 @@
                             {{ $concept->concept->description }} <br>
                         @endforeach
                         {{ $invoice->operation->house->codigo_cliente }} <br>
-                        {{ $invoice->eta }} <br>
+                        {{ $invoice->operation->etaFormat }} <br>
                         {{ $invoice->operation->user->name }} <br>
                     </th>
                     <th>{{ $invoice->controlcode }}</th>

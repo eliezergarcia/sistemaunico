@@ -246,8 +246,8 @@
                                             <h4 style="margin: 10px;">{{ $invoice->vat }}</h4>
                                             <h4 style="margin: 10px;">- {{ $invoice->retention }}</h4>
                                             <h4 style="margin: 10px;">{{ $invoice->others }}</h4>
-                                            <h4 style="margin: 10px;">{{ $invoice->commissions }}</h4>
-                                            {{-- <h4 style="margin: 10px;">{{ $invoice->commissions->isEmpty() ? '0.00' : $invoice->commissions->first()->commission }}</h4> --}}
+                                            {{-- <h4 style="margin: 10px;">{{ $invoice->commissions }}</h4> --}}
+                                            <h4 style="margin: 10px;">{{ $invoice->commissions->isEmpty() ? '0.00' : $invoice->commissions->first()->commission }}</h4>
                                             <h3 style="margin: 10px;">{{ $invoice->total }} {{ $invoice->account()->currency }}</h3>
                                         </div>
                                     </div>

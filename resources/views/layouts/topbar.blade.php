@@ -1,6 +1,6 @@
 <!-- Topbar Start  -->
 {{ Auth::user()->notificationsStorage() }}
-{{ Auth::user()->notificationsDelay() }}
+{{-- {{ Auth::user()->notificationsDelay() }} --}}
 <div class="navbar-custom">
     <div class="topbar-left-menu float-left mb-0 mt-1">
         <img src="{{ asset('assets/images/logos/unico imagen.jpg') }}" alt="" height="60">

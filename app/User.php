@@ -84,23 +84,30 @@ class User extends Authenticatable
 
     public function notificationsStorage()
     {
-        if($this->roles->pluck('name')->contains('operador') || $this->roles->pluck('name')->contains('administrador')){
+        if(auth()->user()->present()->isOper() || auth()->user()->present()->isAdmin()){
             $operations = Operation::where('impo_expo', 'impo')
                                    ->where('toca_piso', '!=', null)->get();
 
             foreach ($operations as $operation) {
                 if ($operation->pod == "LZC") {
-                    $diasalmacenaje = 8;
+                    $diasalmacenaje = 7;
                 }else{
-                    $diasalmacenaje = 5;
+                    $diasalmacenaje = 4;
                 }
 
                 $date = Carbon::now();
                 $date = $date->format('Y-m-d');
-                $fecha = Carbon::createFromFormat('Y-m-d', $date);
+                $fechaLimite = Carbon::createFromFormat('Y-m-d', $operation->toca_piso);
+                $fechaLimite = $fechaLimite->addDays($diasalmacenaje);
+                $fechaLimite = $fechaLimite->format('Y-m-d');
+                // dd($fechaLimite);
+                // dd($date);
                 foreach ($operation->containers as $container) {
-                    $eta = Carbon::createFromFormat('Y-m-d', $operation->eta);
-                    if ($eta->diffInDays($fecha) <= $diasalmacenaje && ($container->port_etd == null && $container->dlv_day == null)) {
+                    // $eta = Carbon::createFromFormat('Y-m-d', $operation->eta);
+                    // if ($eta->diffInDays($fecha) <= $diasalmacenaje && ($container->port_etd == null && $container->dlv_day == null)) {
+                    //     self::createNotificationOperationStorage($operation, $container);
+                    // }
+                    if ($date == $fechaLimite && ($container->port_etd == null && $container->dlv_day == null)) {
                         self::createNotificationOperationStorage($operation, $container);
                     }
                 }
@@ -108,27 +115,27 @@ class User extends Authenticatable
         }
     }
 
-    public function notificationsDelay()
-    {
-        if($this->roles->pluck('name')->contains('operador') || $this->roles->pluck('name')->contains('administrador')){
-            $operations = Operation::where('impo_expo', 'impo')
-                                   ->where('toca_piso', '!=', null)->get();
+    // public function notificationsDelay()
+    // {
+    //     if($this->roles->pluck('name')->contains('operador') || $this->roles->pluck('name')->contains('administrador')){
+    //         $operations = Operation::where('impo_expo', 'impo')
+    //                                ->where('toca_piso', '!=', null)->get();
 
-            foreach ($operations as $operation) {
-                $diasdemora = 2;
+    //         foreach ($operations as $operation) {
+    //             $diasdemora = 2;
 
-                $date = Carbon::now();
-                $date = $date->format('Y-m-d');
-                $fecha = Carbon::createFromFormat('Y-m-d', $date);
-                foreach ($operation->containers as $container) {
-                    $eta = Carbon::createFromFormat('Y-m-d', $operation->eta);
-                    if ($eta->diffInDays($fecha) <= $diasdemora && ($container->port_etd != null && $container->dlv_day == null)) {
-                        self::createNotificationOperationDelay($operation, $container);
-                    }
-                }
-            }
-        }
-    }
+    //             $date = Carbon::now();
+    //             $date = $date->format('Y-m-d');
+    //             $fecha = Carbon::createFromFormat('Y-m-d', $date);
+    //             foreach ($operation->containers as $container) {
+    //                 $eta = Carbon::createFromFormat('Y-m-d', $operation->eta);
+    //                 if ($eta->diffInDays($fecha) <= $diasdemora && ($container->port_etd != null && $container->dlv_day == null)) {
+    //                     self::createNotificationOperationDelay($operation, $container);
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     public function createNotificationOperationStorage($operation, $container)
     {
@@ -146,19 +153,19 @@ class User extends Authenticatable
         }
     }
 
-    public function createNotificationOperationDelay($operation, $container)
-    {
-        $users = User::all();
+    // public function createNotificationOperationDelay($operation, $container)
+    // {
+    //     $users = User::all();
 
-        $existsNotification = DB::table('notifications')->where('data', 'like', '%'.'OD'.$container->id.'%')
-                                                  ->where('read_at', null)->get();
+    //     $existsNotification = DB::table('notifications')->where('data', 'like', '%'.'OD'.$container->id.'%')
+    //                                               ->where('read_at', null)->get();
 
-        if (!$existsNotification || $existsNotification->isEmpty()) {
-            foreach ($users as $user) {
-                if(($user->roles->pluck('name')->contains('administrador') && $user->roles->pluck('name')->contains('operador')) || $user->roles->pluck('name')->contains('administradorgeneral') || ($user->id == $operation->user_id)){
-                    $user->notify(new OperationDelay($operation, $container));
-                }
-            }
-        }
-    }
+    //     if (!$existsNotification || $existsNotification->isEmpty()) {
+    //         foreach ($users as $user) {
+    //             if(($user->roles->pluck('name')->contains('administrador') && $user->roles->pluck('name')->contains('operador')) || $user->roles->pluck('name')->contains('administradorgeneral') || ($user->id == $operation->user_id)){
+    //                 $user->notify(new OperationDelay($operation, $container));
+    //             }
+    //         }
+    //     }
+    // }
 }

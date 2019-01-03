@@ -2289,7 +2289,7 @@
                 $('#infoContainerForm select[name=size]').val(response.data.size).change();
                 $('#infoContainerForm input[name=qty]').val(response.data.qty);
                 $('#infoContainerForm input[name=qty]').val(response.data.qty);
-                $('#infoContainerForm select[name=modalidad]').val(response.data.modalidad);
+                $('#infoContainerForm select[name=modalidad]').val(response.data.modalidad).change();
                 $('#infoContainerForm input[name=weight]').val(response.data.weight);
                 $('#infoContainerForm input[name=measures]').val(response.data.measures);
                 $('#infoContainerForm input[name=proforma]').val(response.data.proforma);

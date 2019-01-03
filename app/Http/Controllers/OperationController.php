@@ -68,7 +68,7 @@ class OperationController extends Controller
     {
         $operation = Operation::findOrFail($id);
 
-        $containers = Container::where('operation_id', $id)->get();
+        $containers = Container::where('operation_id', $id)->where('canceled_at', null)->get();
 
         $concepts = Concepts::where('inactive_at', '=', null)->get();
 

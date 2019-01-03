@@ -226,24 +226,29 @@
                     <div class="row pl-4 pr-4">
                         <div class="col-7" style="border: 1px solid #e3eaef; border-color: #5b5a5a;">
                             <div class="row mt-2">
-                                <div class="col-4">
+                                <div class="col-3">
                                     <p class="text-center">BANK NAME</p>
-                                    <p class="text-left">KEB HANA BANK(USD)</p>
-                                    <p class="text-left">KEB HANA BANK(EUR)</p>
+                                    <p class="text-left">SANTANDER BANK(USD)</p>
+                                    <p class="text-left">SANTANDER BANK(MXN)</p>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-3 text-center">
                                     <p class="text-center">SWIFT CODE</p>
-                                    <p class="text-left">KOEXKRSE</p>
-                                    <p class="text-left">KOEXKRSE</p>
+                                    <p>BMSXMXMMXXX</p>
+                                    <p>BMSXMXMMXXX</p>
                                 </div>
-                                <div class="col-4 text-center">
+                                <div class="col-3 text-center">
                                     <p>ACC.</p>
-                                    <p>010-JSD-103573-2</p>
-                                    <p>010-JSD-104872-1</p>
+                                    <p>65-50522701-2</p>
+                                    <p> 82-50071461-9</p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <p>CLABE.</p>
+                                    <p>014580655052270121</p>
+                                    <p>014580825007146195</p>
                                 </div>
                                 <div class="col-12">
                                     <br><br><br>
-                                    <p>BENEFICIARY NAME : UNICO LOGISTICS CO., LTD.</p>
+                                    <p>BENEFICIARY NAME : UNICO LOGISTICS MEX S. DE R.L. DE C.V.</p>
                                 </div>
                             </div>
                         </div>
@@ -257,13 +262,12 @@
                                 </div>
                                 <div class="col-12" style="border: 1px solid #e3eaef; border-color: #5b5a5a;">
                                     <div class="row mt-2">
-                                        <div class="col-6">
-                                            <p>SALESMAN : DSPARK</p>
-                                            <p>ATTN : Cerena Cho</p>
+                                        <div class="col-7">
+                                            <p>REPRESENTANTE LEGAL : YOUNG RAK KIM</p>
                                         </div>
-                                        <div class="col-6">
-                                            <p>TEL : 02-3708-1531</p>
-                                            <p>TEL : 02-3708-1513</p>
+                                        <div class="col-5">
+                                            <p>TEL : (+ 52) 81-10-90-94-72</p>
+                                            <p>TEL : (+ 52) 81-10-90-89-87</p>
                                         </div>
                                     </div>
                                 </div>

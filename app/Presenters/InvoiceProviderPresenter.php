@@ -12,9 +12,9 @@ class InvoiceProviderPresenter extends Presenter
             return new HtmlString('<span class="badge badge-danger-lighten">Cancelado</span>');
         }else{
             if (!$this->model->aut_oper) {
-                echo new HtmlString('<span class="badge badge-warning-lighten">Pendiente autorización</span><br>');
+                echo new HtmlString('<span class="badge badge-success-lighten">Pendiente autorización</span><br>');
             }elseif(!$this->model->aut_fin){
-                echo new HtmlString('<span class="badge badge-success-lighten">Pendiente revisión</span><br>');
+                echo new HtmlString('<span class="badge badge-warning-lighten">Pendiente revisión</span><br>');
             }else{
                 $sinfacturaunico = 0;
                 if($this->model->operation->debitnotes->isEmpty() && $this->model->operation->prefactures->isEmpty()){
@@ -32,12 +32,12 @@ class InvoiceProviderPresenter extends Presenter
                 }
 
                 if($sinfacturaunico > 0){
-                    echo new HtmlString('<span class="badge badge-warning-lighten">Pendiente factura UNICO</span>');
+                    echo new HtmlString('<span class="badge badge-info-lighten">Pendiente factura UNICO</span>');
                 }else{
                     if($this->model->payments->pluck('monto')->sum() >= $this->model->total){
                         echo new HtmlString('<span class="badge badge-success-lighten">Finalizado</span>');
                     }else{
-                        echo new HtmlString('<span class="badge badge-warning-lighten">Pendiente pago</span>');
+                        echo new HtmlString('<span class="badge badge-info-lighten">Pendiente pago</span>');
                     }
                 }
             }
@@ -50,9 +50,9 @@ class InvoiceProviderPresenter extends Presenter
             return new HtmlString('<span class="badge badge-danger-lighten">Cancelado</span>');
         }else{
             if (!$this->model->aut_oper) {
-                echo new HtmlString('<span class="badge badge-warning-lighten">Pendiente autorización</span><br>');
+                echo new HtmlString('<span class="badge badge-success-lighten">Pendiente autorización</span><br>');
             }elseif(!$this->model->aut_fin){
-                echo new HtmlString('<span class="badge badge-success-lighten">Pendiente revisión</span><br>');
+                echo new HtmlString('<span class="badge badge-warning-lighten">Pendiente revisión</span><br>');
             }elseif(!$this->model->factura){
                 echo new HtmlString('<span class="badge badge-info-lighten">Pendiente factura</span><br>');
             }
@@ -65,9 +65,9 @@ class InvoiceProviderPresenter extends Presenter
             return new HtmlString('<span class="badge badge-danger-lighten">Cancelado</span>');
         }else{
             if (!$this->model->aut_oper) {
-                echo new HtmlString('<span class="badge badge-warning-lighten">Pendiente autorización</span><br>');
+                echo new HtmlString('<span class="badge badge-success-lighten">Pendiente autorización</span><br>');
             }elseif(!$this->model->aut_fin){
-                echo new HtmlString('<span class="badge badge-success-lighten">Pendiente revisión</span><br>');
+                echo new HtmlString('<span class="badge badge-warning-lighten">Pendiente revisión</span><br>');
             }elseif(!$this->model->factura){
                 echo new HtmlString('<span class="badge badge-info-lighten">Pendiente factura</span><br>');
             }

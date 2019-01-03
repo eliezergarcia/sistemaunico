@@ -137,19 +137,19 @@
                     </ul>
                     <ul class="side-nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="{{ route('facturasproveedor.index') }}" aria-expanded="false">Facturas de proveedor
+                            <a href="{{ route('facturasproveedor.index') }}" aria-expanded="false">Facturas proveedor
                             </a>
                         </li>
                     </ul>
                     <ul class="side-nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="{{ route('facturasproveedor.guaranteerequests') }}" aria-expanded="false">Solicitudes de garantía
+                            <a href="{{ route('facturasproveedor.advancerequests') }}" aria-expanded="false">Solicitudes anticipo
                             </a>
                         </li>
                     </ul>
                     <ul class="side-nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="{{ route('facturasproveedor.advancerequests') }}" aria-expanded="false">Solicitudes de anticipo
+                            <a href="{{ route('facturasproveedor.guaranteerequests') }}" aria-expanded="false">Solicitudes garantía
                             </a>
                         </li>
                     </ul>
@@ -226,19 +226,19 @@
                     </a>
                     <ul class="side-nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="{{ route('facturasproveedor.index') }}" aria-expanded="false">Facturas
+                            <a href="{{ route('facturasproveedor.index') }}" aria-expanded="false">Facturas proveedor
                             </a>
                         </li>
                     </ul>
                     <ul class="side-nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="{{ route('facturasproveedor.guaranteerequests') }}" aria-expanded="false">Solicitudes de garantía
+                            <a href="{{ route('facturasproveedor.advancerequests') }}" aria-expanded="false">Solicitudes anticipo
                             </a>
                         </li>
                     </ul>
                     <ul class="side-nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="{{ route('facturasproveedor.advancerequests') }}" aria-expanded="false">Solicitudes de anticipo
+                            <a href="{{ route('facturasproveedor.guaranteerequests') }}" aria-expanded="false">Solicitudes garantía
                             </a>
                         </li>
                     </ul>

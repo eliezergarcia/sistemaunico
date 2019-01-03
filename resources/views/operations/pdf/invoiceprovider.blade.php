@@ -1,6 +1,6 @@
 @extends('layouts.hyper')
 
-@section('title', 'Factura de proveedor')
+@section('title', $invoice->controlcode)
 
 @section('content')
 

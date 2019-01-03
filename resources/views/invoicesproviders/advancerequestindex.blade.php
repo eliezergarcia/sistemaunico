@@ -45,8 +45,8 @@
                     @if(Auth::user()->present()->isFin() || Auth::user()->present()->isAdminGeneral())
                         <div class="row justify-content-around">
                             <div class="col-9">
-                                    <button id="btnModal" class="btn btn-primary mb-2" onclick="register_payment_modal()"><i class="mdi mdi-plus-circle mr-2"></i> <b>Registrar pago</b></button>
                                     <button id="btnModal" class="btn btn-primary mb-2" onclick="generate_revision_modal()"><i class="mdi mdi-file-check mr-2"></i> <b>Generar revisión</b></button>
+                                    <button id="btnModal" class="btn btn-primary mb-2" onclick="register_payment_modal()"><i class="mdi mdi-plus-circle mr-2"></i> <b>Registrar pago</b></button>
                             </div>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div class="col">
@@ -88,12 +88,11 @@
                                         </th>
                                     @endif
                                     <th width="4%">#</th>
-                                    <th>Proveedor</th>
-                                    <th>Código de control</th>
+                                    <th width="10%">Proveedor</th>
+                                    <th>CÓDIGO</th>
                                     <th width="9%">Neto</th>
                                     <th width="9%">Vat</th>
                                     <th width="9%">Retention</th>
-                                    <th width="9%">Others</th>
                                     <th width="9%">Total</th>
                                     <th>Concepto(s)</th>
                                     <th>Revisión</th>
@@ -133,7 +132,6 @@
                                         <td>$ {{ $invoice->neto }}</td>
                                         <td>$ {{ $invoice->vat }}</td>
                                         <td class="text-danger">$ - {{ $invoice->retention }}</td>
-                                        <td>$ {{ $invoice->others }}</td>
                                         <td>$ {{ $invoice->total }}</td>
                                         <td>
                                             @foreach($invoice->conceptsinvoice as $key => $concept)

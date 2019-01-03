@@ -124,7 +124,7 @@
         <tr></tr>
         <tr>
             <th></th>
-            <th style="background-color: #FCFFCD">Total AED</th>
+            <th style="background-color: #FCFFCD">Total MXN</th>
             <th style="background-color: #FCFFCD">MXN</th>
             <th style="background-color: #FCFFCD">{{ number_format($arbeginningmxn, 2, '.', ',') }}</th>
             <th style="background-color: #FCFFCD">{{ number_format($collectionmxn, 2, '.', ',') }}</th>

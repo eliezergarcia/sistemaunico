@@ -370,67 +370,94 @@
         </div> <!-- end col-->
 
         <div class="col-md-6">
-            <!-- Containers-Information -->
-             <div class="card">
-                <div class="card-body">
-                    <div class="row mb-2">
-                        @if(Auth::user()->id == $operation->user->id || Auth::user()->present()->isAdmin())
-                            <div class="col-sm-4">
-                                <button id="btnModal" class="btn btn-primary mb-2" data-toggle="modal" data-target="#register-container-modal"><i class="mdi mdi-plus-circle mr-2"></i> <b>Agregar contenedor</b></button>
+            <div class="row">
+                <div class="col-12">
+                    <!-- Containers-Information -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row mb-2">
+                                @if(Auth::user()->id == $operation->user->id || Auth::user()->present()->isAdmin())
+                                    <div class="col-sm-4">
+                                        <button id="btnModal" class="btn btn-primary mb-2" data-toggle="modal" data-target="#register-container-modal"><i class="mdi mdi-plus-circle mr-2"></i> <b>Agregar contenedor</b></button>
+                                    </div>
+                                @endif
                             </div>
-                        @endif
-                    </div>
-                    <div class="table-responsive-sm">
-                        <table id="containers-datatable" class="table table-centered table-striped table-hover table-striped table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
-                            <thead>
-                                <tr>
-                                    <th width="3%">#</th>
-                                    <th>Cntr #</th>
-                                    <th>Seal No.</th>
-                                    <th>Type</th>
-                                    <th>Size</th>
-                                    <th class="text-center">QTY</th>
-                                    <th>Modalidad</th>
-                                    @if($operation->impo_expo == "IMPO")
-                                        <th>Status</th>
-                                    @endif
-                                    <th width="5%"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($containers as $key => $container)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{ $container->cntr }}</td>
-                                        <td>{{ $container->seal_no }}</td>
-                                        <td>{{ $container->type }}</td>
-                                        <td>{{ $container->size }}</td>
-                                        <td class="text-center">{{ $container->qty }}</td>
-                                        <td>{{ $container->modalidad }}</td>
-                                        @if($operation->impo_expo == "IMPO")
-                                            <td>{{ $container->present()->statusBadge() }}</td>
-                                        @endif
-                                        <td>
-                                            @if(!$container->canceled_at)
-                                                 <button type="button" class="btn btn-link action-icon"
-                                                    data-toggle="tooltip" data-placemente="top" data-original-title="Editar información"
-                                                    onclick="information_container_modal({{ $container->id }});"><i class="mdi mdi-square-edit-outline"></i></a>
-                                                {{-- <form id="delete-container" style="display: inline;" action="{{ route('contenedores.destroy', $container->id) }}" method="POST">
-                                                    {!! csrf_field() !!}
-                                                    {!! method_field('DELETE') !!} --}}
-                                                    <button onclick="delete_container_modal({{ $container->id }})" type="submit" class="btn btn-link action-icon"
-                                                        data-toggle="tooltip" data-placemente="top" data-original-title="Eliminar contenedor"><i class="mdi mdi-delete"></i></button>
-                                                {{-- </form> --}}
+                            <div class="table-responsive-sm">
+                                <table id="containers-datatable" class="table table-centered table-striped table-hover table-striped table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
+                                    <thead>
+                                        <tr>
+                                            <th width="3%">#</th>
+                                            <th>Cntr #</th>
+                                            <th>Seal No.</th>
+                                            <th>Type</th>
+                                            <th>Size</th>
+                                            <th class="text-center">QTY</th>
+                                            <th>Modalidad</th>
+                                            @if($operation->impo_expo == "IMPO")
+                                                <th>Status</th>
                                             @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                            <th width="5%"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($containers as $key => $container)
+                                            <tr>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{ $container->cntr }}</td>
+                                                <td>{{ $container->seal_no }}</td>
+                                                <td>{{ $container->type }}</td>
+                                                <td>{{ $container->size }}</td>
+                                                <td class="text-center">{{ $container->qty }}</td>
+                                                <td>{{ $container->modalidad }}</td>
+                                                @if($operation->impo_expo == "IMPO")
+                                                    <td>{{ $container->present()->statusBadge() }}</td>
+                                                @endif
+                                                <td>
+                                                    @if(!$container->canceled_at)
+                                                         <button type="button" class="btn btn-link action-icon"
+                                                            data-toggle="tooltip" data-placemente="top" data-original-title="Editar información"
+                                                            onclick="information_container_modal({{ $container->id }});"><i class="mdi mdi-square-edit-outline"></i></a>
+                                                        {{-- <form id="delete-container" style="display: inline;" action="{{ route('contenedores.destroy', $container->id) }}" method="POST">
+                                                            {!! csrf_field() !!}
+                                                            {!! method_field('DELETE') !!} --}}
+                                                            <button onclick="delete_container_modal({{ $container->id }})" type="submit" class="btn btn-link action-icon"
+                                                                data-toggle="tooltip" data-placemente="top" data-original-title="Eliminar contenedor"><i class="mdi mdi-delete"></i></button>
+                                                        {{-- </form> --}}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Containers-Information -->
+                </div>
+                <div class="col-12">
+                    <!-- Containers-Information -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row justify-content-around">
+                        <div class="col">
+                            <div class="text-left">
+                                @if(Auth::user()->id == $operation->user->id || Auth::user()->present()->isAdmin())
+                                    <button data-toggle="modal" data-target="#notes-operation-modal" class="btn btn-light"><i class="mdi mdi-note-text"></i> Agregar/Editar notas</button>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4"><p>Notas:</p></div>
+                                <div class="col-8"><h5>{{ $operation->notes }}</h5></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Containers-Information -->
         </div>
     </div>
 
@@ -2188,6 +2215,35 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+
+    <div id="notes-operation-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header pr-4 pl-4">
+                    <h4 class="modal-title" id="primary-header-modalLabel">Notas</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('operaciones.notes', $operation->id) }}" enctype="multipart/form-data" class="pl-2 pr-2">
+                        {!! csrf_field() !!}
+                        <div class="row">
+                             <div class="col-12">
+                                <div class="form-group">
+                                    <textarea class="form-control " rows="5" name="note">{{ $operation->notes }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="text-right pb-4 pr-4">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary"><b>Guardar</b></button>
+                </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 <!-- End Modals -->
 @endsection
 @section('scripts')
@@ -2200,7 +2256,7 @@
         $(document).ready(function() {
             $("#containers-datatable").DataTable({
                 language: idioma_espanol,
-                pageLength: 8,
+                pageLength: 4,
                 searching: false,
                 info: false,
                 lengthChange: false,

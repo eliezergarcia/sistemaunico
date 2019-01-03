@@ -101,6 +101,7 @@ Route::get('/operaciones/facturaproveedor/{id}', 'OperationController@invoicePro
 Route::get('/operaciones/solicitudgarantia/{id}', 'OperationController@guaranteeRequest')->name('operations.guaranteeRequest');
 Route::get('/operaciones/solicitudanticipo/{id}', 'OperationController@advanceRequest')->name('operations.advanceRequest');
 Route::put('operaciones/update_status/{id}', 'OperationController@update_status')->name('operaciones.updatestatus');
+Route::post('/operaciones/notas/{id}', 'OperationController@notes')->name('operaciones.notes');
 Route::resource('operaciones', 'OperationController');
 
 Route::get('/contenedores/{id}', 'ContainerController@show')->name('contenedores.show');

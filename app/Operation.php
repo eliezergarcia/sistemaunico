@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Operation extends Model
 {
 
-    protected $fillable = ['user_id', 'shipper', 'master_consignee', 'house_consignee', 'etd', 'eta', 'impo_expo', 'pol', 'pod', 'destino', 'incoterm', 'booking', 'custom_cutoff', 'vessel', 'o_f', 'c_invoice', 'm_bl', 'h_bl', 'cntr', 'type', 'size', 'qty', 'weight_measures', 'modalidad', 'aa', 'recibir', 'revision', 'mandar', 'revalidacion', 'toca_piso', 'booking_expo', 'conf_booking', 'prog_recoleccion', 'recoleccion', 'llegada_puerto', 'cierre_documental', 'pesaje', 'ingreso', 'despacho', 'zarpe', 'envio_papelera'];
+    protected $fillable = ['user_id', 'shipper', 'master_consignee', 'house_consignee', 'etd', 'eta', 'impo_expo', 'pol', 'pod', 'destino', 'incoterm', 'booking', 'custom_cutoff', 'vessel', 'o_f', 'c_invoice', 'notes', 'm_bl', 'h_bl', 'cntr', 'type', 'size', 'qty', 'weight_measures', 'modalidad', 'aa', 'recibir', 'revision', 'mandar', 'revalidacion', 'toca_piso', 'booking_expo', 'conf_booking', 'prog_recoleccion', 'recoleccion', 'llegada_puerto', 'cierre_documental', 'pesaje', 'ingreso', 'despacho', 'zarpe', 'envio_papelera'];
 
 
     public function user()

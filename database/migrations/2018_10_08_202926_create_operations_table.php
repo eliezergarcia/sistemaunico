@@ -34,6 +34,7 @@ class CreateOperationsTable extends Migration
             $table->string('m_bl');
             $table->string('h_bl');
             $table->string('c_invoice');
+            $table->text('notes')->nullable();
             $table->date('recibir')->nullable();
             $table->date('revision')->nullable();
             $table->date('mandar')->nullable();

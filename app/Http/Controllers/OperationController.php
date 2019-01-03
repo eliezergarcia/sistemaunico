@@ -118,6 +118,23 @@ class OperationController extends Controller
         }
     }
 
+    public function notes(Request $request, $id)
+    {
+        DB::beginTransaction();
+
+        $operation = Operation::findOrFail($id);
+        $operation->notes = $request->note;
+        $operation->save();
+
+        if ($operation) {
+            DB::commit();
+            return back()->with('success', 'La nota se guardó correctamente.');
+        } else {
+            DB::rollBack();
+            return back()->with('error', 'Ocurrió un problema al guardar la nota.');
+        }
+    }
+
     /**
     *   Muestra la información de el debit note.
     */

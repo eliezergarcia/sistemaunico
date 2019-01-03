@@ -40,7 +40,7 @@ class InvoiceProvider extends Model
     }
 
     public function commissions(){
-        return $this->belongsToMany(InvoiceProvider::class, 'assigned_commissions_bank');
+        return $this->belongsToMany(CommissionBank::class, 'assigned_commissions_bank');
     }
 
     public function account()

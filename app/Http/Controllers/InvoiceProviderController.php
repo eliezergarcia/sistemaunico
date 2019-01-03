@@ -132,7 +132,7 @@ class InvoiceProviderController extends Controller
     {
         // dd($id);
 
-        $invoice = InvoiceProvider::where('factura', $id)->first();
+        $invoice = InvoiceProvider::find($id);
 
         $providers = Provider::where('inactive_at', null)->get();
 

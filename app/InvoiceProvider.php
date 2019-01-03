@@ -302,24 +302,24 @@ class InvoiceProvider extends Model
                 if($this->account()->currency == "MXN"){
                     $balanceUpdate = AccountManagementBalance::find($balance->id);
                     $balanceUpdate->update([
-                        'mxn' => $balanceUpdate->mxn - (($this->neto + $this->vat + $this->others) - $this->retention)
+                        'mxn' => $balanceUpdate->mxn - (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention)
                     ]);
                 }else{
                     $balanceUpdate = AccountManagementBalance::find($balance->id);
                     $balanceUpdate->update([
-                        'usd' => $balanceUpdate->usd - (($this->neto + $this->vat + $this->others) - $this->retention)
+                        'usd' => $balanceUpdate->usd - (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention)
                     ]);
                 }
             }elseif($option == "sub"){
                 if($this->account()->currency == "MXN"){
                     $balanceUpdate = AccountManagementBalance::find($balance->id);
                     $balanceUpdate->update([
-                        'mxn' => $balanceUpdate->mxn + (($this->neto + $this->vat + $this->others) - $this->retention)
+                        'mxn' => $balanceUpdate->mxn + (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention)
                     ]);
                 }else{
                     $balanceUpdate = AccountManagementBalance::find($balance->id);
                     $balanceUpdate->update([
-                        'usd' => $balanceUpdate->usd + (($this->neto + $this->vat + $this->others) - $this->retention)
+                        'usd' => $balanceUpdate->usd + (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention)
                     ]);
                 }
             }

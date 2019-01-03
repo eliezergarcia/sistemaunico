@@ -312,4 +312,33 @@ class InvoiceProviderController extends Controller
             return back()->with('error', 'Ocurrió un problema al guardar la nota.');
         }
     }
+
+    public function cancel(Request $request)
+    {
+        // dd($request->all());
+        DB::beginTransaction();
+
+        $invoice = InvoiceProvider::findOrFail($request->invoice_id);
+        $invoice->canceled();
+        $invoice->markAsReadNotification();
+        $invoice->markAsReadNotificationRV();
+
+        if ($invoice->guarantee_request != null) {
+            $mensaje = "La solicitud de garantías se canceló correctamente.";
+        }
+        if ($invoice->advance_request != null) {
+            $mensaje = "La solicitud de anticipo se canceló correctamente.";
+        }
+        if ($invoice->factura != null) {
+            $mensaje = "La factura se canceló correctamente.";
+        }
+
+        if($invoice){
+            DB::commit();
+            return back()->with('success', $mensaje);
+        }else{
+            DB::rollBack();
+            return back()->with('error', 'Ocurrió un problema al cancelar la información.');
+        }
+    }
 }

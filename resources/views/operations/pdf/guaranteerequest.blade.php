@@ -31,11 +31,28 @@
                     <div class="d-print-none">
                         <div class="row justify-content-around">
                             <div class="col">
-                                @if(Auth::user()->present()->isAdmin() && !$invoice->aut_oper)
-                                    <div class="text-left">
-                                        <button class="btn btn-light" data-toggle="modal" data-target="#authorize-invoice-modal"><i class="mdi mdi-file-check"></i> Autorizar solicitud</button>
-                                    </div>
-                                @endif
+                                <div class="text-left">
+                                    @if(!$invoice->canceled_at)
+                                        @if(Auth::user()->present()->isAdmin())
+                                            @if(!$invoice->aut_oper)
+                                                <button class="btn btn-light" data-toggle="modal" data-target="#authorize-invoice-modal"><i class="mdi mdi-file-check"></i> Autorizar factura</button>
+                                            @endif
+                                            @if(!$invoice->aut_fin)
+                                                <button class="btn btn-danger" data-toggle="modal" data-target="#cancel-invoice-modal"><i class="mdi mdi-close-box-outline"></i> Cancelar</button>
+                                            @endif
+                                        @else
+                                </div>
+                                            @if($invoice->factura)
+                                                @if(!$invoice->canceled_at)
+                                                    <h5><a class="btn btn-info" href="{{ route('facturasproveedor.show', $invoice->factura )}}" data-toggle="tooltip" data-placemente="top" data-original-title="Ver información de factura">Ver factura {{ $invoice->factura }}</a></h5>
+                                                @else
+                                                    <h5><a class="btn btn-danger" href="{{ route('facturasproveedor.show', $invoice->factura )}}" data-toggle="tooltip" data-placemente="top" data-original-title="Ver información de factura">Factura {{ $invoice->factura }} Cancelada</a></h5>
+                                                @endif
+                                            @endif
+                                        @endif
+                                    @else
+                                        <button class="btn btn-danger"><i class="mdi mdi-close-box-outline"></i> Cancelado</button>
+                                    @endif
                             </div>
                             <div class="col">
                                 <div class="text-right">
@@ -333,6 +350,27 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+
+    <div id="cancel-invoice-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body p-4">
+                    <div class="text-center">
+                        <i class="dripicons-warning h1 text-danger"></i>
+                        <h4 class="mt-2">Precaución!</h4>
+                        <p class="mt-3">¿Está seguro(a) de cancelar la solicitud de anticipo?</p>
+                        <button type="button" class="btn btn-light my-2" data-dismiss="modal">Cancelar</button>
+                        <form id="cancel_invoice_form" style="display: inline;" action="{{ route('facturasproveedor.cancel') }}" method="POST">
+                            {!! csrf_field() !!}
+                            {!! method_field('DELETE') !!}
+                            <input type="hidden" name="invoice_id" value="{{ $invoice->id }}">
+                            <button type="sumbit" class="btn btn-danger my-2"><b>Aplicar</b></button>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 </div> <!-- container -->
 @endsection

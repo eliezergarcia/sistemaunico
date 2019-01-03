@@ -159,6 +159,7 @@ Route::post('/facturasproveedor/autorizar', 'InvoiceProviderController@authorize
 Route::post('/facturasproveedor/notas/{id}', 'InvoiceProviderController@notes')->name('facturasproveedor.notes');
 Route::post('/facturasproveedor/revision', 'InvoiceProviderController@revisionInvoice')->name('facturasproveedor.revisionInvoice');
 Route::delete('/facturasproveedor/cancelarRevision', 'InvoiceProviderController@cancelRevision')->name('facturasproveedor.cancelRevision');
+Route::delete('/facturasproveedor/cancelar', 'InvoiceProviderController@cancel')->name('facturasproveedor.cancel');
 Route::resource('facturasproveedor', 'InvoiceProviderController');
 
 Route::get('/balances', 'BalanceController@index')->name('balances.index');

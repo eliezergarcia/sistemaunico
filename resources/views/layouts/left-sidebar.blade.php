@@ -141,6 +141,18 @@
                             </a>
                         </li>
                     </ul>
+                    <ul class="side-nav-second-level" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('facturasproveedor.guaranteerequests') }}" aria-expanded="false">Solicitudes de garantía
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="side-nav-second-level" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('facturasproveedor.advancerequests') }}" aria-expanded="false">Solicitudes de anticipo
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             @endif
             @if(Auth::user()->present()->isFac() || Auth::user()->present()->isAdminGeneral())

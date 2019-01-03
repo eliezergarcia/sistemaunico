@@ -73,18 +73,20 @@
                         <table id="invoices-datatable" class="table table-centered table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline">
                             <thead>
                                 <tr>
-                                    <th>Revisión
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="selectAllRevision">
-                                            <label class="custom-control-label" for="selectAllRevision">&nbsp;</label>
-                                        </div>
-                                    </th>
-                                    <th>Pago
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="selectAllPago">
-                                            <label class="custom-control-label" for="selectAllPago">&nbsp;</label>
-                                        </div>
-                                    </th>
+                                    @if(auth()->user()->present()->isFin() || auth()->user()->present()->isAdminGeneral())
+                                        <th>Revisión
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="selectAllRevision">
+                                                <label class="custom-control-label" for="selectAllRevision">&nbsp;</label>
+                                            </div>
+                                        </th>
+                                        <th>Pago
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="selectAllPago">
+                                                <label class="custom-control-label" for="selectAllPago">&nbsp;</label>
+                                            </div>
+                                        </th>
+                                    @endif
                                     <th width="4%">#</th>
                                     <th>Proveedor</th>
                                     <th>Código de control</th>
@@ -104,22 +106,29 @@
                             <tbody>
                                 @foreach($invoices as $key => $invoice)
                                     <tr>
-                                        <td>
-                                            @if($invoice->aut_oper && !$invoice->aut_fin)
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checkrevision{{ $invoice->id }}" value="{{ $invoice->id }}" name="invoicesrevision">
-                                                    <label class="custom-control-label" for="checkrevision{{ $invoice->id }}">&nbsp;</label>
-                                                </div>
+                                        @if($invoice->canceled_at)
+                                            <td></td>
+                                            <td></td>
+                                        @else
+                                            @if(auth()->user()->present()->isFin() || auth()->user()->present()->isAdminGeneral())
+                                                <td>
+                                                    @if($invoice->aut_oper && !$invoice->aut_fin)
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="checkrevision{{ $invoice->id }}" value="{{ $invoice->id }}" name="invoicesrevision">
+                                                            <label class="custom-control-label" for="checkrevision{{ $invoice->id }}">&nbsp;</label>
+                                                        </div>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if($invoice->pagado < $invoice->total)
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="checkpago{{ $invoice->id }}" value="{{ $invoice->id }}" name="invoicespago">
+                                                            <label class="custom-control-label" for="checkpago{{ $invoice->id }}">&nbsp;</label>
+                                                        </div>
+                                                    @endif
+                                                </td>
                                             @endif
-                                        </td>
-                                        <td>
-                                            @if($invoice->pagado < $invoice->total)
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checkpago{{ $invoice->id }}" value="{{ $invoice->id }}" name="invoicespago">
-                                                    <label class="custom-control-label" for="checkpago{{ $invoice->id }}">&nbsp;</label>
-                                                </div>
-                                            @endif
-                                        </td>
+                                        @endif
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $invoice->provider->codigo_proveedor }}</td>
                                         <td>{{ $invoice->controlcode }}</td>
@@ -138,10 +147,10 @@
                                         <td>{{ $invoice->autfinanzas }}</td>
                                         <td>{{ $invoice->present()->statusBadge() }}</td>
                                         <td>
-                                            <a href="{{ route('facturasproveedor.show', $invoice->factura )}}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver información"> <i class="mdi mdi-eye"></i></a>
+                                            <a href="{{ route('operations.invoiceProvider', $invoice->id ) }}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver pdf"> <i class="mdi mdi-file-pdf"></i></a>
                                             @if(!$invoice->canceled_at)
-                                                @if((Auth::user()->present()->isAdmin() && Auth::user()->present()->isOper()) || Auth::user()->present()->isAdminGeneral())
-                                                    <a href="{{ route('operations.invoiceProvider', $invoice->id ) }}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver pdf"> <i class="mdi mdi-file-pdf"></i></a>
+                                                @if((Auth::user()->present()->isAdmin() && Auth::user()->present()->isOper()) || Auth::user()->present()->isAdminGeneral() || Auth::user()->present()->isFin())
+                                                    <a href="{{ route('facturasproveedor.show', $invoice->factura )}}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver información"> <i class="mdi mdi-eye"></i></a>
                                                     @if(!$invoice->aut_oper)
                                                         <a href="javascript:void(0)" class="action-icon btn btn-link"
                                                         data-toggle="tooltip" data-placemente="top" data-original-title="Autorizar factura"

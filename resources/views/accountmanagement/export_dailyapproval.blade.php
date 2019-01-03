@@ -13,11 +13,11 @@
         </tr>
         <tr>
             <th></th>
-            <th>Beginning Balance</th>
-            <th>Currency</th>
-            <th>Collection</th>
-            <th>Payment</th>
-            <th>Ending Balance</th>
+            <th style="background-color: #FFB03D">Beginning Balance</th>
+            <th style="background-color: #FFB03D">Currency</th>
+            <th style="background-color: #FFB03D">Collection</th>
+            <th style="background-color: #FFB03D">Payment</th>
+            <th style="background-color: #FFB03D">Ending Balance</th>
         </tr>
             <?php
                 $pcmxn = 0;
@@ -73,13 +73,13 @@
         </tr>
         <tr>
             <th></th>
-            <th>Vendor or Sub-contractor</th>
-            <th>Currency</th>
-            <th>AR Beginning Balance</th>
-            <th>Collection</th>
-            <th>AR Ending Balance</th>
-            <th>Remark 1</th>
-            <th>Remark 2</th>
+            <th style="background-color: #FFB03D">Vendor or Sub-contractor</th>
+            <th style="background-color: #FFB03D">Currency</th>
+            <th style="background-color: #FFB03D">AR Beginning Balance</th>
+            <th style="background-color: #FFB03D">Collection</th>
+            <th style="background-color: #FFB03D">AR Ending Balance</th>
+            <th style="background-color: #FFB03D">Remark 1</th>
+            <th style="background-color: #FFB03D">Remark 2</th>
         </tr>
         @foreach($balance->clients($balance) as $client)
             @if($balance->paymentsClientTotalMXN($balance, $client->client()->id)->pluck('monto')->sum() != 0)
@@ -156,16 +156,16 @@
         </tr>
         <tr>
             <th></th>
-            <th>Vendor or Sub-contractor</th>
-            <th>Currency</th>
-            <th>AP Beginning Balance</th>
-            <th>Payment</th>
-            <th>AP Ending Balance</th>
-            <th>Approval Status</th>
-            <th>Client</th>
-            <th>Unico PIC</th>
-            <th>Service (Truck, Ocean)</th>
-            <th>Remarks</th>
+            <th style="background-color: #FFB03D">Vendor or Sub-contractor</th>
+            <th style="background-color: #FFB03D">Currency</th>
+            <th style="background-color: #FFB03D">AP Beginning Balance</th>
+            <th style="background-color: #FFB03D">Payment</th>
+            <th style="background-color: #FFB03D">AP Ending Balance</th>
+            <th style="background-color: #FFB03D">Approval Status</th>
+            <th style="background-color: #FFB03D">Client</th>
+            <th style="background-color: #FFB03D">Unico PIC</th>
+            <th style="background-color: #FFB03D">Service (Truck, Ocean)</th>
+            <th style="background-color: #FFB03D">Remarks</th>
         </tr>
         @foreach($balancepaymentplan->invoicesProviders() as $invoice)
             <?php

@@ -182,7 +182,7 @@
                     <th>{{ $invoice->provider->clients($balancepaymentplan) }}</th>
                     <th>{{ $invoice->provider->unicoPic($balancepaymentplan) }}</th>
                     <th>{{ $invoice->provider->service }}</th>
-                    <th>Remark</th>
+                    <th>{{ $invoice->provider->RemarksProviderMXN() }}</th>
                 </tr>
             @endif
             @if($invoice->provider->accountManagementBalanceInvoicesUSD($balancepaymentplan) != 0)

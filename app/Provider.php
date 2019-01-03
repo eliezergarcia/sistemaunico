@@ -173,4 +173,25 @@ class Provider extends Model
 
         return $usuarios->implode(', ');
     }
+
+    public function RemarksProviderMXN()
+    {
+        $invoices = InvoiceProvider::where('provider_id', $this->id)->whereDate('aut_fin', '=', $balance->created_at)->get();
+
+        $remarks = collect([]);
+        foreach ($invoices as $invoice) {
+            $account = AccountProvider::find($invoice->account_provider_id);
+            if ($account->currency == "MXN") {
+                if ($invoice->guarantee_request) {
+                    $remarks->push('Advance Payment');
+                }elseif ($invoice->advance_request) {
+                    $remarks->push('Advance Payment');
+                }elseif (!$invoice->guarantee_request && !$invoice->advance_request) {
+                    $remarks->push('Invoice');
+                }
+            }
+        }
+
+        return $remarks->implode(', ');
+    }
 }

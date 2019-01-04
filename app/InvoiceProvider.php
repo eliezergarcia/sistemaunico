@@ -124,6 +124,32 @@ class InvoiceProvider extends Model
         return number_format($pendiente, 2, '.', ',');
     }
 
+    public function payment_source()
+    {
+        if ($this->payments->isEmpty()) {
+            return "PENDIENTE";
+        }else{
+            return "C.A";
+        }
+    }
+
+    public function payment_status()
+    {
+        if ($this->payments->isEmpty()) {
+            return "PENDIENTE";
+        }else{
+            $fechas = collect([]);
+            foreach ($this->payments as $payment) {
+                $fechapago = Carbon::parse($payment->fecha_pago)->format('d/m/Y');
+                $fechas->push($fechapago);
+            }
+
+            $fechas_unique = $fechas->unique();
+
+            return $fechas_unique->implode(', ');
+        }
+    }
+
     public function createConceptsInvoiceProviders($request)
     {
         if($request->has('conceptsinvoices'))

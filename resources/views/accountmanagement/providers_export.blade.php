@@ -57,7 +57,7 @@
                     <th>{{ $invoice->others }}</th>
                     <th>{{ $invoice->total }}</th>
                     <th>{{ $invoice->pendiente }}</th>
-                    <th></th>
+                    <th>{{ $invoice->payment_source() }}</th>
                     <th>
                         {{ $invoice->m_bl }} / {{ $invoice->h_bl }} <br>
                         @foreach($invoice->conceptsinvoice as $concept)
@@ -68,7 +68,7 @@
                         {{ $invoice->operation->user->name }} <br>
                     </th>
                     <th>{{ $invoice->controlcode }}</th>
-                    <th>{{ $invoice->present()->statusBadge() }}</th>
+                    <th>{{ $invoice->payment_status() }}</th>
                     <th>{{ $invoice->expense_description }}</th>
                     <th>
                         F/{{ $invoice->operation->invoicesclients->pluck('factura')->implode(', ') }}
@@ -126,7 +126,7 @@
                         <th style="background-color: #F08080">{{ $invoice->others }}</th>
                         <th style="background-color: #F08080">{{ $invoice->total }}</th>
                         <th style="background-color: #F08080">{{ $invoice->pendiente }}</th>
-                        <th style="background-color: #F08080"></th>
+                        <th style="background-color: #F08080">{{ $invoice->payment_source() }}</th>
                         <th style="background-color: #F08080">
                             {{ $invoice->m_bl }} / {{ $invoice->h_bl }} <br>
                             @foreach($invoice->conceptsinvoice as $concept)
@@ -135,7 +135,7 @@
                             {{ $invoice->operation->user->name }}
                         </th>
                         <th style="background-color: #F08080">{{ $invoice->controlcode }}</th>
-                        <th style="background-color: #F08080">{{ $invoice->present()->statusBadge() }}</th>
+                        <th style="background-color: #F08080">{{ $invoice->payment_status() }}</th>
                         <th style="background-color: #F08080">{{ $invoice->expense_description }}</th>
                         <th style="background-color: #F08080">
                             F/{{ $invoice->operation->invoicesclients->pluck('factura')->implode(', ') }}

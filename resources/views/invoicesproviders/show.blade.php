@@ -558,7 +558,21 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-4"></div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Cuenta <span class="text-danger">*</span></label>
+                                        <select class="form-control {{ $errors->has('account_provider_id') ? ' is-invalid' : '' }}" name="account_provider_id">
+                                            @foreach($accounts as $account)
+                                                <option value="{{ $account->id }}" {{ $invoice->account_provider_id == $account->id ? 'selected' : '' }}>{{ $account->currency }} - {{ $account->account }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('account_provider_id'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('account_provider_id') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label>Neto <span class="text-danger">*</span></label>

@@ -634,8 +634,7 @@
                     table.search( "" ).draw();
                 }
             })
-            var val = $("#filtro-datatables").val();
-            table.search( val ).draw();
+            table.search( "").draw();
         });
 
         function register_payment_modal()

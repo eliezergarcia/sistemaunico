@@ -6,6 +6,7 @@ use App\Client;
 use App\Provider;
 use Carbon\Carbon;
 use App\CommissionBank;
+use App\AccountProvider;
 use App\InvoiceProvider;
 use App\ExpenseStatement;
 use Illuminate\Http\Request;
@@ -139,7 +140,9 @@ class InvoiceProviderController extends Controller
 
         $providers = Provider::where('inactive_at', null)->get();
 
-        return view('invoicesproviders.show', compact('invoice', 'providers'));
+        $accounts = AccountProvider::where('provider_id', $invoice->provider_id)->get();
+
+        return view('invoicesproviders.show', compact('invoice', 'providers', 'accounts'));
     }
 
     public function buscar($id)

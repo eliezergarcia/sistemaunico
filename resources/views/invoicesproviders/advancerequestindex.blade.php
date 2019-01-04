@@ -154,7 +154,7 @@
                                             @if(!$invoice->canceled_at)
                                                 @if((Auth::user()->present()->isAdmin() && Auth::user()->present()->isOper()) || Auth::user()->present()->isAdminGeneral() || Auth::user()->present()->isFin())
                                                     <a href="{{ route('operations.advanceRequest', $invoice->id ) }}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver pdf"> <i class="mdi mdi-file-pdf"></i></a>
-                                                    <a  href="javascript:void(0)" class="action-icon btn btn-link"
+                                                    <a href="javascript:void(0)" class="action-icon btn btn-link"
                                                 data-toggle="tooltip" data-placemente="top" data-original-title="Editar información"
                                                 onclick="information_invoice_modal({{ $invoice->id }});"><i class="mdi mdi-square-edit-outline"></i></a>
                                                     @if(!$invoice->aut_oper)
@@ -198,7 +198,7 @@
                                  <div class="col-7">
                                     <div class="form-group">
                                         <label>Proveedor <span class="text-danger">*</span></label>
-                                        <select class="form-control {{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id">
+                                        <select class="form-control {{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" id="provider_id">
                                             <option value="">Selecciona...</option>
                                             @foreach($providers as $provider)
                                                 <option value="{{ $provider->id }}">{{ $provider->razon_social }}</option>
@@ -260,6 +260,16 @@
                                     </div>
                                 </div>
                                 <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Cuenta <span class="text-danger">*</span></label>
+                                        <select class="form-control {{ $errors->has('account_provider_id') ? ' is-invalid' : '' }}" name="account_provider_id">
+                                        </select>
+                                        @if ($errors->has('account_provider_id'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('account_provider_id') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
                                 </div>
                             <div class="col-3">
                                 <div class="form-group">
@@ -503,8 +513,7 @@
                     table.search( "" ).draw();
                 }
             })
-            var val = $("#filtro-datatables").val();
-            table.search( val ).draw();
+            table.search( "" ).draw();
         });
 
         function register_payment_modal()
@@ -581,9 +590,31 @@
                 $('#information-invoice-form input[name=others]').val(response.data.invoice.others);
                 $('#information-invoice-form select[name=expense_description]').val(response.data.invoice.expense_description).change();
                 $('#information-invoice-modal').modal('show');
+                search_accounts(response.data.invoice.account_provider_id);
             }).catch(function(error) {
                 console.log(response.error);
             })
+        }
+
+        function search_accounts($account_id)
+        {
+            var provider_id = $('#information-invoice-form #provider_id').val();
+            axios.get('/proveedores/buscarcuentas', {
+                params: {
+                    provider_id: provider_id
+                }
+            }).then(function (response) {
+                // console.log(response.data.length);
+                for(var i=0;i<=response.data.length;i++){
+                    if ($account_id == response.data[i].id) {
+                        $("select[name=account_provider_id]").append("<option value='"+ response.data[i].id + "' selected>" + response.data[i].currency + " - " + response.data[i].account + "</option>");
+                    }else{
+                        $("select[name=account_provider_id]").append("<option value='"+ response.data[i].id + "'>" + response.data[i].currency + " - " + response.data[i].account + "</option>");
+                    }
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
         }
 
         function canceled_revision_modal($id)

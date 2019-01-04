@@ -25,16 +25,7 @@ class RegisterProviderRequest extends FormRequest
     {
         return [
             'codigo_proveedor' => 'required',
-            'razon_social' => 'required',
-            'rfc' => 'required',
-            'calle' => 'required',
-            'colonia' => 'required',
-            'codigo_postal' => 'required',
-            'pais' => 'required',
-            'estado' => 'required',
-            'ciudad' => 'required',
-            'municipio' => 'required',
-            'service' => 'required',
+            'razon_social' => 'required'
         ];
     }
 }

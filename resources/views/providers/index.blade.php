@@ -117,7 +117,7 @@
                             </div>
 
                             <div class="form-group col-6">
-                                <label>RFC: <span class="text-danger">*</span></label>
+                                <label>RFC:</label>
                                 <input class="form-control {{ $errors->has('rfc') ? ' is-invalid' : '' }}" type="text" name="rfc" value="{{ old('rfc') }}">
                                 @if ($errors->has('rfc'))
                                     <span class="invalid-feedback" role="alert">
@@ -144,7 +144,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>Calle: <span class="text-danger">*</span></label>
+                                <label>Calle:</label>
                                 <input class="form-control {{ $errors->has('calle') ? ' is-invalid' : '' }}" type="text" name="calle" value="{{ old('calle') }}">
                                 @if ($errors->has('calle'))
                                     <span class="invalid-feedback" role="alert">
@@ -153,7 +153,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>Colonia: <span class="text-danger">*</span></label>
+                                <label>Colonia:</label>
                                 <input class="form-control {{ $errors->has('colonia') ? ' is-invalid' : '' }}" type="text" name="colonia" value="{{ old('colonia') }}">
                                 @if ($errors->has('colonia'))
                                     <span class="invalid-feedback" role="alert">
@@ -162,7 +162,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>Código postal: <span class="text-danger">*</span></label>
+                                <label>Código postal:</label>
                                 <input class="form-control {{ $errors->has('codigo_postal') ? ' is-invalid' : '' }}" type="text" name="codigo_postal" value="{{ old('codigo_postal') }}">
                                 @if ($errors->has('codigo_postal'))
                                     <span class="invalid-feedback" role="alert">
@@ -171,7 +171,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>País: <span class="text-danger">*</span></label>
+                                <label>País:</label>
                                 <input class="form-control {{ $errors->has('pais') ? ' is-invalid' : '' }}" type="text" name="pais" value="{{ old('pais') }}">
                                 @if ($errors->has('pais'))
                                     <span class="invalid-feedback" role="alert">
@@ -180,7 +180,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>Estado: <span class="text-danger">*</span></label>
+                                <label>Estado:</label>
                                 <input class="form-control {{ $errors->has('estado') ? ' is-invalid' : '' }}" type="text" name="estado" value="{{ old('estado') }}">
                                 @if ($errors->has('estado'))
                                     <span class="invalid-feedback" role="alert">
@@ -189,7 +189,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>Ciudad: <span class="text-danger">*</span></label>
+                                <label>Ciudad:</label>
                                 <input class="form-control {{ $errors->has('ciudad') ? ' is-invalid' : '' }}" type="text" name="ciudad" value="{{ old('ciudad') }}">
                                 @if ($errors->has('ciudad'))
                                     <span class="invalid-feedback" role="alert">
@@ -198,7 +198,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>Municipio: <span class="text-danger">*</span></label>
+                                <label>Municipio:</label>
                                 <input class="form-control {{ $errors->has('municipio') ? ' is-invalid' : '' }}" type="text" name="municipio" value="{{ old('municipio') }}">
                                 @if ($errors->has('municipio'))
                                     <span class="invalid-feedback" role="alert">
@@ -225,7 +225,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>Service: <span class="text-danger">*</span></label>
+                                <label>Service:</label>
                                 <select class="form-control {{ $errors->has('service') ? ' is-invalid' : '' }}" type="text" name="service" value="{{ old('service') }}">
                                     <option value="Trucking">Trucking</option>
                                     <option value="Ocean">Ocean</option>
@@ -380,8 +380,8 @@
                             </div>
 
                             <div class="form-group col-6">
-                                <label>RFC: <span class="text-danger">*</span></label>
-                                <input class="form-control " type="text" name="rfc" required>
+                                <label>RFC:</label>
+                                <input class="form-control " type="text" name="rfc">
                             </div>
                             <div class="form-group col-3">
                                 <label>Número interior: </label>
@@ -392,32 +392,32 @@
                                 <input class="form-control " type="text" name="numero_exterior">
                             </div>
                             <div class="form-group col-3">
-                                <label>Calle: <span class="text-danger">*</span></label>
-                                <input class="form-control " type="text" name="calle" required>
+                                <label>Calle:</label>
+                                <input class="form-control " type="text" name="calle">
                             </div>
                             <div class="form-group col-3">
-                                <label>Colonia: <span class="text-danger">*</span></label>
-                                <input class="form-control " type="text" name="colonia" required>
+                                <label>Colonia:</label>
+                                <input class="form-control " type="text" name="colonia">
                             </div>
                             <div class="form-group col-3">
-                                <label>Código postal: <span class="text-danger">*</span></label>
-                                <input class="form-control " type="text" name="codigo_postal" required>
+                                <label>Código postal:</label>
+                                <input class="form-control " type="text" name="codigo_postal">
                             </div>
                             <div class="form-group col-3">
-                                <label>País: <span class="text-danger">*</span></label>
-                                <input class="form-control " type="text" name="pais" required>
+                                <label>País:</label>
+                                <input class="form-control " type="text" name="pais">
                             </div>
                             <div class="form-group col-3">
-                                <label>Estado: <span class="text-danger">*</span></label>
-                                <input class="form-control " type="text" name="estado" required>
+                                <label>Estado:</label>
+                                <input class="form-control " type="text" name="estado">
                             </div>
                             <div class="form-group col-3">
-                                <label>Ciudad: <span class="text-danger">*</span></label>
-                                <input class="form-control " type="text" name="ciudad" required>
+                                <label>Ciudad:</label>
+                                <input class="form-control " type="text" name="ciudad">
                             </div>
                             <div class="form-group col-3">
-                                <label>Municipio: <span class="text-danger">*</span></label>
-                                <input class="form-control " type="text" name="municipio" required>
+                                <label>Municipio:</label>
+                                <input class="form-control " type="text" name="municipio">
                             </div>
                             <div class="form-group col-3">
                                 <label>Teléfono #1: </label>
@@ -428,7 +428,7 @@
                                 <input class="form-control " type="text" name="telefono2">
                             </div>
                             <div class="form-group col-3">
-                                <label>Service: <span class="text-danger">*</span></label>
+                                <label>Service:</label>
                                 <input class="form-control " type="text" name="service">
                             </div>
                             <div class="form-group col-3">

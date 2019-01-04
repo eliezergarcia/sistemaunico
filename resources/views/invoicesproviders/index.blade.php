@@ -71,10 +71,10 @@
                                 <label for="">Mostrar &nbsp;</label>
                                 <select name="filtro-datatables" id="filtro-datatables" class="form-control">
                                     <option value="Pendiente autorización">Pdt. autorización</option>
-                                    <option value="Pendiente revisión" selected>Pdt. revisión</option>
+                                    <option value="Pendiente revisión">Pdt. revisión</option>
                                     <option value="Pendiente factura">Pdt. factura</option>
                                     <option value="Finalizado">Finalizado</option>
-                                    <option value="Todo">Todos</option>
+                                    <option value="Todo" selected>Todos</option>
                                 </select>
                             </div>
                             <div class="col-10">

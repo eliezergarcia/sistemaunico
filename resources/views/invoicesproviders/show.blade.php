@@ -43,10 +43,10 @@
                             <thead>
                                 <tr>
                                     <th width="20%">Proveedor</th>
+                                    <th width="5%">Folio</th>
                                     <th width="8%">Código de control</th>
                                     <th width="8%">Fecha invoice</th>
                                     <th width="8%">Expense type</th>
-                                    <th width="8%">Expense description</th>
                                     <th width="7%">Neto</th>
                                     <th width="7%">Vat</th>
                                     <th width="7%">Retention</th>
@@ -58,10 +58,10 @@
                             <tbody>
                                 <tr>
                                     <td>{{ $invoice->provider->razon_social }}</td>
+                                    <td>{{ $invoice->factura }}</td>
                                     <td>{{ $invoice->controlcode }}</td>
                                     <td>{{ $invoice->invoice_date }}</td>
                                     <td>{{ $invoice->expense_tipe }}</td>
-                                    <td>{{ $invoice->expense_description }}</td>
                                     <td>$ {{ $invoice->neto }}</td>
                                     <td>{{ $invoice->vat }}</td>
                                     <td class="text-danger">- {{ $invoice->retention }}</td>

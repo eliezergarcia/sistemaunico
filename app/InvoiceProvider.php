@@ -110,7 +110,7 @@ class InvoiceProvider extends Model
 
     public function getPagadoAttribute()
     {
-        if($this->payments->pluck('monto')->sum() >= $this->total){
+        if($this->payments->pluck('monto')->sum() + $this->payments->pluck('commission')->sum() >= $this->sntotal){
             return true;
         }
 

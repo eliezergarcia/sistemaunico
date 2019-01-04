@@ -360,14 +360,14 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label>Fecha de devolución</label>
+                                        <label>Fecha de pago</label>
                                         <input class="form-control " type="date" name="fecha_pago" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Comisión</label>
-                                        <input class="form-control " type="number" step="any" name="commission">
+                                        <input class="form-control " type="number" step="any" name="commission" value="0">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -548,11 +548,13 @@
                 }
             });
             var monto = $('#register-payment-form input[name=monto]').val();
+            var commission = $('#register-payment-form input[name=commission]').val();
             var fechapago = $('#register-payment-form input[name=fecha_pago]').val();
             var comentarios = $('#register-payment-form textarea[name=comentarios]').val();
             axios.post('/pagosproveedores/facturas', {
                 invoices: invoices,
                 monto: monto,
+                commission: commission,
                 fecha_pago: fechapago,
                 comentarios: comentarios
               }).then(function (response) {

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PaymentProviders extends Model
 {
-	protected $fillable = ['monto', 'fecha_pago', 'comentarios'];
+	protected $fillable = ['monto', 'fecha_pago', 'commission', 'comentarios'];
 
 	use SoftDeletes;
 

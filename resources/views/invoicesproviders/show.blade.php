@@ -106,9 +106,9 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>$
                                             @if(number_format($payment->monto, 2, '.', ',') <= $invoice->total)
-                                                {{ $payment->monto }}
+                                                {{ number_format($payment->monto + $payment->commission, 2, '.', ',') }}
                                             @else
-                                                {{ $invoice->total }}
+                                                {{ $invoice->sntotal }}
                                             @endif
                                         </td>
                                         <td>{{ $payment->fecha_pago }}</td>
@@ -692,10 +692,16 @@
                                         <input class="form-control " type="number" step="any" name="pendiente" disabled value="">
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-2">
                                     <div class="form-group">
                                         <label>Monto</label>
                                         <input class="form-control " type="number" step="any" name="monto" required>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label>Comisión</label>
+                                        <input class="form-control " type="number" step="any" name="commission" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
@@ -735,18 +741,22 @@
                             {!! csrf_field() !!}
                             <input type="hidden" name="payment_id">
                             <div class="row">
-                                <div class="col-6">
-                                    <br>
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label>Monto</label>
                                         <input class="form-control " type="number" step="any" name="monto" required>
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <br>
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label>Fecha de pago</label>
                                         <input class="form-control " type="date" name="fecha_pago" required>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Comisión</label>
+                                        <input class="form-control " type="number" step="any" name="commission" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -869,7 +879,8 @@
                 var vat = response.data.invoice.vat;
                 var retention = response.data.invoice.retention;
                 var others = response.data.invoice.others;
-                var total = (parseFloat(neto) + parseFloat(vat) + parseFloat(others)) - parseFloat(retention);
+                var comision = response.data.comision;
+                var total = (parseFloat(neto) + parseFloat(vat) + parseFloat(others) + parseFloat(comision)) - parseFloat(retention);
                 $('#register-payment-form input[name=neto]').val(neto);
                 $('#register-payment-form input[name=vat]').val(vat);
                 $('#register-payment-form input[name=retention]').val(retention);
@@ -887,6 +898,7 @@
                 console.log(response.data);
                 $('#information-payment-form input[name=payment_id]').val($id);
                 $('#information-payment-form input[name=monto]').val(response.data.monto);
+                $('#information-payment-form input[name=commission]').val(response.data.commission);
                 $('#information-payment-form input[name=fecha_pago]').val(response.data.fecha_pago);
                 $('#information-payment-form textarea[name=comentarios]').val(response.data.comentarios);
                 $('#information-payment-modal').modal('show');

@@ -67,7 +67,7 @@
                                                 @endif
                                         	@endforeach
                                         </td>
-                                        <td>$ {{ $payment->monto }}</td>
+                                        <td>$ {{ number_format($payment->monto + $payment->commission, 2, '.', ',') }}</td>
                                         <td>{{ $payment->fecha_pago }}</td>
                                         <td>{{ $payment->comentarios }}</td>
                                         <td>
@@ -118,7 +118,9 @@
                                         <select class="form-control select2" data-toggle="select2" type="text" name="invoice_id" onchange="information_invoice();" required>
                                             <option value="" selected>Selecciona</option>
 											@foreach($invoices as $invoice)
-                                                <option value="{{ $invoice->id }}">{{ $invoice->factura == "" ? 'Sin factura' : $invoice->factura }}</option>
+                                                @if($invoice->pagado < $invoice->total)
+                                                    <option value="{{ $invoice->id }}">{{ $invoice->factura == "" ? $invoice->controlcode : $invoice->factura }}</option>
+                                                @endif
 											@endforeach
                                         </select>
                                     </div>
@@ -159,10 +161,16 @@
                                         <input class="form-control " type="number" step="any" name="pendiente" disabled value="">
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-2">
                                     <div class="form-group">
                                         <label>Monto</label>
                                         <input class="form-control " type="number" step="any" name="monto" required>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label>Comisión</label>
+                                        <input class="form-control " type="number" step="any" name="commission" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
@@ -202,18 +210,24 @@
                             {!! csrf_field() !!}
                             <input type="hidden" name="payment_id">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <br>
                                     <div class="form-group">
                                         <label>Monto</label>
                                         <input class="form-control " type="number" step="any" name="monto" required>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <br>
                                     <div class="form-group">
                                         <label>Fecha de pago</label>
                                         <input class="form-control " type="date" name="fecha_pago" required>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Comisión</label>
+                                        <input class="form-control " type="number" step="any" name="commission" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -306,7 +320,8 @@
                 var vat = response.data.invoice.vat;
                 var retention = response.data.invoice.retention;
                 var others = response.data.invoice.others;
-                var total = (parseFloat(neto) + parseFloat(vat) + parseFloat(others)) - parseFloat(retention);
+                var comision = response.data.comision;
+                var total = (parseFloat(neto) + parseFloat(vat) + parseFloat(others) + parseFloat(comision)) - parseFloat(retention);
                 $('#register-payment-form input[name=neto]').val(neto);
                 $('#register-payment-form input[name=vat]').val(vat);
                 $('#register-payment-form input[name=retention]').val(retention);
@@ -324,6 +339,7 @@
                 console.log(response.data);
                 $('#information-payment-form input[name=payment_id]').val($id);
                 $('#information-payment-form input[name=monto]').val(response.data.monto);
+                $('#information-payment-form input[name=commission]').val(response.data.commission);
                 $('#information-payment-form input[name=fecha_pago]').val(response.data.fecha_pago);
                 $('#information-payment-form textarea[name=comentarios]').val(response.data.comentarios);
                 $('#information-payment-modal').modal('show');

@@ -16,6 +16,7 @@ class CreatePaymentProvidersTable extends Migration
         Schema::create('payment_providers', function (Blueprint $table) {
             $table->increments('id');
             $table->decimal('monto', 10, 2)->nullable();
+            $table->decimal('commission', 10, 2)->nullable();
             $table->date('fecha_pago')->nullable();
             $table->string('comentarios')->nullable();
             $table->timestamps();

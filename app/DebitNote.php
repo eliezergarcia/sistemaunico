@@ -108,6 +108,6 @@ class DebitNote extends Model
 
     public function markAsReadNotificationSOLFAC()
     {
-        DB::table('notifications')->where('data', 'like', '%'.'SOLFAC'.$this->controlcode.'%')->update(array('read_at' => Carbon::now()));
+        DB::table('notifications')->where('data', 'like', '%'.'ULMX'.$this->controlcode.'%')->update(array('read_at' => Carbon::now()));
     }
 }

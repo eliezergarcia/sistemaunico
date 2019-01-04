@@ -145,10 +145,16 @@ class InvoiceProviderController extends Controller
     public function buscar($id)
     {
         $invoice = InvoiceProvider::findOrFail($id);
-        $pagado = $invoice->payments->pluck('monto')->sum();
+        $pagado = $invoice->payments->pluck('monto')->sum() + $invoice->payments->pluck('commission')->sum();
+        if ($invoice->commissions->isNotEmpty()) {
+            $comision = $invoice->commissions->first()->commission;
+        }else{
+            $comision = 0;
+        }
 
         $data['invoice'] = $invoice;
         $data['pagado'] = $pagado;
+        $data['comision'] = $comision;
 
         return $data;
     }

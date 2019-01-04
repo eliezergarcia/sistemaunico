@@ -104,7 +104,8 @@ class PaymentProvidersController extends Controller
                 $vat = $vat + $invoice->vat;
                 $retention = $retention + $invoice->retention;
                 $others = $others + $invoice->others;
-                $total = $total + (($invoice->neto + $invoice->vat + $invoice->others) - $invoice->retention);
+                // $total = $total + (($invoice->neto + $invoice->vat + $invoice->others) - $invoice->retention);
+                $total = $invoice->sntotal;
            }
         }
         $data['neto'] = number_format($neto, 2, '.', ',');

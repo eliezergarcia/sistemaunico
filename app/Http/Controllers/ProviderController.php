@@ -76,7 +76,8 @@ class ProviderController extends Controller
     {
         DB::beginTransaction();
 
-        $provider = Provider::findOrFail($request->input('provider_id'))->update($request->all());
+        $provider = Provider::findOrFail($request->provider_id);
+        $provider->update($request->all());
 
         if ($provider) {
             DB::commit();

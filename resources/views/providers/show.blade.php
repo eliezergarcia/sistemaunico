@@ -217,7 +217,7 @@
                 <div class="modal-body">
                     <form method="POST" action="{{ route('proveedores.modificar') }}" enctype="multipart/form-data" class="pl-2 pr-2">
                         {!! csrf_field() !!}
-                        <input type="hidden" name="provider_id">
+                        <input type="hidden" name="provider_id" value="{{ $provider->id }}">
                         <div class="row">
                             <div class="form-group col-3">
                                 <label>Código de proveedor: <span class="text-danger">*</span></label>
@@ -350,8 +350,8 @@
                             <div class="form-group col-3">
                                 <label>Service: <span class="text-danger">*</span></label>
                                 <select class="form-control {{ $errors->has('service') ? ' is-invalid' : '' }}" type="text" name="service" value="{{ old('service') }}">
-                                    <option value="Trucking">Trucking</option>
-                                    <option value="Ocean">Ocean</option>
+                                    <option value="Trucking" {{ $provider->service == "Trucking" ? 'selected' : '' }}>Trucking</option>
+                                    <option value="Ocean" {{ $provider->service == "Ocean" ? 'selected' : '' }}>Ocean</option>
                                 </select>
                                 @if ($errors->has('service'))
                                     <span class="invalid-feedback" role="alert">

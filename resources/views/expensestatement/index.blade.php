@@ -56,7 +56,6 @@
                                     <th width="10%">Retención</th>
                                     <th width="10%">Otros</th>
                                     <th width="10%">Total</th>
-                                    <th>Notas</th>
                                     <th>Status</th>
                                     <th>Descripción de gasto</th>
                                     <th width="10%">Acciones</th>
@@ -74,7 +73,6 @@
                                     <td class="text-danger">- {{ number_format($expense->retention, 2, '.', ',') }}</td>
                                     <td>{{ number_format($expense->others, 2, '.', ',') }}</td>
                                     <td>{{ $expense->total }}</td>
-                                    <td>{{ $expense->notes }}</td>
                                     <td>{{ $expense->present()->statusBadge() }}</td>
                                     <td>{{ $expense->expense_description }}</td>
                                     <td>

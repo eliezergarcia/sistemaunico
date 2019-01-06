@@ -80,7 +80,7 @@
                         </div>
                         <div class="col-3 row justify-content-center align-items-center">
                             <div class="">
-                                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CODE<br><h2>( {{ $invoice->controlcode }} )<h2></h3>
+                                <h3>FACT. PROVEEDOR<br><h2>&nbsp;&nbsp;( {{ $invoice->controlcode }} )<h2></h3>
                             </div>
                         </div>
                     </div>

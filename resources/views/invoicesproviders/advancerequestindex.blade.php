@@ -198,7 +198,7 @@
                                  <div class="col-7">
                                     <div class="form-group">
                                         <label>Proveedor <span class="text-danger">*</span></label>
-                                        <select class="form-control {{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" id="provider_id">
+                                        <select class="form-control {{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" id="provider_id" onchange="search_accounts()">
                                             <option value="">Selecciona...</option>
                                             @foreach($providers as $provider)
                                                 <option value="{{ $provider->id }}">{{ $provider->codigo_proveedor }}</option>
@@ -604,7 +604,8 @@
                     provider_id: provider_id
                 }
             }).then(function (response) {
-                // console.log(response.data.length);
+                // console.log(response.data.length);7
+                $("select[name=account_provider_id]").empty();
                 for(var i=0;i<=response.data.length;i++){
                     if ($account_id == response.data[i].id) {
                         $("select[name=account_provider_id]").append("<option value='"+ response.data[i].id + "' selected>" + response.data[i].currency + " - " + response.data[i].account + "</option>");

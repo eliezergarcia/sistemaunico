@@ -68,11 +68,11 @@
                                     <td>{{ $expense->invoice }}</td>
                                     <td>{{ $expense->expense_type }}</td>
                                     <td>{{ $expense->description }}</td>
-                                    <td>{{ number_format($expense->neto, 2, '.', ',') }}</td>
-                                    <td>{{ number_format($expense->vat, 2, '.', ',') }}</td>
-                                    <td class="text-danger">- {{ number_format($expense->retention, 2, '.', ',') }}</td>
-                                    <td>{{ number_format($expense->others, 2, '.', ',') }}</td>
-                                    <td>{{ $expense->total }}</td>
+                                    <td>{{ $expense->currency == "USD" ? '$ ' : '' }}{{ number_format($expense->neto, 2, '.', ',') }}</td>
+                                    <td>{{ $expense->currency == "USD" ? '$ ' : '' }}{{ number_format($expense->vat, 2, '.', ',') }}</td>
+                                    <td class="text-danger">{{ $expense->currency == "USD" ? '$ ' : '' }}- {{ number_format($expense->retention, 2, '.', ',') }}</td>
+                                    <td>{{ $expense->currency == "USD" ? '$ ' : '' }}{{ number_format($expense->others, 2, '.', ',') }}</td>
+                                    <td>{{ $expense->currency == "USD" ? '$ ' : '' }}{{ $expense->total }}</td>
                                     <td>{{ $expense->present()->statusBadge() }}</td>
                                     <td>{{ $expense->expense_description }}</td>
                                     <td>

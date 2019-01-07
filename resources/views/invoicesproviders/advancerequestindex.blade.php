@@ -138,10 +138,10 @@
                                         @endif
                                         <td>{{ $invoice->controlcode }}</td>
                                         <td>{{ $invoice->provider->codigo_proveedor }}</td>
-                                        <td>$ {{ number_format($invoice->neto, 2, '.', ',') }}</td>
-                                        <td>$ {{ number_format($invoice->vat, 2, '.', ',') }}</td>
-                                        <td class="text-danger">$ - {{ number_format($invoice->retention, 2, '.', ',') }}</td>
-                                        <td>$ {{ $invoice->total }}</td>
+                                        <td>{{ $invoice->account()->currency == "USD" ? '$ ' : '' }}{{ number_format($invoice->neto, 2, '.', ',') }}</td>
+                                        <td>{{ $invoice->account()->currency == "USD" ? '$ ' : '' }}{{ number_format($invoice->vat, 2, '.', ',') }}</td>
+                                        <td class="text-danger">{{ $invoice->account()->currency == "USD" ? '$ ' : '' }}- {{ number_format($invoice->retention, 2, '.', ',') }}</td>
+                                        <td>{{ $invoice->account()->currency == "USD" ? '$ ' : '' }}{{ $invoice->total }}</td>
                                         <td>
                                             @foreach($invoice->conceptsinvoice as $key => $concept)
                                                 {{ $concept->concept->description }} <br>

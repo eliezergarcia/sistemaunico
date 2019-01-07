@@ -66,7 +66,7 @@ class PrefactureController extends Controller
                 $concepts->operation_id = $request->input('operation_id');
                 $concepts->prefacture_id = $prefacture->id;
                 $concepts->concept_id = $idconcept;
-                $concepts->curr = $request->input('curr')[$i];
+                $concepts->curr = $request->input('curr')[$idconcept-1];
                 $concepts->rate = $rateconcept;
                 $concepts->iva = $ivaconcept;
                 $concepts->qty = $qtyconcept;

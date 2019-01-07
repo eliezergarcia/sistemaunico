@@ -66,7 +66,7 @@ class DebitNoteController extends Controller
                 $concepts->operation_id = $request->input('operation_id');
                 $concepts->debit_note_id = $debitnote->id;
                 $concepts->concept_id = $idconcept;
-                $concepts->curr = $request->input('curr')[$i];
+                $concepts->curr = $request->input('curr')[$idconcept-1];
                 $concepts->rate = $rateconcept;
                 $concepts->iva = $ivaconcept;
                 $concepts->qty = $qtyconcept;

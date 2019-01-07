@@ -240,7 +240,7 @@
                             </div>
 
                             <div class="form-group col-6">
-                                <label>RFC: <span class="text-danger">*</span></label>
+                                <label>RFC:</label>
                                 <input class="form-control {{ $errors->has('rfc') ? ' is-invalid' : '' }}" type="text" name="rfc" value="{{ $provider->rfc }}">
                                 @if ($errors->has('rfc'))
                                     <span class="invalid-feedback" role="alert">
@@ -267,7 +267,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>Calle: <span class="text-danger">*</span></label>
+                                <label>Calle:</label>
                                 <input class="form-control {{ $errors->has('calle') ? ' is-invalid' : '' }}" type="text" name="calle" value="{{ $provider->calle }}">
                                 @if ($errors->has('calle'))
                                     <span class="invalid-feedback" role="alert">
@@ -276,7 +276,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>Colonia: <span class="text-danger">*</span></label>
+                                <label>Colonia:</label>
                                 <input class="form-control {{ $errors->has('colonia') ? ' is-invalid' : '' }}" type="text" name="colonia" value="{{ $provider->colonia }}">
                                 @if ($errors->has('colonia'))
                                     <span class="invalid-feedback" role="alert">
@@ -285,7 +285,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>Código postal: <span class="text-danger">*</span></label>
+                                <label>Código postal:</label>
                                 <input class="form-control {{ $errors->has('codigo_postal') ? ' is-invalid' : '' }}" type="text" name="codigo_postal" value="{{ $provider->codigo_postal }}">
                                 @if ($errors->has('codigo_postal'))
                                     <span class="invalid-feedback" role="alert">
@@ -294,7 +294,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>País: <span class="text-danger">*</span></label>
+                                <label>País:</label>
                                 <input class="form-control {{ $errors->has('pais') ? ' is-invalid' : '' }}" type="text" name="pais" value="{{ $provider->pais }}">
                                 @if ($errors->has('pais'))
                                     <span class="invalid-feedback" role="alert">
@@ -303,7 +303,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>Estado: <span class="text-danger">*</span></label>
+                                <label>Estado:</label>
                                 <input class="form-control {{ $errors->has('estado') ? ' is-invalid' : '' }}" type="text" name="estado" value="{{ $provider->estado }}">
                                 @if ($errors->has('estado'))
                                     <span class="invalid-feedback" role="alert">
@@ -312,7 +312,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>Ciudad: <span class="text-danger">*</span></label>
+                                <label>Ciudad:</label>
                                 <input class="form-control {{ $errors->has('ciudad') ? ' is-invalid' : '' }}" type="text" name="ciudad" value="{{ $provider->ciudad }}">
                                 @if ($errors->has('ciudad'))
                                     <span class="invalid-feedback" role="alert">
@@ -321,7 +321,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>Municipio: <span class="text-danger">*</span></label>
+                                <label>Municipio:</label>
                                 <input class="form-control {{ $errors->has('municipio') ? ' is-invalid' : '' }}" type="text" name="municipio" value="{{ $provider->municipio }}">
                                 @if ($errors->has('municipio'))
                                     <span class="invalid-feedback" role="alert">
@@ -348,7 +348,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-3">
-                                <label>Service: <span class="text-danger">*</span></label>
+                                <label>Service:</label>
                                 <select class="form-control {{ $errors->has('service') ? ' is-invalid' : '' }}" type="text" name="service" value="{{ old('service') }}">
                                     <option value="Trucking" {{ $provider->service == "Trucking" ? 'selected' : '' }}>Trucking</option>
                                     <option value="Ocean" {{ $provider->service == "Ocean" ? 'selected' : '' }}>Ocean</option>

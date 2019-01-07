@@ -201,7 +201,7 @@
                                         <select class="form-control {{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" id="provider_id">
                                             <option value="">Selecciona...</option>
                                             @foreach($providers as $provider)
-                                                <option value="{{ $provider->id }}">{{ $provider->razon_social }}</option>
+                                                <option value="{{ $provider->id }}">{{ $provider->codigo_proveedor }}</option>
                                             @endforeach
                                         </select>
                                         @if ($errors->has('provider_id'))

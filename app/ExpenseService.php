@@ -18,7 +18,7 @@ class ExpenseService extends Model
 
     public function expensesPerMonth($month)
     {
-    	$expenses = ExpenseStatement::where('description', $this->servicio)->whereMonth('invoice_date', $month)->get();
+    	$expenses = ExpenseStatement::where('description', $this->servicio)->where('template', null)->where('canceled_at', null)->whereMonth('invoice_date', $month)->get();
 
     	$total = 0;
     	foreach ($expenses as $expense) {

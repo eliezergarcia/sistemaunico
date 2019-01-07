@@ -22,7 +22,10 @@ class ExpenseStatementSheet implements FromView, ShouldAutoSize, WithTitle
     public function view(): View
     {
         return view('expensestatement.export', [
-            'expenses' => ExpenseStatement::whereMonth('created_at', $this->month)->whereYear('created_at', $this->year)->get(),
+            'expenses' => ExpenseStatement::whereMonth('created_at', $this->month)
+                                          ->whereYear('created_at', $this->year)
+                                          ->where('template', null)
+                                          ->where('canceled_at', null)->get(),
         ]);
     }
 

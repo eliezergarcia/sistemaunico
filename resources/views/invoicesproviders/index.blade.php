@@ -115,7 +115,7 @@
                             </thead>
                             <tbody>
                                 @foreach($invoices as $key => $invoice)
-                                    <tr>
+                                    <tr class="{{ $invoice->expiration ? 'table-warning' : '' }}">
                                         @if($invoice->canceled_at)
                                             <td></td>
                                             <td></td>

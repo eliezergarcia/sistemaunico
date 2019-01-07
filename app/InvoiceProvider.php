@@ -76,6 +76,22 @@ class InvoiceProvider extends Model
         return \DateTime::createFromFormat('d/m/Y', $this->eta);
     }
 
+    public function getExpirationAttribute()
+    {
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
+
+        $invoiceDate = Carbon::createFromFormat('Y-m-d', $this->invoice_date);
+        $invoiceDate->addDays($this->provider->credit_days);
+
+        if ($date > $invoiceDate && $this->pagado < $this->total) {
+            return true;
+        }
+
+        return false;
+    }
+
+
     public function getAutFinanzasAttribute()
     {
         if ($this->aut_fin != null) {

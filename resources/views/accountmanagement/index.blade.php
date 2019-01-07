@@ -1,6 +1,6 @@
 @extends('layouts.hyper')
 
-@section('title', 'Finanzas | Manejo de cuentas')
+@section('title', 'Finanzas | Daily/Account')
 
 @section('content')
 
@@ -15,10 +15,10 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item">Menú</li>
                         <li class="breadcrumb-item">Finanzas</li>
-                        <li class="breadcrumb-item active">Manejo de cuentas</li>
+                        <li class="breadcrumb-item active">Daily/Account</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Manejo de cuentas</h4>
+                <h4 class="page-title">Daily/Account</h4>
             </div>
         </div>
     </div>
@@ -42,14 +42,6 @@
                                 </div>
                                 <div class="col-8"></div>
                                 <div class="col-2">
-                                    <h5>Daily Approval</h5>
-                                </div>
-                                <div class="col-2 form-group">
-                                    <label for="">Fecha del balance:</label>
-                                    <input type="date" name="da_fecha_inicio" class="form-control ">
-                                </div>
-                                <div class="col-8"></div>
-                                <div class="col-2">
                                     <h5>Facturas de proveedores</h5>
                                 </div>
                                 <div class="col-2 form-group">
@@ -63,6 +55,14 @@
                                 <div class="col-6">
 
                                 </div>
+                                <div class="col-2">
+                                    <h5>Daily Approval</h5>
+                                </div>
+                                <div class="col-2 form-group">
+                                    <label for="">Fecha del balance:</label>
+                                    <input type="date" name="da_fecha_inicio" class="form-control ">
+                                </div>
+                                <div class="col-8"></div>
                                 <div class="col-9"></div>
                                 <div class="col">
                                     <button type="submit" class="btn btn-primary mt-3"><i class="mdi mdi-file-document mr-2"></i><b>Acount Management</b></button>

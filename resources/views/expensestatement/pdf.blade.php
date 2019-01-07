@@ -1,6 +1,6 @@
 @extends('layouts.hyper')
 
-@section('title', 'GASTOS CJ CHICA - '.$expense->controlcode)
+@section('title', 'GTOS. CJ. CHICA - '.$expense->controlcode)
 
 @section('content')
 

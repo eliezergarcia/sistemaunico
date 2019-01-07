@@ -474,7 +474,7 @@
                                 {!! csrf_field() !!}
                                 {!! method_field('DELETE') !!}
                                 <input type="hidden" name="invoice_id" value="{{ $invoice->id }}">
-                                <button type="sumbit" class="btn btn-danger my-2"><b>Eliminar</b></button>
+                                <button type="sumbit" class="btn btn-danger my-2"><b>Aplicar</b></button>
                             </form>
                         </div>
                     </div>

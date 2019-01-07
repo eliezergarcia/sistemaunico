@@ -63,25 +63,27 @@
                             <tbody>
                                 <?php $totalneto = 0; $totaltotal = 0; ?>
                                 @foreach($debitnotes as $key => $debitnote)
-                                    @if($debitnote->invoices->isEmpty())
-                                        <?php $neto = 0; $total = 0; ?>
-                                        @foreach($debitnote->conceptsoperations as $concept)
+                                    @if(!$debitnote->canceled_at)
+                                        @if($debitnote->invoices->isEmpty())
+                                            <?php $neto = 0; $total = 0; ?>
+                                            @foreach($debitnote->conceptsoperations as $concept)
+                                                <?php
+                                                    $neto = $neto + ($concept->rate * $concept->qty);
+                                                    $total = $total + ($concept->rate * $concept->qty);
+                                                ?>
+                                            @endforeach
+                                            <tr>
+                                                <td>{{ $debitnote->numberformat }}</td>
+                                                <td>{{ $debitnote->fecha }}</td>
+                                                <td>$ {{ number_format($neto, 2, '.', '') }}</td>
+                                                <td>$ {{ number_format($total, 2, '.', '') }}</td>
+                                                <td>{{ $debitnote->operation->m_bl }}</td>
+                                            </tr>
                                             <?php
-                                                $neto = $neto + ($concept->rate * $concept->qty);
-                                                $total = $total + ($concept->rate * $concept->qty);
+                                                $totalneto = $totalneto + $neto;
+                                                $totaltotal = $totaltotal + $total;
                                             ?>
-                                        @endforeach
-                                        <tr>
-                                            <td>{{ $debitnote->numberformat }}</td>
-                                            <td>{{ $debitnote->fecha }}</td>
-                                            <td>$ {{ number_format($neto, 2, '.', '') }}</td>
-                                            <td>$ {{ number_format($total, 2, '.', '') }}</td>
-                                            <td>{{ $debitnote->operation->m_bl }}</td>
-                                        </tr>
-                                        <?php
-                                            $totalneto = $totalneto + $neto;
-                                            $totaltotal = $totaltotal + $total;
-                                        ?>
+                                        @endif
                                     @endif
                                 @endforeach
                             </tbody>

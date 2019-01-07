@@ -307,7 +307,7 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Fecha factura <span class="text-danger">*</span></label>
-                                        <input class="form-control {{ $errors->has('fecha_factura') ? ' is-invalid' : '' }}" type="date" name="fecha_factura" value="{{ old('fecha_factura') }}">
+                                        <input class="form-control {{ $errors->has('fecha_factura') ? ' is-invalid' : '' }}" type="date" name="fecha_factura" value="<?php echo date("Y-m-d");?>">
                                         @if ($errors->has('fecha_factura'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('fecha_factura') }}</strong>

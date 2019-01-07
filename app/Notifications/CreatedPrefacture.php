@@ -61,7 +61,7 @@ class CreatedPrefacture extends Notification
             'created_user' => Auth::user()->id,
             'data' => $this->prefacture->numberFormat,
             'link' => route('operations.prefacture', $this->prefacture->id),
-            'message' => 'Nueva solicitud de Prefactura',
+            'message' => 'Prefactura - '.$this->prefacture->numberFormat,
             'priority' => $this->prefacture->priority
         ];
     }

@@ -61,7 +61,7 @@ class CreatedDebitNote extends Notification
             'created_user' => Auth::user()->id,
             'data' => $this->debitnote->numberFormat,
             'link' => route('operations.debitnote', $this->debitnote->id),
-            'message' => 'Nueva solicitud de Debit Note',
+            'message' => 'Debit Note - '.$this->debitnote->numberFormat,
             'priority' => $this->debitnote->priority
         ];
     }

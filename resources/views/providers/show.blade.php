@@ -399,6 +399,11 @@
                             </div>
 
                             <div class="form-group col-6">
+                                <label>Clabe:</label>
+                                <input class="form-control " type="text" name="clabe" required>
+                            </div>
+
+                            <div class="form-group col-6">
                                 <label>Moneda: <span class="text-danger">*</span></label>
                                 <select class="form-control select2" data-toggle="select2" type="text" name="currency" required>
                                     <option value="MXN">MXN</option>
@@ -438,6 +443,11 @@
                             <div class="form-group col-6">
                                 <label>Cuenta: <span class="text-danger">*</span></label>
                                 <input class="form-control " type="text" name="account" required>
+                            </div>
+
+                            <div class="form-group col-6">
+                                <label>Clabe:</label>
+                                <input class="form-control " type="text" name="clabe" required>
                             </div>
 
                             <div class="form-group col-6">
@@ -583,6 +593,7 @@
                 console.log(response.data);
                 $('#information-account-form input[name=account_id]').val($id);
                 $('#information-account-form input[name=account]').val(response.data.account);
+                $('#information-account-form input[name=clabe]').val(response.data.clabe);
                 $('#information-account-form select[name=currency]').val(response.data.currency).change();
                 $('#information-account-form input[name=name_bank]').val(response.data.name_bank);
                 $('#information-account-modal').modal('show');

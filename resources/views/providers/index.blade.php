@@ -276,6 +276,11 @@
                             </div>
 
                             <div class="form-group col-6">
+                                <label>Clabe:</label>
+                                <input class="form-control " type="text" name="clabe" required>
+                            </div>
+
+                            <div class="form-group col-6">
                                 <label>Moneda: <span class="text-danger">*</span></label>
                                 <select class="form-control select2" data-toggle="select2" type="text" name="currency" required>
                                     <option value="MXN">MXN</option>

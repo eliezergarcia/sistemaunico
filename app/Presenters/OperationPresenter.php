@@ -29,13 +29,17 @@ class OperationPresenter extends Presenter
                 $prefacturanofacturado = 1;
             }
             foreach($this->model->debitnotes as $debitnote){
-                if($debitnote->invoices->isEmpty()){
-                    $debitnotenofacturado++;
+                if (!$debitnote->canceled_at) {
+                    if($debitnote->invoices->isEmpty()){
+                        $debitnotenofacturado++;
+                    }
                 }
             }
             foreach($this->model->prefactures as $prefacture){
-                if($prefacture->invoices->isEmpty()){
-                    $prefacturanofacturado++;
+                if (!$prefacture->canceled_at) {
+                    if($prefacture->invoices->isEmpty()){
+                        $prefacturanofacturado++;
+                    }
                 }
             }
             $badge = "";
@@ -72,13 +76,17 @@ class OperationPresenter extends Presenter
                 $prefacturanofacturado = 1;
             }
             foreach($this->model->debitnotes as $debitnote){
-                if($debitnote->invoices->isEmpty()){
-                    $debitnotenofacturado++;
+                if (!$debitnote->canceled_at) {
+                    if($debitnote->invoices->isEmpty()){
+                        $debitnotenofacturado++;
+                    }
                 }
             }
             foreach($this->model->prefactures as $prefacture){
-                if($prefacture->invoices->isEmpty()){
-                    $prefacturanofacturado++;
+                if (!$prefacture->canceled_at) {
+                    if($prefacture->invoices->isEmpty()){
+                        $prefacturanofacturado++;
+                    }
                 }
             }
             $badge = "";
@@ -158,14 +166,18 @@ class OperationPresenter extends Presenter
         }
 
         foreach($this->model->debitnotes as $debitnote){
-            if($debitnote->invoices->isEmpty()){
-                $nofacturado++;
+            if (!$debitnote->canceled_at) {
+                if($debitnote->invoices->isEmpty()){
+                    $nofacturado++;
+                }
             }
         }
 
         foreach($this->model->prefactures as $prefacture){
-            if($prefacture->invoices->isEmpty()){
-                $nofacturado++;
+            if (!$prefacture->canceled_at) {
+                if($prefacture->invoices->isEmpty()){
+                    $nofacturado++;
+                }
             }
         }
 

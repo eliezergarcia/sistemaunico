@@ -140,6 +140,13 @@ class InvoiceProvider extends Model
         return number_format($pendiente, 2, '.', ',');
     }
 
+    public function getsnPendienteAttribute()
+    {
+        $pendiente = (($this->neto + $this->vat + $this->others) - $this->retention) - $this->payments->pluck('monto')->sum();
+
+        return $pendiente;
+    }
+
     public function payment_source()
     {
         if ($this->payments->isEmpty()) {

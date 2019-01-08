@@ -82,6 +82,7 @@
             $retention = 0;
             $others = 0;
             $total = 0;
+            $pendiente = 0;
         ?>
         @foreach($invoices as $invoice)
             @if(!$invoice->canceled_at)
@@ -91,6 +92,7 @@
                     $retention = $retention + $invoice->retention;
                     $others = $others + $invoice->others;
                     $total = $total + (($invoice->neto + $invoice->vat + $invoice->others) - $invoice->retention);
+                    $pendiente = $pendiente + $invoice->pendiente;
                 ?>
             @endif
         @endforeach
@@ -105,6 +107,7 @@
             <th style="background-color: #FFA500">{{ number_format($retention, 2, '.', ',') }}</th>
             <th style="background-color: #FFA500">{{ number_format($others, 2, '.', ',') }}</th>
             <th style="background-color: #FFA500">{{ number_format($total, 2, '.', ',') }}</th>
+            <th style="background-color: #FFA500">{{ number_format($pendiente, 2, '.', ',') }}</th>
         </tr>
         <tr></tr>
         <tr></tr>

@@ -107,7 +107,7 @@
             <th style="background-color: #FFA500">{{ number_format($retention, 2, '.', ',') }}</th>
             <th style="background-color: #FFA500">{{ number_format($others, 2, '.', ',') }}</th>
             <th style="background-color: #FFA500">{{ number_format($total, 2, '.', ',') }}</th>
-            <th style="background-color: #FFA500">{{ number_format($pendiente, 2, '.', ',') }}</th>
+            <th style="background-color: #FFA500">{{ $pendiente }}</th>
         </tr>
         <tr></tr>
         <tr></tr>

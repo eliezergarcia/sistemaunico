@@ -78,6 +78,11 @@ class InvoiceProviderController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+
+        if(!$request->has('conceptsinvoices') && !$request->has('conceptsguarantee') && !$request->has('conceptsadvance')){
+            return back()->with('warning', 'No se ingresaron conceptos en la solicitud.');
+        }
+
         DB::beginTransaction();
 
         $fecha = ExpenseStatement::whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))->whereNull('template')->orderBy('id', 'desc')->limit(1)->first();

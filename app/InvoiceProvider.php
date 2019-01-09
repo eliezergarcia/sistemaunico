@@ -173,6 +173,11 @@ class InvoiceProvider extends Model
         }
     }
 
+    public function facturasUnico()
+    {
+
+    }
+
     public function createConceptsInvoiceProviders($request)
     {
         if($request->has('conceptsinvoices'))

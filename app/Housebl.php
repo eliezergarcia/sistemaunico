@@ -36,6 +36,20 @@ class Housebl extends Model
         return new HouseblPresenter($this);
     }
 
+    public function getShipAttribute()
+    {
+        $ship = Client::findOrFail($this->shipper);
+
+        return $ship;
+    }
+
+    public function getHouseAttribute()
+    {
+        $house = Client::findOrFail($this->house_consignee);
+
+        return $house;
+    }
+
 	public function getNumberFormatAttribute()
     {
         if ($this->number < 10) {

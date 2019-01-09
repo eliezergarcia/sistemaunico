@@ -119,22 +119,22 @@
                             <div>
                                 <p class="font12">SHIPPER</p>
                                 <p class="font14" style="padding-left: 20px;"><b>
-                                    {{ ucwords(strtolower($housebl->operation->ship->razon_social)) }}              <br>
-                                    {{ ucwords(strtolower($housebl->operation->ship->calle)) }}, #{{ $housebl->operation->ship->numero_exterior }}         <br>
-                                    {{ ucwords(strtolower($housebl->operation->ship->colonia)) }}, C.P. {{ $housebl->operation->ship->codigo_postal }}         <br>
-                                    {{ ucwords(strtolower($housebl->operation->ship->pais)) }}, {{ ucwords(strtolower($housebl->operation->ship->estado)) }}, {{ ucwords(strtolower($housebl->operation->ship->municipio)) }}         <br>
-                                    Tel: {{ $housebl->operation->ship->telefono1 }}   <br>
+                                    {{ ucwords(strtolower($housebl->ship->razon_social)) }}              <br>
+                                    {{ ucwords(strtolower($housebl->ship->calle)) }}, #{{ $housebl->ship->numero_exterior }}         <br>
+                                    {{ ucwords(strtolower($housebl->ship->colonia)) }}, C.P. {{ $housebl->ship->codigo_postal }}         <br>
+                                    {{ ucwords(strtolower($housebl->ship->pais)) }}, {{ ucwords(strtolower($housebl->ship->estado)) }}, {{ ucwords(strtolower($housebl->ship->municipio)) }}         <br>
+                                    Tel: {{ $housebl->ship->telefono1 }}   <br>
                                 </b></p>
                             </div>
                             <hr class="hr">
                             <div>
                                 <p class="font12">CONSIGNEE</p>
                                 <p class="font14" style="padding-left: 20px;"><b>
-                                    {{ ucwords(strtolower($housebl->operation->house->razon_social)) }}              <br>
-                                    {{ ucwords(strtolower($housebl->operation->house->calle)) }}, #{{ $housebl->operation->house->numero_exterior }}         <br>
-                                    {{ ucwords(strtolower($housebl->operation->house->colonia)) }}, C.P. {{ $housebl->operation->house->codigo_postal }}         <br>
-                                    {{ ucwords(strtolower($housebl->operation->house->pais)) }}, {{ ucwords(strtolower($housebl->operation->house->estado)) }}, {{ ucwords(strtolower($housebl->operation->house->municipio)) }}         <br>
-                                    Tel: {{ $housebl->operation->house->telefono1 }}   <br>
+                                    {{ ucwords(strtolower($housebl->house->razon_social)) }}              <br>
+                                    {{ ucwords(strtolower($housebl->house->calle)) }}, #{{ $housebl->house->numero_exterior }}         <br>
+                                    {{ ucwords(strtolower($housebl->house->colonia)) }}, C.P. {{ $housebl->house->codigo_postal }}         <br>
+                                    {{ ucwords(strtolower($housebl->house->pais)) }}, {{ ucwords(strtolower($housebl->house->estado)) }}, {{ ucwords(strtolower($housebl->house->municipio)) }}         <br>
+                                    Tel: {{ $housebl->house->telefono1 }}   <br>
                                 </b></p>
                             </div>
                             <hr class="hr">

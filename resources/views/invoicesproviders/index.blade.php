@@ -109,6 +109,7 @@
                                     <th width="9%">Total</th>
                                     <th>M B/L</th>
                                     <th>Revisión</th>
+                                    <th>Fac. Unico</th>
                                     <th width="10%">Status</th>
                                     <th width="5%">Acciones</th>
                                 </tr>
@@ -149,6 +150,7 @@
                                         <td>{{ $invoice->account()->currency == "USD" ? '$ ' : '' }}{{ $invoice->total }}</td>
                                         <td>{{ $invoice->operation->m_bl }}</td>
                                         <td>{{ $invoice->autfinanzas }}</td>
+                                        <td>{{ $invoice->facturasUnico() }}</td>
                                         <td>{{ $invoice->present()->statusBadge() }}</td>
                                         <td>
                                             <a href="{{ route('operations.invoiceProvider', $invoice->id ) }}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver pdf"> <i class="mdi mdi-file-pdf"></i></a>

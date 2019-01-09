@@ -107,7 +107,7 @@
                                     <th width="9%">Vat</th>
                                     <th width="9%">Retention</th>
                                     <th width="9%">Total</th>
-                                    <th>Concepto(s)</th>
+                                    <th>M B/L</th>
                                     <th>Revisión</th>
                                     <th width="10%">Status</th>
                                     <th width="5%">Acciones</th>
@@ -147,11 +147,7 @@
                                         <td>{{ $invoice->account()->currency == "USD" ? '$ ' : '' }}{{ number_format($invoice->vat, 2, '.', ',') }}</td>
                                         <td class="text-danger">{{ $invoice->account()->currency == "USD" ? '$ ' : '' }}- {{ number_format($invoice->retention, 2, '.', ',') }}</td>
                                         <td>{{ $invoice->account()->currency == "USD" ? '$ ' : '' }}{{ $invoice->total }}</td>
-                                        <td>
-                                            @foreach($invoice->conceptsinvoice as $key => $concept)
-                                                {{ $concept->concept->description }} <br>
-                                            @endforeach
-                                        </td>
+                                        <td>{{ $invoice->operation->m_bl }}</td>
                                         <td>{{ $invoice->autfinanzas }}</td>
                                         <td>{{ $invoice->present()->statusBadge() }}</td>
                                         <td>

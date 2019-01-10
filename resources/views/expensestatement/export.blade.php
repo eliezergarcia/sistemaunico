@@ -1,3 +1,8 @@
+<?php
+    use Carbon\Carbon;
+    $fecha = Carbon::createFromFormat('Y-m-d', $year.'-'.$month.'-01');
+?>
+
 <table>
 	<thead>
 		<tr>
@@ -9,14 +14,14 @@
             <th style="background-color: #6699CC">REPORTING</th>
             <th style="background-color: #D3D3D3;">Edith Valdez</th>
             <th style="background-color: #6699CC">FROM</th>
-            <th style="background-color: #D3D3D3;"></th>
+            <th style="background-color: #D3D3D3;">{{ $startOfMonth = $fecha->startofMonth()->format('d-m-Y') }}</th>
         </tr>
         <tr>
         	<th></th>
             <th style="background-color: #6699CC">APPROVED</th>
             <th style="background-color: #D3D3D3;">Young Rak Kim</th>
             <th style="background-color: #6699CC">TO</th>
-            <th style="background-color: #D3D3D3;"></th>
+            <th style="background-color: #D3D3D3;">{{ $endOfMonth = $fecha->endOfMonth()->format('d-m-Y') }}</th>
         </tr>
         <tr>
         	<th style="background-color: #66CCCC;">INVOICE</th>

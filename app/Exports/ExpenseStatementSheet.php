@@ -26,6 +26,8 @@ class ExpenseStatementSheet implements FromView, ShouldAutoSize, WithTitle
                                           ->whereYear('created_at', $this->year)
                                           ->where('template', null)
                                           ->where('canceled_at', null)->get(),
+            'month' => $this->month,
+            'year' => $this->year,
         ]);
     }
 

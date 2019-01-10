@@ -152,7 +152,8 @@
                                 {{-- <div class="col-12">
                                     <div class="row"> --}}
                                         <div class="col-4">
-                                            <h5 style="margin: 10px;">B/L</h5>
+                                            <h5 style="margin: 10px;">M B/L</h5>
+                                            <h5 style="margin: 10px;">H B/L</h5>
                                             <h5 style="margin: 10px;">ETA</h5>
                                             <h5 style="margin: 10px;">CLIENTE</h5>
                                             <h5 style="margin: 10px;">CONCEPTO</h5>
@@ -162,6 +163,9 @@
                                         <div class="col-7">
                                             <h5 style="margin: 10px;">
                                                 : {{ $invoice->m_bl }}
+                                            </h5>
+                                            <h5 style="margin: 10px;">
+                                                : {{ $invoice->h_bl }}
                                             </h5>
                                             <h5 style="margin: 10px;">
                                                 : {{ $invoice->eta }}

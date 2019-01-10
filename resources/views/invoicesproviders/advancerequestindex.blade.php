@@ -45,7 +45,7 @@
                     @if(Auth::user()->present()->isFin() || Auth::user()->present()->isAdminGeneral())
                         <div class="row justify-content-around">
                             <div class="col-9">
-                                    <button id="btnModal" class="btn btn-primary mb-2" onclick="generate_revision_modal()"><i class="mdi mdi-file-check mr-2"></i> <b>Generar revisión</b></button>
+                                    <button id="btnModal" class="btn btn-primary mb-2" onclick="generate_revision_modal()"><i class="mdi mdi-file-check mr-2"></i> <b>Programar a pago</b></button>
                                     <button id="btnModal" class="btn btn-primary mb-2" onclick="register_payment_modal()"><i class="mdi mdi-plus-circle mr-2"></i> <b>Registrar pago</b></button>
                             </div>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

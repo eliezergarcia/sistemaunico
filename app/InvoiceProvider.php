@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\HtmlString;
 use Illuminate\Database\Eloquent\Model;
 use App\Presenters\InvoiceProviderPresenter;
 use App\Notifications\RevisionInvoiceProvider;
@@ -175,7 +176,9 @@ class InvoiceProvider extends Model
 
     public function facturasUnico()
     {
-
+        foreach ($this->operation->invoicesclients as $invoice) {
+            echo new HtmlString($invoice->factura.'<br>');
+        }
     }
 
     public function createConceptsInvoiceProviders($request)

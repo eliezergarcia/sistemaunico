@@ -109,7 +109,7 @@
                                     <th width="9%">Total</th>
                                     <th>M B/L</th>
                                     <th>Revisión</th>
-                                    <th>Fac. Unico</th>
+                                    <th>Fact. Unico</th>
                                     <th width="10%">Status</th>
                                     <th width="5%">Acciones</th>
                                 </tr>

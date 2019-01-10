@@ -85,14 +85,14 @@
                         <th>
                             <?php $totalgasto = $totalgasto + $service->expensesPerMonth($i); $totaltotal = $totaltotal + $totalgasto; ?>
                             @if($service->expensesPerMonth($i) != 0)
-                                $ {{ number_format($service->expensesPerMonth($i), 2, '.', ',') }}
+                                {{ number_format($service->expensesPerMonth($i), 2, '.', ',') }}
                             @else
                                 -
                             @endif
                         </th>
                     @endfor
 
-                    <th>$ {{ number_format($totalgasto, 2, '.', ',') }}</th>
+                    <th>{{ number_format($totalgasto, 2, '.', ',') }}</th>
                 </tr>
             @endif
         @endforeach
@@ -100,19 +100,19 @@
             <th></th>
             <th></th>
             <th></th>
-            <th>$ {{ number_format($enerogasto, 2, '.', ',') }}</th>
-            <th>$ {{ number_format($febrerogasto, 2, '.', ',') }}</th>
-            <th>$ {{ number_format($marzogasto, 2, '.', ',') }}</th>
-            <th>$ {{ number_format($abrilgasto, 2, '.', ',') }}</th>
-            <th>$ {{ number_format($mayogasto, 2, '.', ',') }}</th>
-            <th>$ {{ number_format($juniogasto, 2, '.', ',') }}</th>
-            <th>$ {{ number_format($juliogasto, 2, '.', ',') }}</th>
-            <th>$ {{ number_format($agostogasto, 2, '.', ',') }}</th>
-            <th>$ {{ number_format($septiembregasto, 2, '.', ',') }}</th>
-            <th>$ {{ number_format($octubregasto, 2, '.', ',') }}</th>
-            <th>$ {{ number_format($noviembregasto, 2, '.', ',') }}</th>
-            <th>$ {{ number_format($diciembregasto, 2, '.', ',') }}</th>
-            <th>$ {{ number_format($totaltotal, 2, '.', ',') }}</th>
+            <th>{{ number_format($enerogasto, 2, '.', ',') }}</th>
+            <th>{{ number_format($febrerogasto, 2, '.', ',') }}</th>
+            <th>{{ number_format($marzogasto, 2, '.', ',') }}</th>
+            <th>{{ number_format($abrilgasto, 2, '.', ',') }}</th>
+            <th>{{ number_format($mayogasto, 2, '.', ',') }}</th>
+            <th>{{ number_format($juniogasto, 2, '.', ',') }}</th>
+            <th>{{ number_format($juliogasto, 2, '.', ',') }}</th>
+            <th>{{ number_format($agostogasto, 2, '.', ',') }}</th>
+            <th>{{ number_format($septiembregasto, 2, '.', ',') }}</th>
+            <th>{{ number_format($octubregasto, 2, '.', ',') }}</th>
+            <th>{{ number_format($noviembregasto, 2, '.', ',') }}</th>
+            <th>{{ number_format($diciembregasto, 2, '.', ',') }}</th>
+            <th>{{ number_format($totaltotal, 2, '.', ',') }}</th>
         </tr>
     </thead>
 </table>

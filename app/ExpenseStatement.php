@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use App\Presenters\ExpenseStatementPresenter;
 
@@ -30,6 +31,14 @@ class ExpenseStatement extends Model
     public function getTotalAttribute()
     {
     	return number_format(($this->neto + $this->vat + $this->others) - $this->retention, 2, '.', ',');
+    }
+
+    public function getCreatedAtFormatAttribute()
+    {
+        $meses = array("ene","feb","mar","abril","mayo","jun","jul","ago","sep","oct","nov","dic");
+        $fecha = Carbon::parse($this->created_at);
+        $mes = $meses[($fecha->format('n')) - 1];
+        return $fecha->format('d') . '-' . $mes;
     }
 
     public function present()

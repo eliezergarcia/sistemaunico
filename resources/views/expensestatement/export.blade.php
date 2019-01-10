@@ -39,7 +39,7 @@
         @foreach($expenses as $expense)
         	<tr>
 	        	<th>{{ $expense->invoice }}</th>
-	        	<th>{{ $expense->created_at->format('d-m') }}</th>
+	        	<th>{{ $expense->createdAtFormat }}</th>
 	        	<th>{{ $expense->invoice_date }}</th>
 	        	<th>{{ $expense->expense_type }}</th>
 	        	<th>{{ $expense->description }}</th>

@@ -42,6 +42,9 @@
                                     <th width="4%">#</th>
                                     <th>Código</th>
                                     <th>Razón Social</th>
+                                    <th>Cuenta</th>
+                                    <th>Banco</th>
+                                    <th>Clabe</th>
                                     <th>R.F.C</th>
                                     <th width="7%">Status</th>
                                     <th width="7%">Acciones</th>
@@ -53,6 +56,15 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $provider->codigo_proveedor }}</td>
                                     <td>{{ $provider->razon_social }}</td>
+                                    @if($provider->accounts->isNotEmpty())
+                                        <td>{{ $provider->accounts->first()->account }}</td>
+                                        <td>{{ $provider->accounts->first()->name_bank }}</td>
+                                        <td>{{ $provider->accounts->first()->clabe }}</td>
+                                    @else
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    @endif
                                     <td>{{ $provider->rfc }}</td>
                                     <td>{{ $provider->present()->statusBadge() }}</td>
                                     <td>

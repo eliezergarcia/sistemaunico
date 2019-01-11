@@ -881,14 +881,14 @@
                     provider_id: provider_id
                 }
             }).then(function (response) {
-                // console.log(response.data.length);7
                 $("select[name=account_provider_id]").empty();
-                for(var i=0;i<=response.data.length;i++){
-                    if ($account_id == response.data[i].id) {
-                        $("select[name=account_provider_id]").append("<option value='"+ response.data[i].id + "' selected>" + response.data[i].currency + " - " + response.data[i].account + "</option>");
-                    }else{
-                        $("select[name=account_provider_id]").append("<option value='"+ response.data[i].id + "'>" + response.data[i].currency + " - " + response.data[i].account + "</option>");
-                    }
+                for(var i=0;i<=response.data.accounts.length;i++){
+                    // if ($account_id == response.data[i].id) {
+                    //     $("select[name=account_provider_id]").append("<option value='"+ response.data.accounts[i].id + "' selected>" + response.data.accounts[i].currency + " - " + response.data.accounts[i].account + "</option>");
+                    // }else{
+                    //     $("select[name=account_provider_id]").append("<option value='"+ response.data.accounts[i].id + "'>" + response.data.accounts[i].currency + " - " + response.data.accounts[i].account + "</option>");
+                    // }
+                    $("select[name=account_provider_id]").append("<option value='"+ response.data.accounts[i].id + "'>" + response.data.accounts[i].currency + " - " + response.data.accounts[i].account + "</option>");
                 }
             }).catch(function (error) {
                 console.log(error);

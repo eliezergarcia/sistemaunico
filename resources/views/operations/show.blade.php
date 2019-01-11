@@ -793,7 +793,7 @@
                             <div class="col-9">
                                 <div class="form-group">
                                     <label>Razón social</label>
-                                    <input type="text" class="form-control" name="razon_social" value="">
+                                    <input type="text" class="form-control" name="razon_social" value="" disabled>
                                 </div>
                             </div>
                             <div class="col-3">

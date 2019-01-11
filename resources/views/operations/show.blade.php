@@ -711,7 +711,7 @@
                                     <select class="form-control select2{{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" data-toggle="select2" required="" onchange="search_accounts()">
                                         <option value="">Selecciona...</option>
                                         @foreach($providers as $provider)
-                                            <option value="{{ $provider->id }}">{{ $provider->razon_social }}</option>
+                                            <option value="{{ $provider->id }}">{{ $provider->codigo_proveedor }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -925,7 +925,7 @@
                                     <select class="form-control select2{{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" data-toggle="select2" required="" onchange="search_accounts()">
                                         <option value="">Selecciona...</option>
                                         @foreach($providers as $provider)
-                                            <option value="{{ $provider->id }}">{{ $provider->razon_social }}</option>
+                                            <option value="{{ $provider->id }}">{{ $provider->codigo_proveedor }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -1136,7 +1136,7 @@
                                     <select class="form-control select2{{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" data-toggle="select2" required="" onchange="search_accounts()">
                                         <option value="">Selecciona...</option>
                                         @foreach($providers as $provider)
-                                            <option value="{{ $provider->id }}">{{ $provider->razon_social }}</option>
+                                            <option value="{{ $provider->id }}">{{ $provider->codigo_proveedor }}</option>
                                         @endforeach
                                     </select>
                                 </div>

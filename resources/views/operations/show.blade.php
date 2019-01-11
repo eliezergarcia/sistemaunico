@@ -790,7 +790,12 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-9"></div>
+                            <div class="col-9">
+                                <div class="form-group">
+                                    <label>Razón social</label>
+                                    <input type="text" class="form-control" name="razon_social" value="">
+                                </div>
+                            </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Total</label>
@@ -898,7 +903,6 @@
             </div>
             <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
 
     <div id="register-guaranteerequest-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
@@ -1004,7 +1008,12 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-9"></div>
+                            <div class="col-9">
+                                <div class="form-group">
+                                    <label>Razón social</label>
+                                    <input type="text" class="form-control" name="razon_social" value="" disabled>
+                                </div>
+                            </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Total</label>
@@ -1215,7 +1224,12 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-9"></div>
+                            <div class="col-9">
+                                <div class="form-group">
+                                    <label>Razón social</label>
+                                    <input type="text" class="form-control" name="razon_social" value="" disabled>
+                                </div>
+                            </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label>Total</label>
@@ -2340,20 +2354,25 @@
         {
             var provider_id = $('#register-invoice-provider-form select[name=provider_id]').val();
             if (provider_id == "") {
-                var provider_id = $('#register-guaranteerequest-form select[name=provider_id]').val();
+                var provider_id = $('#register-advancerequest-form select[name=provider_id]').val();
             }
             if (provider_id == "") {
-                var provider_id = $('#register-advancerequest-form select[name=provider_id]').val();
+                var provider_id = $('#register-guaranteerequest-form select[name=provider_id]').val();
             }
             axios.get('/proveedores/buscarcuentas', {
                 params: {
                     provider_id: provider_id
                 }
             }).then(function (response) {
-                console.log(response.data.length);
-                $("select[name=account_bank]").append("<option value=''>Selecciona...</option>");
-                for(var i=0;i<=response.data.length;i++){
-                    $("select[name=account_provider_id]").append("<option value='"+ response.data[i].id + "'>" + response.data[i].currency + " - " + response.data[i].account + "</option>");
+                console.log(response.data);
+                console.log(response.data.accounts.length);
+                $('#register-invoice-provider-form input[name=razon_social]').val(response.data.provider.razon_social);
+                $('#register-guaranteerequest-form input[name=razon_social]').val(response.data.provider.razon_social);
+                $('#register-advancerequest-form input[name=razon_social]').val(response.data.provider.razon_social);
+                $("select[name=account_provider_id]").empty();
+                // $("select[name=account_provider_id]").append("<option value=''>Selecciona...</option>");
+                for(var i=0;i<=response.data.accounts.length;i++){
+                    $("select[name=account_provider_id]").append("<option value='"+ response.data.accounts[i].id + "'>" + response.data.accounts[i].currency + " - " + response.data.accounts[i].account + "</option>");
                 }
             }).catch(function (error) {
                 console.log(error);

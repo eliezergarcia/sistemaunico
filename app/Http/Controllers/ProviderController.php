@@ -133,7 +133,13 @@ class ProviderController extends Controller
         $accounts = AccountProvider::where('provider_id', $request->provider_id)
                                    ->where('inactive_at', null)->get();
 
-        return $accounts;
+        $provider = Provider::findOrFail($request->provider_id);
+
+        $data = array();
+        $data['accounts'] = $accounts;
+        $data['provider'] = $provider;
+
+        return $data;
     }
 
     /**

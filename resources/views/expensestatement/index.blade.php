@@ -953,7 +953,7 @@
         $(document).ready(function() {
             $("#expenses-datatable").DataTable({
                 language: idioma_espanol,
-                pageLength: 10,
+                pageLength: 25,
                 order: [],
                 drawCallback: function() {
                     $(".dataTables_paginate > .pagination").addClass("pagination-rounded"), $(".spark-chart").each(function(t) {

@@ -499,7 +499,7 @@
                                                 @if($provider->id == $invoice->provider_id)
                                                     <option value="{{ $provider->id }}" selected>{{ $provider->codigo_proveedor }}</option>
                                                 @else
-                                                    <option value="{{ $provider->id }}">{{ $provider->razon_social }}</option>
+                                                    <option value="{{ $provider->id }}">{{ $provider->codigo_proveedor }}</option>
                                                 @endif
                                             @endforeach
                                         </select>

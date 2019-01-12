@@ -51,7 +51,7 @@
                     <th>{{ $invoice->invoiceDateFormat }}</th>
                     <th>{{ $invoice->expense_tipe }}</th>
                     <th></th>
-                    <th>{{ $invoice->neto }}</th>
+                    <th>{{  number_format($invoice->neto, 2, '.', ',') }}</th>
                     <th>{{ $invoice->vat }}</th>
                     <th>- {{ $invoice->retention }}</th>
                     <th>{{ $invoice->others }}</th>

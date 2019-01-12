@@ -47,8 +47,8 @@
             @if(!$invoice->canceled_at)
                 <tr>
                     <th>{{ $invoice->factura }}</th>
-                    <th>{{ $invoice->regdate}}</th>
-                    <th>{{ $invoice->invoice_date }}</th>
+                    <th>{{ $invoice->regDateFormat}}</th>
+                    <th>{{ $invoice->invoiceDateFormat }}</th>
                     <th>{{ $invoice->expense_tipe }}</th>
                     <th></th>
                     <th>{{ $invoice->neto }}</th>

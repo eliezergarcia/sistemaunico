@@ -45,7 +45,7 @@
         	<tr>
 	        	<th>{{ $expense->invoice }}</th>
 	        	<th>{{ $expense->createdAtFormat }}</th>
-	        	<th>{{ $expense->invoice_date }}</th>
+	        	<th>{{ $expense->invoiceDateFormat }}</th>
 	        	<th>{{ $expense->expense_type }}</th>
 	        	<th>{{ $expense->description }}</th>
 	        	<th>{{ $expense->neto }}</th>

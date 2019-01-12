@@ -33,12 +33,30 @@ class ExpenseStatement extends Model
     	return number_format(($this->neto + $this->vat + $this->others) - $this->retention, 2, '.', ',');
     }
 
-    public function getCreatedAtFormatAttribute()
+    public function dateFormat($date)
     {
         $meses = array("ene","feb","mar","abril","mayo","jun","jul","ago","sep","oct","nov","dic");
-        $fecha = Carbon::parse($this->created_at);
+        $fecha = Carbon::parse($date);
         $mes = $meses[($fecha->format('n')) - 1];
         return $fecha->format('d') . '-' . $mes;
+    }
+
+    public function getCreatedAtFormatAttribute()
+    {
+         if ($this->created_at) {
+            return self::dateFormat($this->created_at);
+        }
+
+        return "";
+    }
+
+    public function getInvoiceDateFormatAttribute()
+    {
+        if ($this->invoice_date) {
+            return self::dateFormat($this->invoice_date);
+        }
+
+        return "";
     }
 
     public function present()

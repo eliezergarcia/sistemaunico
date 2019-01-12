@@ -82,7 +82,7 @@ class InvoiceProvider extends Model
 
     public function getRegDateFormatAttribute()
     {
-        if ($this->invoice_date) {
+        if ($this->created_at) {
             return self::dateFormat($this->created_at);
         }
 

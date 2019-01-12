@@ -191,6 +191,7 @@ class InvoiceProvider extends Model
             $fechas = collect([]);
             foreach ($this->payments as $payment) {
                 $fechapago = Carbon::parse($payment->fecha_pago)->format('d/m/Y');
+                $fechapago = self::dateFormat($fechapago);
                 $fechas->push($fechapago);
             }
 

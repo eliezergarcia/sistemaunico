@@ -119,8 +119,8 @@
                 @if($invoice->canceled_at)
                     <tr>
                         <th style="background-color: #F08080">{{ $invoice->factura }}</th>
-                        <th style="background-color: #F08080">{{ $invoice->regdate}}</th>
-                        <th style="background-color: #F08080">{{ $invoice->invoice_date }}</th>
+                        <th style="background-color: #F08080">{{ $invoice->regDateFormat}}</th>
+                        <th style="background-color: #F08080">{{ $invoice->invoiceDateFormat }}</th>
                         <th style="background-color: #F08080">{{ $invoice->expense_tipe }}</th>
                         <th style="background-color: #F08080"></th>
                         <th style="background-color: #F08080">{{ $invoice->neto }}</th>

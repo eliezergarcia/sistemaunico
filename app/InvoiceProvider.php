@@ -72,20 +72,30 @@ class InvoiceProvider extends Model
         return $this->created_at->format('d-m-y');
     }
 
-    public function getRegDateFormatAttribute()
+    public function dateFormat($date)
     {
         $meses = array("ene","feb","mar","abril","mayo","jun","jul","ago","sep","oct","nov","dic");
-        $fecha = Carbon::parse($this->created_at);
+        $fecha = Carbon::parse($date);
         $mes = $meses[($fecha->format('n')) - 1];
         return $fecha->format('d') . '-' . $mes;
     }
 
+    public function getRegDateFormatAttribute()
+    {
+        if ($this->invoice_date) {
+            return self::dateFormat($this->created_at);
+        }
+
+        return "";
+    }
+
     public function getInvoiceDateFormatAttribute()
     {
-        $meses = array("ene","feb","mar","abril","mayo","jun","jul","ago","sep","oct","nov","dic");
-        $fecha = Carbon::parse($this->invoice_date);
-        $mes = $meses[($fecha->format('n')) - 1];
-        return $fecha->format('d') . '-' . $mes;
+        if ($this->invoice_date) {
+            return self::dateFormat($this->invoice_date);
+        }
+
+        return "";
     }
 
     public function getEtaFormatAttribute()

@@ -92,7 +92,7 @@
                     $retention = $retention + $invoice->retention;
                     $others = $others + $invoice->others;
                     if ($invoice->comissions->isNotEmpty()) {
-                        $comision = $invoice->commissions->first()->commission
+                        $comision = $invoice->commissions->first()->commission;
                     }else{
                         $comision = 0;
                     }

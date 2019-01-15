@@ -91,7 +91,12 @@
                     $vat = $vat + $invoice->vat;
                     $retention = $retention + $invoice->retention;
                     $others = $others + $invoice->others;
-                    $total = $total + (($invoice->neto + $invoice->vat + $invoice->others) - $invoice->retention);
+                    if ($invoice->comissions->isNotEmpty()) {
+                        $comision = $invoice->commissions->first()->commission
+                    }else{
+                        $comision = 0;
+                    }
+                    $total = $total + (($invoice->neto + $invoice->vat + $invoice->others + $comision) - $invoice->retention);
                     $pendiente = $pendiente + $invoice->snPendiente;
                 ?>
             @endif

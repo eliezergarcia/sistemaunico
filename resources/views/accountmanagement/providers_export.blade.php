@@ -91,7 +91,7 @@
                     $vat = $vat + $invoice->vat;
                     $retention = $retention + $invoice->retention;
                     $others = $others + $invoice->others;
-                    if ($invoice->comissions->isNotEmpty()) {
+                    if ($invoice->commissions->isNotEmpty()) {
                         $comision = $invoice->commissions->first()->commission;
                     }else{
                         $comision = 0;

@@ -51,12 +51,12 @@
                     <th>{{ $invoice->invoiceDateFormat }}</th>
                     <th>{{ $invoice->expense_tipe }}</th>
                     <th></th>
-                    <th>{{ number_format($invoice->neto, 2, '.', ',') }}</th>
-                    <th>{{ number_format($invoice->vat, 2, '.', ',') }}</th>
-                    <th>- {{ number_format($invoice->retention, 2, '.', ',') }}</th>
-                    <th>{{ number_format($invoice->others, 2, '.', ',') }}</th>
-                    <th>{{ $invoice->total }}</th>
-                    <th>{{ $invoice->pendiente }}</th>
+                    <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->neto, 2, '.', ',') }}</th>
+                    <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->vat, 2, '.', ',') }}</th>
+                    <th>- {{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->retention, 2, '.', ',') }}</th>
+                    <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->others, 2, '.', ',') }}</th>
+                    <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->total }}</th>
+                    <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->pendiente }}</th>
                     <th>{{ $invoice->payment_source() }}</th>
                     <th>
                         {{ $invoice->m_bl }} / {{ $invoice->h_bl }} <br>

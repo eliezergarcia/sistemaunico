@@ -51,7 +51,7 @@
                     <th>{{ $invoice->invoiceDateFormat }}</th>
                     <th>{{ $invoice->expense_tipe }}</th>
                     <th></th>
-                    <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->neto, 2, '.', ',') }}</th>
+                    <th>{{ $invoice->account->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->neto, 2, '.', ',') }}</th>
                     <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->vat, 2, '.', ',') }}</th>
                     <th>- {{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->retention, 2, '.', ',') }}</th>
                     <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->others, 2, '.', ',') }}</th>
@@ -128,12 +128,12 @@
                         <th style="background-color: #F08080">{{ $invoice->invoiceDateFormat }}</th>
                         <th style="background-color: #F08080">{{ $invoice->expense_tipe }}</th>
                         <th style="background-color: #F08080"></th>
-                        <th style="background-color: #F08080">{{ $invoice->neto }}</th>
-                        <th style="background-color: #F08080">{{ $invoice->vat }}</th>
-                        <th style="background-color: #F08080">- {{ $invoice->retention }}</th>
-                        <th style="background-color: #F08080">{{ $invoice->others }}</th>
-                        <th style="background-color: #F08080">{{ $invoice->total }}</th>
-                        <th style="background-color: #F08080">{{ $invoice->pendiente }}</th>
+                        <th style="background-color: #F08080">{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->neto }}</th>
+                        <th style="background-color: #F08080">{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->vat }}</th>
+                        <th style="background-color: #F08080">- {{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->retention }}</th>
+                        <th style="background-color: #F08080">{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->others }}</th>
+                        <th style="background-color: #F08080">{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->total }}</th>
+                        <th style="background-color: #F08080">{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->pendiente }}</th>
                         <th style="background-color: #F08080">{{ $invoice->payment_source() }}</th>
                         <th style="background-color: #F08080">
                             {{ $invoice->m_bl }} / {{ $invoice->h_bl }} <br>

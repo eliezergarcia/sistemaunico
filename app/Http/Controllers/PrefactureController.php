@@ -75,7 +75,7 @@ class PrefactureController extends Controller
             }
         }
 
-        $prefacture->createNotificationPrefacture();
+        // $prefacture->createNotificationPrefacture();
 
         if ($prefacture && $concepts) {
             DB::commit();
@@ -115,7 +115,7 @@ class PrefactureController extends Controller
 
         $prefacture = Prefacture::findOrFail($request->prefactura_id);
         $prefacture->canceled();
-        $prefacture->markAsReadNotificationSOLFAC();
+        // $prefacture->markAsReadNotificationSOLFAC();
 
         if($prefacture){
             DB::commit();

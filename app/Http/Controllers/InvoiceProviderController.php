@@ -238,13 +238,7 @@ class InvoiceProviderController extends Controller
         $invoice->save();
 
         $invoice->markAsReadNotification();
-
-        // if (($invoice->guarantee_request != null || $invoice->advance_request != null) && $invoice->factura == null) {
-        // } else {
-            $invoice->createNotificationRevisionInvoiceProvider();
-        // }
-
-
+        // $invoice->createNotificationRevisionInvoiceProvider();
 
         if ($invoice) {
             DB::commit();
@@ -280,7 +274,7 @@ class InvoiceProviderController extends Controller
             }
             $invoice->aut_fin = $date;
             $invoice->save();
-            $invoice->markAsReadNotificationRV();
+            // $invoice->markAsReadNotificationRV();
             $option = "add";
             $invoice->updateAccountManagementBalance($request, $option, $invoice->aut_fin);
         }

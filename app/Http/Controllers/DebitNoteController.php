@@ -75,7 +75,7 @@ class DebitNoteController extends Controller
             }
         }
 
-        $debitnote->createNotificationDebitNote();
+        // $debitnote->createNotificationDebitNote();
 
         if($debitnote && $concepts){
             DB::commit();
@@ -112,7 +112,7 @@ class DebitNoteController extends Controller
         DB::beginTransaction();
 
         $debitnote = DebitNote::findOrFail($request->debitnote_id);
-        $debitnote->markAsReadNotificationSOLFAC();
+        // $debitnote->markAsReadNotificationSOLFAC();
         $debitnote->canceled();
 
         if($debitnote){

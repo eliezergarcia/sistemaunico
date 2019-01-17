@@ -113,7 +113,7 @@
                             </thead>
                             <tbody>
                                 @foreach($invoices as $key => $invoice)
-                                    <tr>
+                                    <tr class="{{ $invoice->present()->colorPriorityTable() }}">
                                         @if($invoice->canceled_at)
                                             <td></td>
                                             <td></td>

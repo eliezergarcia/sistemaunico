@@ -73,4 +73,11 @@ class InvoiceProviderPresenter extends Presenter
             }
         }
     }
+
+    public function colorPriorityTable()
+    {
+        if ($this->model->priority == 1) {
+            return 'table-danger';
+        }
+    }
 }

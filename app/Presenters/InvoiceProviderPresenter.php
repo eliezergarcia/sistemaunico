@@ -76,7 +76,7 @@ class InvoiceProviderPresenter extends Presenter
 
     public function colorPriorityTable()
     {
-        if ($this->model->priority == 1 && $this->payments->isEmpty()) {
+        if ($this->model->priority == 1 && $this->model->payments->isEmpty()) {
             return 'table-danger';
         }
     }

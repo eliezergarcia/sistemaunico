@@ -61,7 +61,7 @@
                             <tbody>
                                 @foreach($prefacturas as $key => $prefactura)
                                 	@if(Auth::user()->id == $prefactura->operation->user->id || Auth::user()->present()->isAdmin() || Auth::user()->present()->isFac())
-	                                    <tr>
+	                                    <tr class="{{ $prefactura->present()->colorInvoiceTable() }}">
                                             <td>{{ $key + 1 }}</td>
 	                                        @if(Auth::user()->present()->isAdmin() || Auth::user()->present()->isFac())
 	                                        <td>{{ $prefactura->operation->user->name }}</td>

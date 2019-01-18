@@ -20,4 +20,11 @@ class DebitNotePresenter extends Presenter
             }
         }
     }
+
+    public function colorInvoiceTable()
+    {
+        if ($this->model->invoices->isEmpty()) {
+            return 'table-info';
+        }
+    }
 }

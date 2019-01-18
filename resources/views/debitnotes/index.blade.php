@@ -61,7 +61,7 @@
                             <tbody>
                                 @foreach($debitnotes as $key => $debitnote)
                                 	@if(Auth::user()->id == $debitnote->operation->user->id || Auth::user()->present()->isAdmin() || Auth::user()->present()->isFac())
-	                                    <tr>
+	                                    <tr class="{{ $debitnote->present()->colorInvoiceTable() }}">
                                             <td>{{ $key + 1 }}</td>
 	                                        @if(Auth::user()->present()->isAdmin() || Auth::user()->present()->isFac())
 	                                           <td>{{ $debitnote->operation->user->name }}</td>

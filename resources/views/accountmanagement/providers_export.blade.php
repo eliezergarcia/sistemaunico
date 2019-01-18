@@ -51,7 +51,7 @@
                     <th>{{ $invoice->invoiceDateFormat }}</th>
                     <th>{{ $invoice->expense_tipe }}</th>
                     <th></th>
-                    <th>{{ $invoice->account->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->neto, 2, '.', ',') }}</th>
+                    <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->neto, 2, '.', ',') }}</th>
                     <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->vat, 2, '.', ',') }}</th>
                     <th>- {{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->retention, 2, '.', ',') }}</th>
                     <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->others, 2, '.', ',') }}</th>

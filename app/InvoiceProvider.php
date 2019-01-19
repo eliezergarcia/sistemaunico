@@ -194,12 +194,18 @@ class InvoiceProvider extends Model
 
     public function payment_source()
     {
-
-        if ($this->payments->isEmpty()) {
-            return "PENDIENTE";
+        if ($this->guarantee_request) {
+            return "GUARRANTY";
+        }elseif ($this->guarantee_request && $this->return_day) {
+            return "DEVUELTO";
         }else{
-            return "C.A";
+            if ($this->payments->isEmpty()) {
+                return "PENDIENTE";
+            }else{
+                return "C.A";
+            }
         }
+
     }
 
     public function payment_status()

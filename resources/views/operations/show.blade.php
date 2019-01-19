@@ -949,7 +949,7 @@
                             <div class="col-5">
                                 <div class="form-group">
                                     <label>Expense type <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control {{ $errors->has('expense_tipe') ? ' is-invalid' : '' }}" name="expense_tipe" value="Advanced Payment" required="">
+                                    <input type="text" class="form-control {{ $errors->has('expense_tipe') ? ' is-invalid' : '' }}" name="expense_tipe" value="Guarranty" required="">
                                 </div>
                             </div>
                             <div class="col-4">

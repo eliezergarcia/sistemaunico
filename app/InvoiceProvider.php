@@ -183,6 +183,15 @@ class InvoiceProvider extends Model
         return $pendiente;
     }
 
+    public function getComisionAttribute()
+    {
+        if ($this->commissions->isNotEmpty()) {
+            return $this->commissions->first();
+        }
+
+        return "0";
+    }
+
     public function payment_source()
     {
         if ($this->payments->isEmpty()) {

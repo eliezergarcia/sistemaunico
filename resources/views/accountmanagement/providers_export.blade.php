@@ -33,7 +33,7 @@
             <th style="background-color: #87CEFA">Net</th>
             <th style="background-color: #87CEFA">Vat</th>
             <th style="background-color: #87CEFA">Retention</th>
-            <th style="background-color: #87CEFA">Others</th>
+            <th style="background-color: #87CEFA">Comision</th>
             <th style="background-color: #87CEFA">Total</th>
             <th style="background-color: #87CEFA">Pending Amounts</th>
             <th style="background-color: #87CEFA">Payment Source</th>
@@ -54,7 +54,9 @@
                     <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->neto, 2, '.', ',') }}</th>
                     <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->vat, 2, '.', ',') }}</th>
                     <th>- {{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->retention, 2, '.', ',') }}</th>
-                    <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->others, 2, '.', ',') }}</th>
+                    <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}
+                        {{ number_format($invoice->comision, 2, '.', ',') }}
+                    </th>
                     <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->total }}</th>
                     <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->pendiente }}</th>
                     <th>{{ $invoice->payment_source() }}</th>

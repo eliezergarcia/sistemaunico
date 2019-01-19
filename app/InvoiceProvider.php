@@ -164,7 +164,7 @@ class InvoiceProvider extends Model
     {
         if ($this->commissions->isNotEmpty()) {
             foreach ($this->commissions as $commission) {
-                if ($commission->invoices->pluck('canceled_at')->contains(null)) {
+                if ($commission->invoices->first()->canceled_at == null) {
                     $pendiente = (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention) - ($this->payments->pluck('monto')->sum() + $this->payments->pluck('commission')->sum());
                 }
             }

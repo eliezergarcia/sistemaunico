@@ -211,14 +211,12 @@
                             <input type="hidden" name="payment_id">
                             <div class="row">
                                 <div class="col-4">
-                                    <br>
                                     <div class="form-group">
                                         <label>Monto</label>
                                         <input class="form-control " type="number" step="any" name="monto" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <br>
                                     <div class="form-group">
                                         <label>Fecha de pago</label>
                                         <input class="form-control " type="date" name="fecha_pago" required>

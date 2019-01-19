@@ -46,7 +46,7 @@
         @foreach($invoices as $invoice)
             @if(!$invoice->canceled_at)
                 <tr>
-                    <th>{{ $invoice->factura }}</th>
+                    <th>{{ $invoice->advance_request && !$invoice->factura ? : 'PTE' : $invoice->factura }}</th>
                     <th>{{ $invoice->regDateFormat }}</th>
                     <th>{{ $invoice->invoiceDateFormat == null ? $invoice->regDateFormat : $invoice->invoiceDateFormat }}</th>
                     <th>{{ $invoice->factura == null ? $invoice->expense_tipe : 'Freight Expenses' }}</th>
@@ -127,7 +127,7 @@
             @foreach($invoices as $invoice)
                 @if($invoice->canceled_at)
                     <tr>
-                        <th style="background-color: #F08080">{{ $invoice->factura }}</th>
+                        <th>{{ $invoice->advance_request && !$invoice->factura ? : 'PTE' : $invoice->factura }}</th>
                         <th style="background-color: #F08080">{{ $invoice->regDateFormat }}</th>
                         <th style="background-color: #F08080">{{ $invoice->invoiceDateFormat == null ? $invoice->regDateFormat : $invoice->invoiceDateFormat }}</th>
                         <th style="background-color: #F08080">{{ $invoice->factura == null ? $invoice->expense_tipe : 'Freight Expenses' }}</th>

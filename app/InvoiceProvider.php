@@ -27,7 +27,7 @@ class InvoiceProvider extends Model
     }
 
     public function payments(){
-        return $this->belongsToMany(PaymentProviders::class, 'assigned_payments_providers')->where('deleted_at', null);
+        return $this->belongsToMany(PaymentProviders::class, 'assigned_payments_providers');
     }
 
     public function conceptsinvoice()

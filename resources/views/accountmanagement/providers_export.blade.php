@@ -50,7 +50,7 @@
                     <th>{{ $invoice->regDateFormat}}</th>
                     <th>{{ $invoice->invoiceDateFormat }}</th>
                     <th>{{ $invoice->expense_tipe }}</th>
-                    <th>{{ $invoice->codigo_proveedor }}</th>
+                    <th>{{ $invoice->provider->codigo_proveedor }}</th>
                     <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->neto, 2, '.', ',') }}</th>
                     <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->vat, 2, '.', ',') }}</th>
                     <th>- {{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->retention, 2, '.', ',') }}</th>
@@ -131,7 +131,7 @@
                         <th style="background-color: #F08080">{{ $invoice->regDateFormat}}</th>
                         <th style="background-color: #F08080">{{ $invoice->invoiceDateFormat }}</th>
                         <th style="background-color: #F08080">{{ $invoice->expense_tipe }}</th>
-                        <th style="background-color: #F08080">{{ $invoice->codigo_proveedor }}</th>
+                        <th style="background-color: #F08080">{{ $invoice->provider->codigo_proveedor }}</th>
                         <th style="background-color: #F08080">{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->neto }}</th>
                         <th style="background-color: #F08080">{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->vat }}</th>
                         <th style="background-color: #F08080">- {{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->retention }}</th>

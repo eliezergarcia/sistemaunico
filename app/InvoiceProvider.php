@@ -163,7 +163,7 @@ class InvoiceProvider extends Model
     public function getPendienteAttribute()
     {
         if ($this->commissions->isNotEmpty()) {
-            $pendiente = (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention) - $this->payments->pluck('monto')->sum() + $this->commissions->first()->commission;
+            $pendiente = (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention) - ($this->payments->pluck('monto')->sum() + $this->commissions->first()->commission);
         }else{
             $pendiente = (($this->neto + $this->vat + $this->others) - $this->retention) - $this->payments->pluck('monto')->sum();
         }
@@ -174,7 +174,7 @@ class InvoiceProvider extends Model
     public function getsnPendienteAttribute()
     {
         if ($this->commissions->isNotEmpty()) {
-            $pendiente = (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention) - $this->payments->pluck('monto')->sum() + $this->commissions->first()->commission;
+            $pendiente = (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention) - ($this->payments->pluck('monto')->sum() + $this->commissions->first()->commission);
         }else{
             $pendiente = (($this->neto + $this->vat + $this->others) - $this->retention) - $this->payments->pluck('monto')->sum();
         }

@@ -47,9 +47,9 @@
             @if(!$invoice->canceled_at)
                 <tr>
                     <th>{{ $invoice->factura }}</th>
-                    <th>{{ $invoice->regDateFormat}}</th>
-                    <th>{{ $invoice->invoiceDateFormat }}</th>
-                    <th>{{ $invoice->expense_tipe }}</th>
+                    <th>{{ $invoice->regDateFormat }}</th>
+                    <th>{{ $invoice->invoiceDateFormat == null ? $invoice->regDateFormat : $invoice->invoiceDateFormat }}</th>
+                    <th>{{ $invoice->factura == null ? $invoice->expense_tipe : 'Freight Expenses' }}</th>
                     <th>{{ $invoice->provider->codigo_proveedor }}</th>
                     <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->neto, 2, '.', ',') }}</th>
                     <th>{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ number_format($invoice->vat, 2, '.', ',') }}</th>

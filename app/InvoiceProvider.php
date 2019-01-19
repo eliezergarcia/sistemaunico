@@ -194,6 +194,7 @@ class InvoiceProvider extends Model
 
     public function payment_source()
     {
+
         if ($this->payments->isEmpty()) {
             return "PENDIENTE";
         }else{

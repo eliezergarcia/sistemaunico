@@ -163,6 +163,7 @@
                 $vat = 0;
                 $retention = 0;
                 $others = 0;
+                $comisiones = 0;
                 $total = 0;
             ?>
             @foreach($invoices as $invoice)
@@ -172,7 +173,13 @@
                         $vat = $vat + $invoice->vat;
                         $retention = $retention + $invoice->retention;
                         $others = $others + $invoice->others;
-                        $total = $total + (($invoice->neto + $invoice->vat + $invoice->others) - $invoice->retention);
+                        if ($invoice->commissions->isNotEmpty()) {
+                            $comision = $invoice->commissions->first()->commission;
+                        }else{
+                            $comision = 0;
+                        }
+                        $comisiones = $comisiones + $comision;
+                        $total = $total + (($invoice->neto + $invoice->vat + $invoice->others + $comision) - $invoice->retention);
                     ?>
                 @endif
             @endforeach
@@ -185,7 +192,7 @@
                 <th style="background-color: #FFA500">{{ number_format($neto, 2, '.', ',') }}</th>
                 <th style="background-color: #FFA500">{{ number_format($vat, 2, '.', ',') }}</th>
                 <th style="background-color: #FFA500">{{ number_format($retention, 2, '.', ',') }}</th>
-                <th style="background-color: #FFA500">{{ number_format($others, 2, '.', ',') }}</th>
+                <th style="background-color: #FFA500">{{ number_format($comisiones, 2, '.', ',') }}</th>
                 <th style="background-color: #FFA500">{{ number_format($total, 2, '.', ',') }}</th>
             </tr>
         @endif

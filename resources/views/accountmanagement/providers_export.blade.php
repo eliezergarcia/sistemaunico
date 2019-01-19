@@ -83,6 +83,7 @@
             $vat = 0;
             $retention = 0;
             $others = 0;
+            $comisiones = 0;
             $total = 0;
             $pendiente = 0;
         ?>
@@ -98,6 +99,7 @@
                     }else{
                         $comision = 0;
                     }
+                    $comisiones = $comisiones + $comision;
                     $total = $total + (($invoice->neto + $invoice->vat + $invoice->others + $comision) - $invoice->retention);
                     $pendiente = $pendiente + $invoice->snPendiente;
                 ?>
@@ -112,7 +114,7 @@
             <th style="background-color: #FFA500">{{ number_format($neto, 2, '.', ',') }}</th>
             <th style="background-color: #FFA500">{{ number_format($vat, 2, '.', ',') }}</th>
             <th style="background-color: #FFA500">{{ number_format($retention, 2, '.', ',') }}</th>
-            <th style="background-color: #FFA500">{{ number_format($others, 2, '.', ',') }}</th>
+            <th style="background-color: #FFA500">{{ number_format($comisiones, 2, '.', ',') }}</th>
             <th style="background-color: #FFA500">{{ number_format($total, 2, '.', ',') }}</th>
             <th style="background-color: #FFA500">{{ number_format($pendiente, 2, '.', ',') }}</th>
         </tr>
@@ -133,7 +135,10 @@
                         <th style="background-color: #F08080">{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->neto }}</th>
                         <th style="background-color: #F08080">{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->vat }}</th>
                         <th style="background-color: #F08080">- {{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->retention }}</th>
-                        <th style="background-color: #F08080">{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->others }}</th>
+                        <th style="background-color: #F08080">
+                            {{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}
+                            {{ number_format($invoice->comision, 2, '.', ',') }}
+                        </th>
                         <th style="background-color: #F08080">{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->total }}</th>
                         <th style="background-color: #F08080">{{ $invoice->account()->currency == 'USD' ? '$ ' : '' }}{{ $invoice->pendiente }}</th>
                         <th style="background-color: #F08080">{{ $invoice->payment_source() }}</th>

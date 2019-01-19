@@ -186,7 +186,7 @@ class InvoiceProvider extends Model
     public function getComisionAttribute()
     {
         if ($this->commissions->isNotEmpty()) {
-            return $this->commissions->first();
+            return $this->commissions->first()->commission;
         }
 
         return "0";

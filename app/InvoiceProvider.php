@@ -163,7 +163,11 @@ class InvoiceProvider extends Model
     public function getPendienteAttribute()
     {
         if ($this->commissions->isNotEmpty()) {
-            $pendiente = (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention) - ($this->payments->pluck('monto')->sum() + $this->payments->pluck('commission')->sum());
+            foreach ($this->commissions as $commission) {
+                if ($commission->invoices->pluck('canceled_at')->contains(null)) {
+                    $pendiente = (($this->neto + $this->vat + $this->others + $this->commissions->first()->commission) - $this->retention) - ($this->payments->pluck('monto')->sum() + $this->payments->pluck('commission')->sum());
+                }
+            }
         }else{
             $pendiente = (($this->neto + $this->vat + $this->others) - $this->retention) - $this->payments->pluck('monto')->sum();
         }

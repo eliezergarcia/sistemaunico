@@ -231,12 +231,16 @@ class OperationPresenter extends Presenter
         if($this->model->housebls->isNotEmpty()){
             echo "<span class='dropdown-item'>House B/L</span>";
             foreach($this->model->housebls as $key => $housebl){
-                if($housebl->invoices->contains(!null)){
-                    echo "<a href='".route('housebls.show', $housebl->id)."' class='dropdown-item text-success'> {$housebl->numberFormat}</a>";
-                }elseif($housebl->invoices->pluck('canceled_at')->contains(!null)){
-                    echo "<a class='dropdown-item text-danger' href='".route('housebls.show', $housebl->id)."'>{$housebl->numberFormat}</a>";
+                if (!$housebl->canceled_at) {
+                    if($housebl->invoices->contains(!null)){
+                        echo "<a href='".route('housebls.show', $housebl->id)."' class='dropdown-item text-success'> {$housebl->numberFormat}</a>";
+                    }elseif($housebl->invoices->pluck('canceled_at')->contains(!null)){
+                        echo "<a class='dropdown-item text-danger' href='".route('housebls.show', $housebl->id)."'>{$housebl->numberFormat}</a>";
+                    }else{
+                        echo "<a class='dropdown-item' href='".route('housebls.show', $housebl->id)."'>{$housebl->numberFormat }</a>";
+                    }
                 }else{
-                    echo "<a class='dropdown-item' href='".route('housebls.show', $housebl->id)."'>{$housebl->numberFormat }</a>";
+                    echo "<a class='dropdown-item text-danger' href='".route('housebls.show', $housebl->id)."'>{$housebl->numberFormat}</a>";
                 }
             }
             echo '<div class="dropdown-divider"></div>';

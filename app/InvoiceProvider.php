@@ -67,6 +67,15 @@ class InvoiceProvider extends Model
         return substr($this->created_at->format('Ymd')."-".$number, 2);
     }
 
+    public function getFacturaLimitAttribute()
+    {
+        if ($this->factura) {
+            return substr($this->factura, 0, 20);
+        }
+
+        return "";
+    }
+
     public function getRegDateAttribute()
     {
         return $this->created_at->format('d-m-y');

@@ -142,7 +142,7 @@
                                         @endif
                                         <td>{{ $invoice->controlcode }}</td>
                                         <td>{{ $invoice->provider->codigo_proveedor }}</td>
-                                        <td>{{ $invoice->factura }}</td>
+                                        <td>{{ $invoice->facturaLimit }}</td>
                                         <td>{{ $invoice->invoice_date }}</td>
                                         <td>{{ $invoice->account()->currency == "USD" ? '$ ' : '' }}{{ number_format($invoice->neto, 2, '.', ',') }}</td>
                                         <td>{{ $invoice->account()->currency == "USD" ? '$ ' : '' }}{{ number_format($invoice->vat, 2, '.', ',') }}</td>

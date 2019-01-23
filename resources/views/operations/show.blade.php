@@ -1892,8 +1892,8 @@
                                             <tr>
                                                 <td>
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="checkconcept{{ $concept->id }}" value="{{ $concept->id }}" name="concepts[]">
-                                                        <label class="custom-control-label" for="checkconcept{{ $concept->id }}">&nbsp;</label>
+                                                        <input type="checkbox" class="custom-control-input" id="checkconcept-{{ $concept->id }}" value="{{ $concept->id }}" name="concepts[]">
+                                                        <label class="custom-control-label" for="checkconcept-{{ $concept->id }}">&nbsp;</label>
                                                     </div>
                                                 </td>
                                                 <td>{{ $concept->description }}</td>
@@ -1947,7 +1947,6 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-
 
     <div id="create-prefactura-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">

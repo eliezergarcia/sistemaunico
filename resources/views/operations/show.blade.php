@@ -1908,8 +1908,8 @@
                                                 </td>
                                                 <td>
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" name="ivaConcept[]" class="custom-control-input" id="checkiva{{ $concept->id }}" value="{{ $concept->id }}">
-                                                        <label class="custom-control-label" for="checkiva{{ $concept->id }}">&nbsp;</label>
+                                                        <input type="checkbox" name="ivaConcept[]" class="custom-control-input" id="checkiva-{{ $concept->id }}" value="{{ $concept->id }}">
+                                                        <label class="custom-control-label" for="checkiva-{{ $concept->id }}">&nbsp;</label>
                                                     </div>
                                                     {{-- <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"> --}}
                                                 </td>

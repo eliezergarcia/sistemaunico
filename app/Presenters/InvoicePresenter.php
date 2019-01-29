@@ -12,7 +12,7 @@ class InvoicePresenter extends Presenter
         if($this->model->canceled_at){
             return new HtmlString('<span class="badge badge-danger-lighten">Cancelado</span>');
         }else{
-            if($this->model->payments->pluck('monto')->sum() != number_format($this->model->neto + $this->model->iva, 2, '.', '')){
+            if(number_format($this->model->payments->pluck('monto')->sum(), 2, '.', ',') != number_format($this->model->neto + $this->model->iva, 2, '.', ',')){
                 return new HtmlString('<span class="badge badge-warning-lighten">Pendiente pago</span>');
 
             }else{

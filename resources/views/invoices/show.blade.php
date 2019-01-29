@@ -75,7 +75,7 @@
             <h4>Información de pagos</h4>
             <div class="card">
                 <div class="card-body">
-                    @if($invoice->pagado != $invoice->total)
+                    @if(number_format($invoice->pagado, 2, '.', ',') != number_format($invoice->total, 2, '.', ','))
                         @if(!$invoice->canceled_at)
                             <div class="col-2">
                                 <button id="btnModal" class="btn btn-primary mb-2" data-toggle="modal" data-target="#register-payment-modal"><i class="mdi mdi-plus-circle mr-2"></i> <b>Registrar pago</b></button>

@@ -65,7 +65,7 @@
                             	@foreach($expenses as $key => $expense)
                                 <tr>
                                     <td>{{ $expense->controlcode }}</td>
-                                    <td>{{ $expense->invoice }}</td>
+                                    <td>{{ $expense->facturaLimit }}</td>
                                     <td>{{ $expense->expense_type }}</td>
                                     <td>{{ $expense->description }}</td>
                                     <td>{{ $expense->currency == "USD" ? '$ ' : '' }}{{ number_format($expense->neto, 2, '.', ',') }}</td>

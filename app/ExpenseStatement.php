@@ -59,6 +59,15 @@ class ExpenseStatement extends Model
         return "";
     }
 
+    public function getFacturaLimitAttribute()
+    {
+        if ($this->invoice) {
+            return substr($this->invoice, 0, 15);
+        }
+
+        return "";
+    }
+
     public function present()
     {
       return new ExpenseStatementPresenter($this);

@@ -24,7 +24,6 @@ class OperationPresenter extends Presenter
                 $debitnotenofacturado = 0;
                 $prefacturanofacturado = 0;
             }else{
-
                 $debitnotenofacturado = 1;
                 $prefacturanofacturado = 1;
             }
@@ -33,6 +32,8 @@ class OperationPresenter extends Presenter
                     if($debitnote->invoices->isEmpty()){
                         $debitnotenofacturado++;
                     }
+                }else{
+                    $debitnotenofacturado--;
                 }
             }
             foreach($this->model->prefactures as $prefacture){
@@ -40,6 +41,8 @@ class OperationPresenter extends Presenter
                     if($prefacture->invoices->isEmpty()){
                         $prefacturanofacturado++;
                     }
+                }else{
+                    $prefacturanofacturado--;
                 }
             }
             $badge = "";

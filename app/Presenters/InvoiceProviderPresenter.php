@@ -14,7 +14,7 @@ class InvoiceProviderPresenter extends Presenter
             if (!$this->model->aut_oper) {
                 echo new HtmlString('<span class="badge badge-success-lighten">Pendiente autorización</span><br>');
             }elseif(!$this->model->aut_fin){
-                echo new HtmlString('<span class="badge badge-warning-lighten">Pendiente revisión</span><br>');
+                echo new HtmlString('<span class="badge badge-info-lighten">Pendiente revisión</span><br>');
             }else{
                 $sinfacturaunico = 0;
                 if($this->model->operation->debitnotes->isEmpty() && $this->model->operation->prefactures->isEmpty()){

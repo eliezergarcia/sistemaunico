@@ -240,10 +240,11 @@ class InvoiceProvider extends Model
         foreach ($this->operation->invoicesclients as $invoice) {
             if ($invoice->debitnotes->isNotEmpty()) {
                 $codigo = $invoice->debitnotes->first()->numberFormat;
+                echo new HtmlString($codigo.' - '.$invoice->factura.'<br>');
             }else{
-                $codigo = $invoice->prefactures->first()->numberFormat;
+                // $codigo = $invoice->prefactures->first()->numberFormat;
+                echo new HtmlString($invoice->factura.'<br>');
             }
-            echo new HtmlString($codigo.' - '.$invoice->factura.'<br>');
         }
     }
 

@@ -238,7 +238,7 @@ class InvoiceProvider extends Model
     public function facturasUnico()
     {
         foreach ($this->operation->invoicesclients as $invoice) {
-            echo new HtmlString($invoice->factura.'<br>');
+            echo new HtmlString($invoice->debitnotes->first().' - '.$invoice->factura.'<br>');
         }
     }
 

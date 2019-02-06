@@ -17,7 +17,7 @@ class DebitNoteController extends Controller
     */
     public function index()
     {
-        $debitnotes = DebitNote::all();
+        $debitnotes = DebitNote::orderBy('id', 'desc')->get();
 
         return view('debitnotes.index', compact('debitnotes'));
     }

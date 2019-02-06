@@ -21,7 +21,7 @@ class Invoice extends Model
 
     public function debitnotes()
     {
-    	return $this->hasMany(DebitNote::class, 'assigned_invoices');
+    	return $this->belongsToMany(DebitNote::class, 'assigned_invoices');
     }
 
     public function prefactures()

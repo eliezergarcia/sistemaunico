@@ -167,9 +167,11 @@ class OperationPresenter extends Presenter
     public function solicitudesNoFacturadas()
     {
         if($this->model->debitnotes->isNotEmpty() || $this->model->prefactures->isNotEmpty()){
-            $nofacturado = 0;
+            // $nofacturado = 0;
+            $nofacturado = $this->model->debitnotes->count() + $this->model->prefactures->count();
         }else{
-            $nofacturado = 1;
+            // $nofacturado = 1;
+            $nofacturado = $this->model->debitnotes->count() + $this->model->prefactures->count();
         }
 
         foreach($this->model->debitnotes as $debitnote){
@@ -178,9 +180,9 @@ class OperationPresenter extends Presenter
                     $nofacturado++;
                 }
             }
-            // else{
-            //     $nofacturado--;
-            // }
+            else{
+                $nofacturado--;
+            }
         }
 
         foreach($this->model->prefactures as $prefacture){
@@ -189,9 +191,9 @@ class OperationPresenter extends Presenter
                     $nofacturado++;
                 }
             }
-            // else{
-            //     $nofacturado--;
-            // }
+            else{
+                $nofacturado--;
+            }
         }
 
         return $nofacturado;

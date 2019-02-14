@@ -177,9 +177,10 @@ class OperationPresenter extends Presenter
                 if($debitnote->invoices->isEmpty()){
                     $nofacturado++;
                 }
-            }else{
-                $nofacturado--;
             }
+            // else{
+            //     $nofacturado--;
+            // }
         }
 
         foreach($this->model->prefactures as $prefacture){
@@ -187,9 +188,10 @@ class OperationPresenter extends Presenter
                 if($prefacture->invoices->isEmpty()){
                     $nofacturado++;
                 }
-            }else{
-                $nofacturado--;
             }
+            // else{
+            //     $nofacturado--;
+            // }
         }
 
         return $nofacturado;

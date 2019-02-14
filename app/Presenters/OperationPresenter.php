@@ -32,18 +32,20 @@ class OperationPresenter extends Presenter
                     if($debitnote->invoices->isEmpty()){
                         $debitnotenofacturado++;
                     }
-                }else{
-                    $debitnotenofacturado--;
                 }
+                // else{
+                //     $debitnotenofacturado--;
+                // }
             }
             foreach($this->model->prefactures as $prefacture){
                 if (!$prefacture->canceled_at) {
                     if($prefacture->invoices->isEmpty()){
                         $prefacturanofacturado++;
                     }
-                }else{
-                    $prefacturanofacturado--;
                 }
+                // else{
+                //     $prefacturanofacturado--;
+                // }
             }
             $badge = "";
             if(($this->model->debitnotes->isNotEmpty() || $this->model->prefactures->isNotEmpty()) && ($debitnotenofacturado != 0 || $prefacturanofacturado != 0)){
@@ -83,18 +85,20 @@ class OperationPresenter extends Presenter
                     if($debitnote->invoices->isEmpty()){
                         $debitnotenofacturado++;
                     }
-                }else{
-                    $debitnotenofacturado--;
                 }
+                // else{
+                //     $debitnotenofacturado--;
+                // }
             }
             foreach($this->model->prefactures as $prefacture){
                 if (!$prefacture->canceled_at) {
                     if($prefacture->invoices->isEmpty()){
                         $prefacturanofacturado++;
                     }
-                }else{
-                    $prefacturanofacturado--;
                 }
+                // else{
+                //     $prefacturanofacturado--;
+                // }
             }
             $badge = "";
             if(($this->model->debitnotes->isNotEmpty() || $this->model->prefactures->isNotEmpty()) && ($debitnotenofacturado != 0 || $prefacturanofacturado != 0)){

@@ -228,8 +228,8 @@
                             <div class="row mt-2">
                                 <div class="col-3">
                                     <p class="text-center">BANK NAME</p>
-                                    <p class="text-left">SANTANDER BANK(USD)</p>
                                     <p class="text-left">SANTANDER BANK(MXN)</p>
+                                    <p class="text-left">SANTANDER BANK(USD)</p>
                                 </div>
                                 <div class="col-3 text-center">
                                     <p class="text-center">SWIFT CODE</p>

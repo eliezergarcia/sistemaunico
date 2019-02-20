@@ -237,15 +237,29 @@ class InvoiceProvider extends Model
 
     public function facturasUnico()
     {
-        foreach ($this->operation->invoicesclients as $invoice) {
-            if ($invoice->debitnotes->isNotEmpty()) {
-                $codigo = $invoice->debitnotes->first()->numberFormat;
-                echo new HtmlString($codigo.' - '.$invoice->factura.'<br>');
+        foreach ($this->operation->debitnotes as $debitnote) {
+            if ($debitnote->invoices->isNotEmpty()) {
+                echo new HtmlString($debitnote->numberFormat.' - '.$debitnote->invoices->first()->factura.'<br>');
             }else{
-                // $codigo = $invoice->prefactures->first()->numberFormat;
-                echo new HtmlString($invoice->factura.'<br>');
+                echo new HtmlString($debitnote->numberFormat.'<br>');
             }
         }
+
+        foreach ($this->operation->prefactures as $prefacture) {
+            if ($prefacture->invoices->isNotEmpty()) {
+                echo new HtmlString($prefacture->invoices->first()->factura.'<br>');
+            }
+        }
+
+        // foreach ($this->operation->invoicesclients as $invoice) {
+        //     if ($invoice->debitnotes->isNotEmpty()) {
+        //         $codigo = $invoice->debitnotes->first()->numberFormat;
+        //         echo new HtmlString($codigo.' - '.$invoice->factura.'<br>');
+        //     }else{
+        //         // $codigo = $invoice->prefactures->first()->numberFormat;
+        //         echo new HtmlString($invoice->factura.'<br>');
+        //     }
+        // }
     }
 
     public function createConceptsInvoiceProviders($request)

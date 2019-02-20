@@ -205,7 +205,8 @@
                                 </div>
                                 <div class="col-8">
                                     <h5 style="margin: 10px;">
-                                        {{ $invoice->operation->invoicesclients->isEmpty() ? 'PENDING' : $invoice->operation->invoicesclients->pluck('factura')->implode(', ') }}
+                                        {{-- {{ $invoice->operation->invoicesclients->isEmpty() ? 'PENDING' : $invoice->operation->invoicesclients->pluck('factura')->implode(', ') }} --}}
+                                        {{ $invoice->operation->invoicesclients->isEmpty() ? 'PENDING' : $invoice->facturasUnico() }}
                                     </h5>
                                 </div>
                             </div>

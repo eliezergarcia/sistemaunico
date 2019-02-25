@@ -69,7 +69,6 @@ class PaymentProvidersController extends Controller
 
         $payment->invoices()->attach($request->invoices);
 
-
         if (!$request->has('option') && $request->option != "guarantee") {
             foreach ($request->invoices as $id) {
                 $invoice = InvoiceProvider::findOrFail($id);
@@ -81,7 +80,7 @@ class PaymentProvidersController extends Controller
         }
 
         // dd($request->all());
-        if($payment){
+        if($payment && $invoice){
             DB::rollBack();
             return 'El pago se registró correctamente.';
         }else{

@@ -765,7 +765,7 @@
 
         $("input[name=invoicesrevision]").click(function() {
             var invoices = new Array();
-            $("input[name=invoicesrevision]").each(function (index) {0
+            $("input[name=invoicesrevision]").each(function (index) {
                 if($(this).is(':checked')){
                     invoices.push($(this).val());
                 }

@@ -25,7 +25,7 @@ class InvoiceProviderController extends Controller
     {
         $invoices = InvoiceProvider::where('factura', '!=', null)
                                    ->where('canceled_at', null)
-                                   ->orderBy('id', 'desc')->get();
+                                   ->orderBy('id', 'desc')->limit(10)->get();
 
         $clients = Client::where('inactive_at', null)->get();
         $providers = Provider::where('inactive_at', null)->get();

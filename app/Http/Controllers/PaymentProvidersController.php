@@ -80,13 +80,12 @@ class PaymentProvidersController extends Controller
             }
         }
 
-        DB::rollBack();
-        dd($request->all());
+        // dd($request->all());
         if($payment){
-            DB::commit();
+            DB::rollBack();
             return 'El pago se registró correctamente.';
         }else{
-            DB::rollBack();
+            DB::commit();
             return 'Ocurrió un problema al registrar el pago.';
         }
     }

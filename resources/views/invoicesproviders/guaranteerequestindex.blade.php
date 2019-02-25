@@ -568,7 +568,7 @@
               }).then(function (response) {
                 $.NotificationApp.send("Bien hecho!", response.data, 'top-right', 'rgba(0,0,0,0.2)', 'success');
                 $('#register-payment-modal').modal('hide');
-                setTimeout("actualizarPagina()", 1500);
+                setTimeout("actualizarPagina()", 1000);
               }).catch(function (error) {
                 console.log(error);
               });
@@ -656,7 +656,7 @@
                 console.log(response.data);
                 $.NotificationApp.send("Bien hecho!", response.data, 'top-right', 'rgba(0,0,0,0.2)', 'success');
                 $('#generate-revision-modal').modal('hide');
-                setTimeout("actualizarPagina()", 1500);
+                setTimeout("actualizarPagina()", 1000);
               }).catch(function (error) {
                 console.log(error);
               });

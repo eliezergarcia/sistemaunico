@@ -61,13 +61,15 @@ class PaymentProvidersController extends Controller
 
     public function facturas(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
 
         DB::beginTransaction();
 
         $payment = PaymentProviders::create($request->all());
 
         $payment->invoices()->attach($request->invoices);
+
+        dd($request->all());
 
         if (!$request->has('option') && $request->option != "guarantee") {
             foreach ($request->invoices as $id) {

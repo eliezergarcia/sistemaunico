@@ -61,7 +61,7 @@ class PaymentProvidersController extends Controller
 
     public function facturas(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
 
         DB::beginTransaction();
 
@@ -70,7 +70,6 @@ class PaymentProvidersController extends Controller
         $payment->invoices()->attach($request->invoices);
 
         if (!$request->has('option') && $request->option != "guarantee") {
-            // $date = Carbon::now();
             foreach ($request->invoices as $id) {
                 $invoice = InvoiceProvider::findOrFail($id);
                 $invoice->return_day = $request->fecha_pago;
@@ -80,7 +79,7 @@ class PaymentProvidersController extends Controller
             }
         }
 
-        if($payment && $invoice){
+        if($payment){
             DB::commit();
             return 'El pago se registró correctamente.';
         }else{

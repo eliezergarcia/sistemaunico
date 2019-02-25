@@ -565,9 +565,10 @@
                 fecha_pago: fechapago,
                 comentarios: comentarios
               }).then(function (response) {
+                console.log(response.data);
                 $.NotificationApp.send("Bien hecho!", response.data, 'top-right', 'rgba(0,0,0,0.2)', 'success');
                 $('#register-payment-modal').modal('hide');
-                setInterval("actualizarPagina()", 1000);
+                // setInterval("actualizarPagina()", 1000);
               }).catch(function (error) {
                 console.log(error);
               });

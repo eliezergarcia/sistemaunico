@@ -18,7 +18,7 @@ class ExpenseServiceController extends Controller
      */
     public function index()
     {
-        $services = ExpenseService::where('canceled_at', null)->get();
+        $services = ExpenseService::all();
 
         return view('expenseservices.index', compact('services'));
     }

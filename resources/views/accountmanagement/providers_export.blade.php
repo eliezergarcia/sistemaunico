@@ -73,7 +73,8 @@
                     <th>{{ $invoice->payment_status() }}</th>
                     <th>{{ $invoice->expense_description }}</th>
                     <th>
-                        F/{{ $invoice->operation->invoicesclients->pluck('factura')->implode(', ') }}
+                        {{-- F/{{ $invoice->operation->invoicesclients->pluck('factura')->implode(', ') }} --}}
+                        F/{{ $invoice->facturasUnico() }}
                     </th>
                 </tr>
             @endif
@@ -153,7 +154,8 @@
                         <th style="background-color: #F08080">{{ $invoice->payment_status() }}</th>
                         <th style="background-color: #F08080">{{ $invoice->expense_description }}</th>
                         <th style="background-color: #F08080">
-                            F/{{ $invoice->operation->invoicesclients->pluck('factura')->implode(', ') }}
+                            {{-- F/{{ $invoice->operation->invoicesclients->pluck('factura')->implode(', ') }} --}}
+                            F/{{ $invoice->facturasUnico() }}
                         </th>
                     </tr>
                 @endif

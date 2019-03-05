@@ -237,19 +237,25 @@ class InvoiceProvider extends Model
 
     public function facturasUnico()
     {
+        $facturas = collect([]);
         foreach ($this->operation->debitnotes as $debitnote) {
             if ($debitnote->invoices->isNotEmpty()) {
-                echo new HtmlString($debitnote->numberFormat.' - '.$debitnote->invoices->first()->factura.'<br>');
+                // echo new HtmlString($debitnote->numberFormat.' - '.$debitnote->invoices->first()->factura.'<br>');
+                $facturas->push($debitnote->numberFormat.' - '.$debitnote->invoices->first()->factura);
             }else{
-                echo new HtmlString($debitnote->numberFormat.'<br>');
+                // echo new HtmlString($debitnote->numberFormat.'<br>');
+                $facturas->push($debitnote->numberFormat);
             }
         }
 
         foreach ($this->operation->prefactures as $prefacture) {
             if ($prefacture->invoices->isNotEmpty()) {
-                echo new HtmlString($prefacture->invoices->first()->factura.'<br>');
+                // echo new HtmlString($prefacture->invoices->first()->factura.'<br>');
+                $facturas->push($prefacture->invoices->first()->factura);
             }
         }
+
+        return $facturas->implode(', ');
 
         // foreach ($this->operation->invoicesclients as $invoice) {
         //     if ($invoice->debitnotes->isNotEmpty()) {

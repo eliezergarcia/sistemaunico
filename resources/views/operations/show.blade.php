@@ -905,6 +905,225 @@
         </div>
     </div>
 
+    <div id="register-advancerequest-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header pr-4 pl-4">
+                    <h4 class="modal-title" id="primary-header-modalLabel">Solicitud de anticipo</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <form id="register-advancerequest-form" method="POST" action="{{ route('facturasproveedor.store') }}" enctype="multipart/form-data" class="pl-2 pr-2">
+                        {!! csrf_field() !!}
+                        <input type="hidden" name="operation_id" value="{{ $operation->id }}">
+                        <input type="hidden" name="client_id" value="{{ $operation->house->id }}">
+                        <input type="hidden" name="guarantee_request" value="">
+                        <?php
+                            use Carbon\Carbon;
+                        ?>
+                        <input type="hidden" name="advance_request" value="{{ Carbon::now() }}">
+                        <div class="row">
+                             <div class="col-7">
+                                <div class="form-group">
+                                    <label>Proveedor <span class="text-danger">*</span></label>
+                                    <select class="form-control select2{{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" data-toggle="select2" required="" onchange="search_accounts()">
+                                        <option value="">Selecciona...</option>
+                                        @foreach($providers as $provider)
+                                            <option value="{{ $provider->id }}">{{ $provider->codigo_proveedor }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                             <div class="col-2">
+                                <div class="form-group">
+                                    <label>Folio</label>
+                                    <input type="text" class="form-control {{ $errors->has('factura') ? ' is-invalid' : '' }}" name="factura">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label>Invoice date</label>
+                                    <input type="date" class="form-control {{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label>Expense type <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control {{ $errors->has('expense_tipe') ? ' is-invalid' : '' }}" name="expense_tipe" value="Advanced Payment" required="">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Expense description <span class="text-danger">*</span></label>
+                                    <select class="form-control select2{{ $errors->has('expense_description') ? ' is-invalid' : '' }}" name="expense_description" data-toggle="select2" required="">
+                                        <option value="INVOICE" selected>INVOICE</option>
+                                        <option value="INVOICE EXTRANJERO">INVOICE EXTRANJERO</option>
+                                        <option value="DEBIT NOTE">DEBIT NOTE</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label>Cuenta <span class="text-danger">*</span></label>
+                                    <select class="form-control select2{{ $errors->has('account_bank') ? ' is-invalid' : '' }}" name="account_provider_id" data-toggle="select2" required="">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label>Neto <span class="text-danger">*</span></label>
+                                    <input type="number" step="any" class="form-control {{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" required="" onchange="calcularTotal()">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label>Vat</label>
+                                    <input type="number" step="any" class="form-control {{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
+                                    @if ($errors->has('vat'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('vat') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label>Retention</label>
+                                    <input type="number" step="any" class="form-control {{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
+                                    @if ($errors->has('retention'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('retention') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label>Others</label>
+                                    <input type="number" step="any" class="form-control {{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
+                                    @if ($errors->has('others'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('others') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="form-group">
+                                    <label>Razón social</label>
+                                    <input type="text" class="form-control" name="razon_social" value="" disabled>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label>Total</label>
+                                    <input type="number" step="any" class="form-control " name="total" value="0">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="col-3">
+                                <hr>
+                                <br>
+                                <div class="form-group">
+                                    <label>M B/L <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control " required name="m_bl" value="{{ $operation->m_bl }}" required="">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <hr>
+                                <br>
+                                <div class="form-group">
+                                    <label>H B/L <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control " required name="h_bl" value="{{ $operation->h_bl }}" required="">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <hr>
+                                <br>
+                                <div class="form-group">
+                                    <label>ETA <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control " required name="eta" value="{{ $operation->eta }}" required="">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <hr>
+                                <br>
+                            </div>
+                            <div class="col-12">
+                            <br>
+                            <label>Conceptos</label>
+                            <table id="conceptsTable" class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th width="40%">Description</th>
+                                        <th width="15%">Curr</th>
+                                        <th>Rate</th>
+                                        <th width="5%">Iva</th>
+                                        <th width="11%">Qty</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($conceptsinvoices as $conceptinvoices)
+                                        <tr>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="checkconceptadvance{{ $conceptinvoices->id }}" value="{{ $conceptinvoices->id }}" name="conceptsadvance[]">
+                                                    <label class="custom-control-label" for="checkconceptadvance{{ $conceptinvoices->id }}">&nbsp;</label>
+                                                </div>
+                                            </td>
+                                            <td>{{ $conceptinvoices->description }}</td>
+                                            <td>
+                                                <select name="curr[]" class="form-control select2" data-toggle="select2">
+                                                    <option value="MXN" {{ $conceptinvoices->curr == "MXN" ? 'selected' : ''}}>MXN</option>
+                                                    <option value="USD" {{ $conceptinvoices->curr == "USD" ? 'selected' : ''}}>USD</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" name="ivaconceptadvance[]" class="custom-control-input" id="checkivaadvance{{ $conceptinvoices->id }}" value="{{ $conceptinvoices->id }}">
+                                                    <label class="custom-control-label" for="checkivaadvance{{ $conceptinvoices->id }}">&nbsp;</label>
+                                                </div>
+                                                {{-- <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"> --}}
+                                            </td>
+                                            <td>
+                                                <input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1">
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <hr>
+                            </div>
+                            <div class="col-8">
+
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Prioridad</label>
+                                    <select class="form-control select2" data-toggle="select2" type="text" name="priority">
+                                        <option value="3">Baja</option>
+                                        <option value="2">Media</option>
+                                        <option value="1">Alta</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="text-right pb-4 pr-4">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary"><b>Registrar</b></button>
+                </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
     <div id="register-guaranteerequest-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -917,9 +1136,6 @@
                         {!! csrf_field() !!}
                         <input type="hidden" name="operation_id" value="{{ $operation->id }}">
                         <input type="hidden" name="client_id" value="{{ $operation->house->id }}">
-                        <?php
-                            use Carbon\Carbon;
-                        ?>
                         <input type="hidden" name="guarantee_request" value="{{ Carbon::now() }}">
                         <input type="hidden" name="advance_request" value="">
                         <div class="row">
@@ -1084,224 +1300,8 @@
                                             </td>
                                             <td>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" name="ivaconceptguarantee[]" class="custom-control-input" id="checkivainvoices{{ $conceptinvoices->id }}" value="{{ $conceptinvoices->id }}">
+                                                    <input type="checkbox" name="ivaconceptguarantee[]" class="custom-control-input" id="checkivaguarantee{{ $conceptinvoices->id }}" value="{{ $conceptinvoices->id }}">
                                                     <label class="custom-control-label" for="checkivaguarantee{{ $conceptinvoices->id }}">&nbsp;</label>
-                                                </div>
-                                                {{-- <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"> --}}
-                                            </td>
-                                            <td>
-                                                <input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1">
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <hr>
-                            </div>
-                            <div class="col-8">
-
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <label>Prioridad</label>
-                                    <select class="form-control select2" data-toggle="select2" type="text" name="priority">
-                                        <option value="3">Baja</option>
-                                        <option value="2">Media</option>
-                                        <option value="1">Alta</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                <div class="text-right pb-4 pr-4">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary"><b>Registrar</b></button>
-                </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-
-    <div id="register-advancerequest-modal" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header pr-4 pl-4">
-                    <h4 class="modal-title" id="primary-header-modalLabel">Solicitud de anticipo</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <form id="register-advancerequest-form" method="POST" action="{{ route('facturasproveedor.store') }}" enctype="multipart/form-data" class="pl-2 pr-2">
-                        {!! csrf_field() !!}
-                        <input type="hidden" name="operation_id" value="{{ $operation->id }}">
-                        <input type="hidden" name="client_id" value="{{ $operation->house->id }}">
-                        <input type="hidden" name="guarantee_request" value="">
-                        <input type="hidden" name="advance_request" value="{{ Carbon::now() }}">
-                        <div class="row">
-                             <div class="col-7">
-                                <div class="form-group">
-                                    <label>Proveedor <span class="text-danger">*</span></label>
-                                    <select class="form-control select2{{ $errors->has('provider_id') ? ' is-invalid' : '' }}" name="provider_id" data-toggle="select2" required="" onchange="search_accounts()">
-                                        <option value="">Selecciona...</option>
-                                        @foreach($providers as $provider)
-                                            <option value="{{ $provider->id }}">{{ $provider->codigo_proveedor }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                             <div class="col-2">
-                                <div class="form-group">
-                                    <label>Folio</label>
-                                    <input type="text" class="form-control {{ $errors->has('factura') ? ' is-invalid' : '' }}" name="factura">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <label>Invoice date</label>
-                                    <input type="date" class="form-control {{ $errors->has('invoice_date') ? ' is-invalid' : '' }}" name="invoice_date">
-                                </div>
-                            </div>
-                            <div class="col-5">
-                                <div class="form-group">
-                                    <label>Expense type <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control {{ $errors->has('expense_tipe') ? ' is-invalid' : '' }}" name="expense_tipe" value="Advanced Payment" required="">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <label>Expense description <span class="text-danger">*</span></label>
-                                    <select class="form-control select2{{ $errors->has('expense_description') ? ' is-invalid' : '' }}" name="expense_description" data-toggle="select2" required="">
-                                        <option value="INVOICE" selected>INVOICE</option>
-                                        <option value="INVOICE EXTRANJERO">INVOICE EXTRANJERO</option>
-                                        <option value="DEBIT NOTE">DEBIT NOTE</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <label>Cuenta <span class="text-danger">*</span></label>
-                                    <select class="form-control select2{{ $errors->has('account_bank') ? ' is-invalid' : '' }}" name="account_provider_id" data-toggle="select2" required="">
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <label>Neto <span class="text-danger">*</span></label>
-                                    <input type="number" step="any" class="form-control {{ $errors->has('neto') ? ' is-invalid' : '' }}" name="neto" required="" onchange="calcularTotal()">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <label>Vat</label>
-                                    <input type="number" step="any" class="form-control {{ $errors->has('vat') ? ' is-invalid' : '' }}" name="vat" value="0" onchange="calcularTotal()">
-                                    @if ($errors->has('vat'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('vat') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <label>Retention</label>
-                                    <input type="number" step="any" class="form-control {{ $errors->has('retention') ? ' is-invalid' : '' }}" name="retention" value="0" onchange="calcularTotal()">
-                                    @if ($errors->has('retention'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('retention') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <label>Others</label>
-                                    <input type="number" step="any" class="form-control {{ $errors->has('others') ? ' is-invalid' : '' }}" name="others" value="0" onchange="calcularTotal()">
-                                    @if ($errors->has('others'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('others') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-9">
-                                <div class="form-group">
-                                    <label>Razón social</label>
-                                    <input type="text" class="form-control" name="razon_social" value="" disabled>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <label>Total</label>
-                                    <input type="number" step="any" class="form-control " name="total" value="0">
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="col-3">
-                                <hr>
-                                <br>
-                                <div class="form-group">
-                                    <label>M B/L <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control " required name="m_bl" value="{{ $operation->m_bl }}" required="">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <hr>
-                                <br>
-                                <div class="form-group">
-                                    <label>H B/L <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control " required name="h_bl" value="{{ $operation->h_bl }}" required="">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <hr>
-                                <br>
-                                <div class="form-group">
-                                    <label>ETA <span class="text-danger">*</span></label>
-                                    <input type="date" class="form-control " required name="eta" value="{{ $operation->eta }}" required="">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <hr>
-                                <br>
-                            </div>
-                            <div class="col-12">
-                            <br>
-                            <label>Conceptos</label>
-                            <table id="conceptsTable" class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th width="40%">Description</th>
-                                        <th width="15%">Curr</th>
-                                        <th>Rate</th>
-                                        <th width="5%">Iva</th>
-                                        <th width="11%">Qty</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($conceptsinvoices as $conceptinvoices)
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checkconceptadvance{{ $conceptinvoices->id }}" value="{{ $conceptinvoices->id }}" name="conceptsadvance[]">
-                                                    <label class="custom-control-label" for="checkconceptadvance{{ $conceptinvoices->id }}">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td>{{ $conceptinvoices->description }}</td>
-                                            <td>
-                                                <select name="curr[]" class="form-control select2" data-toggle="select2">
-                                                    <option value="MXN" {{ $conceptinvoices->curr == "MXN" ? 'selected' : ''}}>MXN</option>
-                                                    <option value="USD" {{ $conceptinvoices->curr == "USD" ? 'selected' : ''}}>USD</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
-                                            </td>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" name="ivaconceptadvance[]" class="custom-control-input" id="checkivainvoices{{ $conceptinvoices->id }}" value="{{ $conceptinvoices->id }}">
-                                                    <label class="custom-control-label" for="checkivaadvance{{ $conceptinvoices->id }}">&nbsp;</label>
                                                 </div>
                                                 {{-- <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"> --}}
                                             </td>
@@ -2258,6 +2258,7 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+
 <!-- End Modals -->
 @endsection
 @section('scripts')

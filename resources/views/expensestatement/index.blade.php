@@ -66,15 +66,15 @@
                                 <tr>
                                     <td>{{ $expense->controlcode }}</td>
                                     <td>{{ $expense->facturaLimit }}</td>
-                                    <td>{{ $expense->expense_type }}</td>
-                                    <td>{{ $expense->description }}</td>
+                                    <td>{{ $expense->expenseTypeLimit }}</td>
+                                    <td>{{ $expense->descriptionLimit }}</td>
                                     <td>{{ $expense->currency == "USD" ? '$ ' : '' }}{{ number_format($expense->neto, 2, '.', ',') }}</td>
                                     <td>{{ $expense->currency == "USD" ? '$ ' : '' }}{{ number_format($expense->vat, 2, '.', ',') }}</td>
                                     <td class="text-danger">{{ $expense->currency == "USD" ? '$ ' : '' }}- {{ number_format($expense->retention, 2, '.', ',') }}</td>
                                     <td>{{ $expense->currency == "USD" ? '$ ' : '' }}{{ number_format($expense->others, 2, '.', ',') }}</td>
                                     <td>{{ $expense->currency == "USD" ? '$ ' : '' }}{{ $expense->total }}</td>
                                     <td>{{ $expense->present()->statusBadge() }}</td>
-                                    <td>{{ $expense->expense_description }}</td>
+                                    <td>{{ $expense->expenseDescriptionLimit }}</td>
                                     <td>
                                         <a href="{{ route('estadogastos.pdf', $expense->id )}}" class="action-icon" data-toggle="tooltip" data-placement="top" title data-original-title="Ver pdf"> <i class="mdi mdi-file-pdf"></i></a>
                                         @if(!$expense->canceled_at)

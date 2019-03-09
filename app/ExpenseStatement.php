@@ -25,7 +25,22 @@ class ExpenseStatement extends Model
     		$number = $this->number;
     	}
 
-        return substr($this->created_at->format('Ymd')."-".$number, 2);
+        return substr($this->created_at->format('Ymd')."-".$number, 2, 11);
+    }
+
+    public function getExpenseTypeLimitAttribute()
+    {
+        return substr($this->expense_type, 0, 21);
+    }
+
+    public function getDescriptionLimitAttribute()
+    {
+        return substr($this->description, 0, 18);
+    }
+
+    public function getExpenseDescriptionLimitAttribute()
+    {
+        return substr($this->expense_description, 0, 18);
     }
 
     public function getTotalAttribute()

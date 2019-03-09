@@ -64,7 +64,9 @@ class InvoiceProvider extends Model
             $number = $this->number;
         }
 
-        return substr($this->created_at->format('Ymd')."-".$number, 2);
+        $codigo = substr($this->created_at->format('Ymd')."-".$number, 2);
+        $codigo = substr($this->created_at->format('Ymd')."-".$number, 2, 11);
+        return $codigo;
     }
 
     public function getFacturaLimitAttribute()
@@ -74,6 +76,16 @@ class InvoiceProvider extends Model
         }
 
         return "";
+    }
+
+    public function getProviderLimitAttribute()
+    {
+    	return substr($this->provider->codigo_proveedor, 0, 18);
+    }
+
+    public function getMblLimitAttribute()
+    {
+    	return substr($this->operation->m_bl, 0, 16);
     }
 
     public function getRegDateAttribute()
@@ -255,7 +267,7 @@ class InvoiceProvider extends Model
             }
         }
 
-        return $facturas->implode(', ');
+        return substr($facturas->implode(', '), 0 , 16);
 
         // foreach ($this->operation->invoicesclients as $invoice) {
         //     if ($invoice->debitnotes->isNotEmpty()) {

@@ -85,6 +85,21 @@ class Prefacture extends Model
         return number_format($foreigntotal ,2,".","");
     }
 
+    public function getClientLimitAttribute()
+    {
+        return substr($this->client->razon_social, 0, 16);
+    }
+
+    public function getMblLimitAttribute()
+    {
+        return substr($this->operation->m_bl, 0, 16);
+    }
+
+    public function getHblLimitAttribute()
+    {
+        return substr($this->operation->h_bl, 0, 16);
+    }
+
     public function present()
     {
         return new PrefacturePresenter($this);

@@ -67,9 +67,9 @@
 	                                        <td>{{ $prefactura->operation->user->name }}</td>
 	                                        @endif
 											<td>{{ $prefactura->numberformat }}</td>
-											<td>{{ $prefactura->client->razon_social }}</td>
-                                            <td>{{ $prefactura->operation->m_bl }}</td>
-                                            <td>{{ $prefactura->operation->h_bl }}</td>
+											<td>{{ $prefactura->clientLimit }}</td>
+                                            <td>{{ $prefactura->mblLimit }}</td>
+                                            <td>{{ $prefactura->hblLimit }}</td>
                                             <td>{{ $prefactura->present()->statusBadge() }}</td>
 	                                        <td>
 	                                            <a href="{{ route('operations.prefacture', $prefactura->id )}}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver información"> <i class="mdi mdi-eye"></i></a>

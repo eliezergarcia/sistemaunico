@@ -74,8 +74,8 @@
                                         <td>{{ $operation->house->codigo_cliente }}</td>
                                         <td>{{ $operation->eta }}</td>
                                         <td>{{ $operation->pod }}</td>
-                                        <td>{{ $operation->destino }}</td>
-                                        <td>{{ $operation->m_bl }}</td>
+                                        <td>{{ $operation->destinoLimit }}</td>
+                                        <td>{{ $operation->mblLimit }}</td>
                                         <td>{{ $operation->impo_expo }}</td>
                                         <td>{{ count($operation->containers) }}</td>
                                         <td>

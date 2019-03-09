@@ -104,6 +104,16 @@ class Operation extends Model
         }
     }
 
+    public function getDestinoLimitAttribute()
+    {
+        return substr($this->destino, 0 , 16);
+    }
+
+    public function getMblLimitAttribute()
+    {
+        return substr($this->m_bl, 0 , 16);
+    }
+
     public function setEtdAttribute($etd)
     {
         $this->attributes['etd'] = Carbon::parse($etd)->format('Y-m-d');

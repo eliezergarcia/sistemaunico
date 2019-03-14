@@ -267,7 +267,8 @@ class InvoiceProvider extends Model
             }
         }
 
-        return substr($facturas->implode(', '), 0 , 16);
+        return $facturas->implode(', ');
+        // return substr($facturas->implode(', '), 0 , 16);
 
         // foreach ($this->operation->invoicesclients as $invoice) {
         //     if ($invoice->debitnotes->isNotEmpty()) {

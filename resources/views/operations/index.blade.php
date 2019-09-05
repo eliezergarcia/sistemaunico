@@ -57,8 +57,8 @@
                                     <th>POD</th>
                                     <th>Destino</th>
                                     <th>M B/L</th>
+                                    <th width="7%">H B/L</th>
                                     <th width="7%">Tipo</th>
-                                    <th width="7%">QTY</th>
                                     <th width="8%">Status</th>
                                     <th width="7%">Acciones</th>
                                 </tr>
@@ -76,8 +76,8 @@
                                         <td>{{ $operation->pod }}</td>
                                         <td>{{ $operation->destinoLimit }}</td>
                                         <td>{{ $operation->mblLimit }}</td>
+                                        <td>{{ $operation->hblLimit }}</td>
                                         <td>{{ $operation->impo_expo }}</td>
-                                        <td>{{ count($operation->containers) }}</td>
                                         <td>
                                             @if($operation->impo_expo == "IMPO")
                                                 {{ $operation->present()->statusBadgeImpo() }}
@@ -103,8 +103,8 @@
                                     <th>POD</th>
                                     <th>Destino</th>
                                     <th>M B/L</th>
+                                    <th>H B/L</th>
                                     <th>Tipo</th>
-                                    <th>QTY</th>
                                     <th>Status</th>
                                     <th></th>
                                 </tr>

@@ -114,6 +114,12 @@ class Operation extends Model
         return substr($this->m_bl, 0 , 16);
     }
 
+    public function getHblLimitAttribute()
+    {
+        return substr($this->h_bl, 0 , 16);
+    }
+
+
     public function setEtdAttribute($etd)
     {
         $this->attributes['etd'] = Carbon::parse($etd)->format('Y-m-d');

@@ -633,7 +633,7 @@
                                             </div><!-- end col -->
                                             <div class="col-sm-4 offset-sm-2">
                                                 <div class="mt-3 float-sm-right">
-                                                    <p class="font-13"><strong>Fecha: </strong> &nbsp;&nbsp;&nbsp; Enero 07, 2019</p>
+                                                    <p class="font-13"><strong>Fecha: </strong> &nbsp;&nbsp;&nbsp; Agosto 23, 2019</p>
                                                 </div>
                                             </div><!-- end col -->
                                         </div>
@@ -669,9 +669,9 @@
                                                             <tr>
                                                                 <td>1</td>
                                                                 <td>
-                                                                    <b>MTTO GENERAL DE EQUIPO DE COMPUTO DKSM /MALENY</b> <br/>
+                                                                    <b>SERVICIO DE MTTO A SISTEMA</b> <br/>
                                                                 </td>
-                                                                <td class="float-right">$ 400.00</td>
+                                                                <td class="float-right">$ 300.00</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -687,9 +687,9 @@
                                             </div> <!-- end col -->
                                             <div class="col-sm-6">
                                                 <div class="float-right mt-3 mt-sm-0">
-                                                    <p><b>Sub-total:</b> <span class="float-right">$400.00</span></p>
-                                                    <p><b>Iva-total:</b> <span class="float-right">$64.00</span></p>
-                                                    <h3>TOTAL: $464.00 MXN</h3>
+                                                    <p><b>Sub-total:</b> <span class="float-right">$300.00</span></p>
+                                                    <p><b>Iva-total:</b> <span class="float-right">$48.00</span></p>
+                                                    <h3>TOTAL: $348.00 MXN</h3>
 
                                                 </div>
                                                 <div class="clearfix"></div>

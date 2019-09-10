@@ -153,6 +153,23 @@
                             </a>
                         </li>
                     </ul>
+                    <ul class="side-nav-second-level" aria-expanded="false">
+                        <li class="side-nav-item">
+                            <a href="javascript: void(0);" aria-expanded="false">Reportes
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="side-nav-third-level" aria-expanded="false">
+                                <li>
+                                    <a href="{{ route('operaciones.reporteoperaciones') }}" aria-expanded="false">Operaciones
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('operaciones.reportegastos') }}" aria-expanded="false">Gastos
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
             @endif
             @if(Auth::user()->present()->isFac() || Auth::user()->present()->isAdminGeneral())

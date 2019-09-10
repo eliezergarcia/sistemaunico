@@ -32,6 +32,36 @@ class Container extends Model
         return new ContainerPresenter($this);
     }
 
+    public function getProformaFormatAttribute()
+    {
+        return $this->proforma = Carbon::parse($this->proforma)->format('d-m-Y');
+    }
+
+    public function getPagoproformaFormatAttribute()
+    {
+        return $this->pago_proforma = Carbon::parse($this->pago_proforma)->format('d-m-Y');
+    }
+
+    public function getSolicitudtransporteFormatAttribute()
+    {
+        return $this->solicitud_transporte = Carbon::parse($this->solicitud_transporte)->format('d-m-Y');
+    }
+
+    public function getDespachadopuertoFormatAttribute()
+    {
+        return $this->despachado_puerto = Carbon::parse($this->despachado_puerto)->format('d-m-Y');
+    }
+
+    public function getPortetdFormatAttribute()
+    {
+        return $this->port_etd = Carbon::parse($this->port_etd)->format('d-m-Y');
+    }
+
+    public function getDlvdayFormatAttribute()
+    {
+        return $this->dlv_day = Carbon::parse($this->dlv_day)->format('d-m-Y');
+    }
+
     public function markAsReadNotificationOA()
     {
         DB::table('notifications')->where('data', 'like', '%'.'OA'.$this->id.'%')->update(array('read_at' => Carbon::now()));

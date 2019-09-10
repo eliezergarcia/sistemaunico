@@ -18,6 +18,9 @@ use App\ConceptsOperation;
 use App\ConceptsProviders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\OperationsReportExport;
+use App\Exports\ExpensesReportExport;
 // use Barryvdh\DomPDF\Facade as PDF;
 use App\Http\Requests\RegisterOperationRequest;
 use App\Http\Requests\UpdateOperationRequest;
@@ -31,7 +34,7 @@ class OperationController extends Controller
     public function index()
     {
         if(auth()->user()->present()->isAdmin()){
-            $operations = Operation::orderBy('id', 'desc')->get();
+            $operations = Operation::orderBy('id', 'desc')->limit(100)->get();
         }else{
             $operations = Operation::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
         }
@@ -222,6 +225,30 @@ class OperationController extends Controller
         // return $pdf->stream();
 
         // return \PDF::loadFile('http://www.github.com')->stream('github.pdf');
+    }
+
+    public function operationsReport()
+    {
+        return view('operations.reportes.operations');
+    }
+
+    public function operationsReportShow(Request $request)
+    {
+        if ($request->fecha_inicio != null && $request->fecha_fin != null ) {
+            return Excel::download(new OperationsReportExport($request), 'operationsreport.xlsx');
+        }
+    }
+
+    public function operationsExpend()
+    {
+        return view('operations.reportes.expenses');
+    }
+
+    public function operationsExpendShow(Request $request)
+    {
+        if ($request->bl != null) {
+            return Excel::download(new ExpensesReportExport($request), 'operationsexpenses.xlsx');
+        }
     }
 
     /**

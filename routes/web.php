@@ -102,6 +102,10 @@ Route::get('/operaciones/solicitudgarantia/{id}', 'OperationController@guarantee
 Route::get('/operaciones/solicitudanticipo/{id}', 'OperationController@advanceRequest')->name('operations.advanceRequest');
 Route::put('operaciones/update_status/{id}', 'OperationController@update_status')->name('operaciones.updatestatus');
 Route::post('/operaciones/notas/{id}', 'OperationController@notes')->name('operaciones.notes');
+Route::get('/operaciones/reportes/operaciones', 'OperationController@operationsReport')->name('operaciones.reporteoperaciones');
+Route::post('/operaciones/reportes/operaciones/generar', 'OperationController@operationsReportShow')->name('operaciones.reporteoperaciones_generar');
+Route::get('/operaciones/reportes/gastos', 'OperationController@operationsExpend')->name('operaciones.reportegastos');
+Route::post('/operaciones/reportes/gastos/generar', 'OperationController@operationsExpendShow')->name('operaciones.reportegastos_generar');
 Route::resource('operaciones', 'OperationController');
 
 Route::get('/contenedores/{id}', 'ContainerController@show')->name('contenedores.show');

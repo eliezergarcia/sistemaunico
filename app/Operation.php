@@ -97,6 +97,31 @@ class Operation extends Model
         return $this->eta = Carbon::parse($this->eta)->format('d-m-Y');
     }
 
+    public function getRecibirFormatAttribute()
+    {
+        return $this->recibir = Carbon::parse($this->recibir)->format('d-m-Y');
+    }
+
+    public function getRevisionFormatAttribute()
+    {
+        return $this->revision = Carbon::parse($this->revision)->format('d-m-Y');
+    }
+
+    public function getMandarFormatAttribute()
+    {
+        return $this->mandar = Carbon::parse($this->mandar)->format('d-m-Y');
+    }
+
+    public function getRevalidacionFormatAttribute()
+    {
+        return $this->revalidacion = Carbon::parse($this->revalidacion)->format('d-m-Y');
+    }
+
+    public function getTocapisoFormatAttribute()
+    {
+        return $this->toca_piso = Carbon::parse($this->toca_piso)->format('d-m-Y');
+    }
+
     public function getCustomCutoffFormatAttribute()
     {
         if ($this->custom_cutoff != null) {
@@ -134,6 +159,7 @@ class Operation extends Model
     {
         $this->attributes['custom_cutoff'] = Carbon::parse($custom_cutoff)->format('Y-m-d');
     }
+
 
     function createOperation($request)
     {

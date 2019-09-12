@@ -288,25 +288,26 @@ class InvoiceProvider extends Model
             for ($i=0; $i < count($request->input('conceptsinvoices')); $i++) {
                 $concepts = new ConceptsInvoiceProviders();
                 $idconcept = $request->input('conceptsinvoices')[$i];
-                $rateconcept = $request->input('rates')[$idconcept-1];
+                $rateconcept = $request->input('rates')[$i];
+                $iva = $request->input('iva')[$i];
 
-                $iva = 0;
+                /*$iva = 0;
                 if($request->has('ivaconceptinvoices'))
                 {
                     for ($j=0; $j < count($request->input('ivaconceptinvoices')); $j++) {
-                        if ($request->input('ivaconceptinvoices')[$j] == $idconcept) {
+                        if ($request->input('ivaconceptinvoices')[$j] == $i{
                             $iva = 0.16;
                         }
                     }
-                }
+                }*/
 
                 $ivaconcept = $rateconcept * $iva;
-                $qtyconcept = $request->input('qty')[$idconcept-1];
+                $qtyconcept = $request->input('qty')[$i];
                 $foreignconcept = ($rateconcept + $ivaconcept) * $qtyconcept;
 
                 $concepts->operation_id = $request->operation_id;
                 $concepts->invoice_id = $this->id;
-                $concepts->concept_id = $idconcept;
+                $concepts->concept_id = $idconcept;             
                 $concepts->rate = $rateconcept;
                 $concepts->iva = $ivaconcept;
                 $concepts->qty = $qtyconcept;
@@ -320,20 +321,20 @@ class InvoiceProvider extends Model
             for ($i=0; $i < count($request->input('conceptsguarantee')); $i++) {
                 $concepts = new ConceptsInvoiceProviders();
                 $idconcept = $request->input('conceptsguarantee')[$i];
-                $rateconcept = $request->input('rates')[$idconcept-1];
-
-                $iva = 0;
+                $rateconcept = $request->input('rates')[$i];
+                $iva = $request->input('iva')[$i];
+                /*$iva = 0;
                 if($request->has('ivaconceptguarantee'))
                 {
                     for ($j=0; $j < count($request->input('ivaconceptguarantee')); $j++) {
-                        if ($request->input('ivaconceptguarantee')[$j] == $idconcept) {
+                        if ($request->input('ivaconceptguarantee')[$j] == $i{
                             $iva = 0.16;
                         }
                     }
-                }
+                }*/
 
                 $ivaconcept = $rateconcept * $iva;
-                $qtyconcept = $request->input('qty')[$idconcept-1];
+                $qtyconcept = $request->input('qty')[$i];
                 $foreignconcept = ($rateconcept + $ivaconcept) * $qtyconcept;
 
                 $concepts->operation_id = $request->operation_id;
@@ -352,20 +353,20 @@ class InvoiceProvider extends Model
             for ($i=0; $i < count($request->input('conceptsadvance')); $i++) {
                 $concepts = new ConceptsInvoiceProviders();
                 $idconcept = $request->input('conceptsadvance')[$i];
-                $rateconcept = $request->input('rates')[$idconcept-1];
-
-                $iva = 0;
+                $rateconcept = $request->input('rates')[$i];
+                $iva = $request->input('iva')[$i];
+               /* $iva = 0;
                 if($request->has('ivaconceptadvance'))
                 {
                     for ($j=0; $j < count($request->input('ivaconceptadvance')); $j++) {
-                        if ($request->input('ivaconceptadvance')[$j] == $idconcept) {
+                        if ($request->input('ivaconceptadvance')[$j] == $i{
                             $iva = 0.16;
                         }
                     }
-                }
+                }*/
 
                 $ivaconcept = $rateconcept * $iva;
-                $qtyconcept = $request->input('qty')[$idconcept-1];
+                $qtyconcept = $request->input('qty')[$i];
                 $foreignconcept = ($rateconcept + $ivaconcept) * $qtyconcept;
 
                 $concepts->operation_id = $request->operation_id;

@@ -47,26 +47,28 @@ class PrefactureController extends Controller
             for ($i=0; $i < count($request->input('concepts')); $i++) {
                 $concepts = new ConceptsOperation();
                 $idconcept = $request->input('concepts')[$i];
-                $rateconcept = $request->input('rates')[$idconcept-1];
+                $rateconcept = $request->input('rates')[$i];
+                $iva = $request->input('iva')[$i];
 
-                $iva = 0;
-                if($request->has('ivaConcept'))
+
+                // dd($rateconcept);
+                /*if($request->has('ivaConcept'))
                 {
                     for ($j=0; $j < count($request->input('ivaConcept')); $j++) {
-                        if ($request->input('ivaConcept')[$j] == $idconcept) {
+                        if ($request->input('ivaConcept')[$j] == $i) {
                             $iva = 0.16;
                         }
                     }
                 }
-
+*/
                 $ivaconcept = $rateconcept * $iva;
-                $qtyconcept = $request->input('qty')[$idconcept-1];
+                $qtyconcept = $request->input('qty')[$i];
                 $foreignconcept = ($rateconcept + $ivaconcept) * $qtyconcept;
 
                 $concepts->operation_id = $request->input('operation_id');
                 $concepts->prefacture_id = $prefacture->id;
                 $concepts->concept_id = $idconcept;
-                $concepts->curr = $request->input('curr')[$idconcept-1];
+                $concepts->curr = $request->input('curr')[$i];
                 $concepts->rate = $rateconcept;
                 $concepts->iva = $ivaconcept;
                 $concepts->qty = $qtyconcept;

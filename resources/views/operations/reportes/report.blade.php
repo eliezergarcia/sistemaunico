@@ -143,11 +143,15 @@
                 </th>
                 <th></th>
                 <th>@foreach($operation->debitnotes as $debitnote)
-                        {{ $debitnote->numberformat }}, 
+                        @if(!$debitnote->canceled_at)
+                            {{ $debitnote->numberformat }}, 
+                        @endif
                     @endforeach
                 </th>
                 <th>@foreach($operation->prefactures as $prefacture)
-                        {{ $prefacture->numberformat }}, 
+                        @if(!$prefacture->canceled_at)
+                            {{ $prefacture->numberformat }}, 
+                        @endif
                     @endforeach
                 </th>
             </tr>

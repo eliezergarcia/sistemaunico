@@ -24,8 +24,9 @@ class OperationsReportExport implements FromView, ShouldAutoSize, WithTitle
     public function view(): View
     {
         return view('operations.reportes.report', [
-            'operation' => Operation::whereDate('eta', '>=', $this->request->fecha_inicio)
+            'operations' => Operation::whereDate('eta', '>=', $this->request->fecha_inicio)
                                           ->where('eta', '<=', $this->request->fecha_fin)
+                                          ->orderBy('eta', 'asc')
                                           ->get(),
         ]);
     }

@@ -704,7 +704,6 @@
                         <input type="hidden" name="client_id" value="{{ $operation->house->id }}">
                         <input type="hidden" name="guarantee_request" value="">
                         <input type="hidden" name="advance_request" value="">
-                        <input type="number" id="number_inputs_conceptsinvoices" value="0" style="display: none;">
                         <div class="row">
                             <div class="col-7">
                                 <div class="form-group">
@@ -838,42 +837,45 @@
                             <table id="conceptsTable" class="table table-sm">
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th width="40%">Description</th>
                                         <th width="15%">Curr</th>
                                         <th>Rate</th>
-                                        <th>Iva</th>
+                                        <th width="5%">Iva</th>
                                         <th width="11%">Qty</th>
-                                        <th width="10%"></th>
                                     </tr>
                                 </thead>
-                                <tbody id="container-nodes-conceptsinvoices">
-                                    <tr>
-                                        <td>
-                                            <select name="conceptsinvoices[]" class="form-control select2" data-toggle="select2" id="description-conceptinvoices">
-                                                @foreach($conceptsinvoices as $conceptinvoices)
-                                                    <option value="{{ $conceptinvoices->id }}">{{ $conceptinvoices->description }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select name="curr[]" class="form-control select2" data-toggle="select2">
-                                                <option value="MXN" {{ $conceptinvoices->curr == "MXN" ? 'selected' : ''}}>MXN</option>
-                                                <option value="USD" {{ $conceptinvoices->curr == "USD" ? 'selected' : ''}}>USD</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1">
-                                        </td>
-                                        <td>
-                                            <button id="add-inputs-conceptsinvoice" type="button" class="btn btn-icon btn-success"><i class="mdi mdi-plus-circle"></i></button>
-                                        </td>
-                                    </tr>
+                                <tbody>
+                                    @foreach($conceptsinvoices as $conceptinvoices)
+                                        <tr>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="checkconceptinvoices{{ $conceptinvoices->id }}" value="{{ $conceptinvoices->id }}" name="conceptsinvoices[]">
+                                                    <label class="custom-control-label" for="checkconceptinvoices{{ $conceptinvoices->id }}">&nbsp;</label>
+                                                </div>
+                                            </td>
+                                            <td>{{ $conceptinvoices->description }}</td>
+                                            <td>
+                                                <select name="curr[]" class="form-control select2" data-toggle="select2">
+                                                    <option value="MXN" {{ $conceptinvoices->curr == "MXN" ? 'selected' : ''}}>MXN</option>
+                                                    <option value="USD" {{ $conceptinvoices->curr == "USD" ? 'selected' : ''}}>USD</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" name="ivaconceptinvoices[]" class="custom-control-input" id="checkivainvoices{{ $conceptinvoices->id }}" value="{{ $conceptinvoices->id }}">
+                                                    <label class="custom-control-label" for="checkivainvoices{{ $conceptinvoices->id }}">&nbsp;</label>
+                                                </div>
+                                                {{-- <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"> --}}
+                                            </td>
+                                            <td>
+                                                <input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1">
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <hr>
@@ -916,7 +918,6 @@
                         <input type="hidden" name="operation_id" value="{{ $operation->id }}">
                         <input type="hidden" name="client_id" value="{{ $operation->house->id }}">
                         <input type="hidden" name="guarantee_request" value="">
-                        <input type="number" id="number_inputs_conceptsadvance" value="0" style="display: none;">
                         <?php
                             use Carbon\Carbon;
                         ?>
@@ -1054,42 +1055,45 @@
                             <table id="conceptsTable" class="table table-sm">
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th width="40%">Description</th>
                                         <th width="15%">Curr</th>
                                         <th>Rate</th>
-                                        <th>Iva</th>
+                                        <th width="5%">Iva</th>
                                         <th width="11%">Qty</th>
-                                        <th width="10%"></th>
                                     </tr>
                                 </thead>
-                                <tbody id="container-nodes-conceptsadvance">
-                                    <tr>
-                                        <td>
-                                            <select name="conceptsadvance[]" class="form-control select2" data-toggle="select2" id="description-conceptadvance">
-                                                @foreach($conceptsinvoices as $conceptinvoices)
-                                                    <option value="{{ $conceptinvoices->id }}">{{ $conceptinvoices->description }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select name="curr[]" class="form-control select2" data-toggle="select2">
-                                                <option value="MXN" {{ $conceptinvoices->curr == "MXN" ? 'selected' : ''}}>MXN</option>
-                                                <option value="USD" {{ $conceptinvoices->curr == "USD" ? 'selected' : ''}}>USD</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1">
-                                        </td>
-                                        <td>
-                                            <button id="add-inputs-conceptsadvance" type="button" class="btn btn-icon btn-success"><i class="mdi mdi-plus-circle"></i></button>
-                                        </td>
-                                    </tr>
+                                <tbody>
+                                    @foreach($conceptsinvoices as $conceptinvoices)
+                                        <tr>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="checkconceptadvance{{ $conceptinvoices->id }}" value="{{ $conceptinvoices->id }}" name="conceptsadvance[]">
+                                                    <label class="custom-control-label" for="checkconceptadvance{{ $conceptinvoices->id }}">&nbsp;</label>
+                                                </div>
+                                            </td>
+                                            <td>{{ $conceptinvoices->description }}</td>
+                                            <td>
+                                                <select name="curr[]" class="form-control select2" data-toggle="select2">
+                                                    <option value="MXN" {{ $conceptinvoices->curr == "MXN" ? 'selected' : ''}}>MXN</option>
+                                                    <option value="USD" {{ $conceptinvoices->curr == "USD" ? 'selected' : ''}}>USD</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" name="ivaconceptadvance[]" class="custom-control-input" id="checkivaadvance{{ $conceptinvoices->id }}" value="{{ $conceptinvoices->id }}">
+                                                    <label class="custom-control-label" for="checkivaadvance{{ $conceptinvoices->id }}">&nbsp;</label>
+                                                </div>
+                                                {{-- <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"> --}}
+                                            </td>
+                                            <td>
+                                                <input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1">
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <hr>
@@ -1134,7 +1138,6 @@
                         <input type="hidden" name="client_id" value="{{ $operation->house->id }}">
                         <input type="hidden" name="guarantee_request" value="{{ Carbon::now() }}">
                         <input type="hidden" name="advance_request" value="">
-                        <input type="number" id="number_inputs_conceptsguarantee" value="0" style="display: none;">
                         <div class="row">
                              <div class="col-7">
                                 <div class="form-group">
@@ -1268,42 +1271,45 @@
                             <table id="conceptsTable" class="table table-sm">
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th width="40%">Description</th>
                                         <th width="15%">Curr</th>
                                         <th>Rate</th>
-                                        <th>Iva</th>
+                                        <th width="5%">Iva</th>
                                         <th width="11%">Qty</th>
-                                        <th width="10%"></th>
                                     </tr>
                                 </thead>
-                                <tbody id="container-nodes-conceptsguarantee">
-                                    <tr>
-                                        <td>
-                                            <select name="conceptsguarantee[]" class="form-control select2" data-toggle="select2" id="description-conceptguarantee">
-                                                @foreach($conceptsinvoices as $conceptinvoices)
-                                                    <option value="{{ $conceptinvoices->id }}">{{ $conceptinvoices->description }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select name="curr[]" class="form-control select2" data-toggle="select2">
-                                                <option value="MXN" {{ $conceptinvoices->curr == "MXN" ? 'selected' : ''}}>MXN</option>
-                                                <option value="USD" {{ $conceptinvoices->curr == "USD" ? 'selected' : ''}}>USD</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1">
-                                        </td>
-                                        <td>
-                                            <button id="add-inputs-conceptsguarantee" type="button" class="btn btn-icon btn-success"><i class="mdi mdi-plus-circle"></i></button>
-                                        </td>
-                                    </tr>
+                                <tbody>
+                                    @foreach($conceptsinvoices as $conceptinvoices)
+                                        <tr>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="checkconceptguarantee{{ $conceptinvoices->id }}" value="{{ $conceptinvoices->id }}" name="conceptsguarantee[]">
+                                                    <label class="custom-control-label" for="checkconceptguarantee{{ $conceptinvoices->id }}">&nbsp;</label>
+                                                </div>
+                                            </td>
+                                            <td>{{ $conceptinvoices->description }}</td>
+                                            <td>
+                                                <select name="curr[]" class="form-control select2" data-toggle="select2">
+                                                    <option value="MXN" {{ $conceptinvoices->curr == "MXN" ? 'selected' : ''}}>MXN</option>
+                                                    <option value="USD" {{ $conceptinvoices->curr == "USD" ? 'selected' : ''}}>USD</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" name="ivaconceptguarantee[]" class="custom-control-input" id="checkivaguarantee{{ $conceptinvoices->id }}" value="{{ $conceptinvoices->id }}">
+                                                    <label class="custom-control-label" for="checkivaguarantee{{ $conceptinvoices->id }}">&nbsp;</label>
+                                                </div>
+                                                {{-- <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"> --}}
+                                            </td>
+                                            <td>
+                                                <input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1">
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <hr>
@@ -1855,8 +1861,7 @@
                     <form id="createDebitnoteForm" method="POST" action="{{ route('debitnotes.store') }}" enctype="multipart/form-data" class="pl-2 pr-2">
                         {!! csrf_field() !!}
                         <input type="hidden" name="operation_id" value="{{ $operation->id }}">
-                        <input type="number" id="number_inputs_debitnotes" value="0" style="display: none;">
-                        <div class="row">
+                        <div class="row" id="container-nodes-debitnotes">
                             <div class="col-8">
                                 <div class="form-group">
                                     <label>Cliente <span class="text-danger">*</span></label>
@@ -1874,46 +1879,45 @@
                                 <table id="conceptsTable" class="table table-sm">
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th width="40%">Description</th>
                                             <th width="15%">Curr</th>
                                             <th>Rate</th>
-                                            <th>Iva</th>
+                                            <th width="5%">Iva</th>
                                             <th width="11%">Qty</th>
-                                            <th width="10%"></th>
                                         </tr>
                                     </thead>
-                                    <tbody id="container-nodes-debitnotes">
-                                        <tr>
-                                            <td>
-                                                <select name="concepts[]" class="form-control select2" data-toggle="select2" id="description-debitnotes">
-                                                    @foreach($concepts as $concept)
-                                                        <option value="{{ $concept->id }}">{{ $concept->description }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <select name="curr[]" class="form-control select2" data-toggle="select2">
-                                                    <option value="MXN" {{ $concept->curr == "MXN" ? 'selected' : ''}}>MXN</option>
-                                                    <option value="USD" {{ $concept->curr == "USD" ? 'selected' : ''}}>USD</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
-                                            </td>
-                                            <td>
-                                                <!-- <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" name="ivaConcept[]" class="custom-control-input" id="checkiva-{{ $concept->id }}" value="{{ $concept->id }}">
-                                                    <label class="custom-control-label" for="checkiva-{{ $concept->id }}">&nbsp;</label>
-                                                </div> -->
-                                                <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0">
-                                            </td>
-                                            <td>
-                                                <input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1">
-                                            </td>
-                                            <td>
-                                                <button id="add-inputs-debitnote" type="button" class="btn btn-icon btn-success"><i class="mdi mdi-plus-circle"></i></button>
-                                            </td>
-                                        </tr>
+                                    <tbody>
+                                        @foreach($concepts as $concept)
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="checkconcept-{{ $concept->id }}" value="{{ $concept->id }}" name="concepts[]">
+                                                        <label class="custom-control-label" for="checkconcept-{{ $concept->id }}">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td>{{ $concept->description }}</td>
+                                                <td>
+                                                    <select name="curr[]" class="form-control select2" data-toggle="select2">
+                                                        <option value="MXN" {{ $concept->curr == "MXN" ? 'selected' : ''}}>MXN</option>
+                                                        <option value="USD" {{ $concept->curr == "USD" ? 'selected' : ''}}>USD</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
+                                                </td>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" name="ivaConcept[]" class="custom-control-input" id="checkiva-{{ $concept->id }}" value="{{ $concept->id }}">
+                                                        <label class="custom-control-label" for="checkiva-{{ $concept->id }}">&nbsp;</label>
+                                                    </div>
+                                                    {{-- <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"> --}}
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1">
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -1955,7 +1959,6 @@
                     <form id="createPrefacturaForm" method="POST" action="{{ route('prefacturas.store') }}" enctype="multipart/form-data" class="pl-2 pr-2">
                         {!! csrf_field() !!}
                         <input type="hidden" name="operation_id" value="{{ $operation->id }}">
-                        <input type="number" id="number_inputs_prefactures" value="0" style="display: none;">
                         <div class="row">
                             <div class="col-8">
                                 <div class="form-group">
@@ -1971,49 +1974,48 @@
                             <div class="col-12">
                                 <br>
                                 <label>Conceptos</label>
-                                <table id="conceptsTable" class="table table-sm">
+                                <table class="table table-sm">
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th width="40%">Description</th>
                                             <th width="15%">Curr</th>
                                             <th>Rate</th>
-                                            <th>Iva</th>
+                                            <th width="5%">Iva</th>
                                             <th width="11%">Qty</th>
-                                            <th width="10%"></th>
                                         </tr>
                                     </thead>
-                                    <tbody id="container-nodes-prefactures">
-                                        <tr>
-                                            <td>
-                                                <select name="concepts[]" class="form-control select2" data-toggle="select2" id="description-prefactures">
-                                                    @foreach($concepts as $concept)
-                                                        <option value="{{ $concept->id }}">{{ $concept->description }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <select name="curr[]" class="form-control select2" data-toggle="select2" id="curr-prefactures">
-                                                    <option value="MXN" {{ $concept->curr == "MXN" ? 'selected' : ''}}>MXN</option>
-                                                    <option value="USD" {{ $concept->curr == "USD" ? 'selected' : ''}}>USD</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
-                                            </td>
-                                            <td>
-                                                <!-- <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" name="ivaConcept[]" class="custom-control-input" id="checkiva-{{ $concept->id }}" value="{{ $concept->id }}">
-                                                    <label class="custom-control-label" for="checkiva-{{ $concept->id }}">&nbsp;</label>
-                                                </div> -->
-                                                <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0">
-                                            </td>
-                                            <td>
-                                                <input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1">
-                                            </td>
-                                            <td>
-                                                <button id="add-inputs-prefacture" type="button" class="btn btn-icon btn-success"><i class="mdi mdi-plus-circle"></i></button>
-                                            </td>
-                                        </tr>
+                                    <tbody>
+                                        @foreach($concepts as $concept)
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="checkconcept2{{ $concept->id }}" value="{{ $concept->id }}" name="concepts[]">
+                                                        <label class="custom-control-label" for="checkconcept2{{ $concept->id }}">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td>{{ $concept->description }}</td>
+                                                <td>
+                                                    <select name="curr[]" class="form-control select2" data-toggle="select2">
+                                                        <option value="MXN" {{ $concept->curr == "MXN" ? 'selected' : ''}}>MXN</option>
+                                                        <option value="USD" {{ $concept->curr == "USD" ? 'selected' : ''}}>USD</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="rates[]" step="any" class="form-control form-control-sm">
+                                                </td>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" name="ivaConcept[]" class="custom-control-input" id="checkiva2{{ $concept->id }}" value="{{ $concept->id }}">
+                                                        <label class="custom-control-label" for="checkiva2{{ $concept->id }}">&nbsp;</label>
+                                                    </div>
+                                                    {{-- <input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"> --}}
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1">
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -2408,75 +2410,6 @@
             }
         }
 
-        $("#add-inputs-debitnote").on("click", function(){
-            var number_inputs = $("#number_inputs_debitnotes").val();
-            number_inputs = parseInt(number_inputs) + 1;
-            $("#number_inputs_debitnotes").val(number_inputs);
-            console.log(number_inputs);
-            $("#container-nodes-debitnotes").append('<tr id="inputs-debitnotes'+number_inputs+'"><td><select name="concepts[]" class="form-control select2" data-toggle="select2">@foreach($concepts as $concept)<option value="{{ $concept->id }}">{{ $concept->description }}</option>@endforeach</select></td><td><select name="curr[]" class="form-control select2" data-toggle="select2"><option value="MXN" {{ $concept->curr == "MXN" ? 'selected' : ''}}>MXN</option><option value="USD" {{ $concept->curr == "USD" ? 'selected' : ''}}>USD</option></select></td><td><input type="number" name="rates[]" step="any" class="form-control form-control-sm"></td><td><input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"></td><td><input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1"></td><td><button onclick="delete_inputs_debitnotes('+number_inputs+');" type="button" class="btn btn-icon btn-danger"><i class="mdi mdi-minus-circle"></i></button></td></tr>');
-        })
-
-        function delete_inputs_debitnotes(number_inputs){
-            var parent = document.getElementById("container-nodes-debitnotes");
-            var child = document.getElementById("inputs-debitnotes"+number_inputs);
-            parent.removeChild(child);
-        }
-
-        $("#add-inputs-prefacture").on("click", function(){
-            var number_inputs = $("#number_inputs_prefactures").val();
-            number_inputs = parseInt(number_inputs) + 1;
-            $("#number_inputs_prefactures").val(number_inputs);
-            console.log(number_inputs);
-            $("#container-nodes-prefactures").append('<tr id="inputs-prefactures'+number_inputs+'"><td><select name="concepts[]" class="form-control select2" data-toggle="select2">@foreach($concepts as $concept)<option value="{{ $concept->id }}">{{ $concept->description }}</option>@endforeach</select></td><td><select name="curr[]" class="form-control select2" data-toggle="select2"><option value="MXN" {{ $concept->curr == "MXN" ? 'selected' : ''}}>MXN</option><option value="USD" {{ $concept->curr == "USD" ? 'selected' : ''}}>USD</option></select></td><td><input type="number" name="rates[]" step="any" class="form-control form-control-sm"></td><td><input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"></td><td><input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1"></td><td><button onclick="delete_inputs_prefactures('+number_inputs+');" type="button" class="btn btn-icon btn-danger"><i class="mdi mdi-minus-circle"></i></button></td></tr>');
-        })
-
-        function delete_inputs_prefactures(number_inputs){
-            var parent = document.getElementById("container-nodes-prefactures");
-            var child = document.getElementById("inputs-prefactures"+number_inputs);
-            parent.removeChild(child);
-        }
-
-        $("#add-inputs-conceptsinvoice").on("click", function(){
-            var number_inputs = $("#number_inputs_conceptsinvoices").val();
-            number_inputs = parseInt(number_inputs) + 1;
-            $("#number_inputs_conceptsinvoices").val(number_inputs);
-            console.log(number_inputs);
-            $("#container-nodes-conceptsinvoices").append('<tr id="inputs-conceptsinvoices'+number_inputs+'"><td><select name="conceptsinvoices[]" class="form-control select2" data-toggle="select2" id="description-conceptinvoices">@foreach($conceptsinvoices as $conceptinvoices)<option value="{{ $conceptinvoices->id }}">{{ $conceptinvoices->description }}</option>@endforeach</select></td><td><select name="curr[]" class="form-control select2" data-toggle="select2"><option value="MXN" {{ $conceptinvoices->curr == "MXN" ? 'selected' : ''}}>MXN</option><option value="USD" {{ $conceptinvoices->curr == "USD" ? 'selected' : ''}}>USD</option></select></td><td><input type="number" name="rates[]" step="any" class="form-control form-control-sm"></td><td><input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"></td><td><input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1"></td><td><button onclick="delete_inputs_conceptsinvoices('+number_inputs+');" type="button" class="btn btn-icon btn-danger"><i class="mdi mdi-minus-circle"></i></button></td></tr>');
-        })
-
-        function delete_inputs_conceptsinvoices(number_inputs){
-            var parent = document.getElementById("container-nodes-conceptsinvoices");
-            var child = document.getElementById("inputs-conceptsinvoices"+number_inputs);
-            parent.removeChild(child);
-        }
-
-        $("#add-inputs-conceptsguarantee").on("click", function(){
-            var number_inputs = $("#number_inputs_conceptsguarantee").val();
-            number_inputs = parseInt(number_inputs) + 1;
-            $("#number_inputs_conceptsinvoices").val(number_inputs);
-            console.log(number_inputs);
-            $("#container-nodes-conceptsguarantee").append('<tr id="inputs-conceptsguarantee'+number_inputs+'"><td><select name="conceptsguarantee[]" class="form-control select2" data-toggle="select2" id="description-conceptguarantee">@foreach($conceptsinvoices as $conceptinvoices)<option value="{{ $conceptinvoices->id }}">{{ $conceptinvoices->description }}</option>@endforeach</select></td><td><select name="curr[]" class="form-control select2" data-toggle="select2"><option value="MXN" {{ $conceptinvoices->curr == "MXN" ? 'selected' : ''}}>MXN</option><option value="USD" {{ $conceptinvoices->curr == "USD" ? 'selected' : ''}}>USD</option></select></td><td><input type="number" name="rates[]" step="any" class="form-control form-control-sm"></td><td><input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"></td><td><input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1"></td><td><button onclick="delete_inputs_conceptsguarantee('+number_inputs+');" type="button" class="btn btn-icon btn-danger"><i class="mdi mdi-minus-circle"></i></button></td></tr>');
-        })
-
-        function delete_inputs_conceptsguarantee(number_inputs){
-            var parent = document.getElementById("container-nodes-conceptsguarantee");
-            var child = document.getElementById("inputs-conceptsguarantee"+number_inputs);
-            parent.removeChild(child);
-        }
-
-        $("#add-inputs-conceptsadvance").on("click", function(){
-            var number_inputs = $("#number_inputs_conceptsadvance").val();
-            number_inputs = parseInt(number_inputs) + 1;
-            $("#number_inputs_conceptsinvoices").val(number_inputs);
-            console.log(number_inputs);
-            $("#container-nodes-conceptsadvance").append('<tr id="inputs-conceptsadvance'+number_inputs+'"><td><select name="conceptsadvance[]" class="form-control select2" data-toggle="select2" id="description-conceptguarantee">@foreach($conceptsinvoices as $conceptinvoices)<option value="{{ $conceptinvoices->id }}">{{ $conceptinvoices->description }}</option>@endforeach</select></td><td><select name="curr[]" class="form-control select2" data-toggle="select2"><option value="MXN" {{ $conceptinvoices->curr == "MXN" ? 'selected' : ''}}>MXN</option><option value="USD" {{ $conceptinvoices->curr == "USD" ? 'selected' : ''}}>USD</option></select></td><td><input type="number" name="rates[]" step="any" class="form-control form-control-sm"></td><td><input type="number" name="iva[]" step="any" class="form-control form-control-sm" value="0"></td><td><input type="number" name="qty[]" step="any" class="form-control form-control-sm" value="1"></td><td><button onclick="delete_inputs_conceptsadvance('+number_inputs+');" type="button" class="btn btn-icon btn-danger"><i class="mdi mdi-minus-circle"></i></button></td></tr>');
-        })
-
-        function delete_inputs_conceptsadvance(number_inputs){
-            var parent = document.getElementById("container-nodes-conceptsadvance");
-            var child = document.getElementById("inputs-conceptsadvance"+number_inputs);
-            parent.removeChild(child);
-        }
 
         @if($errors->any())
             $('#information-operation-modal').modal('show');

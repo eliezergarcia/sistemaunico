@@ -107,6 +107,22 @@ class OperationController extends Controller
 
     }
 
+    public function cancel(Request $request)
+    {
+        DB::beginTransaction();
+
+        $operation = Operation::findOrFail($request->operation_id);
+        $operation->canceled();
+
+        if ($operation) {
+            DB::commit();
+            return back()->with('success', 'La operación se canceló correctamente.');
+        }else{
+            DB::rollback();
+            return back()->with('error', 'Ocurrión un problema al cancelar la operación.');
+        }
+    }
+
     /**
     *   Actualiza el status de la operación.
     */

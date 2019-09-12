@@ -87,6 +87,11 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('operaciones.show', $operation->id )}}" class="action-icon btn btn-link" data-toggle="tooltip" data-placement="top" title data-original-title="Ver información"> <i class="mdi mdi-eye"></i></a>
+                                            @if(Auth::user()->present()->isAdmin())
+                                                <a href="javascript:void(0)" class="action-icon btn btn-link"
+                                                    data-toggle="tooltip" data-placemente="top" data-original-title="Cancelar operación"
+                                                    onclick="cancel_operation({{ $operation->id }});"><i class="mdi mdi-close-box-outline"></i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -371,6 +376,27 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+
+    <div id="cancel-operation-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body p-4">
+                        <div class="text-center">
+                            <i class="dripicons-warning h1 text-danger"></i>
+                            <h4 class="mt-2">Precaución!</h4>
+                            <p class="mt-3">¿Está seguro(a) de cancelar la operación?</p>
+                            <button type="button" class="btn btn-light my-2" data-dismiss="modal">Cancelar</button>
+                            <form id="cancel_operation_form" style="display: inline;" action="{{ route('operation.cancel') }}" method="POST">
+                                {!! csrf_field() !!}
+                                {!! method_field('DELETE') !!}
+                                <input type="hidden" name="operation_id">
+                                <button type="sumbit" class="btn btn-danger my-2"><b>Aplicar</b></button>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 <!-- /.modal -->
 
 <!-- End Modals -->
@@ -448,6 +474,12 @@
 
         function activateRegister(){
             $('#register-operation').prop("disabled", false);
+        }
+
+        function cancel_operation($id)
+        {
+            $('#cancel_operation_form input[name=operation_id]').val($id);
+            $('#cancel-operation-modal').modal('show');
         }
 
         @if($errors->any())

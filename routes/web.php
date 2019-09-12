@@ -106,6 +106,7 @@ Route::get('/operaciones/reportes/operaciones', 'OperationController@operationsR
 Route::post('/operaciones/reportes/operaciones/generar', 'OperationController@operationsReportShow')->name('operaciones.reporteoperaciones_generar');
 Route::get('/operaciones/reportes/gastos', 'OperationController@operationsExpend')->name('operaciones.reportegastos');
 Route::post('/operaciones/reportes/gastos/generar', 'OperationController@operationsExpendShow')->name('operaciones.reportegastos_generar');
+Route::delete('/operaciones/cancelar', 'OperationController@cancel')->name('operation.cancel');
 Route::resource('operaciones', 'OperationController');
 
 Route::get('/contenedores/{id}', 'ContainerController@show')->name('contenedores.show');

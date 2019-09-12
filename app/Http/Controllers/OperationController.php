@@ -34,9 +34,13 @@ class OperationController extends Controller
     public function index()
     {
         if(auth()->user()->present()->isAdmin()){
-            $operations = Operation::orderBy('id', 'desc')->limit(100)->get();
+            $operations = Operation::orderBy('id', 'desc')
+                            ->where('canceled_at', null)
+                            ->limit(100)->get();
         }else{
-            $operations = Operation::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
+            $operations = Operation::where('user_id', auth()->user()->id)
+                            ->where('canceled_at', null)
+                            ->orderBy('id', 'desc')->get();
         }
 
         $clients = Client::where('inactive_at', null)->get();

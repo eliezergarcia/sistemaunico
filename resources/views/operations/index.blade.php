@@ -127,7 +127,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="{{ route('operaciones.store') }}" enctype="multipart/form-data" class="pl-2 pr-2">
+                    <form method="POST" action="{{ route('operaciones.store') }}" onsubmit="checkSubmit()" enctype="multipart/form-data" class="pl-2 pr-2">
                         {!! csrf_field() !!}
                         <div id="container-nodes" class="row">
                             <div class="col-4">
@@ -362,8 +362,8 @@
                         </div>
                 </div>
                 <div class="text-right pb-4 pr-4">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary"><b>Registrar</b></button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal" onclick="activateRegister()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="register-operation"><b>Registrar</b></button>
                 </div>
                 </form>
             </div>
@@ -438,6 +438,16 @@
             var parent = document.getElementById("container-nodes");
             var child = document.getElementById("inputs2");
             parent.removeChild(child);
+        }
+
+        function checkSubmit() {
+            document.getElementById("register-operation").disabled = true;
+            return true;
+        }
+
+
+        function activateRegister(){
+            $('#register-operation').prop("disabled", false);
         }
 
         @if($errors->any())

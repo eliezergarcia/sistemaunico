@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\OperationsReportExport;
 use App\Exports\ExpensesReportExport;
+use App\Exports\ExpensesReportDatesExport;
 // use Barryvdh\DomPDF\Facade as PDF;
 use App\Http\Requests\RegisterOperationRequest;
 use App\Http\Requests\UpdateOperationRequest;
@@ -266,8 +267,15 @@ class OperationController extends Controller
 
     public function operationsExpendShow(Request $request)
     {
+        /*dd($request->all());*/
+        if ($request->fecha_inicio != null && $request->fecha_fin != null) {
+            return Excel::download(new ExpensesReportDatesExport($request), 'operationsexpenses.xlsx');
+        }
         if ($request->bl != null) {
             return Excel::download(new ExpensesReportExport($request), 'operationsexpenses.xlsx');
+        }
+        if ($request->fecha_inicio == null && $request->fecha_fin == null && $request->bl == null) {
+            return back()->with('warning', 'Ingrese la información solicitada para generar el reporte.');
         }
     }
 

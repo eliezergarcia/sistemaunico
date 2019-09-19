@@ -35,7 +35,21 @@
                             <div class="row">
                                 <div class="col-2 form-group">
                                     <label for="">BL:</label>
-                                    <input type="text" name="bl" class="form-control " required>
+                                    <input type="text" name="bl" class="form-control ">
+                                </div>
+                                <div class="col-10">
+
+                                </div>
+                                <div class="col-2 form-group">
+                                    <label for="">Fecha de inicio:</label>
+                                    <input type="date" name="fecha_inicio" class="form-control ">
+                                </div>
+                                <div class="col-2 form-group">
+                                    <label for="">Fecha de fin:</label>
+                                    <input type="date" name="fecha_fin" class="form-control ">
+                                </div>
+                                <div class="col-8">
+
                                 </div>
                                 <div class="col-2 form-group">
                                     <label for=""></label>

@@ -37,7 +37,7 @@ class OperationController extends Controller
         if(auth()->user()->present()->isAdmin()){
             $operations = Operation::orderBy('id', 'desc')
                             ->where('canceled_at', null)
-                            ->limit(100)->get();
+                            ->get();
         }else{
             $operations = Operation::where('user_id', auth()->user()->id)
                             ->where('canceled_at', null)
